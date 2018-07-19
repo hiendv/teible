@@ -91,9 +91,11 @@ export default {
       return this.columns
         .filter(column => {
           return column.filterable
-        }).map(column => {
+        })
+        .map(column => {
           return column.field
         })
+        .filter(field => field)
     },
     filtering () {
       return {
