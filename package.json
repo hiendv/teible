@@ -57,7 +57,6 @@
     "clean": "rimraf packages/**/dist",
     "coverage": "npm test -- --coverage",
     "prebuild": "npm run clean",
-    "prepublish": "npm run build",
     "pretest": "lerna run --parallel lint",
     "prewatch": "lerna run --parallel lint",
     "serve": "lerna run --parallel serve",
