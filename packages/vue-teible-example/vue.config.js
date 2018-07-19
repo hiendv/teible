@@ -1,3 +1,3 @@
 module.exports = {
-  baseUrl: '/teible'
+  baseUrl: process.env.NODE_ENV === 'production' ? '/teible' : ''
 }
