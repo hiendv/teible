@@ -12,12 +12,28 @@ yarn add vue-teible
 // import components
 import { DataTable, DataColumn } from 'vue-teible'
 
-// initiate Vue instance
+// initiate a Vue instance
 new Vue({
   el: '#app',
   components: { DataTable, DataColumn },
   data: {
-    items: []
+    items: [{
+      id: 'id-1',
+      name: 'foo'
+    }, {
+      id: 'id-2',
+      name: 'bar'
+    }, {
+      id: 'id-3',
+      name: 'qux'
+    }]
+  },
+  methods: {
+    destroy (x) {
+      this.items = this.items.filter(item => {
+        return item.id !== x.id
+      })
+    }
   }
 })
 </script>
@@ -35,6 +51,7 @@ new Vue({
 </template>
 ```
 
+If you're looking for a more complicated use-case, see **[vue-teible-example](/packages/vue-teible-example)**.
 ## Documentation
 ### DataTable
 #### Props
