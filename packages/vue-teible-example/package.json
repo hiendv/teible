@@ -12,6 +12,10 @@
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^3.0.0-rc.5"
   },
+  "files": [
+    "dist"
+    "README.md"
+  ],
   "homepage": "https://github.com/hiendv/teible",
   "keywords": [
     "datatable",
