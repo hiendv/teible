@@ -64,6 +64,7 @@
     "start": "concurrently \"npm:watch\" \"npm:serve\"",
     "test": "jest",
     "test-ci": "npm run setup && npm run build && npm run coverage -- --ci --maxWorkers=4 --no-cache",
-    "watch": "lerna run --parallel watch"
+    "watch": "lerna run --parallel watch",
+    "gh": "git subtree push --prefix packages/vue-teible-example/dist origin gh-pages"
   }
 }
