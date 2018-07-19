@@ -1,23 +1,34 @@
 <template>
   <div id="app">
-    <div class="intro">
-      <h1>Vue Teible Example</h1>
-      <h3>Example for vue-teible</h3>
-    </div>
-    <hr>
-    <div class="demos">
-      <demo :items="itemsFunc" class="demo">
-        <h2>Function as items</h2>
-      </demo>
-      <div class="demo demo__gut"></div>
-      <demo :items="itemsArr" class="demo">
-        <h2>Array as items</h2>
-      </demo>
-    </div>
+    <section class="hero">
+      <h1 class="hero__title">Vue Teible Example</h1>
+      <h3 class="hero__subtitle">Example for <a class="hero__link" href="https://github.com/hiendv/teible/tree/master/packages/vue-teible" title="vue-teible">vue-teible</a></h3>
+    </section>
+    <main>
+      <div class="demos">
+        <demo :items="itemsFunc" class="demo">
+          <h2 class="demo_title">Function as items</h2>
+        </demo>
+        <div class="demo demo__gut"></div>
+        <demo :items="itemsArr" class="demo">
+          <h2 class="demo_title">Array as items</h2>
+        </demo>
+      </div>
+    </main>
   </div>
 </template>
 <style src="vue-teible/dist/vueteible.css"></style>
 <style lang="scss">
+html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
 html {
   color: #414a51;
   font-weight: 400;
@@ -28,8 +39,38 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h3 {
-  font-weight: normal;
+.hero {
+  padding: 40px 0 0;
+  position: relative;
+  overflow: hidden;
+  background: #222;
+  color: #fff;
+}
+
+.hero__title {
+  margin: 50px auto 0 auto;
+  font-size: 32px;
+  font-weight: 200;
+  line-height: 60px;
+  text-align: center;
+  max-width: 830px;
+}
+
+.hero__subtitle {
+  margin: 0 auto 60px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 1.5em;
+  text-align: center;
+  color: #a7a7a7;
+}
+
+.hero__link {
+  color: #dcdcdc;
+}
+
+main {
+  padding: 1rem;
 }
 
 .demos {
@@ -39,6 +80,13 @@ h3 {
 
 .demo {
   display: table-cell;
+}
+
+.demo_title {
+  margin: 10px 0;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 1.7em;
 }
 
 .demo__gut {
