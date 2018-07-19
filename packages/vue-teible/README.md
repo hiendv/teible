@@ -72,7 +72,7 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
 #### Props
 ```js
 {
-  items: { // Data
+  items: { // Data. Parameters for the function: filtering, sorting, paging
     type: [Array, Function],
     required: true
   },
