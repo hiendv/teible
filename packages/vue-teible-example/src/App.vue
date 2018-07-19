@@ -66,21 +66,38 @@ export default {
           return false
         }
 
-        if (this.checked.length === this.loadedItems.length) {
-          return true
+        for (let item of this.loadedItems) {
+          if (this.checked.indexOf(item.name) === -1) {
+            return false
+          }
         }
+
+        return true
       },
       set (val) {
         if (!val) {
-          this.checked = []
+          this.checked = this.checked.filter(i => {
+            for (let item of this.loadedItems) {
+              if (item.name === i) {
+                return false
+              }
+            }
+
+            return true
+          })
           return
         }
 
-        this.checked = this.loadedItems.map(i => i.name)
+        this.checked = this.uniq(this.checked.concat(this.loadedItems.map(i => i.name)))
       }
     }
   },
   methods: {
+    uniq (arrArg) {
+      return arrArg.filter((elem, pos, arr) => {
+        return arr.indexOf(elem) === pos
+      })
+    },
     action (props, times) {
       for (let i = 0; i < times; i++) {
         props.item.name += ' Yo'
@@ -92,7 +109,6 @@ export default {
       })
     },
     loaded (data) {
-      console.log('loaded', data)
       this.loadedItems = data.items
     }
   }
