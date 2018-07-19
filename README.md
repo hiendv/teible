@@ -5,7 +5,7 @@ Lightweight and flexible table component for the web.
 
 ## Packages
 | Package | Version |
-|--------|-------|------------|
+|--------|-------|
 | **[vue-teible](/packages/vue-teible)** | [![npm](https://img.shields.io/npm/v/vue-teible.svg)](https://www.npmjs.com/package/vue-teible) |
 | **[vue-teible-example](/packages/vue-teible-example)** | [![npm](https://img.shields.io/npm/v/vue-teible-example.svg)](https://www.npmjs.com/package/vue-teible-example) |
 
