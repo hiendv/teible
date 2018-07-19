@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataTableBody renders correctly 1`] = `
+<tbody>
+  <tr class="datatable__row">
+    <datatablecell-stub></datatablecell-stub>
+    <datatablecell-stub></datatablecell-stub>
+  </tr>
+  <tr class="datatable__row datatable__row--odd datatable__row--last">
+    <datatablecell-stub></datatablecell-stub>
+    <datatablecell-stub></datatablecell-stub>
+  </tr>
+</tbody>
+`;

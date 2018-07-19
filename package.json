@@ -1,0 +1,70 @@
+{
+  "name": "teible",
+  "description": "Monorepo for teible",
+  "version": "0.1.0",
+  "author": "Hien Dao <hien.dv.neo@gmail.com>",
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/hiendv/teible/issues"
+  },
+  "devDependencies": {
+    "@hiendv/bem-sass": "^0.1.0",
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.5",
+    "@vue/cli-service": "^3.0.0-rc.5",
+    "@vue/eslint-config-standard": "^3.0.0-rc.5",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-jest": "^23.4.0",
+    "babel-preset-env": "^1.7.0",
+    "concurrently": "^3.6.0",
+    "jest": "^23.4.1",
+    "jest-serializer-vue": "^2.0.2",
+    "lerna": "^2.11.0",
+    "node-sass": "^4.9.2",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.0.3",
+    "vue": "^2.5.16",
+    "vue-jest": "^2.6.0"
+  },
+  "homepage": "https://github.com/hiendv/teible",
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.(vue)$": "vue-jest"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "collectCoverageFrom": [
+      "packages/*/src/**/*.{js,vue}",
+      "!packages/*example/**/*"
+    ],
+    "roots": [
+      "packages/"
+    ]
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "lerna run --sort build",
+    "clean": "rimraf packages/**/dist",
+    "coverage": "npm test -- --coverage",
+    "prebuild": "npm run clean",
+    "prepublish": "npm run build",
+    "pretest": "lerna run --parallel lint",
+    "prewatch": "lerna run --parallel lint",
+    "serve": "lerna run --parallel serve",
+    "setup": "lerna clean --yes && lerna bootstrap --hoist",
+    "start": "concurrently \"npm:watch\" \"npm:serve\"",
+    "test": "jest",
+    "test-ci": "npm run setup && npm run build && npm run coverage",
+    "watch": "lerna run --parallel watch"
+  }
+}

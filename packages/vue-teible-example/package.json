@@ -1,0 +1,33 @@
+{
+  "name": "vue-teible-example",
+  "description": "Example for vue-teible",
+  "version": "0.1.0",
+  "author": "Hien Dao <hien.dv.neo@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/hiendv/teible/issues"
+  },
+  "dependencies": {
+    "vue-teible": "^0.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.5"
+  },
+  "homepage": "https://github.com/hiendv/teible",
+  "keywords": [
+    "datatable",
+    "teible",
+    "vue",
+    "vue-teible"
+  ],
+  "license": "MIT",
+  "main": "dist/index.html",
+  "peerDependencies": {
+    "vue": "^2.5.16"
+  },
+  "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible-example",
+  "scripts": {
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "serve": "vue-cli-service serve"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "vue-teible",
+  "description": "Table component for Vue.js",
+  "version": "0.1.0",
+  "author": "Hien Dao <hien.dv.neo@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/hiendv/teible/issues"
+  },
+  "dependencies": {
+    "lodash.chunk": "^4.2.0",
+    "lodash.orderby": "^4.6.0",
+    "octicons-modular": "^0.8.6",
+    "octicons-vue": "^0.8.7"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.5"
+  },
+  "homepage": "https://github.com/hiendv/teible",
+  "keywords": [
+    "datatable",
+    "teible",
+    "vue",
+    "vue-teible"
+  ],
+  "license": "MIT",
+  "main": "dist/vueteible.common.js",
+  "peerDependencies": {
+    "vue": "^2.5.16"
+  },
+  "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible",
+  "scripts": {
+    "build": "vue-cli-service build src/main.js --target lib --name vueteible --modern --no-clean",
+    "lint": "vue-cli-service lint",
+    "watch": "npm run build -- --mode production --watch"
+  }
+}
