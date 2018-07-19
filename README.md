@@ -1,15 +1,7 @@
 # Teible
 [![Build Status](https://travis-ci.org/hiendv/teible.svg?branch=master)](https://travis-ci.org/hiendv/teible) [![codecov](https://codecov.io/gh/hiendv/teible/branch/master/graph/badge.svg)](https://codecov.io/gh/hiendv/teible) [![dependencies Status](https://david-dm.org/hiendv/teible/status.svg)](https://david-dm.org/hiendv/teible) [![devDependencies Status](https://david-dm.org/hiendv/teible/dev-status.svg)](https://david-dm.org/hiendv/teible?type=dev)
 
-Lightweight and flexible table component for the web.
-
-> Alice: But wait, we have enough table components, right? :confused:
-
-> Bob: Kinda... :wink:
-
-> Alice: So what's is the difference?
-
-> Bob: Well. No more hassle declaring columns outside the template or customizing render template or feature bloat. It's straightforward.
+Lightweight and flexible table component for the web. No more hassle writing columns outside the template, customizing render template or feature bloat. It's straightforward.
 
 ## Packages
 | Package | Version |

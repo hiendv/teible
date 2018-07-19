@@ -1,4 +1,15 @@
 # Vue Teible
+## Introduction
+Teible is yet another table component. I know we have [enough of them](https://github.com/vuejs/awesome-vue#table) but it is something else.
+
+### Features
+- Straightforward column definition using template
+- Flexible cell render using slot
+- Support asynchronous data
+- Feature-bloat free
+
+Teible is heavily inspired by [vue-table-component](https://github.com/spatie/vue-table-component). The way columns are defined totally got me at the first sight. But it's deprecated in favor of the "traditional" way and has a lot of fancy features you may never need: data type, date format, caching, etc. So if you're looking for a simple but flexible component, take a look at the below example, you may fall in love with teible.
+
 ## Installation & Usage
 ### NPM
 ```bash
@@ -38,6 +49,10 @@ new Vue({
 })
 </script>
 
+// import the style
+<style src="vue-teible/dist/vueteible.css"></style>
+
+// write your table
 <template>
   <data-table :items="items">
     <data-column field="id" label="ID"/>
@@ -90,6 +105,9 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
   }
 }
 ```
+#### Events
++ loaded (items): loaded items
+
 ### DataColumn
 #### Props
 ```js
