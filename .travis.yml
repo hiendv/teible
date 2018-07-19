@@ -7,5 +7,5 @@ install:
   - npm install -g codecov
   - npm install
 script:
-  - npm run coverage -- --ci --maxWorkers=4 --no-cache
+  - npm run test-ci
   - codecov

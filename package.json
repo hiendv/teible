@@ -63,7 +63,7 @@
     "setup": "lerna clean --yes && lerna bootstrap --hoist",
     "start": "concurrently \"npm:watch\" \"npm:serve\"",
     "test": "jest",
-    "test-ci": "npm run setup && npm run build && npm run coverage",
+    "test-ci": "npm run setup && npm run build && npm run coverage -- --ci --maxWorkers=4 --no-cache",
     "watch": "lerna run --parallel watch"
   }
 }
