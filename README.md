@@ -3,6 +3,12 @@
 
 Lightweight and flexible table component for the web.
 
+> Alice: But wait, we have enough table components, right? :confused:
+> Bob: Kinda... :wink:
+> Alice: So what's is the difference?
+> Bob: Well. No more hassle declaring columns outside the template or customizing render template or feature bloat. It's straightforward.
+> Alice: Lemme see
+
 ## Packages
 | Package | Version |
 |--------|-------|
