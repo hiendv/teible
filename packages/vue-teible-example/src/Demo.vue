@@ -138,6 +138,11 @@ export default {
       }
     },
     destroy (x) {
+      if (!this.items instanceof Array) {
+        console.log('Could not delete items from non-array data')
+        return
+      }
+
       this.items = this.items.filter(item => {
         return item.id !== x.id
       })
