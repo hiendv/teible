@@ -17,7 +17,7 @@
       :filter.sync="filter"
       @loaded="loaded"
     >
-      <data-column field="id" label="ID" width="10%"/>
+      <data-column field="id" label="ID" width="15%"/>
       <data-column field="name" label="Name" width="50%"/>
       <data-column :sortable="false" label="Action">
         <template slot-scope="props">
