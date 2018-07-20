@@ -18,11 +18,10 @@
       @loaded="loaded"
     >
       <data-column field="id" label="ID" width="15%"/>
-      <data-column field="name" label="Name" width="50%"/>
+      <data-column field="name" label="Name" width="40%"/>
       <data-column :sortable="false" label="Action">
         <template slot-scope="props">
           <button @click.prevent="action(props, 1)">Yo</button>
-          <button @click.prevent="action(props, 10)">Yo x10</button>
           <button @click.prevent="destroy(props.item)">Delete</button>
         </template>
       </data-column>
@@ -94,46 +93,44 @@ export default {
     }
   },
   computed: {
+    loadedNames () {
+      return this.loadedItems.map(item => item.name)
+    },
     perPageNumber () {
       return parseInt(this.perPage)
     },
     checkedAll: {
       get () {
-        if (!this.checked.length) {
-          return false
-        }
-
-        for (let item of this.loadedItems) {
-          if (this.checked.indexOf(item.name) === -1) {
-            return false
-          }
-        }
-
-        return true
+        return this.contains(this.checked, this.loadedNames)
       },
       set (val) {
         if (!val) {
-          this.checked = this.checked.filter(i => {
-            for (let item of this.loadedItems) {
-              if (item.name === i) {
-                return false
-              }
-            }
-
-            return true
-          })
+          this.checked = this.exclude(this.checked, this.loadedNames)
           return
         }
 
-        this.checked = this.uniq(this.checked.concat(this.loadedItems.map(i => i.name)))
+        this.checked = [...new Set(this.checked.concat(this.loadedNames))]
       }
     }
   },
   methods: {
-    uniq (arrArg) {
-      return arrArg.filter((elem, pos, arr) => {
-        return arr.indexOf(elem) === pos
+    exclude (arr1, arr2) {
+      return arr1.filter(item => {
+        return arr2.indexOf(item) === -1
       })
+    },
+    contains (haystack, needles) {
+      if (!haystack.length) {
+        return false
+      }
+
+      for (let needle of needles) {
+        if (haystack.indexOf(needle) === -1) {
+          return false
+        }
+      }
+
+      return true
     },
     action (props, times) {
       for (let i = 0; i < times; i++) {

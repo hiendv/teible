@@ -3,15 +3,18 @@
     <section class="hero">
       <h1 class="hero__title">Vue Teible Example</h1>
       <h3 class="hero__subtitle">Example for <a class="hero__link" href="https://github.com/hiendv/teible/tree/master/packages/vue-teible" title="vue-teible">vue-teible</a></h3>
+      <p style="text-align: center;"><iframe src="https://ghbtns.com/github-btn.html?user=hiendv&repo=teible&type=star&count=true&size=large&v=2" frameborder="0" scrolling="0" width="115px" height="30px"></iframe></p>
     </section>
     <main>
       <div class="demos">
         <demo :items="itemsFunc" class="demo">
-          <h2 class="demo_title">Function as items</h2>
+          <h2 class="demo__title">Function as items</h2>
+          <p class="demo__subtitle">Searching fields will be ignored because <a href="https://jsonplaceholder.typicode.com/" title="typicode">typicode</a> does not support them.</p>
         </demo>
         <div class="demo demo__gut"></div>
         <demo :items="itemsArr" class="demo">
-          <h2 class="demo_title">Array as items</h2>
+          <h2 class="demo__title">Array as items</h2>
+          <p class="demo__subtitle">Searching using `indexOf` with queries in lowercase.</p>
         </demo>
       </div>
     </main>
@@ -40,7 +43,7 @@ html {
 }
 
 .hero {
-  padding: 40px 0 0;
+  padding: 40px 0;
   position: relative;
   overflow: hidden;
   background: #222;
@@ -48,7 +51,7 @@ html {
 }
 
 .hero__title {
-  margin: 50px auto 0 auto;
+  margin: 30px auto 0 auto;
   font-size: 32px;
   font-weight: 200;
   line-height: 60px;
@@ -57,7 +60,7 @@ html {
 }
 
 .hero__subtitle {
-  margin: 0 auto 60px;
+  margin: 0 auto 20px;
   font-size: 18px;
   font-weight: 200;
   line-height: 1.5em;
@@ -83,11 +86,15 @@ main {
   }
 }
 
-.demo_title {
+.demo__title {
   margin: 20px 0 0 0;
   font-weight: 300;
   font-size: 24px;
   line-height: 1.7em;
+}
+
+.demo__subtitle {
+  margin-bottom: 10px;
 }
 
 .demo__gut {
