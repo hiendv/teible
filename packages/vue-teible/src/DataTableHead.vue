@@ -65,7 +65,7 @@ export default {
     position: relative;
     padding: .5em;
     min-width: 2em;
-    vertical-align: bottom;
+    vertical-align: middle;
     text-align: left;
     line-height: 1;
     white-space: nowrap;
@@ -88,7 +88,13 @@ export default {
   }
 
   @include e('column-icon') {
-    float: right;
+    position: absolute;
+    top: 8px;
+    right: .5em;
+  }
+
+  @include e('column-text') {
+    vertical-align: middle;
   }
 }
 </style>

@@ -16,9 +16,16 @@ exports[`DataTable works with async data 1`] = `
     <table cellspacing="0" cellpadding="0" class="datatable__content">
       <thead class="datatable__head">
         <tr>
-          <th scope="col" class="datatable__column datatable__column--sortable"><span>ID<svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg></span></th>
-          <th
-            scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span>Value<svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg></span></th>
+          <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span>
+            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+            </svg>
+          </th>
+          <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span>
+            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+            </svg>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -66,9 +73,16 @@ exports[`DataTable works with empty data 1`] = `
     <table cellspacing="0" cellpadding="0" class="datatable__content">
       <thead class="datatable__head">
         <tr>
-          <th scope="col" class="datatable__column datatable__column--sortable"><span>ID<svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg></span></th>
-          <th
-            scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span>Value<svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg></span></th>
+          <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span>
+            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+            </svg>
+          </th>
+          <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span>
+            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+            </svg>
+          </th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -133,9 +147,16 @@ exports[`DataTable works with sync data 1`] = `
     <table cellspacing="0" cellpadding="0" class="datatable__content">
       <thead class="datatable__head">
         <tr>
-          <th scope="col" class="datatable__column datatable__column--sortable"><span>ID<svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg></span></th>
-          <th
-            scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span>Value<svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg></span></th>
+          <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span>
+            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+            </svg>
+          </th>
+          <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span>
+            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+            </svg>
+          </th>
         </tr>
       </thead>
       <tbody>

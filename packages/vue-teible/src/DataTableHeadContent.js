@@ -44,7 +44,11 @@ export default {
       }, props.column.scopedSlots.header(props))
     }
 
-    let children = [ capitalize(props.column.label) ]
+    let children = [ h('span', {
+      attrs: {
+        class: 'datatable__column-text'
+      }
+    }, capitalize(props.column.label)) ]
     if (props.column.sortable) {
       children.push(h(Octicon, {
         props: {
@@ -53,6 +57,6 @@ export default {
         }
       }))
     }
-    return h('span', children)
+    return children
   }
 }
