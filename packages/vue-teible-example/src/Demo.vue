@@ -138,8 +138,8 @@ export default {
       }
     },
     destroy (x) {
-      if (!this.items instanceof Array) {
-        console.log('Could not delete items from non-array data')
+      if (!(this.items instanceof Array)) {
+        // console.log('Could not delete items from non-array data')
         return
       }
 
