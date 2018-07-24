@@ -8,6 +8,13 @@ Lightweight and flexible table component for the web. No more hassle writing col
 |--------|-------|
 | **[vue-teible](/packages/vue-teible)** | [![npm](https://img.shields.io/npm/v/vue-teible.svg)](https://www.npmjs.com/package/vue-teible) |
 | **[vue-teible-example](/packages/vue-teible-example)** | [![npm](https://img.shields.io/npm/v/vue-teible-example.svg)](https://www.npmjs.com/package/vue-teible-example) |
+| **[react-teible](#)** | Coming soon |
+| **[react-teible-example](#)** | Coming soon |
+
+## Roadmap
+- [ ] React component & examples
+- [ ] Better docs
+- [ ] Fancy examples (idk but why not :sunglasses:)
 
 ## Development & Testing
 Please check the [Contributing Guidelines](https://github.com/hiendv/teible/blob/master/CONTRIBUTING.md).
