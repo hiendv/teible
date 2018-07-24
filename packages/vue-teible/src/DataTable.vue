@@ -10,10 +10,12 @@
           <span v-else>No records</span>
         </div>
       </div>
-      <table class="datatable__content" cellspacing="0" cellpadding="0">
-        <data-table-head :columns="columns" :sort-by.sync="options.sortBy" :sort-desc.sync="options.sortDesc"/>
-        <data-table-body :columns="columns" :items="actualItems"/>
-      </table>
+      <div class="datatable__screen">
+        <table class="datatable__content" cellspacing="0" cellpadding="0">
+          <data-table-head :columns="columns" :sort-by.sync="options.sortBy" :sort-desc.sync="options.sortDesc"/>
+          <data-table-body :columns="columns" :items="actualItems"/>
+        </table>
+      </div>
       <data-table-pagination :per-page="perPage" :page.sync="page" :total="total"/>
     </div>
   </div>
@@ -197,6 +199,14 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  @include e('screen') {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
   @include e('wrapper') {
     position: relative;
     display: block;
@@ -205,19 +215,25 @@ export default {
   }
 
   @include e('heading') {
-    margin-bottom: 1em;
+    margin-bottom: .5em;
     display: table;
     table-layout: fixed;
     width: 100%;
   }
 
   @include e('unit') {
-    width: 50%;
-    display: table-cell;
+    margin-bottom: .5em;
   }
 
-  @include e('text') {
-    padding-left: 1em;
+  @media (min-width: 768px) {
+    @include e('unit') {
+      width: 50%;
+      display: table-cell;
+    }
+
+    @include e('text') {
+      padding-left: 1em;
+    }
   }
 
   @include e('content') {

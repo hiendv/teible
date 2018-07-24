@@ -13,36 +13,38 @@ exports[`DataTable works with async data 1`] = `
         </span>
       </div>
     </div>
-    <table cellspacing="0" cellpadding="0" class="datatable__content">
-      <thead class="datatable__head">
-        <tr>
-          <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span>
-            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
-              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
-            </svg>
-          </th>
-          <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span>
-            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
-              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
-            </svg>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="datatable__row">
-          <td class="datatable__cell">id-1</td>
-          <td class="datatable__cell datatable__cell--last-column">value z (id-1)</td>
-        </tr>
-        <tr class="datatable__row datatable__row--odd">
-          <td class="datatable__cell">id-2</td>
-          <td class="datatable__cell datatable__cell--last-column">value m (id-2)</td>
-        </tr>
-        <tr class="datatable__row datatable__row--last">
-          <td class="datatable__cell datatable__cell--last-row">id-3</td>
-          <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value a (id-3)</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="datatable__screen">
+      <table cellspacing="0" cellpadding="0" class="datatable__content">
+        <thead class="datatable__head">
+          <tr>
+            <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span>
+              <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg>
+            </th>
+            <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span>
+              <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="datatable__row">
+            <td class="datatable__cell">id-1</td>
+            <td class="datatable__cell datatable__cell--last-column">value z (id-1)</td>
+          </tr>
+          <tr class="datatable__row datatable__row--odd">
+            <td class="datatable__cell">id-2</td>
+            <td class="datatable__cell datatable__cell--last-column">value m (id-2)</td>
+          </tr>
+          <tr class="datatable__row datatable__row--last">
+            <td class="datatable__cell datatable__cell--last-row">id-3</td>
+            <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value a (id-3)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <nav class="datatable__pagination">
       <ul class="datatable__plist">
         <li class="datatable__pitem">
@@ -70,23 +72,25 @@ exports[`DataTable works with empty data 1`] = `
       </div>
       <div class="datatable__unit datatable__text"><span>No records</span></div>
     </div>
-    <table cellspacing="0" cellpadding="0" class="datatable__content">
-      <thead class="datatable__head">
-        <tr>
-          <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span>
-            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
-              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
-            </svg>
-          </th>
-          <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span>
-            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
-              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
-            </svg>
-          </th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <div class="datatable__screen">
+      <table cellspacing="0" cellpadding="0" class="datatable__content">
+        <thead class="datatable__head">
+          <tr>
+            <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span>
+              <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg>
+            </th>
+            <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span>
+              <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg>
+            </th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
     <nav class="datatable__pagination">
       <ul class="datatable__plist">
         <li class="datatable__pitem">
@@ -111,12 +115,14 @@ exports[`DataTable works with no columns 1`] = `
       </div>
       <div class="datatable__unit datatable__text"><span>No records</span></div>
     </div>
-    <table cellspacing="0" cellpadding="0" class="datatable__content">
-      <thead class="datatable__head">
-        <!---->
-      </thead>
-      <tbody></tbody>
-    </table>
+    <div class="datatable__screen">
+      <table cellspacing="0" cellpadding="0" class="datatable__content">
+        <thead class="datatable__head">
+          <!---->
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
     <nav class="datatable__pagination">
       <ul class="datatable__plist">
         <li class="datatable__pitem">
@@ -144,32 +150,34 @@ exports[`DataTable works with sync data 1`] = `
         </span>
       </div>
     </div>
-    <table cellspacing="0" cellpadding="0" class="datatable__content">
-      <thead class="datatable__head">
-        <tr>
-          <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span>
-            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
-              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
-            </svg>
-          </th>
-          <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span>
-            <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
-              <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
-            </svg>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="datatable__row">
-          <td class="datatable__cell">id-1</td>
-          <td class="datatable__cell datatable__cell--last-column">value z (id-1)</td>
-        </tr>
-        <tr class="datatable__row datatable__row--odd datatable__row--last">
-          <td class="datatable__cell datatable__cell--last-row">id-2</td>
-          <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value m (id-2)</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="datatable__screen">
+      <table cellspacing="0" cellpadding="0" class="datatable__content">
+        <thead class="datatable__head">
+          <tr>
+            <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span>
+              <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg>
+            </th>
+            <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span>
+              <svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="datatable__row">
+            <td class="datatable__cell">id-1</td>
+            <td class="datatable__cell datatable__cell--last-column">value z (id-1)</td>
+          </tr>
+          <tr class="datatable__row datatable__row--odd datatable__row--last">
+            <td class="datatable__cell datatable__cell--last-row">id-2</td>
+            <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value m (id-2)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <nav class="datatable__pagination">
       <ul class="datatable__plist">
         <li class="datatable__pitem">

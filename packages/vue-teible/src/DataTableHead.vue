@@ -5,6 +5,7 @@
         v-for="(column, index) in columns"
         :key="column.field + column.label"
         :class="['datatable__column', {
+          'datatable__column--custom': column.scopedSlots && column.scopedSlots.header,
           'datatable__column--sortable': column.sortable,
           'datatable__column--active': isActive(column),
           'datatable__column--last': index === columns.length - 1
@@ -64,7 +65,8 @@ export default {
   @include e('column') {
     position: relative;
     padding: .5em;
-    min-width: 2em;
+    padding-right: 1.75em;
+    min-width: 1em;
     vertical-align: middle;
     text-align: left;
     line-height: 1;
@@ -85,6 +87,10 @@ export default {
     @include m('sortable') {
       cursor: pointer;
     }
+
+    @include m('custom') {
+      padding-right: .5em;
+    }
   }
 
   @include e('column-icon') {
@@ -94,7 +100,9 @@ export default {
   }
 
   @include e('column-text') {
+    display: inline-block;
     vertical-align: middle;
+    margin-top: 2px;
   }
 }
 </style>
