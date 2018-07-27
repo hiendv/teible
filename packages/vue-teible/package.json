@@ -13,7 +13,7 @@
     "octicons-vue": "^0.8.7"
   },
   "devDependencies": {
-    "@vue/cli-plugin-eslint": "^3.0.0-rc.5"
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.6"
   },
   "files": [
     "dist",
@@ -33,8 +33,8 @@
   },
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible",
   "scripts": {
-    "build": "vue-cli-service build src/main.js --target lib --name vueteible --modern --no-clean",
+    "build": "vue-cli-service build src/main.js --mode production --target lib --name vueteible --modern --no-clean",
     "lint": "vue-cli-service lint",
-    "watch": "npm run build -- --mode production --watch"
+    "watch": "npm run build -- --watch"
   }
 }
