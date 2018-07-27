@@ -6,7 +6,11 @@ module.exports = {
       }
     }
   },
-  configureWebpack: {
-    externals: ['lodash.chunk', 'lodash.orderby', 'octicons-modular', 'octicons-vue']
+  configureWebpack: config => {
+    if (config.output.libraryTarget === 'umd') {
+      return
+    }
+
+    config.externals = ['lodash.chunk', 'lodash.orderby', 'octicons-modular', 'octicons-vue']
   }
 }
