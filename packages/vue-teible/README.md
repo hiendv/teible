@@ -14,6 +14,37 @@ Teible is heavily inspired by [vue-table-component](https://github.com/spatie/vu
 See [https://hiendv.github.io/teible/](https://hiendv.github.io/teible/)
 
 ## Installation & Usage
+### Direct <script/> include
+Load the UMD module [vueteible.umd.min.js](https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.umd.min.js), `vueteible` will be registered as a global variable.
+
+```js
+let {
+  DataTable,
+  DataColumn
+} = vueteible
+
+DataTable
+// {name: "DataTable", components: {…}, props: {…}, data: ƒ, computed: {…}, …}
+
+DataColumn
+// {name: "DataColumn", props: {…}, _Ctor: {…}}
+```
+
+#### [JSFiddle](http://jsfiddle.net/o4m7k1z6/1/)
+#### CDN
+[![](https://data.jsdelivr.com/v1/package/npm/vue-teible/badge)](https://www.jsdelivr.com/package/npm/vue-teible)
+```html
+<link href="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.css" rel="stylesheet" type="text/css">
+<script src="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.umd.min.js"></script>
+```
+
+[unpkg.com](https://unpkg.com/vue-teible)
+```html
+<link href="https://unpkg.com/vue-teible@latest/dist/vueteible.css" rel="stylesheet" type="text/css">
+<script src="https://unpkg.com/vue-teible@latest/dist/vueteible.umd.min.js"></script>
+```
+**Note: We recommend linking to a specific version number that you can update manually**
+
 ### NPM
 ```bash
 npm install --save vue-teible
@@ -135,7 +166,7 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
 ```
 
 ## Development & Testing
-Please check the [Contributing Guidelines](https://github.com/hiendv/octicons-modular/blob/master/CONTRIBUTING.md).
+Please check the [Contributing Guidelines](https://github.com/hiendv/teible/blob/master/CONTRIBUTING.md).
 
 ## Contribution
 Issues and PRs are welcome !
