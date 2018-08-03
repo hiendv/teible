@@ -10,7 +10,7 @@
     "vue-teible": "^0.5.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-eslint": "^3.0.0-rc.6"
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.10"
   },
   "files": [
     "dist",
