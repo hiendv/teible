@@ -26,6 +26,7 @@
     "node-sass": "^4.9.2",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.3",
+    "uglifyjs-webpack-plugin": "^1.2.7",
     "vue": "^2.5.16",
     "vue-jest": "^2.6.0"
   },

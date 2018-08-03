@@ -1,3 +1,4 @@
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   css: {
     loaderOptions: {
@@ -7,6 +8,10 @@ module.exports = {
     }
   },
   configureWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+      config.plugins.push(new UglifyJsPlugin())
+    }
+
     if (config.output.libraryTarget === 'umd') {
       return
     }
