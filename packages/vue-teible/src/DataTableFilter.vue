@@ -1,12 +1,8 @@
 <template>
   <div class="datatable__filter">
     <input
-      :value="filter"
-      type="text"
-      class="datatable__input"
-      placeholder="Filter table data"
-      @input="update($event.target.value)"
-    >
+      :value="filter" type="text" class="datatable__input"
+      placeholder="Filter table data" @input="update($event.target.value)">
     <div v-if="filter" class="datatable__clear" @click.stop="clear">
       <a class="datatable__x" href="#" @click.stop="clear">×</a>
     </div>

@@ -1,29 +1,22 @@
 <template>
   <tbody>
     <tr
-      v-for="(d, index) in items"
-      :key="index"
-      :class="[
+      v-for="(d, index) in items" :key="index" :class="[
         'datatable__row',
         {
           'datatable__row--odd': index % 2 === 1,
           'datatable__row--last': index === items.length - 1
         }
-      ]"
-    >
+    ]">
       <data-table-cell
-        v-for="(column, columnIndex) in columns"
-        :item="d"
-        :column="column"
-        :key="columnIndex"
-        :class="[
+        v-for="(column, columnIndex) in columns" :item="d" :column="column"
+        :key="columnIndex" :class="[
           'datatable__cell',
           {
             'datatable__cell--last-column': columnIndex === columns.length - 1,
             'datatable__cell--last-row': index === items.length - 1
           }
-        ]"
-      />
+      ]" />
     </tr>
   </tbody>
 </template>

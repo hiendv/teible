@@ -8,27 +8,17 @@
             {
               'datatable__plink--disabled': reachedFirst
             }
-          ]"
-          href="#"
-          aria-label="Previous"
+          ]" href="#" aria-label="Previous"
           @click.prevent="load(page-1)">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
-      <li
-        v-for="page in totalPages"
-        :key="page"
-        class="datatable__pitem">
-        <a
-          :class="['datatable__plink', { 'datatable__plink--active': isActive(page) }]"
-          href="#"
-          @click.prevent="load(page)">{{ page }}</a>
+      <li v-for="page in totalPages" :key="page" class="datatable__pitem">
+        <a :class="['datatable__plink', { 'datatable__plink--active': isActive(page) }]" href="#" @click.prevent="load(page)">{{ page }}</a>
       </li>
       <li class="datatable__pitem">
         <a
-          :class="['datatable__plink datatable__pnext', { 'datatable__plink--disabled': reachedLast }]"
-          href="#"
-          aria-label="Next"
+          :class="['datatable__plink datatable__pnext', { 'datatable__plink--disabled': reachedLast }]" href="#" aria-label="Next"
           @click.prevent="load(page+1)">
           <span aria-hidden="true">&raquo;</span>
         </a>

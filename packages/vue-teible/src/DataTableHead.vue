@@ -2,18 +2,15 @@
   <thead class="datatable__head">
     <tr v-if="columns.length">
       <th
-        v-for="(column, index) in columns"
-        :key="column.field + column.label"
-        :class="['datatable__column', {
+        v-for="(column, index) in columns" :key="column.field + column.label" :class="['datatable__column', {
           'datatable__column--custom': column.scopedSlots && column.scopedSlots.header,
           'datatable__column--sortable': column.sortable,
           'datatable__column--active': isActive(column),
           'datatable__column--last': index === columns.length - 1
         }, column.staticClass, column.dynamicClass]"
-        v-bind="column.attrs"
-        scope="col"
-        @click.prevent="updateSort(column.field)"
-      ><data-table-head-content :column="column" :active="isActive(column)" :sort-desc="sortDesc"/></th>
+        v-bind="column.attrs" scope="col" @click.prevent="updateSort(column.field)">
+        <data-table-head-content :column="column" :active="isActive(column)" :sort-desc="sortDesc" />
+      </th>
     </tr>
   </thead>
 </template>

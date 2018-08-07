@@ -12,15 +12,10 @@
     </div>
     <hr>
     <data-table
-      :items="items"
-      :per-page="perPageNumber"
-      :sort-desc.sync="sortDesc"
-      :sort-by.sync="sortBy"
-      :filter.sync="filter"
-      @loaded="loaded"
-    >
-      <data-column field="id" label="ID" width="15%"/>
-      <data-column field="name" label="Name" width="40%"/>
+      :items="items" :per-page="perPageNumber" :sort-desc.sync="sortDesc"
+      :sort-by.sync="sortBy" :filter.sync="filter" @loaded="loaded">
+      <data-column field="id" label="ID" width="15%" />
+      <data-column field="name" label="Name" width="40%" />
       <data-column :sortable="false" label="Action">
         <template slot-scope="props">
           <button @click.prevent="action(props, 1)">Yo</button>
