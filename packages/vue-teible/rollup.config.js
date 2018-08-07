@@ -57,7 +57,10 @@ export default [
     },
     plugins: [
       ...plugins,
-      nodent(),
+      nodent({
+        promises: true,
+        noRuntime: true
+      }),
       buble(),
       uglify({
         mangle: { reserved: ['octicon'] },
