@@ -11,7 +11,7 @@ Teible is yet another table component. I know we have [enough of them](https://g
 Teible is heavily inspired by [vue-table-component](https://github.com/spatie/vue-table-component). The way columns are defined totally got me at the first sight. But it's deprecated in favor of the "traditional" way and has a lot of fancy features you may never need: data type, date format, caching, etc. So if you're looking for a simple but flexible component, take a look at the below example, you may fall in love with teible.
 
 ### Demo
-See [https://hiendv.github.io/teible/](https://hiendv.github.io/teible/) or [the fiddle](http://jsfiddle.net/o4m7k1z6/1/)
+See [https://hiendv.github.io/teible/](https://hiendv.github.io/teible/) or [the fiddle](https://jsfiddle.net/o4m7k1z6/2/)
 
 ## Installation & Usage
 ### Direct <script/> include
@@ -126,10 +126,10 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
 ```js
 {
   loadSlots () {
-    // Manually load columns
+    // Manually reload columns
   },
   loadItems () {
-    // Manually load data
+    // Manually reload data
   }
 }
 ```
