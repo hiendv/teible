@@ -1,5 +1,21 @@
-import orderBy from 'lodash.orderby'
-import chunk from 'lodash.chunk'
+const chunk = (arr, size) => {
+  let result = []
+  for (let i = 0, len = arr.length; i < len; i += size) { result.push(arr.slice(i, i + size)) }
+  return result
+}
+
+const orderBy = (arr, field, order) => {
+  let copy = [...arr]
+  copy.sort((a, b) => {
+    if (order === 'desc') {
+      return a[field] < b[field]
+    }
+
+    return a[field] > b[field]
+  })
+
+  return copy
+}
 
 const filterData = (items, filtering) => {
   return items.filter(item => {

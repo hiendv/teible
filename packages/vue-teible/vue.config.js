@@ -16,6 +16,6 @@ module.exports = {
       return
     }
 
-    config.externals = ['lodash.chunk', 'lodash.orderby', 'octicons-modular', 'octicons-vue']
+    config.externals = ['octicons-modular', 'octicons-vue']
   }
 }
