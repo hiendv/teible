@@ -15,7 +15,7 @@ See [https://hiendv.github.io/teible/](https://hiendv.github.io/teible/)
 
 ## Installation & Usage
 ### Direct <script/> include
-Load the UMD module [vueteible.umd.min.js](https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.umd.min.js), `vueteible` will be registered as a global variable.
+Load the UMD module [vueteible.iife.js](https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.iife.js), `vueteible` will be registered as a global variable.
 
 ```js
 let {
@@ -34,14 +34,12 @@ DataColumn
 #### CDN
 [![](https://data.jsdelivr.com/v1/package/npm/vue-teible/badge)](https://www.jsdelivr.com/package/npm/vue-teible)
 ```html
-<link href="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.css" rel="stylesheet" type="text/css">
-<script src="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.iife.js"></script>
 ```
 
 [unpkg.com](https://unpkg.com/vue-teible)
 ```html
-<link href="https://unpkg.com/vue-teible@latest/dist/vueteible.css" rel="stylesheet" type="text/css">
-<script src="https://unpkg.com/vue-teible@latest/dist/vueteible.umd.min.js"></script>
+<script src="https://unpkg.com/vue-teible@latest/dist/vueteible.iife.js"></script>
 ```
 **Note: We recommend linking to a specific version number that you can update manually**
 
@@ -82,9 +80,6 @@ new Vue({
   }
 })
 </script>
-
-// import the style
-<style src="vue-teible/dist/vueteible.css"></style>
 
 // write your table
 <template>
