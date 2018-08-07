@@ -1,8 +1,4 @@
 const chunk = (arr, size) => {
-  if (!arr.length) {
-    return []
-  }
-
   if (!size) {
     size = arr.length
   }
