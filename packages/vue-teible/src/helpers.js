@@ -23,7 +23,9 @@ const orderBy = (arr, field, order) => {
 
 const filterData = (items, filtering) => {
   return items.filter(item => {
-    for (let field of filtering.fields) {
+    for (let i = 0; i < filtering.fields.length; i++) {
+      let field = filtering.fields[i]
+
       if (!item[field]) {
         continue
       }

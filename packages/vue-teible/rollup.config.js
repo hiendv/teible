@@ -58,7 +58,7 @@ export default [
     plugins: [
       ...plugins,
       nodent(),
-      buble({ transforms: { dangerousForOf: true } }),
+      buble(),
       uglify({
         mangle: { reserved: ['octicon'] },
         compress: { unused: true, dead_code: true, pure_funcs: ['octicon'] }
