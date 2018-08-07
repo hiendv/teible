@@ -1,4 +1,12 @@
 const chunk = (arr, size) => {
+  if (!arr.length) {
+    return []
+  }
+
+  if (!size) {
+    size = arr.length
+  }
+
   let result = []
   for (let i = 0, len = arr.length; i < len; i += size) { result.push(arr.slice(i, i + size)) }
   return result
