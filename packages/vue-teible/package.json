@@ -6,9 +6,6 @@
   "bugs": {
     "url": "https://github.com/hiendv/teible/issues"
   },
-  "devDependencies": {
-    "@vue/cli-plugin-eslint": "^3.0.0-rc.10"
-  },
   "files": [
     "dist",
     "README.md"
@@ -29,7 +26,6 @@
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible",
   "scripts": {
     "build": "rollup -c --environment BUILD:production",
-    "lint": "vue-cli-service lint",
     "watch": "concurrently \"rollup -w -c\""
   }
 }

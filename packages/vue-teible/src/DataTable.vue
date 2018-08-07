@@ -5,7 +5,7 @@
         <data-table-filter :filter.sync="options.filter" class="datatable__unit"/>
         <div class="datatable__unit datatable__text">
           <span v-if="total">
-            Showing <span v-text="from === to && to === this.total ? 'the last entry' : from + ' to ' + to"/> of {{ total }} records
+            Showing <span v-text="from === to && to === total ? 'the last entry' : from + ' to ' + to"/> of {{ total }} records
           </span>
           <span v-else>No records</span>
         </div>

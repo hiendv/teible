@@ -2,8 +2,10 @@
   <div>
     <slot/>
     <div class="demo__info">
-      <p class="demo__line">Items per page: <span class="demo__value"><input class="demo__control" v-model="perPage" type="range" min="1" max="10" step="1"> {{ perPage }}</span></p>
-      <p class="demo__line">Filter: <span class="demo__value"><input class="demo__control" v-model="filter" type="text"></span></p>
+      <p class="demo__line">Items per page: <span class="demo__value"><input
+        v-model="perPage" class="demo__control" type="range"
+        min="1" max="10" step="1"> {{ perPage }}</span></p>
+      <p class="demo__line">Filter: <span class="demo__value"><input v-model="filter" class="demo__control" type="text"></span></p>
       <p class="demo__line">Sort By: <span class="demo__value">{{ sortBy }}</span></p>
       <p class="demo__line">Descending: <span class="demo__value">{{ sortDesc }}</span></p>
       <p class="demo__line">Selected: <span class="demo__value">{{ checked }}</span></p>
@@ -79,7 +81,8 @@ export default {
   components: { DataTable, DataColumn },
   props: {
     items: {
-      type: [Array, Function]
+      type: [Array, Function],
+      required: true
     }
   },
   data () {

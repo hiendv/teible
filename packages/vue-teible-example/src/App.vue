@@ -3,7 +3,9 @@
     <section class="hero">
       <h1 class="hero__title">Vue Teible Example</h1>
       <h3 class="hero__subtitle">Example for <a class="hero__link" href="https://github.com/hiendv/teible/tree/master/packages/vue-teible" title="vue-teible">vue-teible</a></h3>
-      <p style="text-align: center;"><iframe src="https://ghbtns.com/github-btn.html?user=hiendv&repo=teible&type=star&count=true&size=large&v=2" frameborder="0" scrolling="0" width="115px" height="30px"></iframe></p>
+      <p style="text-align: center;"><iframe
+        src="https://ghbtns.com/github-btn.html?user=hiendv&repo=teible&type=star&count=true&size=large&v=2" frameborder="0" scrolling="0"
+        width="115px" height="30px"/></p>
     </section>
     <main>
       <div class="demos">
@@ -11,7 +13,7 @@
           <h2 class="demo__title">Function as items</h2>
           <p class="demo__subtitle">Searching fields will be ignored because <a href="https://jsonplaceholder.typicode.com/" title="typicode">typicode</a> does not support them.</p>
         </demo>
-        <div class="demo demo__gut"></div>
+        <div class="demo demo__gut"/>
         <demo :items="itemsArr" class="demo">
           <h2 class="demo__title">Array as items</h2>
           <p class="demo__subtitle">Searching using `indexOf` with queries in lowercase.</p>
