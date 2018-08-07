@@ -66,8 +66,9 @@
     "build": "lerna run --sort build",
     "clean": "rimraf packages/**/dist",
     "coverage": "npm test -- --coverage",
-    "prebuild": "npm run clean",
+    "gh": "git subtree push --prefix packages/vue-teible-example/dist origin gh-pages",
     "lint": "vue-cli-service lint packages/**/src/*.{js,vue}",
+    "prebuild": "npm run clean",
     "pretest": "npm run lint",
     "prewatch": "npm run lint",
     "serve": "lerna run --parallel serve",
@@ -75,7 +76,6 @@
     "start": "concurrently \"npm:watch\" \"npm:serve\"",
     "test": "jest",
     "test-ci": "npm run build && npm run coverage -- --ci --maxWorkers=4 --no-cache",
-    "watch": "lerna run --parallel watch",
-    "gh": "git subtree push --prefix packages/vue-teible-example/dist origin gh-pages"
+    "watch": "lerna run --parallel watch"
   }
 }
