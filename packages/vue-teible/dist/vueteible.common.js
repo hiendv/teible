@@ -2,6 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var Octicon = require('octicons-vue');
+var Octicon__default = _interopDefault(Octicon);
+
 const chunk = (arr, size) => {
   if (!size) {
     size = arr.length;
@@ -291,96 +296,6 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-function octicon(e,t){const{width:i,height:a,path:l}=t,c=(t,i)=>{i.label?t["aria-label"]=i.label:t["aria-hidden"]=!0,i.class?t.class=`octicon octicon-${e} ${i.class}`:t.class=`octicon octicon-${e}`;let a=0===i.scale?0:parseFloat(i.scale)||1,l=a*parseInt(t.width),c=a*parseInt(t.height);return t.width=Number(l.toFixed(2)),t.height=Number(c.toFixed(2)),t},n=e=>Object.keys(e).map(t=>`${t}="${e[t]}"`).join(" ").trim();return {name:e,data:t,svg(e,t=document){let s=t.createElement("div");return s.innerHTML=`<svg ${(e=>{let t=Object.assign({},{scale:1,label:null,class:null},e),l=c({version:"1.1",width:i,height:a,viewBox:`0 0 ${i} ${a}`},t);return n(l)})(e)}>${l}</svg>`,s.firstChild}}}
-
-var threeBars=octicon("three-bars",{keywords:["hamburger","menu","dropdown"],path:'<path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>',width:12,height:16});
-
-var triangleDown=octicon("triangle-down",{keywords:["arrow","point","direction"],path:'<path fill-rule="evenodd" d="M0 5l6 6 6-6H0z"></path>',width:12,height:16});
-
-var triangleUp=octicon("triangle-up",{keywords:["arrow","point","direction"],path:'<path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"></path>',width:12,height:16});
-
-function styleInject(css, ref) {
-  if ( ref === void 0 ) ref = {};
-  var insertAt = ref.insertAt;
-
-  if (!css || typeof document === 'undefined') { return; }
-
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var style = document.createElement('style');
-  style.type = 'text/css';
-
-  if (insertAt === 'top') {
-    if (head.firstChild) {
-      head.insertBefore(style, head.firstChild);
-    } else {
-      head.appendChild(style);
-    }
-  } else {
-    head.appendChild(style);
-  }
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-}
-
-var css = ".octicon{display:inline-block;vertical-align:text-top;fill:currentColor}";
-styleInject(css);
-
-const getAttrs = element => {
-  return Array.from(element.attributes).reduce((o, item) => {
-    o[item.name] = item.value;
-    return o
-  }, {})
-};
-
-let Octicon = {
-  functional: true,
-  props: {
-    icon: {
-      type: Object,
-      required: true,
-      validator (value) {
-        return value.svg instanceof Function
-      }
-    },
-    scale: {
-      type: Number,
-      default: 1
-    },
-    className: {
-      type: String,
-      default: null
-    },
-    label: {
-      type: String,
-      default: null
-    }
-  },
-  render (createElement, { props }) {
-    let { icon, scale, className, label } = props;
-    let octicon = icon.svg({ scale, class: className, label });
-    if (!octicon) {
-      return
-    }
-
-    let attrs = getAttrs(octicon);
-    let innerHTML = octicon.innerHTML;
-
-    return createElement(
-      octicon.tagName,
-      {
-        attrs,
-        domProps: {
-          innerHTML
-        }
-      }
-    )
-  }
-};
-
 const capitalize = str => {
   if (!str) {
     return
@@ -391,10 +306,10 @@ const capitalize = str => {
 
 const icon = (column, active, sortDesc) => {
   if (active) {
-    return sortDesc ? triangleDown : triangleUp
+    return sortDesc ? Octicon.triangleDown : Octicon.triangleUp
   }
 
-  return threeBars
+  return Octicon.threeBars
 };
 
 var DataTableHeadContent = {
@@ -430,7 +345,7 @@ var DataTableHeadContent = {
       }
     }, capitalize(props.column.label)) ];
     if (props.column.sortable) {
-      children.push(h(Octicon, {
+      children.push(h(Octicon__default, {
         props: {
           icon: icon(props.column, props.active, props.sortDesc),
           className: 'datatable__column-icon'

@@ -32,20 +32,16 @@ const plugins = [
 export default [
   {
     input: reslv('src/main.js'),
-    output: {
+    output: [{
       format: 'es',
       file: reslv('dist/vueteible.es.js')
-    },
-    plugins
-  },
-  {
-    input: reslv('src/main.js'),
-    output: {
+    }, {
       format: 'cjs',
       file: reslv('dist/vueteible.common.js'),
       exports: 'named'
-    },
-    plugins
+    }],
+    plugins,
+    external: ['octicons-vue']
   },
   {
     input: reslv('src/main.js'),
