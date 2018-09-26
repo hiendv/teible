@@ -15,7 +15,9 @@
       :items="items" :per-page="perPageNumber" :sort-desc.sync="sortDesc"
       :sort-by.sync="sortBy" :filter.sync="filter" @loaded="loaded">
       <data-column field="id" label="ID" width="15%" />
-      <data-column field="name" label="Name" width="40%" />
+      <data-column
+        :render="formatName" field="name" label="Name"
+        width="40%"/>
       <data-column :sortable="false" label="Action">
         <template slot-scope="props">
           <button @click.prevent="action(props, 1)">Yo</button>
@@ -112,6 +114,9 @@ export default {
     }
   },
   methods: {
+    formatName (name) {
+      return `Yo ${name}`
+    },
     exclude (arr1, arr2) {
       return arr1.filter(item => {
         return arr2.indexOf(item) === -1

@@ -119,6 +119,9 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
   filter: { // Search query
     type: String,
     default: ''
+  },
+  render: { // Formating function
+    type: Function
   }
 }
 ```
