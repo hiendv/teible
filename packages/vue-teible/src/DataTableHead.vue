@@ -72,6 +72,7 @@ export default {
     border-bottom: 1px solid $border-color;
     box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.1);
     background-color: $bg-color;
+    font-weight: bold;
 
     @include m('last') {
       border-right: 0;

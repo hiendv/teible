@@ -37,7 +37,7 @@ export default {
   @include e('input') {
     width: 100%;
     padding: .3rem 1.5rem .3rem .75rem;
-    font-size: 1rem;
+    font-size: 1em;
     line-height: 1.5;
     border: 1px solid $border-color;
     border-radius: .25rem;
