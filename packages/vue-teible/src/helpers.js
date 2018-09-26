@@ -12,25 +12,26 @@ const orderBy = (arr, field, order) => {
   let copy = [...arr]
   copy.sort((a, b) => {
     if (order === 'desc') {
-      return a[field] < b[field]
+      return pathIndex(a, field) < pathIndex(b, field)
     }
 
-    return a[field] > b[field]
+    return pathIndex(a, field) > pathIndex(b, field)
   })
 
   return copy
 }
 
-const filterData = (items, filtering) => {
+const filter = (items, filtering) => {
   return items.filter(item => {
     for (let i = 0; i < filtering.fields.length; i++) {
       let field = filtering.fields[i]
+      let value = pathIndex(item, field)
 
-      if (!item[field]) {
+      if (!value) {
         continue
       }
 
-      if (`${item[field]}`.toLowerCase().indexOf(filtering.query) === -1) {
+      if (`${value}`.toLowerCase().indexOf(filtering.query) === -1) {
         continue
       }
 
@@ -42,7 +43,7 @@ const filterData = (items, filtering) => {
 }
 
 export const load = (data, filtering, sorting, paging) => {
-  let filtered = (!filtering || !filtering.query) ? data : filterData(data, filtering)
+  let filtered = (!filtering || !filtering.query) ? data : filter(data, filtering)
   if (!filtered || !filtered.length) {
     return {
       items: [],

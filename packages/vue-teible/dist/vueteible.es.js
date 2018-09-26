@@ -14,10 +14,10 @@ const orderBy = (arr, field, order) => {
   let copy = [...arr];
   copy.sort((a, b) => {
     if (order === 'desc') {
-      return a[field] < b[field]
+      return pathIndex(a, field) < pathIndex(b, field)
     }
 
-    return a[field] > b[field]
+    return pathIndex(a, field) > pathIndex(b, field)
   });
 
   return copy
@@ -27,12 +27,13 @@ const filterData = (items, filtering) => {
   return items.filter(item => {
     for (let i = 0; i < filtering.fields.length; i++) {
       let field = filtering.fields[i];
+      let value = pathIndex(item, field);
 
-      if (!item[field]) {
+      if (!value) {
         continue
       }
 
-      if (`${item[field]}`.toLowerCase().indexOf(filtering.query) === -1) {
+      if (`${value}`.toLowerCase().indexOf(filtering.query) === -1) {
         continue
       }
 
