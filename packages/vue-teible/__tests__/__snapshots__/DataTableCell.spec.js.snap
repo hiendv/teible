@@ -4,4 +4,6 @@ exports[`DataTableCell renders children correctly 1`] = `<td>yo</td>`;
 
 exports[`DataTableCell renders correctly 1`] = `<td>foo</td>`;
 
+exports[`DataTableCell renders objects correctly 1`] = `<td>{"foo":"bar"}</td>`;
+
 exports[`DataTableCell renders scopedSlots correctly 1`] = `<td>{"one":"foo","two":"bar"}</td>`;

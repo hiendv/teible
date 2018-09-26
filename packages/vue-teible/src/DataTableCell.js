@@ -12,7 +12,12 @@ export default {
   },
   render (h, { props, data }) {
     if (props.column.field) {
-      return h('td', data, props.item[props.column.field])
+      let value = props.item[props.column.field]
+      if (typeof value === 'string') {
+        return h('td', data, value)
+      }
+
+      return h('td', data, JSON.stringify(value))
     }
 
     if (props.column.scopedSlots && typeof props.column.scopedSlots.default === 'function') {

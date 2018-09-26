@@ -20,6 +20,26 @@ describe('DataTableCell', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
+  it(`renders objects correctly`, () => {
+    let wrapper = mount(DataTableCell, {
+      context: {
+        props: {
+          item: {
+            'one': {
+              foo: 'bar'
+            },
+            'two': 'bar'
+          },
+          column: {
+            field: 'one'
+          }
+        }
+      }
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
   it(`renders scopedSlots correctly`, () => {
     let wrapper = mount(DataTableCell, {
       context: {
