@@ -1,4 +1,4 @@
-import { load, defaultProps } from '../src/helpers'
+import { load, defaultProps, dotSet } from '../src/helpers'
 
 describe('load', () => {
   const data = [{
@@ -139,5 +139,21 @@ describe('defaultProps', () => {
       }
     }, {
     })).toEqual({key: {}})
+  })
+})
+
+describe('dotSet', () => {
+  it('works', () => {
+    let obj = {
+      foo: {
+        bar: 'qux'
+      }
+    }
+
+    dotSet(obj, 'foo.bar', true)
+    expect(obj.foo.bar).toBe(true)
+
+    dotSet(obj, 'another.path', true)
+    expect(obj.another.path).toBe(true)
   })
 })

@@ -12,10 +12,10 @@ const orderBy = (arr, field, order) => {
   let copy = [...arr]
   copy.sort((a, b) => {
     if (order === 'desc') {
-      return pathIndex(a, field) < pathIndex(b, field)
+      return dotGet(a, field) < dotGet(b, field)
     }
 
-    return pathIndex(a, field) > pathIndex(b, field)
+    return dotGet(a, field) > dotGet(b, field)
   })
 
   return copy
@@ -25,7 +25,7 @@ const filter = (items, filtering) => {
   return items.filter(item => {
     for (let i = 0; i < filtering.fields.length; i++) {
       let field = filtering.fields[i]
-      let value = pathIndex(item, field)
+      let value = dotGet(item, field)
 
       if (!value) {
         continue
@@ -86,6 +86,22 @@ export const defaultProps = (options, data) => {
   return props
 }
 
-export const pathIndex = (obj, path) => {
+export const dotGet = (obj, path) => {
   return path.split('.').reduce((o, i) => o[i], obj)
+}
+
+export const dotSet = (obj, path, val) => {
+  let parts = path.split('.')
+  return parts.reduce((o, i, idx) => {
+    if (idx === parts.length - 1) {
+      o[i] = val
+      return o[i]
+    }
+
+    if (!o.hasOwnProperty(i)) {
+      o[i] = {}
+    }
+
+    return o[i]
+  }, obj)
 }

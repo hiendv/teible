@@ -18,18 +18,18 @@ const fakeMount = (component, options, children) => {
 
 describe('DataTable', () => {
   const generateItems = () => [{
-    id: 'id-1',
+    id: 1,
     key: 'value z (id-1)'
   }, {
-    id: 'id-2',
+    id: 2,
     key: 'value m (id-2)'
   }, {
-    id: 'id-3',
+    id: 3,
     key: 'value a (id-3)'
   }]
 
   const defaultColumns = h => {
-    return [ h(DataColumn, { props: { field: 'id', label: 'ID' } }), h(DataColumn, { props: { field: 'key', label: 'Value' } }) ]
+    return [ h(DataColumn, { props: { field: 'id', label: 'ID', render: id => `id-${id}` } }), h(DataColumn, { props: { field: 'key', label: 'Value' } }) ]
   }
 
   it('works with sync data', () => {

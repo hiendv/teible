@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import { load, defaultProps } from './helpers'
+import { load, defaultProps, dotGet, dotSet } from './helpers'
 import DataTableBody from './DataTableBody.vue'
 import DataTableHead from './DataTableHead.vue'
 import DataTablePagination from './DataTablePagination.vue'
@@ -75,12 +75,13 @@ export default {
     columns () {
       return this.vnodes.map(vnode => {
         let { componentOptions: { Ctor: { options: { props } }, propsData, children }, data: { scopedSlots, attrs, class: dynamicClass, staticClass } } = vnode
-        let { field, label, sortable, filterable } = defaultProps(props, propsData)
+        let { field, label, sortable, filterable, render } = defaultProps(props, propsData)
         return {
           field,
           label,
           sortable,
           filterable,
+          render,
           scopedSlots,
           children,
           attrs,
@@ -127,10 +128,7 @@ export default {
   },
   watch: {
     items: 'loadItems',
-    identifier: {
-      immediate: true,
-      handler: 'loadItems'
-    },
+    identifier: 'loadItems',
     sortBy: {
       immediate: true,
       handler (val) {
@@ -161,11 +159,18 @@ export default {
   },
   created () {
     this.loadSlots()
+    this.loadItems()
   },
   methods: {
     loaded (data) {
       this.$emit('loaded', data)
-      this.actualItems = data.items
+      this.actualItems = data.items.map(item => {
+        this.columns.filter(column => typeof column.render === 'function').forEach(column => {
+          dotSet(item, column.field, column.render(dotGet(item, column.field)))
+        })
+
+        return item
+      })
       this.total = data.total
     },
     loadSlots () {

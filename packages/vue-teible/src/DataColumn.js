@@ -16,6 +16,9 @@ export default {
     filterable: {
       type: Boolean,
       default: true
+    },
+    render: {
+      type: Function
     }
   }
 }

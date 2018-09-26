@@ -1,4 +1,4 @@
-import { pathIndex } from './helpers'
+import { dotGet } from './helpers'
 
 export default {
   functional: true,
@@ -14,7 +14,8 @@ export default {
   },
   render (h, { props, data }) {
     if (props.column.field) {
-      let value = pathIndex(props.item, props.column.field)
+      let value = dotGet(props.item, props.column.field)
+
       if (typeof value === 'string') {
         return h('td', data, value)
       }

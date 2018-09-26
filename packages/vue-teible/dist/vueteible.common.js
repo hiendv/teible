@@ -21,20 +21,20 @@ const orderBy = (arr, field, order) => {
   let copy = [...arr];
   copy.sort((a, b) => {
     if (order === 'desc') {
-      return pathIndex(a, field) < pathIndex(b, field)
+      return dotGet(a, field) < dotGet(b, field)
     }
 
-    return pathIndex(a, field) > pathIndex(b, field)
+    return dotGet(a, field) > dotGet(b, field)
   });
 
   return copy
 };
 
-const filterData = (items, filtering) => {
+const filter = (items, filtering) => {
   return items.filter(item => {
     for (let i = 0; i < filtering.fields.length; i++) {
       let field = filtering.fields[i];
-      let value = pathIndex(item, field);
+      let value = dotGet(item, field);
 
       if (!value) {
         continue
@@ -52,7 +52,7 @@ const filterData = (items, filtering) => {
 };
 
 const load = (data, filtering, sorting, paging) => {
-  let filtered = (!filtering || !filtering.query) ? data : filterData(data, filtering);
+  let filtered = (!filtering || !filtering.query) ? data : filter(data, filtering);
   if (!filtered || !filtered.length) {
     return {
       items: [],
@@ -95,8 +95,24 @@ const defaultProps = (options, data) => {
   return props
 };
 
-const pathIndex = (obj, path) => {
+const dotGet = (obj, path) => {
   return path.split('.').reduce((o, i) => o[i], obj)
+};
+
+const dotSet = (obj, path, val) => {
+  let parts = path.split('.');
+  return parts.reduce((o, i, idx) => {
+    if (idx === parts.length - 1) {
+      o[i] = val;
+      return o[i]
+    }
+
+    if (!o.hasOwnProperty(i)) {
+      o[i] = {};
+    }
+
+    return o[i]
+  }, obj)
 };
 
 var DataTableCell = {
@@ -113,7 +129,8 @@ var DataTableCell = {
   },
   render (h, { props, data }) {
     if (props.column.field) {
-      let value = pathIndex(props.item, props.column.field);
+      let value = dotGet(props.item, props.column.field);
+
       if (typeof value === 'string') {
         return h('td', data, value)
       }
@@ -1024,12 +1041,13 @@ var script$4 = {
     columns () {
       return this.vnodes.map(vnode => {
         let { componentOptions: { Ctor: { options: { props } }, propsData, children }, data: { scopedSlots, attrs, class: dynamicClass, staticClass } } = vnode;
-        let { field, label, sortable, filterable } = defaultProps(props, propsData);
+        let { field, label, sortable, filterable, render } = defaultProps(props, propsData);
         return {
           field,
           label,
           sortable,
           filterable,
+          render,
           scopedSlots,
           children,
           attrs,
@@ -1076,10 +1094,7 @@ var script$4 = {
   },
   watch: {
     items: 'loadItems',
-    identifier: {
-      immediate: true,
-      handler: 'loadItems'
-    },
+    identifier: 'loadItems',
     sortBy: {
       immediate: true,
       handler (val) {
@@ -1110,11 +1125,18 @@ var script$4 = {
   },
   created () {
     this.loadSlots();
+    this.loadItems();
   },
   methods: {
     loaded (data) {
       this.$emit('loaded', data);
-      this.actualItems = data.items;
+      this.actualItems = data.items.map(item => {
+        this.columns.filter(column => typeof column.render === 'function').forEach(column => {
+          dotSet(item, column.field, column.render(dotGet(item, column.field)));
+        });
+
+        return item
+      });
       this.total = data.total;
     },
     loadSlots () {
@@ -1145,7 +1167,7 @@ var __vue_staticRenderFns__$4 = [];
   /* style */
   const __vue_inject_styles__$4 = function (inject) {
     if (!inject) return
-    inject("data-v-fa3e36aa_0", { source: "*,::after,::before{-webkit-box-sizing:border-box;box-sizing:border-box}.datatable{color:#495057;font:1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.datatable__screen{display:block;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;-ms-overflow-style:-ms-autohiding-scrollbar}.datatable__wrapper{position:relative;display:block;text-align:left;width:100%}.datatable__heading{margin-bottom:.5em;display:table;table-layout:fixed;width:100%}.datatable__unit{margin-bottom:.5em}@media (min-width:768px){.datatable__unit{width:50%;display:table-cell}.datatable__text{padding-left:1em}}.datatable__content{min-width:100%;border:solid 1px #dee2e6;table-layout:fixed}", map: undefined, media: undefined });
+    inject("data-v-3200f027_0", { source: "*,::after,::before{-webkit-box-sizing:border-box;box-sizing:border-box}.datatable{color:#495057;font:1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.datatable__screen{display:block;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;-ms-overflow-style:-ms-autohiding-scrollbar}.datatable__wrapper{position:relative;display:block;text-align:left;width:100%}.datatable__heading{margin-bottom:.5em;display:table;table-layout:fixed;width:100%}.datatable__unit{margin-bottom:.5em}@media (min-width:768px){.datatable__unit{width:50%;display:table-cell}.datatable__text{padding-left:1em}}.datatable__content{min-width:100%;border:solid 1px #dee2e6;table-layout:fixed}", map: undefined, media: undefined });
 
   };
   /* scoped */
@@ -1302,6 +1324,9 @@ var DataColumn = {
     filterable: {
       type: Boolean,
       default: true
+    },
+    render: {
+      type: Function
     }
   }
 };
