@@ -164,7 +164,8 @@ export default {
   methods: {
     loaded (data) {
       this.$emit('loaded', data)
-      this.actualItems = data.items.map(item => {
+      let items = JSON.parse(JSON.stringify(data.items))
+      this.actualItems = items.map(item => {
         this.columns.filter(column => typeof column.render === 'function').forEach(column => {
           dotSet(item, column.field, column.render(dotGet(item, column.field)))
         })
