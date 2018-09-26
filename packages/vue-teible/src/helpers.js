@@ -84,3 +84,7 @@ export const defaultProps = (options, data) => {
 
   return props
 }
+
+export const pathIndex = (obj, path) => {
+  return path.split('.').reduce((o, i) => o[i], obj)
+}

@@ -87,6 +87,10 @@ const defaultProps = (options, data) => {
   return props
 };
 
+const pathIndex = (obj, path) => {
+  return path.split('.').reduce((o, i) => o[i], obj)
+};
+
 var DataTableCell = {
   functional: true,
   props: {
@@ -101,7 +105,7 @@ var DataTableCell = {
   },
   render (h, { props, data }) {
     if (props.column.field) {
-      let value = props.item[props.column.field];
+      let value = pathIndex(props.item, props.column.field);
       if (typeof value === 'string') {
         return h('td', data, value)
       }
