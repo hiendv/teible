@@ -62,6 +62,29 @@ describe('DataTableCell', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
+  it(`renders scopedSlots with field correctly`, () => {
+    let wrapper = mount(DataTableCell, {
+      context: {
+        props: {
+          item: {
+            'one': 'foo',
+            'two': 'bar'
+          },
+          column: {
+            field: 'one',
+            scopedSlots: {
+              default ({ value }) {
+                return value
+              }
+            }
+          }
+        }
+      }
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
   it(`renders children correctly`, () => {
     let wrapper = mount(DataTableCell, {
       context: {
