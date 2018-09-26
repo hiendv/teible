@@ -17,7 +17,7 @@ const fakeMount = (component, options, children) => {
 }
 
 describe('DataTable', () => {
-  const items = [{
+  const generateItems = () => [{
     id: 'id-1',
     key: 'value z (id-1)'
   }, {
@@ -34,7 +34,7 @@ describe('DataTable', () => {
 
   it('works with sync data', () => {
     let wrapper = fakeMount(DataTable, {
-      props: { items, perPage: 2 }
+      props: { items: generateItems(), perPage: 2 }
     }, defaultColumns)
 
     expect(wrapper.isVueInstance()).toBeTruthy()
@@ -42,6 +42,7 @@ describe('DataTable', () => {
   })
 
   it('works with async data', () => {
+    let items = generateItems()
     let wrapper = fakeMount(DataTable, {
       props: {
         items () {
@@ -56,7 +57,7 @@ describe('DataTable', () => {
     }, defaultColumns)
 
     expect(wrapper.isVueInstance()).toBeTruthy()
-    return Vue.nextTick()
+    return wrapper.vm.$nextTick()
       .then(() => {
         expect(wrapper.html()).toMatchSnapshot()
       })
@@ -64,7 +65,7 @@ describe('DataTable', () => {
 
   it('works with no columns', () => {
     let wrapper = fakeMount(DataTable, {
-      props: { items }
+      props: { items: generateItems() }
     })
 
     expect(wrapper.isVueInstance()).toBeTruthy()
@@ -81,6 +82,7 @@ describe('DataTable', () => {
   })
 
   it('emits loaded', () => {
+    let items = generateItems()
     let wrapper = fakeMount(DataTable, {
       props: { items, perPage: 1 }
     }, defaultColumns)
@@ -93,7 +95,7 @@ describe('DataTable', () => {
 
   it('emits update:sortBy', () => {
     let wrapper = fakeMount(DataTable, {
-      props: { items }
+      props: { items: generateItems() }
     }, defaultColumns)
 
     wrapper.find('th').trigger('click')
@@ -102,7 +104,7 @@ describe('DataTable', () => {
 
   it('emits update:sortDesc', () => {
     let wrapper = fakeMount(DataTable, {
-      props: { items, sortBy: 'id', sortDesc: true }
+      props: { items: generateItems(), sortBy: 'id', sortDesc: true }
     }, defaultColumns)
 
     wrapper.find('th').trigger('click')
@@ -111,7 +113,7 @@ describe('DataTable', () => {
 
   it('emits update:filter', () => {
     let wrapper = fakeMount(DataTable, {
-      props: { items, filter: 'z' }
+      props: { items: generateItems(), filter: 'z' }
     }, defaultColumns)
 
     const input = wrapper.find('.datatable__input')
