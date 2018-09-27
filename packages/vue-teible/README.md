@@ -120,7 +120,7 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
     type: String,
     default: ''
   },
-  render: { // Formating function
+  render: { // Formating function. Original fields will be prefixed with $_
     type: Function
   }
 }

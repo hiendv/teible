@@ -167,6 +167,7 @@ export default {
       let items = JSON.parse(JSON.stringify(data.items))
       this.actualItems = items.map(item => {
         this.columns.filter(column => typeof column.render === 'function').forEach(column => {
+          dotSet(item, `$_${column.field}`, dotGet(item, column.field))
           dotSet(item, column.field, column.render(dotGet(item, column.field)))
         })
 
