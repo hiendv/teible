@@ -8,7 +8,7 @@
           'datatable__column--active': isActive(column),
           'datatable__column--last': index === columns.length - 1
         }, column.staticClass, column.dynamicClass]"
-        v-bind="column.attrs" scope="col" @click.prevent="updateSort(column.field)">
+        v-bind="column.attrs" scope="col" @click.prevent="updateSort(column.field, column.sortable)">
         <data-table-head-content :column="column" :active="isActive(column)" :sort-desc="sortDesc" />
       </th>
     </tr>
@@ -41,8 +41,12 @@ export default {
     isSortedBy (field) {
       return this.sortBy === field
     },
-    updateSort (field) {
+    updateSort (field, sortable) {
       if (!field) {
+        return
+      }
+
+      if (!sortable) {
         return
       }
 

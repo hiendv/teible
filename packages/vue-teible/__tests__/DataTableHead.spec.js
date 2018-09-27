@@ -78,4 +78,18 @@ describe('DataTableHead', () => {
     wrapper.vm.updateSort('')
     expect(wrapper.emitted()['update:sortBy']).toBeFalsy()
   })
+
+  it(`emits nothing when clicking on not-sortable columns`, () => {
+    let wrapper = mount(DataTableHead, {
+      propsData: {
+        sortBy: 'name',
+        sortDesc: false,
+        columns: [{ field: 'id', label: 'ID', sortable: true }, { field: 'name', label: 'Name', sortable: false }]
+      }
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.findAll('th').at(1).find('span').trigger('click')
+    expect(wrapper.emitted()['update:sortBy']).toBeFalsy()
+  })
 })
