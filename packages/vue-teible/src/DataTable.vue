@@ -208,9 +208,6 @@ export default {
   @include e('screen') {
     display: block;
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
   }
 
   @include e('wrapper') {
