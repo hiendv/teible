@@ -7,7 +7,7 @@ describe('DataTableHead', () => {
       propsData: {
         sortBy: 'name',
         sortDesc: false,
-        columns: [{ field: 'id', label: 'ID', sortable: true }, { field: 'name', label: 'Name', sortable: true }]
+        columns: [{ field: 'id', label: 'ID', sortable: true }, { field: 'name', sortable: true }, { field: '' }]
       }
     })
     expect(wrapper.html()).toMatchSnapshot()

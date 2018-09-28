@@ -366,7 +366,7 @@ var DataTableHeadContent = {
       attrs: {
         class: 'datatable__column-text'
       }
-    }, capitalize(props.column.label)) ];
+    }, capitalize(props.column.label || props.column.field)) ];
     if (props.column.sortable) {
       children.push(h(Octicon, {
         props: {
