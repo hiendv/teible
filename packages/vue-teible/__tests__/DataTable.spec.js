@@ -84,11 +84,15 @@ describe('DataTable', () => {
   it('emits loaded', () => {
     let items = generateItems()
     let wrapper = fakeMount(DataTable, {
-      props: { items, perPage: 1 }
+      props: { items: generateItems(), perPage: 1 }
     }, defaultColumns)
 
+    let theItem = items[0]
+    theItem.$_id = theItem.id
+    theItem.id = `id-${theItem.id}`
+
     expect(wrapper.emitted()['loaded']).toEqual([[{
-      items: [items[0]],
+      items: [theItem],
       total: items.length
     }]])
   })
@@ -121,5 +125,46 @@ describe('DataTable', () => {
     input.trigger('input')
 
     expect(wrapper.emitted()['update:filter']).toEqual([['a']])
+  })
+
+  it('keeps original items', () => {
+    let wrapper = fakeMount(DataTable, {
+      props: {
+        items: [{
+          foo: {
+            bar: {
+              baz: 'yo'
+            }
+          },
+          qux: 'LOWERCASE ME'
+        }]
+      }
+    }, h => {
+      return [
+        h(DataColumn, {
+          props: {
+            field: 'foo.bar.baz',
+            label: 'dot-chaining field',
+            sortable: false,
+            render: value => {
+              return value.toUpperCase()
+            }
+          }
+        }),
+        h(DataColumn, {
+          props: {
+            field: 'qux',
+            label: 'plain field',
+            sortable: false,
+            render: value => {
+              return value.toLowerCase()
+            }
+          }
+        })
+      ]
+    })
+
+    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

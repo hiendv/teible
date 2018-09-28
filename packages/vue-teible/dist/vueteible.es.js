@@ -1129,17 +1129,33 @@ var script$4 = {
   },
   methods: {
     loaded (data) {
-      this.$emit('loaded', data);
       let items = JSON.parse(JSON.stringify(data.items));
       this.actualItems = items.map(item => {
         this.columns.filter(column => typeof column.render === 'function').forEach(column => {
-          dotSet(item, `$_${column.field}`, dotGet(item, column.field));
+          let parts = column.field.split('.');
+          let originalField = parts.reduce((a, b, index) => {
+            if (index === parts.length - 1) {
+              return `${a}.$_${b}`
+            }
+
+            return `${a}.${b}`
+          });
+          if (parts.length === 1) {
+            originalField = `$_${originalField}`;
+          }
+
+          dotSet(item, originalField, dotGet(item, column.field));
           dotSet(item, column.field, column.render(dotGet(item, column.field)));
         });
 
         return item
       });
       this.total = data.total;
+
+      this.$emit('loaded', {
+        items: this.actualItems,
+        total: data.total
+      });
     },
     loadSlots () {
       // $slots is not reactive
@@ -1169,7 +1185,7 @@ var __vue_staticRenderFns__$4 = [];
   /* style */
   const __vue_inject_styles__$4 = function (inject) {
     if (!inject) return
-    inject("data-v-1d0d8f86_0", { source: "*,::after,::before{-webkit-box-sizing:border-box;box-sizing:border-box}.datatable{color:#495057;font:1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.datatable__screen{display:block;width:100%}.datatable__wrapper{position:relative;display:block;text-align:left;width:100%}.datatable__heading{margin-bottom:.5em;display:table;table-layout:fixed;width:100%}.datatable__unit{margin-bottom:.5em}@media (min-width:768px){.datatable__unit{width:50%;display:table-cell}.datatable__text{padding-left:1em}}.datatable__content{min-width:100%;border:solid 1px #dee2e6;table-layout:fixed}", map: undefined, media: undefined });
+    inject("data-v-74e634db_0", { source: "*,::after,::before{-webkit-box-sizing:border-box;box-sizing:border-box}.datatable{color:#495057;font:1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.datatable__screen{display:block;width:100%}.datatable__wrapper{position:relative;display:block;text-align:left;width:100%}.datatable__heading{margin-bottom:.5em;display:table;table-layout:fixed;width:100%}.datatable__unit{margin-bottom:.5em}@media (min-width:768px){.datatable__unit{width:50%;display:table-cell}.datatable__text{padding-left:1em}}.datatable__content{min-width:100%;border:solid 1px #dee2e6;table-layout:fixed}", map: undefined, media: undefined });
 
   };
   /* scoped */

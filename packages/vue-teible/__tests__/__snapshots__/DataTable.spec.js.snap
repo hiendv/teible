@@ -1,5 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DataTable keeps original items 1`] = `
+<div class="datatable">
+  <div class="datatable__wrapper">
+    <div class="datatable__heading">
+      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter table data" class="datatable__input">
+        <!---->
+      </div>
+      <div class="datatable__unit datatable__text"><span>
+          Showing <span>the last entry</span> of 1 records
+        </span></div>
+    </div>
+    <div class="datatable__screen">
+      <table cellspacing="0" cellpadding="0" class="datatable__content">
+        <thead class="datatable__head">
+          <tr>
+            <th scope="col" class="datatable__column"><span class="datatable__column-text">Dot-chaining field</span></th>
+            <th scope="col" class="datatable__column datatable__column--last"><span class="datatable__column-text">Plain field</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="datatable__row datatable__row--last">
+            <td class="datatable__cell datatable__cell--last-row">YO</td>
+            <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">lowercase me</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <nav class="datatable__pagination">
+      <ul class="datatable__plist">
+        <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
+        <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
+        <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext datatable__plink--disabled"><span aria-hidden="true">»</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+`;
+
 exports[`DataTable works with async data 1`] = `
 <div class="datatable">
   <div class="datatable__wrapper">
