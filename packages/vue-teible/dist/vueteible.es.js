@@ -1,4 +1,4 @@
-import Octicon, { triangleDown, triangleUp, threeBars } from 'octicons-vue';
+import Octicon from 'octicons-vue/es/Octicon';
 
 const chunk = (arr, size) => {
   if (!size) {
@@ -318,6 +318,75 @@ var __vue_staticRenderFns__ = [];
     __vue_create_injector__,
     undefined
   );
+
+function octicon (name, data) {
+  const { width, height, path } = data;
+
+  const attributes = opts => {
+    let options = Object.assign({}, {
+      scale: 1,
+      label: null,
+      class: null
+    }, opts);
+
+    let attrs = elementAttributes({
+      version: '1.1',
+      width,
+      height,
+      viewBox: `0 0 ${width} ${height}`
+    }, options);
+
+    return elementAttributesString(attrs)
+  };
+
+  const elementAttributes = (attrs, options) => {
+    if (options.label) {
+      attrs['aria-label'] = options.label;
+    } else {
+      attrs['aria-hidden'] = true;
+    }
+
+    if (options.class) {
+      attrs['class'] = `octicon octicon-${name} ${options.class}`;
+    } else {
+      attrs['class'] = `octicon octicon-${name}`;
+    }
+
+    let actualScale = options.scale === 0 ? 0 : parseFloat(options.scale) || 1;
+    let actualWidth = actualScale * parseInt(attrs['width']);
+    let actualHeight = actualScale * parseInt(attrs['height']);
+
+    attrs['width'] = Number(actualWidth.toFixed(2));
+    attrs['height'] = Number(actualHeight.toFixed(2));
+
+    return attrs
+  };
+
+  const elementAttributesString = attrs => {
+    return Object.keys(attrs).map(name => {
+      return `${name}="${attrs[name]}"`
+    }).join(' ').trim()
+  };
+
+  return {
+    name,
+    data,
+    svg (options, doc = document) {
+      let wrapper = doc.createElement('div');
+      wrapper.innerHTML = `<svg ${attributes(options)}>${path}</svg>`;
+      return wrapper.firstChild
+    }
+  }
+}
+
+// This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
+var triangleDown = octicon('triangle-down', {"keywords":["arrow","point","direction"],"path":"<path fill-rule=\"evenodd\" d=\"M0 5l6 6 6-6H0z\"></path>","width":12,"height":16});
+
+// This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
+var triangleUp = octicon('triangle-up', {"keywords":["arrow","point","direction"],"path":"<path fill-rule=\"evenodd\" d=\"M12 11L6 5l-6 6h12z\"></path>","width":12,"height":16});
+
+// This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
+var threeBars = octicon('three-bars', {"keywords":["hamburger","menu","dropdown"],"path":"<path fill-rule=\"evenodd\" d=\"M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z\"></path>","width":12,"height":16});
 
 const capitalize = str => {
   if (!str) {

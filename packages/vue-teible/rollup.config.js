@@ -41,7 +41,9 @@ export default [
       exports: 'named'
     }],
     plugins,
-    external: ['octicons-vue']
+    external: id => {
+      return id.match(/^octicons-vue/)
+    }
   },
   {
     input: reslv('src/main.js'),

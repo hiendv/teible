@@ -1,4 +1,7 @@
-import Octicon, { triangleDown, triangleUp, threeBars } from 'octicons-vue'
+import Octicon from 'octicons-vue/es/Octicon'
+import triangleDown from 'octicons-modular/es/icons/triangle-down'
+import triangleUp from 'octicons-modular/es/icons/triangle-up'
+import threeBars from 'octicons-modular/es/icons/three-bars'
 
 const capitalize = str => {
   if (!str) {
