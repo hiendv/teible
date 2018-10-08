@@ -2,6 +2,7 @@ import path from 'path'
 import importer from 'node-sass-tilde-importer'
 
 import resolve from 'rollup-plugin-node-resolve'
+import cjs from 'rollup-plugin-commonjs'
 import vue from 'rollup-plugin-vue'
 import nodent from 'rollup-plugin-nodent'
 import buble from 'rollup-plugin-buble'
@@ -24,6 +25,7 @@ const style = {
 
 const plugins = [
   resolve(),
+  cjs(),
   vue({
     style
   })

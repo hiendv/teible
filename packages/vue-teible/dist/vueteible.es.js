@@ -1,4 +1,4 @@
-import Octicon from 'octicons-vue/es/Octicon';
+import Octicon from 'octicons-vue/lib/Octicon';
 
 const chunk = (arr, size) => {
   if (!size) {
@@ -319,74 +319,22 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-function octicon (name, data) {
-  const { width, height, path } = data;
-
-  const attributes = opts => {
-    let options = Object.assign({}, {
-      scale: 1,
-      label: null,
-      class: null
-    }, opts);
-
-    let attrs = elementAttributes({
-      version: '1.1',
-      width,
-      height,
-      viewBox: `0 0 ${width} ${height}`
-    }, options);
-
-    return elementAttributesString(attrs)
-  };
-
-  const elementAttributes = (attrs, options) => {
-    if (options.label) {
-      attrs['aria-label'] = options.label;
-    } else {
-      attrs['aria-hidden'] = true;
-    }
-
-    if (options.class) {
-      attrs['class'] = `octicon octicon-${name} ${options.class}`;
-    } else {
-      attrs['class'] = `octicon octicon-${name}`;
-    }
-
-    let actualScale = options.scale === 0 ? 0 : parseFloat(options.scale) || 1;
-    let actualWidth = actualScale * parseInt(attrs['width']);
-    let actualHeight = actualScale * parseInt(attrs['height']);
-
-    attrs['width'] = Number(actualWidth.toFixed(2));
-    attrs['height'] = Number(actualHeight.toFixed(2));
-
-    return attrs
-  };
-
-  const elementAttributesString = attrs => {
-    return Object.keys(attrs).map(name => {
-      return `${name}="${attrs[name]}"`
-    }).join(' ').trim()
-  };
-
-  return {
-    name,
-    data,
-    svg (options, doc = document) {
-      let wrapper = doc.createElement('div');
-      wrapper.innerHTML = `<svg ${attributes(options)}>${path}</svg>`;
-      return wrapper.firstChild
-    }
-  }
-}
+function octicon(c,t){var o=t.width,r=t.height,s=t.path,l=function(t,e){e.label?t["aria-label"]=e.label:t["aria-hidden"]=!0,e.class?t.class="octicon octicon-"+c+" "+e.class:t.class="octicon octicon-"+c;var i=0===e.scale?0:parseFloat(e.scale)||1,n=i*parseInt(t.width),a=i*parseInt(t.height);return t.width=Number(n.toFixed(2)),t.height=Number(a.toFixed(2)),t},u=function(e){return Object.keys(e).map(function(t){return t+'="'+e[t]+'"'}).join(" ").trim()};return {name:c,data:t,svg:function(t,e){void 0===e&&(e=document);var i,n,a,c=e.createElement("div");return c.innerHTML="<svg "+(i=t,n=Object.assign({},{scale:1,label:null,class:null},i),a=l({version:"1.1",width:o,height:r,viewBox:"0 0 "+o+" "+r},n),u(a))+">"+s+"</svg>",c.firstChild}}}var octicon_1=octicon;
 
 // This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
-var triangleDown = octicon('triangle-down', {"keywords":["arrow","point","direction"],"path":"<path fill-rule=\"evenodd\" d=\"M0 5l6 6 6-6H0z\"></path>","width":12,"height":16});
+var triangleDown = octicon_1('triangle-down', {"keywords":["arrow","point","direction"],"path":"<path fill-rule=\"evenodd\" d=\"M0 5l6 6 6-6H0z\"></path>","width":12,"height":16});
+
+var triangleDown_1 = triangleDown;
 
 // This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
-var triangleUp = octicon('triangle-up', {"keywords":["arrow","point","direction"],"path":"<path fill-rule=\"evenodd\" d=\"M12 11L6 5l-6 6h12z\"></path>","width":12,"height":16});
+var triangleUp = octicon_1('triangle-up', {"keywords":["arrow","point","direction"],"path":"<path fill-rule=\"evenodd\" d=\"M12 11L6 5l-6 6h12z\"></path>","width":12,"height":16});
+
+var triangleUp_1 = triangleUp;
 
 // This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
-var threeBars = octicon('three-bars', {"keywords":["hamburger","menu","dropdown"],"path":"<path fill-rule=\"evenodd\" d=\"M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z\"></path>","width":12,"height":16});
+var threeBars = octicon_1('three-bars', {"keywords":["hamburger","menu","dropdown"],"path":"<path fill-rule=\"evenodd\" d=\"M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z\"></path>","width":12,"height":16});
+
+var threeBars_1 = threeBars;
 
 const capitalize = str => {
   if (!str) {
@@ -398,10 +346,10 @@ const capitalize = str => {
 
 const icon = (column, active, sortDesc) => {
   if (active) {
-    return sortDesc ? triangleDown : triangleUp
+    return sortDesc ? triangleDown_1 : triangleUp_1
   }
 
-  return threeBars
+  return threeBars_1
 };
 
 var DataTableHeadContent = {
