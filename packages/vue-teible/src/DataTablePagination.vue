@@ -12,11 +12,9 @@
           @click.prevent="load(page-1)">
           <span aria-hidden="true">&laquo;</span>
         </a>
-      </li>
-      <li v-for="page in totalPages" :key="page" class="datatable__pitem">
-        <a :class="['datatable__plink', { 'datatable__plink--active': isActive(page) }]" href="#" @click.prevent="load(page)">{{ page }}</a>
-      </li>
-      <li class="datatable__pitem">
+      </li><li v-for="(page, index) in pages" :key="index" class="datatable__pitem">
+        <a :class="['datatable__plink', { 'datatable__plink--active': isActive(page), 'datatable__plink--disabled': page.disabled }]" href="#" @click.prevent="load(page.value, page.disabled)">{{ page.value }}</a>
+      </li><li class="datatable__pitem">
         <a
           :class="['datatable__plink datatable__pnext', { 'datatable__plink--disabled': reachedLast }]" href="#" aria-label="Next"
           @click.prevent="load(page+1)">
@@ -27,6 +25,7 @@
   </nav>
 </template>
 <script>
+import { paginate } from './helpers'
 export default {
   name: 'DataTablePagination',
   props: {
@@ -44,6 +43,9 @@ export default {
     }
   },
   computed: {
+    pages () {
+      return paginate(this.page, this.totalPages)
+    },
     totalPages () {
       return Math.ceil(this.total / (this.perPage || 1))
     },
@@ -60,9 +62,16 @@ export default {
   },
   methods: {
     isActive (page) {
-      return this.page === page
+      return !page.disabled && this.page === page.value
     },
-    load (page) {
+    isLast () {
+      return this.page > this.totalPages && this.load(this.page - 1)
+    },
+    load (page, disabled) {
+      if (disabled) {
+        return
+      }
+
       if (page < 1) {
         return
       }
@@ -72,9 +81,6 @@ export default {
       }
 
       this.$emit('update:page', page)
-    },
-    isLast () {
-      return this.page > this.totalPages && this.load(this.page - 1)
     }
   }
 }

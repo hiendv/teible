@@ -105,3 +105,48 @@ export const dotSet = (obj, path, val) => {
     return o[i]
   }, obj)
 }
+
+export const paginate = (currentPage, total) => {
+  let showing = 3
+  let eachSide = 2
+  if (total <= showing + eachSide) {
+    return paginationValueOrThreeDots(Array.from({ length: total }, (e, i) => i + 1))
+  }
+
+  let pages = []
+
+  for (let i = 0; i < eachSide; i++) {
+    pages.push(i + 1)
+    pages.push(total - i)
+  }
+
+  for (let i = 0; i < Math.ceil(showing / 2); i++) {
+    if (currentPage - i > 1) {
+      pages.push(currentPage - i)
+    }
+
+    if (currentPage + i < total) {
+      pages.push(currentPage + i)
+    }
+  }
+
+  return paginationValueOrThreeDots([...new Set(pages)].sort((a, b) => a - b))
+}
+
+const paginationValueOrThreeDots = pages => {
+  const dots = '...'
+  for (let i = 0; i < pages.length - 1; i++) {
+    if (pages[i + 1] - pages[i] > 1) {
+      pages.splice(i + 1, 0, dots)
+    }
+  }
+
+  pages = pages.map(page => {
+    return {
+      value: page,
+      disabled: page === dots
+    }
+  })
+
+  return pages
+}
