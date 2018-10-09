@@ -1,4 +1,4 @@
-import { load, defaultProps, dotSet } from '../src/helpers'
+import { load, defaultProps, dotSet, paginate } from '../src/helpers'
 
 describe('load', () => {
   const data = [{
@@ -155,5 +155,49 @@ describe('dotSet', () => {
 
     dotSet(obj, 'another.path', true)
     expect(obj.another.path).toBe(true)
+  })
+})
+
+describe('paginate', () => {
+  it('works', () => {
+    expect(paginate(1, 5)).toEqual([
+      { value: 1, disabled: false },
+      { value: 2, disabled: false },
+      { value: 3, disabled: false },
+      { value: 4, disabled: false },
+      { value: 5, disabled: false }
+    ])
+
+    expect(paginate(1, 10)).toEqual([
+      { value: 1, disabled: false },
+      { value: 2, disabled: false },
+      { value: '...', disabled: true },
+      { value: 9, disabled: false },
+      { value: 10, disabled: false }
+    ])
+
+    expect(paginate(5, 9)).toEqual([
+      { value: 1, disabled: false },
+      { value: 2, disabled: false },
+      { value: '...', disabled: true },
+      { value: 4, disabled: false },
+      { value: 5, disabled: false },
+      { value: 6, disabled: false },
+      { value: '...', disabled: true },
+      { value: 8, disabled: false },
+      { value: 9, disabled: false }
+    ])
+
+    expect(paginate(6, 10)).toEqual([
+      { value: 1, disabled: false },
+      { value: 2, disabled: false },
+      { value: '...', disabled: true },
+      { value: 5, disabled: false },
+      { value: 6, disabled: false },
+      { value: 7, disabled: false },
+      { value: '...', disabled: true },
+      { value: 9, disabled: false },
+      { value: 10, disabled: false }
+    ])
   })
 })

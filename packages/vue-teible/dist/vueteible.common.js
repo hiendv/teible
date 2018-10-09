@@ -114,6 +114,51 @@ const dotSet = (obj, path, val) => {
   }, obj)
 };
 
+const paginate = (currentPage, total) => {
+  let showing = 3;
+  let eachSide = 2;
+  if (total <= showing + eachSide) {
+    return paginationValueOrThreeDots(Array.from({ length: total }, (e, i) => i + 1))
+  }
+
+  let pages = [];
+
+  for (let i = 0; i < eachSide; i++) {
+    pages.push(i + 1);
+    pages.push(total - i);
+  }
+
+  for (let i = 0; i < Math.ceil(showing / 2); i++) {
+    if (currentPage - i > 1) {
+      pages.push(currentPage - i);
+    }
+
+    if (currentPage + i < total) {
+      pages.push(currentPage + i);
+    }
+  }
+
+  return paginationValueOrThreeDots([...new Set(pages)].sort((a, b) => a - b))
+};
+
+const paginationValueOrThreeDots = pages => {
+  const dots = '...';
+  for (let i = 0; i < pages.length - 1; i++) {
+    if (pages[i + 1] - pages[i] > 1) {
+      pages.splice(i + 1, 0, dots);
+    }
+  }
+
+  pages = pages.map(page => {
+    return {
+      value: page,
+      disabled: page === dots
+    }
+  });
+
+  return pages
+};
+
 var DataTableCell = {
   functional: true,
   props: {
@@ -602,34 +647,6 @@ var __vue_staticRenderFns__$1 = [];
   );
 
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 var script$2 = {
   name: 'DataTablePagination',
   props: {
@@ -647,6 +664,9 @@ var script$2 = {
     }
   },
   computed: {
+    pages () {
+      return paginate(this.page, this.totalPages)
+    },
     totalPages () {
       return Math.ceil(this.total / (this.perPage || 1))
     },
@@ -663,9 +683,16 @@ var script$2 = {
   },
   methods: {
     isActive (page) {
-      return this.page === page
+      return !page.disabled && this.page === page.value
     },
-    load (page) {
+    isLast () {
+      return this.page > this.totalPages && this.load(this.page - 1)
+    },
+    load (page, disabled) {
+      if (disabled) {
+        return
+      }
+
       if (page < 1) {
         return
       }
@@ -675,9 +702,6 @@ var script$2 = {
       }
 
       this.$emit('update:page', page);
-    },
-    isLast () {
-      return this.page > this.totalPages && this.load(this.page - 1)
     }
   }
 };
@@ -691,13 +715,13 @@ var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _
           {
             'datatable__plink--disabled': _vm.reachedFirst
           }
-        ],attrs:{"href":"#","aria-label":"Previous"},on:{"click":function($event){$event.preventDefault();_vm.load(_vm.page-1);}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")])])]),_vm._v(" "),_vm._l((_vm.totalPages),function(page){return _c('li',{key:page,staticClass:"datatable__pitem"},[_c('a',{class:['datatable__plink', { 'datatable__plink--active': _vm.isActive(page) }],attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();_vm.load(page);}}},[_vm._v(_vm._s(page))])])}),_vm._v(" "),_c('li',{staticClass:"datatable__pitem"},[_c('a',{class:['datatable__plink datatable__pnext', { 'datatable__plink--disabled': _vm.reachedLast }],attrs:{"href":"#","aria-label":"Next"},on:{"click":function($event){$event.preventDefault();_vm.load(_vm.page+1);}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")])])])],2)])};
+        ],attrs:{"href":"#","aria-label":"Previous"},on:{"click":function($event){$event.preventDefault();_vm.load(_vm.page-1);}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")])])]),_vm._l((_vm.pages),function(page,index){return _c('li',{key:index,staticClass:"datatable__pitem"},[_c('a',{class:['datatable__plink', { 'datatable__plink--active': _vm.isActive(page), 'datatable__plink--disabled': page.disabled }],attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();_vm.load(page.value, page.disabled);}}},[_vm._v(_vm._s(page.value))])])}),_c('li',{staticClass:"datatable__pitem"},[_c('a',{class:['datatable__plink datatable__pnext', { 'datatable__plink--disabled': _vm.reachedLast }],attrs:{"href":"#","aria-label":"Next"},on:{"click":function($event){$event.preventDefault();_vm.load(_vm.page+1);}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")])])])],2)])};
 var __vue_staticRenderFns__$2 = [];
 
   /* style */
   const __vue_inject_styles__$2 = function (inject) {
     if (!inject) return
-    inject("data-v-1e900a5a_0", { source: ".datatable__pagination{display:block}.datatable__plist{display:inline-block;margin:0;padding:0;margin-top:.5em;border-radius:4px}.datatable__pitem{display:inline}.datatable__plink{position:relative;display:inline-block;margin-left:-1px;padding:.3em .6em;color:#337ab7;text-decoration:none;background-color:#fff;border:1px solid #dee2e6}.datatable__plink--active{z-index:3;color:#fff!important;cursor:default;background-color:#337ab7!important;border-color:#337ab7!important}.datatable__plink--disabled{color:#777!important;cursor:not-allowed;background-color:#f0f0f0!important}.datatable__plink:focus,.datatable__plink:hover{z-index:2;background-color:#eee}", map: undefined, media: undefined });
+    inject("data-v-1c609072_0", { source: ".datatable__pagination{display:block}.datatable__plist{display:inline-block;margin:0;padding:0;margin-top:.5em;border-radius:4px}.datatable__pitem{display:inline}.datatable__plink{position:relative;display:inline-block;margin-left:-1px;padding:.3em .6em;color:#337ab7;text-decoration:none;background-color:#fff;border:1px solid #dee2e6}.datatable__plink--active{z-index:3;color:#fff!important;cursor:default;background-color:#337ab7!important;border-color:#337ab7!important}.datatable__plink--disabled{color:#777!important;cursor:not-allowed;background-color:#f0f0f0!important}.datatable__plink:focus,.datatable__plink:hover{z-index:2;background-color:#eee}", map: undefined, media: undefined });
 
   };
   /* scoped */

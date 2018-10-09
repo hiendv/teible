@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DataTablePagination does not emit update:page event when clicking on the three-dots button 1`] = `
+<nav class="datatable__pagination">
+  <ul class="datatable__plist">
+    <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
+    <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
+    <li class="datatable__pitem"><a href="#" class="datatable__plink">2</a></li>
+    <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--disabled">...</a></li>
+    <li class="datatable__pitem"><a href="#" class="datatable__plink">9</a></li>
+    <li class="datatable__pitem"><a href="#" class="datatable__plink">10</a></li>
+    <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a></li>
+  </ul>
+</nav>
+`;
+
 exports[`DataTablePagination renders correctly 1`] = `
 <nav class="datatable__pagination">
   <ul class="datatable__plist">
@@ -44,12 +58,7 @@ exports[`DataTablePagination renders correctly with invalid perPage 1`] = `
     <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
     <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
     <li class="datatable__pitem"><a href="#" class="datatable__plink">2</a></li>
-    <li class="datatable__pitem"><a href="#" class="datatable__plink">3</a></li>
-    <li class="datatable__pitem"><a href="#" class="datatable__plink">4</a></li>
-    <li class="datatable__pitem"><a href="#" class="datatable__plink">5</a></li>
-    <li class="datatable__pitem"><a href="#" class="datatable__plink">6</a></li>
-    <li class="datatable__pitem"><a href="#" class="datatable__plink">7</a></li>
-    <li class="datatable__pitem"><a href="#" class="datatable__plink">8</a></li>
+    <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--disabled">...</a></li>
     <li class="datatable__pitem"><a href="#" class="datatable__plink">9</a></li>
     <li class="datatable__pitem"><a href="#" class="datatable__plink">10</a></li>
     <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a></li>
