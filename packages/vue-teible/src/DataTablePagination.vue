@@ -106,9 +106,9 @@ export default {
 
   @include e('plink') {
     position: relative;
-    display: inline-block;
-    margin-left: -1px;
+    float: left;
     padding: .3em .6em;
+    margin-left: -1px;
     color: $color__plink;
     text-decoration: none;
     background-color: $bg-color;
