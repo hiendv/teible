@@ -6,6 +6,9 @@
   "bugs": {
     "url": "https://github.com/hiendv/teible/issues"
   },
+  "devDependencies": {
+    "octicons-vue": "^0.13.0"
+  },
   "files": [
     "dist",
     "README.md"
@@ -21,7 +24,6 @@
   "main": "dist/vueteible.common.js",
   "module": "dist/vueteible.es.js",
   "peerDependencies": {
-    "octicons-vue": "^0.12.2",
     "vue": "^2.5.16"
   },
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible",
