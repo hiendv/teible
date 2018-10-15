@@ -163,7 +163,7 @@ export default {
   },
   methods: {
     loaded (data) {
-      let items = JSON.parse(JSON.stringify(data.items))
+      let items = [...data.items]
       this.actualItems = items.map(item => {
         this.columns.filter(column => typeof column.render === 'function').forEach(column => {
           let parts = column.field.split('.')
@@ -200,8 +200,7 @@ export default {
     },
     load (items, filtering, sorting, paging) {
       if (this.asynchronous) {
-        let result = items(filtering, sorting, paging)
-        Promise.resolve().then(this.loaded)
+        Promise.resolve(items(filtering, sorting, paging)).then(this.loaded)
         return
       }
 

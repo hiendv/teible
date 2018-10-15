@@ -1197,7 +1197,7 @@ var script$4 = {
     loaded: function loaded (data) {
       var this$1 = this;
 
-      var items = JSON.parse(JSON.stringify(data.items));
+      var items = [].concat( data.items );
       this.actualItems = items.map(function (item) {
         this$1.columns.filter(function (column) { return typeof column.render === 'function'; }).forEach(function (column) {
           var parts = column.field.split('.');
@@ -1234,8 +1234,7 @@ var script$4 = {
     },
     load: function load$1 (items, filtering, sorting, paging) {
       if (this.asynchronous) {
-        var result = items(filtering, sorting, paging);
-        Promise.resolve().then(this.loaded);
+        Promise.resolve(items(filtering, sorting, paging)).then(this.loaded);
         return
       }
 
@@ -1254,7 +1253,7 @@ var __vue_staticRenderFns__$4 = [];
   /* style */
   var __vue_inject_styles__$4 = function (inject) {
     if (!inject) { return }
-    inject("data-v-bc00d772_0", { source: "*,::after,::before{-webkit-box-sizing:border-box;box-sizing:border-box}.datatable{color:#495057;font:1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.datatable__screen{display:block;width:100%}.datatable__wrapper{position:relative;display:block;text-align:left;width:100%}.datatable__heading{margin-bottom:.5em;display:table;table-layout:fixed;width:100%}.datatable__unit{margin-bottom:.5em}@media (min-width:768px){.datatable__unit{width:50%;display:table-cell}.datatable__text{padding-left:1em}}.datatable__content{min-width:100%;border:solid 1px #dee2e6;table-layout:fixed}", map: undefined, media: undefined });
+    inject("data-v-289dfa3a_0", { source: "*,::after,::before{-webkit-box-sizing:border-box;box-sizing:border-box}.datatable{color:#495057;font:1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.datatable__screen{display:block;width:100%}.datatable__wrapper{position:relative;display:block;text-align:left;width:100%}.datatable__heading{margin-bottom:.5em;display:table;table-layout:fixed;width:100%}.datatable__unit{margin-bottom:.5em}@media (min-width:768px){.datatable__unit{width:50%;display:table-cell}.datatable__text{padding-left:1em}}.datatable__content{min-width:100%;border:solid 1px #dee2e6;table-layout:fixed}", map: undefined, media: undefined });
 
   };
   /* scoped */
