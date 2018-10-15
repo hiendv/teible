@@ -198,9 +198,10 @@ export default {
     loadItems () {
       this.load(this.items, this.filtering, this.sorting, this.paging)
     },
-    async load (items, filtering, sorting, paging) {
+    load (items, filtering, sorting, paging) {
       if (this.asynchronous) {
-        this.loaded(await items(filtering, sorting, paging))
+        let result = items(filtering, sorting, paging)
+        Promise.resolve().then(this.loaded)
         return
       }
 

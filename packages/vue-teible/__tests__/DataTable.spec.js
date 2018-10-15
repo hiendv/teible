@@ -41,6 +41,26 @@ describe('DataTable', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
+  it('works with sync data using function', () => {
+    let items = generateItems()
+    let wrapper = fakeMount(DataTable, {
+      props: {
+        items () {
+          return {
+            items,
+            total: items.length
+          }
+        }
+      }
+    }, defaultColumns)
+
+    expect(wrapper.isVueInstance()).toBeTruthy()
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        expect(wrapper.html()).toMatchSnapshot()
+      })
+  })
+
   it('works with async data', () => {
     let items = generateItems()
     let wrapper = fakeMount(DataTable, {

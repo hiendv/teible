@@ -1,18 +1,18 @@
 import Octicon from 'octicons-vue/lib/Octicon';
 
-const chunk = (arr, size) => {
+var chunk = function (arr, size) {
   if (!size) {
     size = arr.length;
   }
 
-  let result = [];
-  for (let i = 0, len = arr.length; i < len; i += size) { result.push(arr.slice(i, i + size)); }
+  var result = [];
+  for (var i = 0, len = arr.length; i < len; i += size) { result.push(arr.slice(i, i + size)); }
   return result
 };
 
-const orderBy = (arr, field, order) => {
-  let copy = [...arr];
-  copy.sort((a, b) => {
+var orderBy = function (arr, field, order) {
+  var copy = [].concat( arr );
+  copy.sort(function (a, b) {
     if (order === 'desc') {
       return dotGet(a, field) < dotGet(b, field)
     }
@@ -23,17 +23,17 @@ const orderBy = (arr, field, order) => {
   return copy
 };
 
-const filter = (items, filtering) => {
-  return items.filter(item => {
-    for (let i = 0; i < filtering.fields.length; i++) {
-      let field = filtering.fields[i];
-      let value = dotGet(item, field);
+var filter = function (items, filtering) {
+  return items.filter(function (item) {
+    for (var i = 0; i < filtering.fields.length; i++) {
+      var field = filtering.fields[i];
+      var value = dotGet(item, field);
 
       if (!value) {
         continue
       }
 
-      if (`${value}`.toLowerCase().indexOf(filtering.query) === -1) {
+      if (("" + value).toLowerCase().indexOf(filtering.query) === -1) {
         continue
       }
 
@@ -44,8 +44,8 @@ const filter = (items, filtering) => {
   })
 };
 
-const load = (data, filtering, sorting, paging) => {
-  let filtered = (!filtering || !filtering.query) ? data : filter(data, filtering);
+var load = function (data, filtering, sorting, paging) {
+  var filtered = (!filtering || !filtering.query) ? data : filter(data, filtering);
   if (!filtered || !filtered.length) {
     return {
       items: [],
@@ -53,9 +53,9 @@ const load = (data, filtering, sorting, paging) => {
     }
   }
 
-  let ordered = orderBy(filtered, sorting.by, sorting.order);
-  let chunked = chunk(ordered, paging.perPage);
-  let items = chunked[paging.page - 1];
+  var ordered = orderBy(filtered, sorting.by, sorting.order);
+  var chunked = chunk(ordered, paging.perPage);
+  var items = chunked[paging.page - 1];
   if (!items) {
     return {
       items: [],
@@ -64,14 +64,14 @@ const load = (data, filtering, sorting, paging) => {
   }
 
   return {
-    items,
+    items: items,
     total: filtered.length
   }
 };
 
-const defaultProps = (options, data) => {
-  let props = {};
-  for (let key in options) {
+var defaultProps = function (options, data) {
+  var props = {};
+  for (var key in options) {
     if (data[key] !== undefined) {
       props[key] = data[key];
       continue
@@ -88,13 +88,13 @@ const defaultProps = (options, data) => {
   return props
 };
 
-const dotGet = (obj, path) => {
-  return path.split('.').reduce((o, i) => o[i], obj)
+var dotGet = function (obj, path) {
+  return path.split('.').reduce(function (o, i) { return o[i]; }, obj)
 };
 
-const dotSet = (obj, path, val) => {
-  let parts = path.split('.');
-  return parts.reduce((o, i, idx) => {
+var dotSet = function (obj, path, val) {
+  var parts = path.split('.');
+  return parts.reduce(function (o, i, idx) {
     if (idx === parts.length - 1) {
       o[i] = val;
       return o[i]
@@ -108,42 +108,42 @@ const dotSet = (obj, path, val) => {
   }, obj)
 };
 
-const paginate = (currentPage, total) => {
-  let showing = 3;
-  let eachSide = 2;
+var paginate = function (currentPage, total) {
+  var showing = 3;
+  var eachSide = 2;
   if (total <= showing + eachSide) {
-    return paginationValueOrThreeDots(Array.from({ length: total }, (e, i) => i + 1))
+    return paginationValueOrThreeDots(Array.from({ length: total }, function (e, i) { return i + 1; }))
   }
 
-  let pages = [];
+  var pages = [];
 
-  for (let i = 0; i < eachSide; i++) {
+  for (var i = 0; i < eachSide; i++) {
     pages.push(i + 1);
     pages.push(total - i);
   }
 
-  for (let i = 0; i < Math.ceil(showing / 2); i++) {
-    if (currentPage - i > 1) {
-      pages.push(currentPage - i);
+  for (var i$1 = 0; i$1 < Math.ceil(showing / 2); i$1++) {
+    if (currentPage - i$1 > 1) {
+      pages.push(currentPage - i$1);
     }
 
-    if (currentPage + i < total) {
-      pages.push(currentPage + i);
+    if (currentPage + i$1 < total) {
+      pages.push(currentPage + i$1);
     }
   }
 
-  return paginationValueOrThreeDots([...new Set(pages)].sort((a, b) => a - b))
+  return paginationValueOrThreeDots([].concat( new Set(pages) ).sort(function (a, b) { return a - b; }))
 };
 
-const paginationValueOrThreeDots = pages => {
-  const dots = '...';
-  for (let i = 0; i < pages.length - 1; i++) {
+var paginationValueOrThreeDots = function (pages) {
+  var dots = '...';
+  for (var i = 0; i < pages.length - 1; i++) {
     if (pages[i + 1] - pages[i] > 1) {
       pages.splice(i + 1, 0, dots);
     }
   }
 
-  pages = pages.map(page => {
+  pages = pages.map(function (page) {
     return {
       value: page,
       disabled: page === dots
@@ -165,15 +165,18 @@ var DataTableCell = {
       required: true
     }
   },
-  render (h, { props, data }) {
+  render: function render (h, ref) {
+    var props = ref.props;
+    var data = ref.data;
+
     if (props.column.field) {
-      let value = dotGet(props.item, props.column.field);
+      var value = dotGet(props.item, props.column.field);
       if (typeof value !== 'string') {
         value = JSON.stringify(value);
       }
 
       if (props.column.scopedSlots && typeof props.column.scopedSlots.default === 'function') {
-        return h('td', data, props.column.scopedSlots.default({ value, item: props.item, column: props.column }))
+        return h('td', data, props.column.scopedSlots.default({ value: value, item: props.item, column: props.column }))
       }
 
       return h('td', data, value)
@@ -190,7 +193,7 @@ var DataTableCell = {
 //
 var script = {
   name: 'DataTableBody',
-  components: { DataTableCell },
+  components: { DataTableCell: DataTableCell },
   props: {
     items: {
       type: Array,
@@ -204,7 +207,7 @@ var script = {
 };
 
 /* script */
-            const __vue_script__ = script;
+            var __vue_script__ = script;
             
 /* template */
 var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('tbody',_vm._l((_vm.items),function(d,index){return _c('tr',{key:index,class:[
@@ -223,24 +226,24 @@ var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=
 var __vue_staticRenderFns__ = [];
 
   /* style */
-  const __vue_inject_styles__ = function (inject) {
-    if (!inject) return
+  var __vue_inject_styles__ = function (inject) {
+    if (!inject) { return }
     inject("data-v-4483f897_0", { source: ".datatable__row{background-color:#fff}.datatable__row--odd{background-color:#e9ecef}.datatable__cell{position:relative;padding:.3em .5em;border-right:1px solid #dee2e6;border-bottom:1px solid #dee2e6;vertical-align:middle;text-align:left}.datatable__cell--last-column{border-right:0}.datatable__cell--last-row{border-bottom:0}", map: undefined, media: undefined });
 
   };
   /* scoped */
-  const __vue_scope_id__ = undefined;
+  var __vue_scope_id__ = undefined;
   /* module identifier */
-  const __vue_module_identifier__ = undefined;
+  var __vue_module_identifier__ = undefined;
   /* functional template */
-  const __vue_is_functional_template__ = false;
+  var __vue_is_functional_template__ = false;
   /* component normalizer */
   function __vue_normalize__(
     template, style, script$$1,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
   ) {
-    const component = (typeof script$$1 === 'function' ? script$$1.options : script$$1) || {};
+    var component = (typeof script$$1 === 'function' ? script$$1.options : script$$1) || {};
 
     // For security concerns, we use only base name in production mode.
     component.__file = "DataTableBody.vue";
@@ -250,13 +253,13 @@ var __vue_staticRenderFns__ = [];
       component.staticRenderFns = template.staticRenderFns;
       component._compiled = true;
 
-      if (functional) component.functional = true;
+      if (functional) { component.functional = true; }
     }
 
     component._scopeId = scope;
 
     {
-      let hook;
+      var hook;
       if (style) {
         hook = function(context) {
           style.call(this, createInjector(context));
@@ -266,14 +269,14 @@ var __vue_staticRenderFns__ = [];
       if (hook !== undefined) {
         if (component.functional) {
           // register for functional component in vue file
-          const originalRender = component.render;
+          var originalRender = component.render;
           component.render = function renderWithStyleInjection(h, context) {
             hook.call(context);
             return originalRender(h, context)
           };
         } else {
           // inject component registration as beforeCreate hook
-          const existing = component.beforeCreate;
+          var existing = component.beforeCreate;
           component.beforeCreate = existing ? [].concat(existing, hook) : [hook];
         }
       }
@@ -283,21 +286,21 @@ var __vue_staticRenderFns__ = [];
   }
   /* style inject */
   function __vue_create_injector__() {
-    const head = document.head || document.getElementsByTagName('head')[0];
-    const styles = __vue_create_injector__.styles || (__vue_create_injector__.styles = {});
-    const isOldIE =
+    var head = document.head || document.getElementsByTagName('head')[0];
+    var styles = __vue_create_injector__.styles || (__vue_create_injector__.styles = {});
+    var isOldIE =
       typeof navigator !== 'undefined' &&
       /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
 
     return function addStyle(id, css) {
-      if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) return // SSR styles are present.
+      if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) { return } // SSR styles are present.
 
-      const group = isOldIE ? css.media || 'default' : id;
-      const style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
+      var group = isOldIE ? css.media || 'default' : id;
+      var style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
 
       if (!style.ids.includes(id)) {
-        let code = css.source;
-        let index = style.ids.length;
+        var code = css.source;
+        var index = style.ids.length;
 
         style.ids.push(id);
 
@@ -317,10 +320,10 @@ var __vue_staticRenderFns__ = [];
         }
 
         if (!style.element) {
-          const el = style.element = document.createElement('style');
+          var el = style.element = document.createElement('style');
           el.type = 'text/css';
 
-          if (css.media) el.setAttribute('media', css.media);
+          if (css.media) { el.setAttribute('media', css.media); }
           if (isOldIE) {
             el.setAttribute('data-group', group);
             el.setAttribute('data-next-index', '0');
@@ -340,11 +343,11 @@ var __vue_staticRenderFns__ = [];
             .filter(Boolean)
             .join('\n');
         } else {
-          const textNode = document.createTextNode(code);
-          const nodes = style.element.childNodes;
-          if (nodes[index]) style.element.removeChild(nodes[index]);
-          if (nodes.length) style.element.insertBefore(textNode, nodes[index]);
-          else style.element.appendChild(textNode);
+          var textNode = document.createTextNode(code);
+          var nodes = style.element.childNodes;
+          if (nodes[index]) { style.element.removeChild(nodes[index]); }
+          if (nodes.length) { style.element.insertBefore(textNode, nodes[index]); }
+          else { style.element.appendChild(textNode); }
         }
       }
     }
@@ -381,7 +384,7 @@ var threeBars = octicon_1('three-bars', 12, 16, "<path fill-rule=\"evenodd\" d=\
 
 var threeBars_1 = threeBars;
 
-const capitalize = str => {
+var capitalize = function (str) {
   if (!str) {
     return
   }
@@ -389,7 +392,7 @@ const capitalize = str => {
   return str.charAt(0).toUpperCase() + str.slice(1)
 };
 
-const icon = (column, active, sortDesc) => {
+var icon = function (column, active, sortDesc) {
   if (active) {
     return sortDesc ? triangleDown_1 : triangleUp_1
   }
@@ -413,18 +416,21 @@ var DataTableHeadContent = {
       required: true
     }
   },
-  render (h, { props, data }) {
+  render: function render (h, ref) {
+    var props = ref.props;
+    var data = ref.data;
+
     if (props.column.scopedSlots && props.column.scopedSlots.header) {
       return h('span', {
         on: {
-          click ($event) {
+          click: function click ($event) {
             $event.stopPropagation();
           }
         }
       }, props.column.scopedSlots.header(props))
     }
 
-    let children = [ h('span', {
+    var children = [ h('span', {
       attrs: {
         class: 'datatable__column-text'
       }
@@ -445,7 +451,7 @@ var DataTableHeadContent = {
 
 var script$1 = {
   name: 'DataTableHead',
-  components: { DataTableHeadContent },
+  components: { DataTableHeadContent: DataTableHeadContent },
   props: {
     columns: {
       type: Array,
@@ -461,13 +467,13 @@ var script$1 = {
     }
   },
   methods: {
-    isActive (column) {
+    isActive: function isActive (column) {
       return !!(column.sortable) && this.isSortedBy(column.field)
     },
-    isSortedBy (field) {
+    isSortedBy: function isSortedBy (field) {
       return this.sortBy === field
     },
-    updateSort (field, sortable) {
+    updateSort: function updateSort (field, sortable) {
       if (!field) {
         return
       }
@@ -487,7 +493,7 @@ var script$1 = {
 };
 
 /* script */
-            const __vue_script__$1 = script$1;
+            var __vue_script__$1 = script$1;
             
 /* template */
 var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',{staticClass:"datatable__head"},[(_vm.columns.length)?_c('tr',_vm._l((_vm.columns),function(column,index){return _c('th',_vm._b({key:column.field + column.label,class:['datatable__column', {
@@ -499,24 +505,24 @@ var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _
 var __vue_staticRenderFns__$1 = [];
 
   /* style */
-  const __vue_inject_styles__$1 = function (inject) {
-    if (!inject) return
+  var __vue_inject_styles__$1 = function (inject) {
+    if (!inject) { return }
     inject("data-v-4acef8e2_0", { source: ".datatable__column{position:relative;padding:.5em;padding-right:1.75em;min-width:1em;vertical-align:middle;text-align:left;line-height:1;white-space:nowrap;border-right:1px solid #dee2e6;border-bottom:1px solid #dee2e6;box-shadow:0 1px 2px 0 rgba(50,50,50,.1);background-color:#fff;font-weight:700}.datatable__column--last{border-right:0}.datatable__column--active{background-color:#f0f0f0}.datatable__column--sortable{cursor:pointer}.datatable__column--custom{padding-right:.5em}.datatable__column-icon{position:absolute;top:8px;right:.5em}.datatable__column-text{display:inline-block;vertical-align:middle;margin-top:2px}", map: undefined, media: undefined });
 
   };
   /* scoped */
-  const __vue_scope_id__$1 = undefined;
+  var __vue_scope_id__$1 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1 = undefined;
+  var __vue_module_identifier__$1 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1 = false;
+  var __vue_is_functional_template__$1 = false;
   /* component normalizer */
   function __vue_normalize__$1(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
   ) {
-    const component = (typeof script === 'function' ? script.options : script) || {};
+    var component = (typeof script === 'function' ? script.options : script) || {};
 
     // For security concerns, we use only base name in production mode.
     component.__file = "DataTableHead.vue";
@@ -526,13 +532,13 @@ var __vue_staticRenderFns__$1 = [];
       component.staticRenderFns = template.staticRenderFns;
       component._compiled = true;
 
-      if (functional) component.functional = true;
+      if (functional) { component.functional = true; }
     }
 
     component._scopeId = scope;
 
     {
-      let hook;
+      var hook;
       if (style) {
         hook = function(context) {
           style.call(this, createInjector(context));
@@ -542,14 +548,14 @@ var __vue_staticRenderFns__$1 = [];
       if (hook !== undefined) {
         if (component.functional) {
           // register for functional component in vue file
-          const originalRender = component.render;
+          var originalRender = component.render;
           component.render = function renderWithStyleInjection(h, context) {
             hook.call(context);
             return originalRender(h, context)
           };
         } else {
           // inject component registration as beforeCreate hook
-          const existing = component.beforeCreate;
+          var existing = component.beforeCreate;
           component.beforeCreate = existing ? [].concat(existing, hook) : [hook];
         }
       }
@@ -559,21 +565,21 @@ var __vue_staticRenderFns__$1 = [];
   }
   /* style inject */
   function __vue_create_injector__$1() {
-    const head = document.head || document.getElementsByTagName('head')[0];
-    const styles = __vue_create_injector__$1.styles || (__vue_create_injector__$1.styles = {});
-    const isOldIE =
+    var head = document.head || document.getElementsByTagName('head')[0];
+    var styles = __vue_create_injector__$1.styles || (__vue_create_injector__$1.styles = {});
+    var isOldIE =
       typeof navigator !== 'undefined' &&
       /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
 
     return function addStyle(id, css) {
-      if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) return // SSR styles are present.
+      if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) { return } // SSR styles are present.
 
-      const group = isOldIE ? css.media || 'default' : id;
-      const style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
+      var group = isOldIE ? css.media || 'default' : id;
+      var style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
 
       if (!style.ids.includes(id)) {
-        let code = css.source;
-        let index = style.ids.length;
+        var code = css.source;
+        var index = style.ids.length;
 
         style.ids.push(id);
 
@@ -593,10 +599,10 @@ var __vue_staticRenderFns__$1 = [];
         }
 
         if (!style.element) {
-          const el = style.element = document.createElement('style');
+          var el = style.element = document.createElement('style');
           el.type = 'text/css';
 
-          if (css.media) el.setAttribute('media', css.media);
+          if (css.media) { el.setAttribute('media', css.media); }
           if (isOldIE) {
             el.setAttribute('data-group', group);
             el.setAttribute('data-next-index', '0');
@@ -616,11 +622,11 @@ var __vue_staticRenderFns__$1 = [];
             .filter(Boolean)
             .join('\n');
         } else {
-          const textNode = document.createTextNode(code);
-          const nodes = style.element.childNodes;
-          if (nodes[index]) style.element.removeChild(nodes[index]);
-          if (nodes.length) style.element.insertBefore(textNode, nodes[index]);
-          else style.element.appendChild(textNode);
+          var textNode = document.createTextNode(code);
+          var nodes = style.element.childNodes;
+          if (nodes[index]) { style.element.removeChild(nodes[index]); }
+          if (nodes.length) { style.element.insertBefore(textNode, nodes[index]); }
+          else { style.element.appendChild(textNode); }
         }
       }
     }
@@ -658,16 +664,16 @@ var script$2 = {
     }
   },
   computed: {
-    pages () {
+    pages: function pages () {
       return paginate(this.page, this.totalPages)
     },
-    totalPages () {
+    totalPages: function totalPages () {
       return Math.ceil(this.total / (this.perPage || 1))
     },
-    reachedFirst () {
+    reachedFirst: function reachedFirst () {
       return this.page === 1
     },
-    reachedLast () {
+    reachedLast: function reachedLast () {
       return this.page >= this.totalPages
     }
   },
@@ -676,13 +682,13 @@ var script$2 = {
     totalPages: 'isLast'
   },
   methods: {
-    isActive (page) {
+    isActive: function isActive (page) {
       return !page.disabled && this.page === page.value
     },
-    isLast () {
+    isLast: function isLast () {
       return this.page > this.totalPages && this.load(this.page - 1)
     },
-    load (page, disabled) {
+    load: function load$$1 (page, disabled) {
       if (disabled) {
         return
       }
@@ -701,7 +707,7 @@ var script$2 = {
 };
 
 /* script */
-            const __vue_script__$2 = script$2;
+            var __vue_script__$2 = script$2;
             
 /* template */
 var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"datatable__pagination"},[_c('ul',{staticClass:"datatable__plist"},[_c('li',{staticClass:"datatable__pitem"},[_c('a',{class:[
@@ -713,24 +719,24 @@ var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _
 var __vue_staticRenderFns__$2 = [];
 
   /* style */
-  const __vue_inject_styles__$2 = function (inject) {
-    if (!inject) return
+  var __vue_inject_styles__$2 = function (inject) {
+    if (!inject) { return }
     inject("data-v-45236529_0", { source: ".datatable__pagination{display:block}.datatable__plist{display:inline-block;margin:0;padding:0;margin-top:.5em;border-radius:4px}.datatable__pitem{display:inline}.datatable__plink{position:relative;float:left;padding:.3em .6em;margin-left:-1px;color:#337ab7;text-decoration:none;background-color:#fff;border:1px solid #dee2e6}.datatable__plink--active{z-index:3;color:#fff!important;cursor:default;background-color:#337ab7!important;border-color:#337ab7!important}.datatable__plink--disabled{color:#777!important;cursor:not-allowed;background-color:#f0f0f0!important}.datatable__plink:focus,.datatable__plink:hover{z-index:2;background-color:#eee}", map: undefined, media: undefined });
 
   };
   /* scoped */
-  const __vue_scope_id__$2 = undefined;
+  var __vue_scope_id__$2 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$2 = undefined;
+  var __vue_module_identifier__$2 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$2 = false;
+  var __vue_is_functional_template__$2 = false;
   /* component normalizer */
   function __vue_normalize__$2(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
   ) {
-    const component = (typeof script === 'function' ? script.options : script) || {};
+    var component = (typeof script === 'function' ? script.options : script) || {};
 
     // For security concerns, we use only base name in production mode.
     component.__file = "DataTablePagination.vue";
@@ -740,13 +746,13 @@ var __vue_staticRenderFns__$2 = [];
       component.staticRenderFns = template.staticRenderFns;
       component._compiled = true;
 
-      if (functional) component.functional = true;
+      if (functional) { component.functional = true; }
     }
 
     component._scopeId = scope;
 
     {
-      let hook;
+      var hook;
       if (style) {
         hook = function(context) {
           style.call(this, createInjector(context));
@@ -756,14 +762,14 @@ var __vue_staticRenderFns__$2 = [];
       if (hook !== undefined) {
         if (component.functional) {
           // register for functional component in vue file
-          const originalRender = component.render;
+          var originalRender = component.render;
           component.render = function renderWithStyleInjection(h, context) {
             hook.call(context);
             return originalRender(h, context)
           };
         } else {
           // inject component registration as beforeCreate hook
-          const existing = component.beforeCreate;
+          var existing = component.beforeCreate;
           component.beforeCreate = existing ? [].concat(existing, hook) : [hook];
         }
       }
@@ -773,21 +779,21 @@ var __vue_staticRenderFns__$2 = [];
   }
   /* style inject */
   function __vue_create_injector__$2() {
-    const head = document.head || document.getElementsByTagName('head')[0];
-    const styles = __vue_create_injector__$2.styles || (__vue_create_injector__$2.styles = {});
-    const isOldIE =
+    var head = document.head || document.getElementsByTagName('head')[0];
+    var styles = __vue_create_injector__$2.styles || (__vue_create_injector__$2.styles = {});
+    var isOldIE =
       typeof navigator !== 'undefined' &&
       /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
 
     return function addStyle(id, css) {
-      if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) return // SSR styles are present.
+      if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) { return } // SSR styles are present.
 
-      const group = isOldIE ? css.media || 'default' : id;
-      const style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
+      var group = isOldIE ? css.media || 'default' : id;
+      var style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
 
       if (!style.ids.includes(id)) {
-        let code = css.source;
-        let index = style.ids.length;
+        var code = css.source;
+        var index = style.ids.length;
 
         style.ids.push(id);
 
@@ -807,10 +813,10 @@ var __vue_staticRenderFns__$2 = [];
         }
 
         if (!style.element) {
-          const el = style.element = document.createElement('style');
+          var el = style.element = document.createElement('style');
           el.type = 'text/css';
 
-          if (css.media) el.setAttribute('media', css.media);
+          if (css.media) { el.setAttribute('media', css.media); }
           if (isOldIE) {
             el.setAttribute('data-group', group);
             el.setAttribute('data-next-index', '0');
@@ -830,11 +836,11 @@ var __vue_staticRenderFns__$2 = [];
             .filter(Boolean)
             .join('\n');
         } else {
-          const textNode = document.createTextNode(code);
-          const nodes = style.element.childNodes;
-          if (nodes[index]) style.element.removeChild(nodes[index]);
-          if (nodes.length) style.element.insertBefore(textNode, nodes[index]);
-          else style.element.appendChild(textNode);
+          var textNode = document.createTextNode(code);
+          var nodes = style.element.childNodes;
+          if (nodes[index]) { style.element.removeChild(nodes[index]); }
+          if (nodes.length) { style.element.insertBefore(textNode, nodes[index]); }
+          else { style.element.appendChild(textNode); }
         }
       }
     }
@@ -874,41 +880,41 @@ var script$3 = {
     }
   },
   methods: {
-    update (filter) {
+    update: function update (filter) {
       this.$emit('update:filter', filter);
     },
-    clear () {
+    clear: function clear () {
       this.$emit('update:filter', '');
     }
   }
 };
 
 /* script */
-            const __vue_script__$3 = script$3;
+            var __vue_script__$3 = script$3;
             
 /* template */
 var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"datatable__filter"},[_c('input',{staticClass:"datatable__input",attrs:{"type":"text","placeholder":"Filter table data"},domProps:{"value":_vm.filter},on:{"input":function($event){_vm.update($event.target.value);}}}),_vm._v(" "),(_vm.filter)?_c('div',{staticClass:"datatable__clear",on:{"click":function($event){$event.stopPropagation();return _vm.clear($event)}}},[_c('a',{staticClass:"datatable__x",attrs:{"href":"#"},on:{"click":function($event){$event.stopPropagation();return _vm.clear($event)}}},[_vm._v("×")])]):_vm._e()])};
 var __vue_staticRenderFns__$3 = [];
 
   /* style */
-  const __vue_inject_styles__$3 = function (inject) {
-    if (!inject) return
+  var __vue_inject_styles__$3 = function (inject) {
+    if (!inject) { return }
     inject("data-v-19c9c3a0_0", { source: ".datatable__filter{position:relative}.datatable__input{width:100%;padding:.3rem 1.5rem .3rem .75rem;font-size:1em;line-height:1.5;border:1px solid #dee2e6;border-radius:.25rem}.datatable__input:focus{outline:0;border-color:#999;box-shadow:0 0 0 .2rem rgba(100,100,100,.25)}.datatable__clear{position:absolute;top:0;right:0;display:inline-block;height:100%;border:1px solid transparent;cursor:pointer;vertical-align:middle}.datatable__clear:hover{font-weight:700}.datatable__clear:active{font-weight:700;text-shadow:0 0 2px #969696}.datatable__x{padding:.25em .75em;color:inherit!important;text-decoration:none;display:inline-block;vertical-align:middle}", map: undefined, media: undefined });
 
   };
   /* scoped */
-  const __vue_scope_id__$3 = undefined;
+  var __vue_scope_id__$3 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$3 = undefined;
+  var __vue_module_identifier__$3 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$3 = false;
+  var __vue_is_functional_template__$3 = false;
   /* component normalizer */
   function __vue_normalize__$3(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
   ) {
-    const component = (typeof script === 'function' ? script.options : script) || {};
+    var component = (typeof script === 'function' ? script.options : script) || {};
 
     // For security concerns, we use only base name in production mode.
     component.__file = "DataTableFilter.vue";
@@ -918,13 +924,13 @@ var __vue_staticRenderFns__$3 = [];
       component.staticRenderFns = template.staticRenderFns;
       component._compiled = true;
 
-      if (functional) component.functional = true;
+      if (functional) { component.functional = true; }
     }
 
     component._scopeId = scope;
 
     {
-      let hook;
+      var hook;
       if (style) {
         hook = function(context) {
           style.call(this, createInjector(context));
@@ -934,14 +940,14 @@ var __vue_staticRenderFns__$3 = [];
       if (hook !== undefined) {
         if (component.functional) {
           // register for functional component in vue file
-          const originalRender = component.render;
+          var originalRender = component.render;
           component.render = function renderWithStyleInjection(h, context) {
             hook.call(context);
             return originalRender(h, context)
           };
         } else {
           // inject component registration as beforeCreate hook
-          const existing = component.beforeCreate;
+          var existing = component.beforeCreate;
           component.beforeCreate = existing ? [].concat(existing, hook) : [hook];
         }
       }
@@ -951,21 +957,21 @@ var __vue_staticRenderFns__$3 = [];
   }
   /* style inject */
   function __vue_create_injector__$3() {
-    const head = document.head || document.getElementsByTagName('head')[0];
-    const styles = __vue_create_injector__$3.styles || (__vue_create_injector__$3.styles = {});
-    const isOldIE =
+    var head = document.head || document.getElementsByTagName('head')[0];
+    var styles = __vue_create_injector__$3.styles || (__vue_create_injector__$3.styles = {});
+    var isOldIE =
       typeof navigator !== 'undefined' &&
       /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
 
     return function addStyle(id, css) {
-      if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) return // SSR styles are present.
+      if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) { return } // SSR styles are present.
 
-      const group = isOldIE ? css.media || 'default' : id;
-      const style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
+      var group = isOldIE ? css.media || 'default' : id;
+      var style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
 
       if (!style.ids.includes(id)) {
-        let code = css.source;
-        let index = style.ids.length;
+        var code = css.source;
+        var index = style.ids.length;
 
         style.ids.push(id);
 
@@ -985,10 +991,10 @@ var __vue_staticRenderFns__$3 = [];
         }
 
         if (!style.element) {
-          const el = style.element = document.createElement('style');
+          var el = style.element = document.createElement('style');
           el.type = 'text/css';
 
-          if (css.media) el.setAttribute('media', css.media);
+          if (css.media) { el.setAttribute('media', css.media); }
           if (isOldIE) {
             el.setAttribute('data-group', group);
             el.setAttribute('data-next-index', '0');
@@ -1008,11 +1014,11 @@ var __vue_staticRenderFns__$3 = [];
             .filter(Boolean)
             .join('\n');
         } else {
-          const textNode = document.createTextNode(code);
-          const nodes = style.element.childNodes;
-          if (nodes[index]) style.element.removeChild(nodes[index]);
-          if (nodes.length) style.element.insertBefore(textNode, nodes[index]);
-          else style.element.appendChild(textNode);
+          var textNode = document.createTextNode(code);
+          var nodes = style.element.childNodes;
+          if (nodes[index]) { style.element.removeChild(nodes[index]); }
+          if (nodes.length) { style.element.insertBefore(textNode, nodes[index]); }
+          else { style.element.appendChild(textNode); }
         }
       }
     }
@@ -1036,7 +1042,7 @@ var __vue_staticRenderFns__$3 = [];
 
 var script$4 = {
   name: 'DataTable',
-  components: { DataTableBody, DataTableHead, DataTablePagination, DataTableFilter },
+  components: { DataTableBody: DataTableBody, DataTableHead: DataTableHead, DataTablePagination: DataTablePagination, DataTableFilter: DataTableFilter },
   props: {
     items: {
       type: [Array, Function],
@@ -1059,7 +1065,7 @@ var script$4 = {
       default: ''
     }
   },
-  data () {
+  data: function data () {
     return {
       actualItems: [],
       vnodes: [],
@@ -1073,63 +1079,76 @@ var script$4 = {
     }
   },
   computed: {
-    identifier () {
-      return `by:${this.sorting.by}|order:${this.sorting.order}|filter:${this.options.filter}|page:${this.page}|per_page:${this.perPage}`
+    identifier: function identifier () {
+      return ("by:" + (this.sorting.by) + "|order:" + (this.sorting.order) + "|filter:" + (this.options.filter) + "|page:" + (this.page) + "|per_page:" + (this.perPage))
     },
-    asynchronous () {
+    asynchronous: function asynchronous () {
       return this.items instanceof Function
     },
-    columns () {
-      return this.vnodes.map(vnode => {
-        let { componentOptions: { Ctor: { options: { props } }, propsData, children }, data: { scopedSlots, attrs, class: dynamicClass, staticClass } } = vnode;
-        let { field, label, sortable, filterable, render } = defaultProps(props, propsData);
+    columns: function columns () {
+      return this.vnodes.map(function (vnode) {
+        var vnode_componentOptions = vnode.componentOptions;
+        var props = vnode_componentOptions.Ctor.options.props;
+        var propsData = vnode_componentOptions.propsData;
+        var children = vnode_componentOptions.children;
+        var vnode_data = vnode.data;
+        var scopedSlots = vnode_data.scopedSlots;
+        var attrs = vnode_data.attrs;
+        var dynamicClass = vnode_data.class;
+        var staticClass = vnode_data.staticClass;
+        var ref = defaultProps(props, propsData);
+        var field = ref.field;
+        var label = ref.label;
+        var sortable = ref.sortable;
+        var filterable = ref.filterable;
+        var render = ref.render;
         return {
-          field,
-          label,
-          sortable,
-          filterable,
-          render,
-          scopedSlots,
-          children,
-          attrs,
-          dynamicClass,
-          staticClass
+          field: field,
+          label: label,
+          sortable: sortable,
+          filterable: filterable,
+          render: render,
+          scopedSlots: scopedSlots,
+          children: children,
+          attrs: attrs,
+          dynamicClass: dynamicClass,
+          staticClass: staticClass
         }
       })
     },
-    filterable () {
+    filterable: function filterable () {
       return this.columns
-        .filter(column => {
+        .filter(function (column) {
           return column.filterable
         })
-        .map(column => {
+        .map(function (column) {
           return column.field
         })
-        .filter(field => field)
+        .filter(function (field) { return field; })
     },
-    filtering () {
+    filtering: function filtering () {
       return {
         query: this.options.filter.toLowerCase(),
         fields: this.filterable
       }
     },
-    paging () {
+    paging: function paging () {
       return {
         page: this.page,
         perPage: this.perPage
       }
     },
-    sorting () {
+    sorting: function sorting () {
       return {
         by: this.options.sortBy,
         order: !this.options.sortDesc ? 'asc' : 'desc'
       }
     },
-    from () {
+    from: function from () {
       return (this.page - 1) * this.perPage + 1
     },
-    to () {
-      let x = this.page * this.perPage;
+    to: function to () {
+      var x = this.page * this.perPage;
       return this.total < x ? this.total : x
     }
   },
@@ -1138,51 +1157,53 @@ var script$4 = {
     identifier: 'loadItems',
     sortBy: {
       immediate: true,
-      handler (val) {
+      handler: function handler (val) {
         this.$set(this.options, 'sortBy', val);
       }
     },
     sortDesc: {
       immediate: true,
-      handler (val) {
+      handler: function handler (val) {
         this.$set(this.options, 'sortDesc', val);
       }
     },
     filter: {
       immediate: true,
-      handler (val) {
+      handler: function handler (val) {
         this.$set(this.options, 'filter', val);
       }
     },
-    'options.sortBy' (val) {
+    'options.sortBy': function options_sortBy (val) {
       this.$emit('update:sortBy', val);
     },
-    'options.sortDesc' (val) {
+    'options.sortDesc': function options_sortDesc (val) {
       this.$emit('update:sortDesc', val);
     },
-    'options.filter' (val) {
+    'options.filter': function options_filter (val) {
       this.$emit('update:filter', val);
     }
   },
-  created () {
+  created: function created () {
     this.loadSlots();
     this.loadItems();
   },
   methods: {
-    loaded (data) {
-      let items = JSON.parse(JSON.stringify(data.items));
-      this.actualItems = items.map(item => {
-        this.columns.filter(column => typeof column.render === 'function').forEach(column => {
-          let parts = column.field.split('.');
-          let originalField = parts.reduce((a, b, index) => {
+    loaded: function loaded (data) {
+      var this$1 = this;
+
+      var items = JSON.parse(JSON.stringify(data.items));
+      this.actualItems = items.map(function (item) {
+        this$1.columns.filter(function (column) { return typeof column.render === 'function'; }).forEach(function (column) {
+          var parts = column.field.split('.');
+          var originalField = parts.reduce(function (a, b, index) {
             if (index === parts.length - 1) {
-              return `${a}.$_${b}`
+              return (a + ".$_" + b)
             }
 
-            return `${a}.${b}`
+            return (a + "." + b)
           });
           if (parts.length === 1) {
-            originalField = `$_${originalField}`;
+            originalField = "$_" + originalField;
           }
 
           dotSet(item, originalField, dotGet(item, column.field));
@@ -1198,16 +1219,17 @@ var script$4 = {
         total: data.total
       });
     },
-    loadSlots () {
+    loadSlots: function loadSlots () {
       // $slots is not reactive
-      this.vnodes = !this.$slots.default ? [] : this.$slots.default.filter(vnode => vnode.componentOptions);
+      this.vnodes = !this.$slots.default ? [] : this.$slots.default.filter(function (vnode) { return vnode.componentOptions; });
     },
-    loadItems () {
+    loadItems: function loadItems () {
       this.load(this.items, this.filtering, this.sorting, this.paging);
     },
-    async load (items, filtering, sorting, paging) {
+    load: function load$1 (items, filtering, sorting, paging) {
       if (this.asynchronous) {
-        this.loaded(await items(filtering, sorting, paging));
+        var result = items(filtering, sorting, paging);
+        Promise.resolve().then(this.loaded);
         return
       }
 
@@ -1217,31 +1239,31 @@ var script$4 = {
 };
 
 /* script */
-            const __vue_script__$4 = script$4;
+            var __vue_script__$4 = script$4;
             
 /* template */
 var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"datatable"},[_c('div',{staticClass:"datatable__wrapper"},[_c('div',{staticClass:"datatable__heading"},[_c('data-table-filter',{staticClass:"datatable__unit",attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){_vm.$set(_vm.options, "filter", $event);}}}),_vm._v(" "),_c('div',{staticClass:"datatable__unit datatable__text"},[(_vm.total)?_c('span',[_vm._v("\n          Showing "),_c('span',{domProps:{"textContent":_vm._s(_vm.from === _vm.to && _vm.to === _vm.total ? 'the last entry' : _vm.from + ' to ' + _vm.to)}}),_vm._v(" of "+_vm._s(_vm.total)+" records\n        ")]):_c('span',[_vm._v("No records")])])],1),_vm._v(" "),_c('div',{staticClass:"datatable__screen"},[_c('table',{staticClass:"datatable__content",attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){_vm.$set(_vm.options, "sortBy", $event);},"update:sortDesc":function($event){_vm.$set(_vm.options, "sortDesc", $event);}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems}})],1)]),_vm._v(" "),_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total},on:{"update:page":function($event){_vm.page=$event;}}})],1)])};
 var __vue_staticRenderFns__$4 = [];
 
   /* style */
-  const __vue_inject_styles__$4 = function (inject) {
-    if (!inject) return
-    inject("data-v-74e634db_0", { source: "*,::after,::before{-webkit-box-sizing:border-box;box-sizing:border-box}.datatable{color:#495057;font:1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.datatable__screen{display:block;width:100%}.datatable__wrapper{position:relative;display:block;text-align:left;width:100%}.datatable__heading{margin-bottom:.5em;display:table;table-layout:fixed;width:100%}.datatable__unit{margin-bottom:.5em}@media (min-width:768px){.datatable__unit{width:50%;display:table-cell}.datatable__text{padding-left:1em}}.datatable__content{min-width:100%;border:solid 1px #dee2e6;table-layout:fixed}", map: undefined, media: undefined });
+  var __vue_inject_styles__$4 = function (inject) {
+    if (!inject) { return }
+    inject("data-v-bc00d772_0", { source: "*,::after,::before{-webkit-box-sizing:border-box;box-sizing:border-box}.datatable{color:#495057;font:1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.datatable__screen{display:block;width:100%}.datatable__wrapper{position:relative;display:block;text-align:left;width:100%}.datatable__heading{margin-bottom:.5em;display:table;table-layout:fixed;width:100%}.datatable__unit{margin-bottom:.5em}@media (min-width:768px){.datatable__unit{width:50%;display:table-cell}.datatable__text{padding-left:1em}}.datatable__content{min-width:100%;border:solid 1px #dee2e6;table-layout:fixed}", map: undefined, media: undefined });
 
   };
   /* scoped */
-  const __vue_scope_id__$4 = undefined;
+  var __vue_scope_id__$4 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$4 = undefined;
+  var __vue_module_identifier__$4 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$4 = false;
+  var __vue_is_functional_template__$4 = false;
   /* component normalizer */
   function __vue_normalize__$4(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
   ) {
-    const component = (typeof script === 'function' ? script.options : script) || {};
+    var component = (typeof script === 'function' ? script.options : script) || {};
 
     // For security concerns, we use only base name in production mode.
     component.__file = "DataTable.vue";
@@ -1251,13 +1273,13 @@ var __vue_staticRenderFns__$4 = [];
       component.staticRenderFns = template.staticRenderFns;
       component._compiled = true;
 
-      if (functional) component.functional = true;
+      if (functional) { component.functional = true; }
     }
 
     component._scopeId = scope;
 
     {
-      let hook;
+      var hook;
       if (style) {
         hook = function(context) {
           style.call(this, createInjector(context));
@@ -1267,14 +1289,14 @@ var __vue_staticRenderFns__$4 = [];
       if (hook !== undefined) {
         if (component.functional) {
           // register for functional component in vue file
-          const originalRender = component.render;
+          var originalRender = component.render;
           component.render = function renderWithStyleInjection(h, context) {
             hook.call(context);
             return originalRender(h, context)
           };
         } else {
           // inject component registration as beforeCreate hook
-          const existing = component.beforeCreate;
+          var existing = component.beforeCreate;
           component.beforeCreate = existing ? [].concat(existing, hook) : [hook];
         }
       }
@@ -1284,21 +1306,21 @@ var __vue_staticRenderFns__$4 = [];
   }
   /* style inject */
   function __vue_create_injector__$4() {
-    const head = document.head || document.getElementsByTagName('head')[0];
-    const styles = __vue_create_injector__$4.styles || (__vue_create_injector__$4.styles = {});
-    const isOldIE =
+    var head = document.head || document.getElementsByTagName('head')[0];
+    var styles = __vue_create_injector__$4.styles || (__vue_create_injector__$4.styles = {});
+    var isOldIE =
       typeof navigator !== 'undefined' &&
       /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
 
     return function addStyle(id, css) {
-      if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) return // SSR styles are present.
+      if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) { return } // SSR styles are present.
 
-      const group = isOldIE ? css.media || 'default' : id;
-      const style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
+      var group = isOldIE ? css.media || 'default' : id;
+      var style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
 
       if (!style.ids.includes(id)) {
-        let code = css.source;
-        let index = style.ids.length;
+        var code = css.source;
+        var index = style.ids.length;
 
         style.ids.push(id);
 
@@ -1318,10 +1340,10 @@ var __vue_staticRenderFns__$4 = [];
         }
 
         if (!style.element) {
-          const el = style.element = document.createElement('style');
+          var el = style.element = document.createElement('style');
           el.type = 'text/css';
 
-          if (css.media) el.setAttribute('media', css.media);
+          if (css.media) { el.setAttribute('media', css.media); }
           if (isOldIE) {
             el.setAttribute('data-group', group);
             el.setAttribute('data-next-index', '0');
@@ -1341,11 +1363,11 @@ var __vue_staticRenderFns__$4 = [];
             .filter(Boolean)
             .join('\n');
         } else {
-          const textNode = document.createTextNode(code);
-          const nodes = style.element.childNodes;
-          if (nodes[index]) style.element.removeChild(nodes[index]);
-          if (nodes.length) style.element.insertBefore(textNode, nodes[index]);
-          else style.element.appendChild(textNode);
+          var textNode = document.createTextNode(code);
+          var nodes = style.element.childNodes;
+          if (nodes[index]) { style.element.removeChild(nodes[index]); }
+          if (nodes.length) { style.element.insertBefore(textNode, nodes[index]); }
+          else { style.element.appendChild(textNode); }
         }
       }
     }

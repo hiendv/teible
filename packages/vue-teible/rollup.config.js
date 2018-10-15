@@ -4,7 +4,6 @@ import importer from 'node-sass-tilde-importer'
 import resolve from 'rollup-plugin-node-resolve'
 import cjs from 'rollup-plugin-commonjs'
 import vue from 'rollup-plugin-vue'
-import nodent from 'rollup-plugin-nodent'
 import buble from 'rollup-plugin-buble'
 import { uglify } from 'rollup-plugin-uglify'
 
@@ -28,7 +27,8 @@ const plugins = [
   cjs(),
   vue({
     style
-  })
+  }),
+  buble()
 ]
 
 export default [
@@ -57,11 +57,6 @@ export default [
     },
     plugins: [
       ...plugins,
-      nodent({
-        promises: true,
-        noRuntime: true
-      }),
-      buble(),
       uglify({
         mangle: { reserved: ['octicon'] },
         compress: { unused: true, dead_code: true, pure_funcs: ['octicon'] }
