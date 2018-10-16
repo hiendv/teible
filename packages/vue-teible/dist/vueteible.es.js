@@ -367,7 +367,72 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-function octicon(c,o,r,s,t){var l=function(t,e){e.label?t["aria-label"]=e.label:t["aria-hidden"]=!0,e.class?t.class="octicon octicon-"+c+" "+e.class:t.class="octicon octicon-"+c;var i=0===e.scale?0:parseFloat(e.scale)||1,n=i*parseInt(t.width),a=i*parseInt(t.height);return t.width=Number(n.toFixed(2)),t.height=Number(a.toFixed(2)),t},u=function(e){return Object.keys(e).map(function(t){return t+'="'+e[t]+'"'}).join(" ").trim()};return {name:c,data:{width:o,height:r,path:s,keywords:t},svg:function(t,e){void 0===e&&(e=document);var i,n,a,c=e.createElement("div");return c.innerHTML="<svg "+(i=t,n=Object.assign({},{scale:1,label:null,class:null},i),a=l({version:"1.1",width:o,height:r,viewBox:"0 0 "+o+" "+r},n),u(a))+">"+s+"</svg>",c.firstChild}}}var octicon_1=octicon;
+function octicon (name, width, height, path, keywords) {
+  var attributes = function (opts) {
+    var options = Object.assign({}, {
+      scale: 1,
+      label: null,
+      class: null
+    }, opts);
+
+    var attrs = elementAttributes({
+      version: '1.1',
+      width: width,
+      height: height,
+      viewBox: ("0 0 " + width + " " + height)
+    }, options);
+
+    return elementAttributesString(attrs)
+  };
+
+  var elementAttributes = function (attrs, options) {
+    if (options.label) {
+      attrs['aria-label'] = options.label;
+    } else {
+      attrs['aria-hidden'] = true;
+    }
+
+    if (options.class) {
+      attrs['class'] = "octicon octicon-" + name + " " + (options.class);
+    } else {
+      attrs['class'] = "octicon octicon-" + name;
+    }
+
+    var actualScale = options.scale === 0 ? 0 : parseFloat(options.scale) || 1;
+    var actualWidth = actualScale * parseInt(attrs['width']);
+    var actualHeight = actualScale * parseInt(attrs['height']);
+
+    attrs['width'] = Number(actualWidth.toFixed(2));
+    attrs['height'] = Number(actualHeight.toFixed(2));
+
+    return attrs
+  };
+
+  var elementAttributesString = function (attrs) {
+    return Object.keys(attrs).map(function (name) {
+      return (name + "=\"" + (attrs[name]) + "\"")
+    }).join(' ').trim()
+  };
+
+  return {
+    name: name,
+    data: {
+      width: width,
+      height: height,
+      path: path,
+      keywords: keywords
+    },
+    svg: function svg (options, doc) {
+      if ( doc === void 0 ) { doc = document; }
+
+      var wrapper = doc.createElement('div');
+      wrapper.innerHTML = "<svg " + (attributes(options)) + ">" + path + "</svg>";
+      return wrapper.firstChild
+    }
+  }
+}
+
+var octicon_1 = octicon;
 
 // This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
 var triangleDown = octicon_1('triangle-down', 12, 16, "<path fill-rule=\"evenodd\" d=\"M0 5l6 6 6-6H0z\"></path>", ["arrow","point","direction"]);
