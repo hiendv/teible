@@ -6,7 +6,7 @@
   "bugs": {
     "url": "https://github.com/hiendv/teible/issues"
   },
-  "devDependencies": {
+  "dependencies": {
     "octicons-vue": "^0.15.0"
   },
   "files": [
