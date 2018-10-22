@@ -373,114 +373,33 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-var isMergeableObject = function isMergeableObject(value) {
-	return isNonNullObject(value)
-		&& !isSpecial(value)
+var assign = function (t) {
+  var arguments$1 = arguments;
+
+  var sources = [], len = arguments.length - 1;
+  while ( len-- > 0 ) { sources[ len ] = arguments$1[ len + 1 ]; }
+
+  for (var s, i = 0, n = sources.length; i < n; i++) {
+    s = sources[i];
+    for (var p in s) { if (Object.prototype.hasOwnProperty.call(s, p)) { t[p] = s[p]; } }
+  }
+  return t
 };
-
-function isNonNullObject(value) {
-	return !!value && typeof value === 'object'
-}
-
-function isSpecial(value) {
-	var stringValue = Object.prototype.toString.call(value);
-
-	return stringValue === '[object RegExp]'
-		|| stringValue === '[object Date]'
-		|| isReactElement(value)
-}
-
-// see https://github.com/facebook/react/blob/b5ac963fb791d1298e7f396236383bc955f916c1/src/isomorphic/classic/element/ReactElement.js#L21-L25
-var canUseSymbol = typeof Symbol === 'function' && Symbol.for;
-var REACT_ELEMENT_TYPE = canUseSymbol ? Symbol.for('react.element') : 0xeac7;
-
-function isReactElement(value) {
-	return value.$$typeof === REACT_ELEMENT_TYPE
-}
-
-function emptyTarget(val) {
-	return Array.isArray(val) ? [] : {}
-}
-
-function cloneUnlessOtherwiseSpecified(value, options) {
-	return (options.clone !== false && options.isMergeableObject(value))
-		? deepmerge(emptyTarget(value), value, options)
-		: value
-}
-
-function defaultArrayMerge(target, source, options) {
-	return target.concat(source).map(function(element) {
-		return cloneUnlessOtherwiseSpecified(element, options)
-	})
-}
-
-function mergeObject(target, source, options) {
-	var destination = {};
-	if (options.isMergeableObject(target)) {
-		Object.keys(target).forEach(function(key) {
-			destination[key] = cloneUnlessOtherwiseSpecified(target[key], options);
-		});
-	}
-	Object.keys(source).forEach(function(key) {
-		if (!options.isMergeableObject(source[key]) || !target[key]) {
-			destination[key] = cloneUnlessOtherwiseSpecified(source[key], options);
-		} else {
-			destination[key] = deepmerge(target[key], source[key], options);
-		}
-	});
-	return destination
-}
-
-function deepmerge(target, source, options) {
-	options = options || {};
-	options.arrayMerge = options.arrayMerge || defaultArrayMerge;
-	options.isMergeableObject = options.isMergeableObject || isMergeableObject;
-
-	var sourceIsArray = Array.isArray(source);
-	var targetIsArray = Array.isArray(target);
-	var sourceAndTargetTypesMatch = sourceIsArray === targetIsArray;
-
-	if (!sourceAndTargetTypesMatch) {
-		return cloneUnlessOtherwiseSpecified(source, options)
-	} else if (sourceIsArray) {
-		return options.arrayMerge(target, source, options)
-	} else {
-		return mergeObject(target, source, options)
-	}
-}
-
-deepmerge.all = function deepmergeAll(array, options) {
-	if (!Array.isArray(array)) {
-		throw new Error('first argument should be an array')
-	}
-
-	return array.reduce(function(prev, next) {
-		return deepmerge(prev, next, options)
-	}, {})
-};
-
-var deepmerge_1 = deepmerge;
-
-function _interopDefault$1 (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var merge = _interopDefault$1(deepmerge_1);
 
 function octicon (name, width, height, path, keywords) {
   var attributes = function (opts) {
-    var options = merge({
+    var options = assign({
       scale: 1,
       label: null,
       class: null
     }, opts || {});
 
-    var attrs = elementAttributes({
+    return elementAttributes({
       version: '1.1',
       width: width,
       height: height,
       viewBox: ("0 0 " + width + " " + height)
-    }, options);
-
-    return elementAttributesString(attrs)
+    }, options)
   };
 
   var elementAttributes = function (attrs, options) {
@@ -520,11 +439,15 @@ function octicon (name, width, height, path, keywords) {
       path: path,
       keywords: keywords
     },
+    attrs: function attrs (options) {
+      return attributes(options)
+    },
     svg: function svg (options, doc) {
       if ( doc === void 0 ) { doc = document; }
 
       var wrapper = doc.createElement('div');
-      wrapper.innerHTML = "<svg " + (attributes(options)) + ">" + path + "</svg>";
+      var attrs = elementAttributesString(this.attrs(options));
+      wrapper.innerHTML = "<svg " + attrs + ">" + path + "</svg>";
       return wrapper.firstChild
     }
   }
