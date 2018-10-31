@@ -3,11 +3,6 @@
   "description": "Monorepo for teible",
   "version": "0.4.1",
   "author": "Hien Dao <hien.dv.neo@gmail.com>",
-  "babel": {
-    "presets": [
-      "env"
-    ]
-  },
   "bugs": {
     "url": "https://github.com/hiendv/teible/issues"
   },
