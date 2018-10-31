@@ -1,4 +1,7 @@
 import Octicon from 'octicons-vue/lib/Octicon';
+import triangleDown from 'octicons-modular/lib/icons/triangle-down';
+import triangleUp from 'octicons-modular/lib/icons/triangle-up';
+import threeBars from 'octicons-modular/lib/icons/three-bars';
 
 var chunk = function (arr, size) {
   if (!size) {
@@ -367,107 +370,6 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-var assign = function (t) {
-  var arguments$1 = arguments;
-
-  var sources = [], len = arguments.length - 1;
-  while ( len-- > 0 ) { sources[ len ] = arguments$1[ len + 1 ]; }
-
-  for (var s, i = 0, n = sources.length; i < n; i++) {
-    s = sources[i];
-    Object.keys(s).forEach(function (p) {
-      if (p === '__proto__') {
-        return
-      }
-
-      t[p] = s[p];
-    });
-  }
-
-  return t
-};
-
-function octicon (name, width, height, path, keywords) {
-  var attributes = function (opts) {
-    var options = assign({
-      scale: 1,
-      label: null,
-      class: null
-    }, opts || {});
-
-    return elementAttributes({
-      version: '1.1',
-      width: width,
-      height: height,
-      viewBox: ("0 0 " + width + " " + height)
-    }, options)
-  };
-
-  var elementAttributes = function (attrs, options) {
-    if (options.label) {
-      attrs['aria-label'] = options.label;
-    } else {
-      attrs['aria-hidden'] = true;
-    }
-
-    if (options.class) {
-      attrs['class'] = "octicon octicon-" + name + " " + (options.class);
-    } else {
-      attrs['class'] = "octicon octicon-" + name;
-    }
-
-    var actualScale = options.scale === 0 ? 0 : parseFloat(options.scale) || 1;
-    var actualWidth = actualScale * parseInt(attrs['width']);
-    var actualHeight = actualScale * parseInt(attrs['height']);
-
-    attrs['width'] = Number(actualWidth.toFixed(2));
-    attrs['height'] = Number(actualHeight.toFixed(2));
-
-    return attrs
-  };
-
-  var elementAttributesString = function (attrs) {
-    return Object.keys(attrs).map(function (name) {
-      return (name + "=\"" + (attrs[name]) + "\"")
-    }).join(' ').trim()
-  };
-
-  return {
-    name: name,
-    path: function path$1 () {
-      return path
-    },
-    keywords: function keywords$1 () {
-      return keywords
-    },
-    attrs: function attrs (options) {
-      return attributes(options)
-    },
-    html: function html (options) {
-      var attrs = elementAttributesString(this.attrs(options));
-      var path = this.path();
-      return ("<svg " + attrs + ">" + path + "</svg>")
-    }
-  }
-}
-
-var octicon_1 = octicon;
-
-// This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
-var triangleDown = octicon_1('triangle-down', 12, 16, "<path fill-rule=\"evenodd\" d=\"M0 5l6 6 6-6H0z\"></path>", ["arrow","point","direction"]);
-
-var triangleDown_1 = triangleDown;
-
-// This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
-var triangleUp = octicon_1('triangle-up', 12, 16, "<path fill-rule=\"evenodd\" d=\"M12 11L6 5l-6 6h12z\"></path>", ["arrow","point","direction"]);
-
-var triangleUp_1 = triangleUp;
-
-// This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
-var threeBars = octicon_1('three-bars', 12, 16, "<path fill-rule=\"evenodd\" d=\"M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z\"></path>", ["hamburger","menu","dropdown"]);
-
-var threeBars_1 = threeBars;
-
 var capitalize = function (str) {
   if (!str) {
     return
@@ -478,10 +380,10 @@ var capitalize = function (str) {
 
 var icon = function (column, active, sortDesc) {
   if (active) {
-    return sortDesc ? triangleDown_1 : triangleUp_1
+    return sortDesc ? triangleDown : triangleUp
   }
 
-  return threeBars_1
+  return threeBars
 };
 
 var DataTableHeadContent = {

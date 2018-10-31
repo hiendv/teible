@@ -44,7 +44,7 @@ export default [
     }],
     plugins,
     external: id => {
-      return id.match(/^octicons-vue/)
+      return id.match(/^octicons-vue/) || id.match(/^octicons-modular/)
     }
   },
   {
