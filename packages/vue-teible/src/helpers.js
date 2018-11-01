@@ -106,6 +106,12 @@ export const dotSet = (obj, path, val) => {
   }, obj)
 }
 
+const uniqArr = arr => {
+  return arr.filter(function(item, pos) {
+    return arr.indexOf(item) === pos
+  })
+}
+
 export const paginate = (currentPage, total) => {
   let showing = 3
   let eachSide = 2
@@ -130,7 +136,7 @@ export const paginate = (currentPage, total) => {
     }
   }
 
-  return paginationValueOrThreeDots([...new Set(pages)].sort((a, b) => a - b))
+  return paginationValueOrThreeDots(uniqArr(pages).sort((a, b) => a - b))
 }
 
 const paginationValueOrThreeDots = pages => {
