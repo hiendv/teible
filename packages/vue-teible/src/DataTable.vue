@@ -163,7 +163,7 @@ export default {
   },
   methods: {
     loaded (data) {
-      let items = [...data.items]
+      let items = JSON.parse(JSON.stringify(data.items))
       this.actualItems = items.map(item => {
         this.columns.filter(column => typeof column.render === 'function').forEach(column => {
           let parts = column.field.split('.')
