@@ -1,7 +1,10 @@
 language: node_js
 node_js:
-  - 8
+  - lts/boron
+  - 7
+  - lts/carbon
   - 9
+  - lts/dubnium
   - node
 install:
   - npm install -g npm codecov
