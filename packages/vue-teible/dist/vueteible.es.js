@@ -13,17 +13,38 @@ var chunk = function (arr, size) {
   return result
 };
 
+var sortStrings = function (a, b, order) {
+  if (order === 'desc') {
+    return b.localeCompare(a)
+  }
+
+  return a.localeCompare(b)
+};
+
+var sortNumbers = function (a, b, order) {
+  if (order === 'desc') {
+    return parseFloat(b) - parseFloat(a)
+  }
+
+  return parseFloat(a) - parseFloat(b)
+};
+
 var orderBy = function (arr, field, order) {
-  var copy = [].concat( arr );
-  copy.sort(function (a, b) {
-    if (order === 'desc') {
-      return dotGet(a, field) < dotGet(b, field)
-    }
+  if (!arr || !arr.length) {
+    return []
+  }
 
-    return dotGet(a, field) > dotGet(b, field)
-  });
+  var sample = dotGet(arr[0], field);
 
-  return copy
+  if (typeof sample === 'string') {
+    return arr.sort(function (a, b) { return sortStrings(dotGet(a, field), dotGet(b, field), order); })
+  }
+
+  if (typeof sample === 'number') {
+    return arr.sort(function (a, b) { return sortNumbers(dotGet(a, field), dotGet(b, field), order); })
+  }
+
+  return arr
 };
 
 var filter = function (items, filtering) {
