@@ -56,16 +56,9 @@ export default {
       return this.page >= this.totalPages
     }
   },
-  watch: {
-    page: 'isLast',
-    totalPages: 'isLast'
-  },
   methods: {
     isActive (page) {
       return !page.disabled && this.page === page.value
-    },
-    isLast () {
-      return this.page > this.totalPages && this.load(this.page - 1)
     },
     load (page, disabled) {
       if (disabled) {
