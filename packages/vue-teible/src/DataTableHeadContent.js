@@ -35,7 +35,7 @@ export default {
       required: true
     }
   },
-  render (h, { props, data }) {
+  render (h, { props }) {
     if (props.column.scopedSlots && props.column.scopedSlots.header) {
       return h('span', {
         on: {
