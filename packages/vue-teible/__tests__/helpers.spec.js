@@ -1,4 +1,4 @@
-import { load, defaultProps, dotSet, paginate } from '../src/helpers'
+import { load, defaultProps, dotSet, paginate, orderBy } from '../src/helpers'
 
 describe('load', () => {
   const data = [{
@@ -199,5 +199,21 @@ describe('paginate', () => {
       { value: 9, disabled: false },
       { value: 10, disabled: false }
     ])
+  })
+})
+
+describe('orderBy', () => {
+  it('works with an empty array', () => {
+    expect(orderBy([], '')).toEqual([])
+  })
+
+  it('works with strings', () => {
+    expect(orderBy([{ value: 'Alpha' }, { value: 'beta' }], 'value')).toEqual([{ value: 'Alpha' }, { value: 'beta' }])
+    expect(orderBy([{ value: 'Alpha' }, { value: 'beta' }], 'value', 'desc')).toEqual([{ value: 'beta' }, { value: 'Alpha' }])
+  })
+
+  it('works with numbers', () => {
+    expect(orderBy([{ value: 1 }, { value: 2.5 }], 'value')).toEqual([{ value: 1 }, { value: 2.5 }])
+    expect(orderBy([{ value: 1.5 }, { value: 2 }], 'value', 'desc')).toEqual([{ value: 2 }, { value: 1.5 }])
   })
 })

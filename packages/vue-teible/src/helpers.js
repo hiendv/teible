@@ -8,17 +8,38 @@ const chunk = (arr, size) => {
   return result
 }
 
-const orderBy = (arr, field, order) => {
-  let copy = [...arr]
-  copy.sort((a, b) => {
-    if (order === 'desc') {
-      return dotGet(a, field) < dotGet(b, field)
-    }
+const sortStrings = (a, b, order) => {
+  if (order === 'desc') {
+    return b.localeCompare(a)
+  }
 
-    return dotGet(a, field) > dotGet(b, field)
-  })
+  return a.localeCompare(b)
+}
 
-  return copy
+const sortNumbers = (a, b, order) => {
+  if (order === 'desc') {
+    return parseFloat(b) - parseFloat(a)
+  }
+
+  return parseFloat(a) - parseFloat(b)
+}
+
+export const orderBy = (arr, field, order) => {
+  if (!arr || !arr.length) {
+    return []
+  }
+
+  let sample = dotGet(arr[0], field)
+
+  if (typeof sample === 'string') {
+    return arr.sort((a, b) => sortStrings(dotGet(a, field), dotGet(b, field), order))
+  }
+
+  if (typeof sample === 'number') {
+    return arr.sort((a, b) => sortNumbers(dotGet(a, field), dotGet(b, field), order))
+  }
+
+  return arr
 }
 
 const filter = (items, filtering) => {
