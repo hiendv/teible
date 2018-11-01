@@ -7,6 +7,8 @@
     "url": "https://github.com/hiendv/teible/issues"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "haikunator": "^2.0.0",
     "vue-teible": "^0.8.7"
   },
   "files": [
@@ -21,12 +23,18 @@
     "vue-teible"
   ],
   "license": "MIT",
-  "main": "dist/index.html",
+  "main": "src/main.js",
   "peerDependencies": {
     "vue": "^2.5.16"
   },
   "private": true,
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible-example",
+  "vuePlugins": {
+    "resolveFrom": "../../"
+  },
+  "eslintIgnore": [
+    "../vue-teible/**/*"
+  ],
   "scripts": {
     "build": "vue-cli-service build",
     "serve": "vue-cli-service serve"

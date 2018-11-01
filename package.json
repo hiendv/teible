@@ -6,8 +6,14 @@
   "bugs": {
     "url": "https://github.com/hiendv/teible/issues"
   },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
   "devDependencies": {
     "@hiendv/bem-sass": "^0.1.0",
+    "@vue/cli-plugin-babel": "^3.1.0",
     "@vue/cli-plugin-eslint": "^3.1.0",
     "@vue/cli-service": "^3.1.0",
     "@vue/eslint-config-standard": "^4.0.0",
@@ -48,8 +54,7 @@
       "jest-serializer-vue"
     ],
     "collectCoverageFrom": [
-      "packages/*/src/**/*.{js,vue}",
-      "!packages/*example/**/*"
+      "packages/vue-teible/src/**/*.{js,vue}"
     ],
     "roots": [
       "packages/"
@@ -59,19 +64,15 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "lerna run --sort build",
+    "build": "lerna run --parallel --scope *-teible build",
+    "build:example": "lerna run --parallel --scope *-teible-example build",
+    "serve": "lerna run --parallel --scope *-teible-example serve",
     "clean": "rimraf packages/**/dist",
-    "coverage": "npm test -- --coverage",
-    "gh": "git subtree push --prefix packages/vue-teible-example/dist origin gh-pages",
-    "lint": "vue-cli-service lint packages/**/src/*.{js,vue}",
-    "prebuild": "npm run clean",
-    "pretest": "npm run lint",
-    "prewatch": "npm run lint",
-    "serve": "lerna run --parallel serve",
+    "lint:vue": "eslint 'packages/vue-teible/src/**/*.{js,vue}' --fix",
+    "prebuild": "npm run lint:vue && npm run clean",
     "setup": "lerna clean --yes && lerna bootstrap --hoist",
-    "start": "concurrently \"npm:watch\" \"npm:serve\"",
     "test": "jest",
-    "test-ci": "npm run build && npm run coverage -- --ci --maxWorkers=4 --no-cache",
-    "watch": "lerna run --parallel watch"
+    "watch": "concurrently \"npm run build -- -- -- -w\"",
+    "test-ci": "npm run build && npm run test -- --coverage --ci --maxWorkers=4 --no-cache"
   }
 }

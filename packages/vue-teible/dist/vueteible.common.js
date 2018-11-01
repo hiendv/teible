@@ -117,6 +117,12 @@ var dotSet = function (obj, path, val) {
   }, obj)
 };
 
+var uniqArr = function (arr) {
+  return arr.filter(function(item, pos) {
+    return arr.indexOf(item) === pos
+  })
+};
+
 var paginate = function (currentPage, total) {
   var showing = 3;
   var eachSide = 2;
@@ -141,7 +147,7 @@ var paginate = function (currentPage, total) {
     }
   }
 
-  return paginationValueOrThreeDots([].concat( new Set(pages) ).sort(function (a, b) { return a - b; }))
+  return paginationValueOrThreeDots(uniqArr(pages).sort(function (a, b) { return a - b; }))
 };
 
 var paginationValueOrThreeDots = function (pages) {
@@ -410,7 +416,6 @@ var DataTableHeadContent = {
   },
   render: function render (h, ref) {
     var props = ref.props;
-    var data = ref.data;
 
     if (props.column.scopedSlots && props.column.scopedSlots.header) {
       return h('span', {
@@ -678,7 +683,7 @@ var script$2 = {
       return !page.disabled && this.page === page.value
     },
     isLast: function isLast () {
-      return this.page > this.totalPages && this.load(this.page - 1)
+      // return this.page > this.totalPages && this.load(this.page - 1)
     },
     load: function load$$1 (page, disabled) {
       if (disabled) {
@@ -713,7 +718,7 @@ var __vue_staticRenderFns__$2 = [];
   /* style */
   var __vue_inject_styles__$2 = function (inject) {
     if (!inject) { return }
-    inject("data-v-45236529_0", { source: ".datatable__pagination{display:block}.datatable__plist{display:inline-block;margin:0;padding:0;margin-top:.5em;border-radius:4px}.datatable__pitem{display:inline}.datatable__plink{position:relative;float:left;padding:.3em .6em;margin-left:-1px;color:#337ab7;text-decoration:none;background-color:#fff;border:1px solid #dee2e6}.datatable__plink--active{z-index:3;color:#fff!important;cursor:default;background-color:#337ab7!important;border-color:#337ab7!important}.datatable__plink--disabled{color:#777!important;cursor:not-allowed;background-color:#f0f0f0!important}.datatable__plink:focus,.datatable__plink:hover{z-index:2;background-color:#eee}", map: undefined, media: undefined });
+    inject("data-v-9fcee702_0", { source: ".datatable__pagination{display:block}.datatable__plist{display:inline-block;margin:0;padding:0;margin-top:.5em;border-radius:4px}.datatable__pitem{display:inline}.datatable__plink{position:relative;float:left;padding:.3em .6em;margin-left:-1px;color:#337ab7;text-decoration:none;background-color:#fff;border:1px solid #dee2e6}.datatable__plink--active{z-index:3;color:#fff!important;cursor:default;background-color:#337ab7!important;border-color:#337ab7!important}.datatable__plink--disabled{color:#777!important;cursor:not-allowed;background-color:#f0f0f0!important}.datatable__plink:focus,.datatable__plink:hover{z-index:2;background-color:#eee}", map: undefined, media: undefined });
 
   };
   /* scoped */
@@ -1183,7 +1188,7 @@ var script$4 = {
     loaded: function loaded (data) {
       var this$1 = this;
 
-      var items = [].concat( data.items );
+      var items = JSON.parse(JSON.stringify(data.items));
       this.actualItems = items.map(function (item) {
         this$1.columns.filter(function (column) { return typeof column.render === 'function'; }).forEach(function (column) {
           var parts = column.field.split('.');
@@ -1239,7 +1244,7 @@ var __vue_staticRenderFns__$4 = [];
   /* style */
   var __vue_inject_styles__$4 = function (inject) {
     if (!inject) { return }
-    inject("data-v-289dfa3a_0", { source: "*,::after,::before{-webkit-box-sizing:border-box;box-sizing:border-box}.datatable{color:#495057;font:1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.datatable__screen{display:block;width:100%}.datatable__wrapper{position:relative;display:block;text-align:left;width:100%}.datatable__heading{margin-bottom:.5em;display:table;table-layout:fixed;width:100%}.datatable__unit{margin-bottom:.5em}@media (min-width:768px){.datatable__unit{width:50%;display:table-cell}.datatable__text{padding-left:1em}}.datatable__content{min-width:100%;border:solid 1px #dee2e6;table-layout:fixed}", map: undefined, media: undefined });
+    inject("data-v-391ebb0c_0", { source: "*,::after,::before{-webkit-box-sizing:border-box;box-sizing:border-box}.datatable{color:#495057;font:1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.datatable__screen{display:block;width:100%}.datatable__wrapper{position:relative;display:block;text-align:left;width:100%}.datatable__heading{margin-bottom:.5em;display:table;table-layout:fixed;width:100%}.datatable__unit{margin-bottom:.5em}@media (min-width:768px){.datatable__unit{width:50%;display:table-cell}.datatable__text{padding-left:1em}}.datatable__content{min-width:100%;border:solid 1px #dee2e6;table-layout:fixed}", map: undefined, media: undefined });
 
   };
   /* scoped */

@@ -28,7 +28,6 @@
   },
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible",
   "scripts": {
-    "build": "rollup -c --environment BUILD:production",
-    "watch": "concurrently \"rollup -w -c\""
+    "build": "rollup -c --environment BUILD:production"
   }
 }
