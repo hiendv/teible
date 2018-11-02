@@ -84,22 +84,20 @@ describe('DataTablePagination', () => {
         perPage: 1
       }
     })
-    expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.html()).toMatchSnapshot() // < [1] 2 3 ... 9 10 >
 
     wrapper.findAll('.datatable__plink').at(2).trigger('click')
-    expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] })
+    expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < 1 [2] 3 ... 9 10 >
     wrapper.setProps({
       'page': 2
     })
 
-    /*
-      < 1 [2] 3 ... 9 10 >
-    */
+    // Clicking on the [...]
     wrapper.findAll('.datatable__plink').at(4).trigger('click')
-    expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] })
+    expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < 1 [2] 3 ... 9 10 >
 
     wrapper.findAll('.datatable__plink').at(6).trigger('click')
-    expect(wrapper.emitted()).toEqual({ 'update:page': [[2], [10]] })
+    expect(wrapper.emitted()).toEqual({ 'update:page': [[2], [10]] }) // < 1 2 3 ... 9 [10] >
     wrapper.setProps({
       'page': 10
     })
