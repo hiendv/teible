@@ -139,16 +139,25 @@ var dotSet = function (obj, path, val) {
 };
 
 var uniqArr = function (arr) {
-  return arr.filter(function(item, pos) {
+  return arr.filter(function (item, pos) {
     return arr.indexOf(item) === pos
   })
+};
+
+var range = function (n) {
+  var a = [];
+  for (var i = 0; i < n; i++) {
+    a[i] = i + 1;
+  }
+
+  return a
 };
 
 var paginate = function (currentPage, total) {
   var showing = 3;
   var eachSide = 2;
   if (total <= showing + eachSide) {
-    return paginationValueOrThreeDots(Array.from({ length: total }, function (e, i) { return i + 1; }))
+    return paginationValueOrThreeDots(range(total))
   }
 
   var pages = [];

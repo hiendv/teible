@@ -128,16 +128,25 @@ export const dotSet = (obj, path, val) => {
 }
 
 const uniqArr = arr => {
-  return arr.filter(function(item, pos) {
+  return arr.filter(function (item, pos) {
     return arr.indexOf(item) === pos
   })
+}
+
+const range = n => {
+  let a = []
+  for (var i = 0; i < n; i++) {
+    a[i] = i + 1
+  }
+
+  return a
 }
 
 export const paginate = (currentPage, total) => {
   let showing = 3
   let eachSide = 2
   if (total <= showing + eachSide) {
-    return paginationValueOrThreeDots(Array.from({ length: total }, (e, i) => i + 1))
+    return paginationValueOrThreeDots(range(total))
   }
 
   let pages = []
