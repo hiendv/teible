@@ -6,20 +6,17 @@
   "bugs": {
     "url": "https://github.com/hiendv/teible/issues"
   },
-  "babel": {
-    "presets": [
-      "env"
-    ]
-  },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
     "@hiendv/bem-sass": "^0.1.0",
     "@vue/cli-plugin-babel": "^3.1.0",
     "@vue/cli-plugin-eslint": "^3.1.3",
     "@vue/cli-service": "^3.1.1",
     "@vue/eslint-config-standard": "^4.0.0",
     "@vue/test-utils": "^1.0.0-beta.25",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
-    "babel-preset-env": "^1.7.0",
     "concurrently": "^4.0.1",
     "jest": "^23.6.0",
     "jest-serializer-vue": "^2.0.2",
@@ -47,8 +44,8 @@
       "vue"
     ],
     "transform": {
-      "^.+\\.js$": "babel-jest",
-      "^.+\\.(vue)$": "vue-jest"
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.vue$": "vue-jest"
     },
     "snapshotSerializers": [
       "jest-serializer-vue"
