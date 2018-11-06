@@ -64,13 +64,13 @@
   "scripts": {
     "build": "lerna run --parallel --scope *-teible build",
     "build:example": "lerna run --parallel --scope *-teible-example build",
-    "serve": "lerna run --parallel --scope *-teible-example serve",
     "clean": "rimraf packages/**/dist",
     "lint:vue": "eslint 'packages/vue-teible/src/**/*.{js,vue}' --fix",
     "prebuild": "npm run lint:vue && npm run clean",
+    "serve": "lerna run --parallel --scope *-teible-example serve",
     "setup": "lerna clean --yes && lerna bootstrap --hoist",
     "test": "jest",
-    "watch": "concurrently \"npm run build -- -- -- -w\"",
-    "test-ci": "npm run build && npm run test -- --coverage --ci --maxWorkers=4 --no-cache"
+    "test-ci": "npm run build && npm run test -- --coverage --ci --maxWorkers=4 --no-cache",
+    "watch": "concurrently \"npm run build -- -- -- -w\""
   }
 }

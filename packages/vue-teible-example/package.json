@@ -11,6 +11,9 @@
     "haikunator": "^2.0.0",
     "vue-teible": "^0.8.9"
   },
+  "eslintIgnore": [
+    "../vue-teible/**/*"
+  ],
   "files": [
     "dist",
     "README.md"
@@ -29,14 +32,11 @@
   },
   "private": true,
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible-example",
-  "vuePlugins": {
-    "resolveFrom": "../../"
-  },
-  "eslintIgnore": [
-    "../vue-teible/**/*"
-  ],
   "scripts": {
     "build": "vue-cli-service build",
     "serve": "vue-cli-service serve"
+  },
+  "vuePlugins": {
+    "resolveFrom": "../../"
   }
 }
