@@ -3,10 +3,12 @@
 Teible is yet another table component. I know we have [enough of them](https://github.com/vuejs/awesome-vue#table) but it is something else.
 
 ### Features
-- Straightforward column definition using template
-- Flexible cell render using slot
-- Support asynchronous data
-- Feature-bloat free
+- Column definition using template
+- Filtering, ordering and pagination
+- Synchronous and asynchronous data (Promise)
+- Customizable headers & cells using slot and formatter
+- Customizable styling & attributes
+- Dot-notation support for column fields
 
 Teible is heavily inspired by [vue-table-component](https://github.com/spatie/vue-table-component). The way columns are defined totally got me at the first sight. But it's deprecated in favor of the "traditional" way and has a lot of fancy features you may never need: data type, date format, caching, etc. So if you're looking for a simple but flexible component, take a look at the below example, you may fall in love with teible.
 
@@ -14,47 +16,30 @@ Teible is heavily inspired by [vue-table-component](https://github.com/spatie/vu
 See [https://hiendv.github.io/teible/](https://hiendv.github.io/teible/) or [the fiddle](https://jsfiddle.net/o4m7k1z6/6/)
 
 ## Installation & Usage
-### Direct <script/> include
-Load the script [vueteible.iife.js](https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.iife.js), `vueteible` will be registered as a global variable.
-
-```js
-let {
-  DataTable,
-  DataColumn
-} = vueteible
-
-DataTable
-// {name: "DataTable", components: {…}, props: {…}, data: ƒ, computed: {…}, …}
-
-DataColumn
-// {name: "DataColumn", props: {…}, _Ctor: {…}}
-```
-
-#### CDN
+### CDN
 [![](https://data.jsdelivr.com/v1/package/npm/vue-teible/badge)](https://www.jsdelivr.com/package/npm/vue-teible)
 ```html
-<script src="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.iife.js"></script>
-```
-
-[unpkg.com](https://unpkg.com/vue-teible)
-```html
-<script src="https://unpkg.com/vue-teible@latest/dist/vueteible.iife.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.iife.js" crossorigin="anonymous"></script>
 ```
 **Note: We recommend linking to a specific version number that you can update manually**
+```js
+Vue.component('data-table', vueteible.DataTable)
+Vue.component('data-column', vueteible.DataColumn)
+```
 
 ### NPM
 ```bash
 npm install --save vue-teible
-# or with yarn
-yarn add vue-teible
+# yarn add vue-teible
 ```
 
 ```vue
 <script>
-// import components
+import Vue from 'vue'
+import 'vue-teible/dist/vueteible.css'
 import { DataTable, DataColumn } from 'vue-teible'
 
-// initiate a Vue instance
 new Vue({
   el: '#app',
   components: { DataTable, DataColumn },
@@ -72,9 +57,7 @@ new Vue({
   },
   methods: {
     destroy (x) {
-      this.items = this.items.filter(item => {
-        return item.id !== x.id
-      })
+      this.items = this.items.filter(item => item.id !== x.id)
     }
   }
 })
@@ -100,54 +83,44 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
 #### Props
 ```js
 {
-  items: { // Data. Parameters for the function: filtering, sorting, paging
+  items: { // Array of objects or Function (filtering, sorting, paging)
     type: [Array, Function],
     required: true
   },
-  perPage: { // Number of records for each page
+  perPage: {
     type: Number,
     default: 10
   },
-  sortBy: { // Sorting field
+  sortBy: {
     type: String,
     default: ''
   },
-  sortDesc: { // Descending sort
+  sortDesc: {
     type: Boolean,
     default: false
   },
-  filter: { // Search query
+  filter: {
     type: String,
     default: ''
-  },
-  render: { // Formating function. Original fields will be prefixed with $_
-    type: Function
   }
 }
 ```
 #### Methods
-```js
-{
-  loadSlots () {
-    // Manually reload columns
-  },
-  loadItems () {
-    // Manually reload data
-  }
-}
-```
++ loadSlots (): reload columns manually
++ loadItems (): reload data manually
+
 #### Events
-+ loaded (items): loaded items
++ loaded (items): fired when items are loaded
 
 ### DataColumn
 #### Props
 ```js
 {
-  label: { // Column label
+  label: {
     type: String,
     required: true
   },
-  field: { // Column field from data
+  field: {
     type: String,
     default: ''
   },
@@ -158,6 +131,9 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
   filterable: {
     type: Boolean,
     default: true
+  },
+  render: { // Value formatter. Once set, the original column value will be reserved at $_[field]
+    type: Function
   }
 }
 ```
