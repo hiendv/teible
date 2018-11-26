@@ -204,7 +204,12 @@ export default {
         return
       }
 
-      this.loaded(load(items, filtering, sorting, paging))
+      if (!items) {
+        this.loaded({ items: [], total: 0 })
+        return
+      }
+
+      this.loaded(load(JSON.parse(JSON.stringify(items)), filtering, sorting, paging))
     }
   }
 }
