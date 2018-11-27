@@ -3,12 +3,12 @@
 exports[`DataTableBody renders correctly 1`] = `
 <tbody>
   <tr class="datatable__row">
-    <datatablecell-stub item="[object Object]" column="[object Object]" class="datatable__cell,[object Object]"></datatablecell-stub>
-    <datatablecell-stub item="[object Object]" column="[object Object]" class="datatable__cell,[object Object]"></datatablecell-stub>
+    <data-table-cell-stub item="[object Object]" column="[object Object]" class="datatable__cell,[object Object]"></data-table-cell-stub>
+    <data-table-cell-stub item="[object Object]" column="[object Object]" class="datatable__cell,[object Object]"></data-table-cell-stub>
   </tr>
   <tr class="datatable__row datatable__row--odd datatable__row--last">
-    <datatablecell-stub item="[object Object]" column="[object Object]" class="datatable__cell,[object Object]"></datatablecell-stub>
-    <datatablecell-stub item="[object Object]" column="[object Object]" class="datatable__cell,[object Object]"></datatablecell-stub>
+    <data-table-cell-stub item="[object Object]" column="[object Object]" class="datatable__cell,[object Object]"></data-table-cell-stub>
+    <data-table-cell-stub item="[object Object]" column="[object Object]" class="datatable__cell,[object Object]"></data-table-cell-stub>
   </tr>
 </tbody>
 `;
