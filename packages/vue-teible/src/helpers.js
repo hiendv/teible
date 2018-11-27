@@ -10,7 +10,23 @@ const chunk = (arr, size) => {
 
 const sortStrings = (a, b, order) => {
   if (order === 'desc') {
+    if (!b) {
+      return -1
+    }
+
+    if (!a) {
+      return 1
+    }
+
     return b.localeCompare(a)
+  }
+
+  if (!a) {
+    return -1
+  }
+
+  if (!b) {
+    return 1
   }
 
   return a.localeCompare(b)

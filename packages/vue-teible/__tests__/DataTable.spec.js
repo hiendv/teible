@@ -101,6 +101,22 @@ describe('DataTable', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
+  it('works with invalid columns', () => {
+    let wrapper = fakeMount(DataTable, {
+      props: { items: [
+        { key: 'a' }, { key: 'b' }, { key: '' }, { key: null }, {}, { key: 'c' }
+      ], sortBy: 'key', sortDesc: true }
+    }, h => [ h(DataColumn, { props: { field: 'key', label: 'Key' } }) ])
+
+    expect(wrapper.isVueInstance()).toBeTruthy()
+    wrapper.find('th').trigger('click')
+    expect(wrapper.emitted()['update:sortDesc']).toEqual([[false]])
+    expect(wrapper.emitted()['loaded']).toEqual([
+      [{ items: [{ key: 'c' }, { key: 'b' }, { key: 'a' }, { key: '' }, { key: null }, {}], total: 6 }],
+      [{ items: [{ key: '' }, { key: null }, {}, { key: 'a' }, { key: 'b' }, { key: 'c' }], total: 6 }]
+    ])
+  })
+
   it('emits loaded', () => {
     let items = generateItems()
     let wrapper = fakeMount(DataTable, {
