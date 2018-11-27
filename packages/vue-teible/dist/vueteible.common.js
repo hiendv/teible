@@ -17,54 +17,67 @@ var chunk = function (arr, size) {
   return result
 };
 
-var sortStrings = function (a, b, order) {
-  if (order === 'desc') {
-    if (!b) {
-      return -1
-    }
-
-    if (!a) {
-      return 1
-    }
-
-    return b.localeCompare(a)
-  }
-
-  if (!a) {
-    return -1
-  }
-
-  if (!b) {
-    return 1
-  }
-
-  return a.localeCompare(b)
-};
-
-var sortNumbers = function (a, b, order) {
-  if (order === 'desc') {
-    return parseFloat(b) - parseFloat(a)
-  }
-
-  return parseFloat(a) - parseFloat(b)
-};
-
 var orderBy = function (arr, field, order) {
   if (!arr || !arr.length) {
     return []
   }
 
-  var sample = dotGet(arr[0], field);
+  var GREATER = order === 'desc' ? -1 : 1;
+  var SMALLER = -GREATER;
 
-  if (typeof sample === 'string') {
-    return arr.sort(function (a, b) { return sortStrings(dotGet(a, field), dotGet(b, field), order); })
-  }
+  return arr.sort(function (a, b) {
+    var first = dotGet(a, field);
+    var second = dotGet(b, field);
 
-  if (typeof sample === 'number') {
-    return arr.sort(function (a, b) { return sortNumbers(dotGet(a, field), dotGet(b, field), order); })
-  }
+    if (!first && !second) {
+      return 0
+    }
 
-  return arr
+    if (!first && first !== 0) {
+      return SMALLER
+    }
+
+    if (!second && second !== 0) {
+      return GREATER
+    }
+
+    if (typeof first === 'number' && typeof second === 'number') {
+      if (first === second) {
+        return 0
+      }
+
+      if (first > second) {
+        return GREATER
+      }
+
+      return SMALLER
+    }
+
+    if (typeof first === 'string' && typeof second === 'string') {
+      var cmp = first.localeCompare(second);
+      if (cmp === 0) {
+        return 0
+      }
+
+      if (cmp > 0) {
+        return GREATER
+      }
+
+      return SMALLER
+    }
+
+    // other or mixed types are blindly compare with `>` & `<`
+    // therefore, it's not reliable
+    if (first > second) {
+      return GREATER
+    }
+
+    if (first < second) {
+      return SMALLER
+    }
+
+    return 0
+  })
 };
 
 var filter = function (items, filtering) {

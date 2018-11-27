@@ -208,12 +208,34 @@ describe('orderBy', () => {
   })
 
   it('works with strings', () => {
-    expect(orderBy([{ value: 'Alpha' }, { value: 'beta' }], 'value')).toEqual([{ value: 'Alpha' }, { value: 'beta' }])
-    expect(orderBy([{ value: 'Alpha' }, { value: 'beta' }], 'value', 'desc')).toEqual([{ value: 'beta' }, { value: 'Alpha' }])
+    const sample = [{ value: 'gAmMa' }, { value: 'Alpha' }, { value: 'beta' }, { value: 'beta' }]
+    expect(orderBy(sample, 'value')).toEqual([{ value: 'Alpha' }, { value: 'beta' }, { value: 'beta' }, { value: 'gAmMa' }])
+    expect(orderBy(sample, 'value', 'desc')).toEqual([{ value: 'gAmMa' }, { value: 'beta' }, { value: 'beta' }, { value: 'Alpha' }])
   })
 
   it('works with numbers', () => {
-    expect(orderBy([{ value: 1 }, { value: 2.5 }], 'value')).toEqual([{ value: 1 }, { value: 2.5 }])
-    expect(orderBy([{ value: 1.5 }, { value: 2 }], 'value', 'desc')).toEqual([{ value: 2 }, { value: 1.5 }])
+    const sample = [{ value: 1 }, { value: 3 }, { value: 1 }, { value: 2.5 }]
+    expect(orderBy(sample, 'value')).toEqual([{ value: 1 }, { value: 1 }, { value: 2.5 }, { value: 3 }])
+    expect(orderBy(sample, 'value', 'desc')).toEqual([{ value: 3 }, { value: 2.5 }, { value: 1 }, { value: 1 }])
+  })
+
+  it('works with other dates', () => {
+    const november = new Date('11/12/2013')
+    const october = new Date('10/13/2013')
+    const sample = [{ value: november }, { value: october }]
+    expect(orderBy(sample, 'value')).toEqual([{ value: october }, { value: november }])
+    expect(orderBy(sample, 'value', 'desc')).toEqual([{ value: november }, { value: october }])
+  })
+
+  it('works with empty null & undefined', () => {
+    const sample = [{ value: 'a' }, { value: '' }, { value: null }, { value: undefined }, { value: 'b' }, {}]
+    expect(orderBy(sample, 'value')).toEqual([{ value: '' }, { value: null }, { value: undefined }, {}, { value: 'a' }, { value: 'b' }])
+    expect(orderBy(sample, 'value', 'desc')).toEqual([{ value: 'b' }, { value: 'a' }, { value: '' }, { value: null }, { value: undefined }, {}])
+  })
+
+  it('works with mixed types', () => {
+    const sample = [{ value: 0 }, { value: '0' }, { value: 1.1 }, { value: '1' }]
+    expect(orderBy(sample, 'value')).toEqual([{ value: 0 }, { value: '0' }, { value: '1' }, { value: 1.1 }])
+    expect(orderBy(sample, 'value', 'desc')).toEqual([{ value: 1.1 }, { value: '1' }, { value: 0 }, { value: '0' }])
   })
 })
