@@ -7,7 +7,7 @@
     "url": "https://github.com/hiendv/teible/issues"
   },
   "dependencies": {
-    "octicons-vue": "^0.17.3"
+    "octicons-vue": "^0.17.5"
   },
   "files": [
     "dist",
@@ -24,7 +24,7 @@
   "main": "dist/vueteible.common.js",
   "module": "dist/vueteible.es.js",
   "peerDependencies": {
-    "vue": "^2.5.17"
+    "vue": "^2.5.18"
   },
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible",
   "scripts": {
