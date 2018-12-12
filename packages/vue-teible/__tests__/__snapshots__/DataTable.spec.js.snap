@@ -8,7 +8,7 @@ exports[`DataTable keeps original items 1`] = `
         <!---->
       </div>
       <div class="datatable__unit datatable__text"><span>
-            Showing <span>the last entry</span> of 1 records
+          Showing <span>the last entry</span> of 1 records
         </span></div>
     </div>
     <div class="datatable__screen">
@@ -46,7 +46,7 @@ exports[`DataTable works with async data 1`] = `
         <!---->
       </div>
       <div class="datatable__unit datatable__text"><span>
-            Showing <span>1 to 3</span> of 3 records
+          Showing <span>1 to 3</span> of 3 records
         </span></div>
     </div>
     <div class="datatable__screen">
@@ -157,7 +157,7 @@ exports[`DataTable works with sync data 1`] = `
         <!---->
       </div>
       <div class="datatable__unit datatable__text"><span>
-            Showing <span>1 to 2</span> of 3 records
+          Showing <span>1 to 2</span> of 3 records
         </span></div>
     </div>
     <div class="datatable__screen">
@@ -204,7 +204,7 @@ exports[`DataTable works with sync data using function 1`] = `
         <!---->
       </div>
       <div class="datatable__unit datatable__text"><span>
-            Showing <span>1 to 3</span> of 3 records
+          Showing <span>1 to 3</span> of 3 records
         </span></div>
     </div>
     <div class="datatable__screen">

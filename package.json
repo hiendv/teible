@@ -69,7 +69,7 @@
     "prebuild": "npm run lint:vue && npm run clean",
     "serve": "lerna run --parallel --scope *-teible-example serve",
     "setup": "lerna clean --yes && lerna bootstrap --hoist",
-    "test": "jest",
+    "test": "jest --no-cache",
     "test-ci": "npm run build && npm run test -- --coverage --ci --maxWorkers=4 --no-cache",
     "watch": "concurrently \"npm run build -- -- -- -w\""
   }
