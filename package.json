@@ -64,7 +64,7 @@
   "scripts": {
     "build": "lerna run --parallel --scope *-teible build",
     "build:example": "lerna run --parallel --scope *-teible-example build",
-    "clean": "rimraf packages/**/dist",
+    "clean": "rimraf packages/**/dist/*",
     "lint:vue": "eslint 'packages/vue-teible/src/**/*.{js,vue}' --fix",
     "prebuild": "npm run lint:vue && npm run clean",
     "serve": "lerna run --parallel --scope *-teible-example serve",
