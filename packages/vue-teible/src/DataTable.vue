@@ -262,7 +262,7 @@ export default {
   }
 
   @include e('content') {
-    min-width: 100%;
+    width: 100%;
     border: solid 1px $border-color;
     table-layout: fixed;
   }

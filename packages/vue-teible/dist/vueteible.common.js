@@ -287,13 +287,13 @@ var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=
         'datatable__row--odd': index % 2 === 1,
         'datatable__row--last': index === _vm.items.length - 1
       }
-  ]},_vm._l((_vm.columns),function(column,columnIndex){return _c('data-table-cell',{key:columnIndex,class:[
+  ]},_vm._l((_vm.columns),function(column,columnIndex){return _c('data-table-cell',_vm._b({key:columnIndex,class:[
         'datatable__cell',
         {
           'datatable__cell--last-column': columnIndex === _vm.columns.length - 1,
           'datatable__cell--last-row': index === _vm.items.length - 1
         }
-    ],attrs:{"item":d,"column":column}})}),1)}),0)};
+    ],attrs:{"item":d,"column":column}},'data-table-cell',column.attrs,false))}),1)}),0)};
 var __vue_staticRenderFns__ = [];
 
   /* style */

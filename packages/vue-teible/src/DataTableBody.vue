@@ -9,7 +9,8 @@
         }
     ]">
       <data-table-cell
-        v-for="(column, columnIndex) in columns" :item="d" :column="column"
+        v-for="(column, columnIndex) in columns" v-bind="column.attrs" :item="d"
+        :column="column"
         :key="columnIndex" :class="[
           'datatable__cell',
           {
