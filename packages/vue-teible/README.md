@@ -132,7 +132,7 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
     type: Boolean,
     default: true
   },
-  render: { // Value formatter. Once set, the original column value will be reserved at $_[field]
+  render: { // Function (value, item). Format the column with the original value reserved at $_[field]
     type: Function
   }
 }

@@ -868,7 +868,7 @@ var script$4 = {
           }
 
           dotSet(item, originalField, dotGet(item, column.field));
-          dotSet(item, column.field, column.render(dotGet(item, column.field)));
+          dotSet(item, column.field, column.render(dotGet(item, column.field), item));
         });
 
         return item
