@@ -115,7 +115,7 @@ export default {
   },
   methods: {
     formatName (name, item) {
-      if (item.id % 2 == 0) {
+      if (item.id % 2 === 0) {
         return `Even ${name}`
       }
 
