@@ -114,8 +114,12 @@ export default {
     }
   },
   methods: {
-    formatName (name) {
-      return `Yo ${name}`
+    formatName (name, item) {
+      if (item.id % 2 == 0) {
+        return `Even ${name}`
+      }
+
+      return `Odd ${name}`
     },
     exclude (arr1, arr2) {
       return arr1.filter(item => {
