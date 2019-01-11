@@ -55,6 +55,7 @@ export default {
     border-bottom: 1px solid $border-color;
     vertical-align: middle;
     text-align: left;
+    word-break: break-word;
 
     @include m('last-column') {
       border-right: 0;
