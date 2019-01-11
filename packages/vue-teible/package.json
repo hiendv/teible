@@ -7,7 +7,7 @@
     "url": "https://github.com/hiendv/teible/issues"
   },
   "dependencies": {
-    "octicons-vue": "^0.17.9"
+    "octicons-vue": "^0.17.10"
   },
   "files": [
     "dist",
