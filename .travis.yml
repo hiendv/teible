@@ -1,7 +1,5 @@
 language: node_js
 node_js:
-  - lts/boron
-  - 7
   - lts/carbon
   - 9
   - lts/dubnium
