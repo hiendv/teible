@@ -28,7 +28,7 @@
   "license": "MIT",
   "main": "src/main.js",
   "peerDependencies": {
-    "vue": "^2.5.22"
+    "vue": "^2.6.5"
   },
   "private": true,
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible-example",
