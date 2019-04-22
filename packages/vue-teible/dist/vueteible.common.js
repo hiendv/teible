@@ -5,7 +5,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var Octicon = _interopDefault(require('octicons-vue/lib/Octicon'));
-var octiconsModular = require('octicons-modular');
+var triangleDown = _interopDefault(require('octicons-modular/lib/icons/triangle-down'));
+var triangleUp = _interopDefault(require('octicons-modular/lib/icons/triangle-up'));
+var threeBars = _interopDefault(require('octicons-modular/lib/icons/three-bars'));
 
 var chunk = function (arr, size) {
   if (!size) {
@@ -416,10 +418,10 @@ var capitalize = function (str) {
 
 var icon = function (column, active, sortDesc) {
   if (active) {
-    return sortDesc ? octiconsModular.triangleDown : octiconsModular.triangleUp
+    return sortDesc ? triangleDown : triangleUp
   }
 
-  return octiconsModular.threeBars
+  return threeBars
 };
 
 var DataTableHeadContent = {
