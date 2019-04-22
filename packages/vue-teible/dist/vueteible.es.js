@@ -578,7 +578,7 @@ var script$2 = {
     isActive: function isActive (page) {
       return !page.disabled && this.page === page.value
     },
-    load: function load$$1 (page, disabled) {
+    load: function load (page, disabled) {
       if (disabled) {
         return
       }
@@ -953,4 +953,4 @@ var DataColumn = {
 };
 
 export default DataTable;
-export { DataTable, DataColumn };
+export { DataColumn, DataTable };
