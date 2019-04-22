@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "haikunator": "^2.0.0",
+    "haikunator": "^2.1.1",
     "vue-teible": "^0.9.15"
   },
   "eslintIgnore": [
@@ -28,7 +28,7 @@
   "license": "MIT",
   "main": "src/main.js",
   "peerDependencies": {
-    "vue": "^2.6.5"
+    "vue": "^2.6.10"
   },
   "private": true,
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible-example",
