@@ -9,7 +9,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "haikunator": "^2.1.1",
-    "vue-teible": "^0.9.16"
+    "vue-teible": "^0.9.16",
+    "snyk": "^1.161.1"
   },
   "eslintIgnore": [
     "../vue-teible/**/*"
@@ -34,9 +35,12 @@
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible-example",
   "scripts": {
     "build": "vue-cli-service build",
-    "serve": "vue-cli-service serve"
+    "serve": "vue-cli-service serve",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "vuePlugins": {
     "resolveFrom": "../../"
-  }
+  },
+  "snyk": true
 }
