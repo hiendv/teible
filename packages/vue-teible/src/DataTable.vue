@@ -145,6 +145,7 @@ export default {
       immediate: true,
       handler (val) {
         this.$set(this.options, 'filter', val)
+        this.page = 1
       }
     },
     'options.sortBy' (val) {

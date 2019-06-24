@@ -827,6 +827,7 @@ var script$4 = {
       immediate: true,
       handler: function handler (val) {
         this.$set(this.options, 'filter', val);
+        this.page = 1;
       }
     },
     'options.sortBy': function options_sortBy (val) {
