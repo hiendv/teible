@@ -672,7 +672,7 @@ var script$3 = {
 /* script */
 var __vue_script__$3 = script$3;
 /* template */
-var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"datatable__filter"},[_c('input',{staticClass:"datatable__input",attrs:{"type":"text","placeholder":"Filter table data"},domProps:{"value":_vm.filter},on:{"input":function($event){return _vm.update($event.target.value)}}}),_vm._v(" "),(_vm.filter)?_c('div',{staticClass:"datatable__clear",on:{"click":function($event){$event.stopPropagation();return _vm.clear($event)}}},[_c('a',{staticClass:"datatable__x",attrs:{"href":"#"},on:{"click":function($event){$event.stopPropagation();return _vm.clear($event)}}},[_vm._v("×")])]):_vm._e()])};
+var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"datatable__filter"},[_c('input',{staticClass:"datatable__input",attrs:{"type":"text","placeholder":"Filter table data"},domProps:{"value":_vm.filter},on:{"input":function($event){return _vm.update($event.target.value)}}}),_vm._v(" "),(_vm.filter)?_c('div',{staticClass:"datatable__clear",on:{"click":function($event){$event.stopPropagation();return _vm.clear($event)}}},[_c('a',{staticClass:"datatable__x",attrs:{"href":"#"},on:{"click":function($event){$event.stopPropagation();$event.preventDefault();return _vm.clear($event)}}},[_vm._v("×")])]):_vm._e()])};
 var __vue_staticRenderFns__$3 = [];
 
   /* style */
