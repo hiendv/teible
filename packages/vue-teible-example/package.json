@@ -1,7 +1,7 @@
 {
   "name": "vue-teible-example",
   "description": "Example for vue-teible",
-  "version": "0.9.20",
+  "version": "0.9.21",
   "author": "Hien Dao <hien.dv.neo@gmail.com>",
   "bugs": {
     "url": "https://github.com/hiendv/teible/issues"
@@ -9,7 +9,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "haikunator": "^2.1.1",
-    "vue-teible": "^0.9.20"
+    "vue-teible": "^0.9.21"
   },
   "eslintIgnore": [
     "../vue-teible/**/*"
