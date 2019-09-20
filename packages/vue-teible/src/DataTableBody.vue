@@ -7,17 +7,18 @@
           'datatable__row--odd': index % 2 === 1,
           'datatable__row--last': index === items.length - 1
         }
-    ]">
+      ]"
+    >
       <data-table-cell
-        v-for="(column, columnIndex) in columns" v-bind="column.attrs" :item="d"
-        :column="column"
-        :key="columnIndex" :class="[
+        v-for="(column, columnIndex) in columns" :key="columnIndex" v-bind="column.attrs"
+        :item="d" :column="column" :class="[
           'datatable__cell',
           {
             'datatable__cell--last-column': columnIndex === columns.length - 1,
             'datatable__cell--last-row': index === items.length - 1
           }
-      ]" />
+        ]"
+      />
     </tr>
   </tbody>
 </template>

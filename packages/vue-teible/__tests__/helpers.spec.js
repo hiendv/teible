@@ -130,7 +130,7 @@ describe('defaultProps', () => {
         default: 'default string'
       }
     }, {
-    })).toEqual({key: 'default string'})
+    })).toEqual({ key: 'default string' })
 
     expect(defaultProps({
       key: {
@@ -138,7 +138,7 @@ describe('defaultProps', () => {
         default: () => ({})
       }
     }, {
-    })).toEqual({key: {}})
+    })).toEqual({ key: {} })
   })
 })
 

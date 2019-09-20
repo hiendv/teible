@@ -9,15 +9,17 @@
               'datatable__plink--disabled': reachedFirst
             }
           ]" href="#" aria-label="Previous"
-          @click.prevent="load(page-1)">
+          @click.prevent="load(page-1)"
+        >
           <span aria-hidden="true">&laquo;</span>
         </a>
-      </li><li v-for="(page, index) in pages" :key="index" class="datatable__pitem">
-        <a :class="['datatable__plink', { 'datatable__plink--active': isActive(page), 'datatable__plink--disabled': page.disabled }]" href="#" @click.prevent="load(page.value, page.disabled)">{{ page.value }}</a>
+      </li><li v-for="(p, index) in pages" :key="index" class="datatable__pitem">
+        <a :class="['datatable__plink', { 'datatable__plink--active': isActive(p), 'datatable__plink--disabled': p.disabled }]" href="#" @click.prevent="load(p.value, p.disabled)">{{ p.value }}</a>
       </li><li class="datatable__pitem">
         <a
           :class="['datatable__plink datatable__pnext', { 'datatable__plink--disabled': reachedLast }]" href="#" aria-label="Next"
-          @click.prevent="load(page+1)">
+          @click.prevent="load(page+1)"
+        >
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>

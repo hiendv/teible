@@ -1,32 +1,51 @@
 <template>
   <div>
-    <slot/>
+    <slot />
     <div class="demo__info">
-      <p class="demo__line">Items per page: <span class="demo__value"><input
-        v-model="perPage" class="demo__control" type="range"
-        min="1" max="10" step="1"> {{ perPage }}</span></p>
-      <p class="demo__line">Filter: <span class="demo__value"><input v-model="filter" class="demo__control" type="text"></span></p>
-      <p class="demo__line">Sort By: <span class="demo__value">{{ sortBy }}</span></p>
-      <p class="demo__line">Descending: <span class="demo__value">{{ sortDesc }}</span></p>
-      <p class="demo__line">Selected: <span class="demo__value">{{ checked }}</span></p>
+      <p class="demo__line">
+        Items per page: <span class="demo__value"><input
+          v-model="perPage" class="demo__control" type="range"
+          min="1" max="10" step="1"
+        > {{ perPage }}</span>
+      </p>
+      <p class="demo__line">
+        Filter: <span class="demo__value"><input v-model="filter" class="demo__control" type="text"></span>
+      </p>
+      <p class="demo__line">
+        Sort By: <span class="demo__value">{{ sortBy }}</span>
+      </p>
+      <p class="demo__line">
+        Descending: <span class="demo__value">{{ sortDesc }}</span>
+      </p>
+      <p class="demo__line">
+        Selected: <span class="demo__value">{{ checked }}</span>
+      </p>
     </div>
     <hr>
     <data-table
       :items="items" :per-page="perPageNumber" :sort-desc.sync="sortDesc"
-      :sort-by.sync="sortBy" :filter.sync="filter" @loaded="loaded">
+      :sort-by.sync="sortBy" :filter.sync="filter" @loaded="loaded"
+    >
       <data-column field="id" label="ID" width="15%" />
       <data-column
         :render="formatName" field="name" label="Name"
-        width="40%"/>
+        width="40%"
+      />
       <data-column :sortable="false" label="Action">
         <template slot-scope="props">
-          <button @click.prevent="action(props, 1)">Yo</button>
-          <button @click.prevent="destroy(props.item)">Delete</button>
+          <button @click.prevent="action(props, 1)">
+            Yo
+          </button>
+          <button @click.prevent="destroy(props.item)">
+            Delete
+          </button>
         </template>
       </data-column>
-      <data-column :sortable="false" label="Text">Hello</data-column>
+      <data-column :sortable="false" label="Text">
+        Hello
+      </data-column>
       <data-column :sortable="false" label="Select">
-        <template slot-scope="props" slot="header">
+        <template slot="header">
           <input v-model="checkedAll" type="checkbox">
         </template>
         <template slot-scope="props">
