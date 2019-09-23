@@ -134,7 +134,13 @@ export default {
     }
   },
   watch: {
-    items: 'loadItems',
+    items (val, oldVal) {
+      if (val === oldVal) {
+        return
+      }
+
+      this.loadItems()
+    },
     identifier: 'loadItems',
     sortBy: {
       immediate: true,
@@ -171,7 +177,8 @@ export default {
   },
   methods: {
     transform (data) {
-      return data.map(item => {
+      return data.map($item => {
+        let item = Object.assign({}, $item)
         this.columns.filter(column => typeof column.render === 'function').forEach(column => {
           let parts = column.field.split('.')
           let originalField = parts.reduce((a, b, index) => {
