@@ -362,20 +362,55 @@ var normalizeComponent_1 = normalizeComponent;
 /* script */
 var __vue_script__ = script;
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('tbody',_vm._l((_vm.items),function(d,index){return _c('tr',{key:index,class:[
-      'datatable__row',
-      {
-        'datatable__row--odd': index % 2 === 1,
-        'datatable__row--last': index === _vm.items.length - 1
-      }
-    ]},_vm._l((_vm.columns),function(column,columnIndex){return _c('data-table-cell',_vm._b({key:columnIndex,class:[
-        'datatable__cell',
+var __vue_render__ = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "tbody",
+    _vm._l(_vm.items, function(d, index) {
+      return _c(
+        "tr",
         {
-          'datatable__cell--last-column': columnIndex === _vm.columns.length - 1,
-          'datatable__cell--last-row': index === _vm.items.length - 1
-        }
-      ],attrs:{"item":d,"column":column}},'data-table-cell',column.attrs,false))}),1)}),0)};
+          key: index,
+          class: [
+            "datatable__row",
+            {
+              "datatable__row--odd": index % 2 === 1,
+              "datatable__row--last": index === _vm.items.length - 1
+            }
+          ]
+        },
+        _vm._l(_vm.columns, function(column, columnIndex) {
+          return _c(
+            "data-table-cell",
+            _vm._b(
+              {
+                key: columnIndex,
+                class: [
+                  "datatable__cell",
+                  {
+                    "datatable__cell--last-column":
+                      columnIndex === _vm.columns.length - 1,
+                    "datatable__cell--last-row": index === _vm.items.length - 1
+                  }
+                ],
+                attrs: { item: d, column: column }
+              },
+              "data-table-cell",
+              column.attrs,
+              false
+            )
+          )
+        }),
+        1
+      )
+    }),
+    0
+  )
+};
 var __vue_staticRenderFns__ = [];
+__vue_render__._withStripped = true;
 
   /* style */
   var __vue_inject_styles__ = undefined;
@@ -512,13 +547,64 @@ var script$1 = {
 /* script */
 var __vue_script__$1 = script$1;
 /* template */
-var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',{staticClass:"datatable__head"},[(_vm.columns.length)?_c('tr',_vm._l((_vm.columns),function(column,index){return _c('th',_vm._b({key:column.field + column.label,class:['datatable__column', {
-        'datatable__column--custom': column.scopedSlots && column.scopedSlots.header,
-        'datatable__column--sortable': column.sortable,
-        'datatable__column--active': _vm.isActive(column),
-        'datatable__column--last': index === _vm.columns.length - 1
-      }, column.staticClass, column.dynamicClass],attrs:{"scope":"col"},on:{"click":function($event){$event.preventDefault();return _vm.updateSort(column.field, column.sortable)}}},'th',column.attrs,false),[_c('data-table-head-content',{attrs:{"column":column,"active":_vm.isActive(column),"sort-desc":_vm.sortDesc}})],1)}),0):_vm._e()])};
+var __vue_render__$1 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("thead", { staticClass: "datatable__head" }, [
+    _vm.columns.length
+      ? _c(
+          "tr",
+          _vm._l(_vm.columns, function(column, index) {
+            return _c(
+              "th",
+              _vm._b(
+                {
+                  key: column.field + column.label,
+                  class: [
+                    "datatable__column",
+                    {
+                      "datatable__column--custom":
+                        column.scopedSlots && column.scopedSlots.header,
+                      "datatable__column--sortable": column.sortable,
+                      "datatable__column--active": _vm.isActive(column),
+                      "datatable__column--last":
+                        index === _vm.columns.length - 1
+                    },
+                    column.staticClass,
+                    column.dynamicClass
+                  ],
+                  attrs: { scope: "col" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault();
+                      return _vm.updateSort(column.field, column.sortable)
+                    }
+                  }
+                },
+                "th",
+                column.attrs,
+                false
+              ),
+              [
+                _c("data-table-head-content", {
+                  attrs: {
+                    column: column,
+                    active: _vm.isActive(column),
+                    "sort-desc": _vm.sortDesc
+                  }
+                })
+              ],
+              1
+            )
+          }),
+          0
+        )
+      : _vm._e()
+  ])
+};
 var __vue_staticRenderFns__$1 = [];
+__vue_render__$1._withStripped = true;
 
   /* style */
   var __vue_inject_styles__$1 = undefined;
@@ -601,13 +687,86 @@ var script$2 = {
 /* script */
 var __vue_script__$2 = script$2;
 /* template */
-var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"datatable__pagination"},[_c('ul',{staticClass:"datatable__plist"},[_c('li',{staticClass:"datatable__pitem"},[_c('a',{class:[
-          'datatable__plink datatable__pprev',
-          {
-            'datatable__plink--disabled': _vm.reachedFirst
-          }
-        ],attrs:{"href":"#","aria-label":"Previous"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page-1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")])])]),_vm._l((_vm.pages),function(p,index){return _c('li',{key:index,staticClass:"datatable__pitem"},[_c('a',{class:['datatable__plink', { 'datatable__plink--active': _vm.isActive(p), 'datatable__plink--disabled': p.disabled }],attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.load(p.value, p.disabled)}}},[_vm._v(_vm._s(p.value))])])}),_c('li',{staticClass:"datatable__pitem"},[_c('a',{class:['datatable__plink datatable__pnext', { 'datatable__plink--disabled': _vm.reachedLast }],attrs:{"href":"#","aria-label":"Next"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page+1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")])])])],2)])};
+var __vue_render__$2 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("nav", { staticClass: "datatable__pagination" }, [
+    _c(
+      "ul",
+      { staticClass: "datatable__plist" },
+      [
+        _c("li", { staticClass: "datatable__pitem" }, [
+          _c(
+            "a",
+            {
+              class: [
+                "datatable__plink datatable__pprev",
+                {
+                  "datatable__plink--disabled": _vm.reachedFirst
+                }
+              ],
+              attrs: { href: "#", "aria-label": "Previous" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault();
+                  return _vm.load(_vm.page - 1)
+                }
+              }
+            },
+            [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("«")])]
+          )
+        ]),
+        _vm._l(_vm.pages, function(p, index) {
+          return _c("li", { key: index, staticClass: "datatable__pitem" }, [
+            _c(
+              "a",
+              {
+                class: [
+                  "datatable__plink",
+                  {
+                    "datatable__plink--active": _vm.isActive(p),
+                    "datatable__plink--disabled": p.disabled
+                  }
+                ],
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault();
+                    return _vm.load(p.value, p.disabled)
+                  }
+                }
+              },
+              [_vm._v(_vm._s(p.value))]
+            )
+          ])
+        }),
+        _c("li", { staticClass: "datatable__pitem" }, [
+          _c(
+            "a",
+            {
+              class: [
+                "datatable__plink datatable__pnext",
+                { "datatable__plink--disabled": _vm.reachedLast }
+              ],
+              attrs: { href: "#", "aria-label": "Next" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault();
+                  return _vm.load(_vm.page + 1)
+                }
+              }
+            },
+            [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("»")])]
+          )
+        ])
+      ],
+      2
+    )
+  ])
+};
 var __vue_staticRenderFns__$2 = [];
+__vue_render__$2._withStripped = true;
 
   /* style */
   var __vue_inject_styles__$2 = undefined;
@@ -667,8 +826,57 @@ var script$3 = {
 /* script */
 var __vue_script__$3 = script$3;
 /* template */
-var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"datatable__filter"},[_c('input',{staticClass:"datatable__input",attrs:{"type":"text","placeholder":"Filter table data"},domProps:{"value":_vm.filter},on:{"input":function($event){return _vm.update($event.target.value)}}}),_vm._v(" "),(_vm.filter)?_c('div',{staticClass:"datatable__clear",on:{"click":function($event){$event.stopPropagation();return _vm.clear($event)}}},[_c('a',{staticClass:"datatable__x",attrs:{"href":"#"},on:{"click":function($event){$event.stopPropagation();$event.preventDefault();return _vm.clear($event)}}},[_vm._v("×")])]):_vm._e()])};
+var __vue_render__$3 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", { staticClass: "datatable__filter" }, [
+    _c("input", {
+      staticClass: "datatable__input",
+      attrs: { type: "text", placeholder: "Filter table data" },
+      domProps: { value: _vm.filter },
+      on: {
+        input: function($event) {
+          return _vm.update($event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _vm.filter
+      ? _c(
+          "div",
+          {
+            staticClass: "datatable__clear",
+            on: {
+              click: function($event) {
+                $event.stopPropagation();
+                return _vm.clear($event)
+              }
+            }
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "datatable__x",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.stopPropagation();
+                    $event.preventDefault();
+                    return _vm.clear($event)
+                  }
+                }
+              },
+              [_vm._v("×")]
+            )
+          ]
+        )
+      : _vm._e()
+  ])
+};
 var __vue_staticRenderFns__$3 = [];
+__vue_render__$3._withStripped = true;
 
   /* style */
   var __vue_inject_styles__$3 = undefined;
@@ -736,11 +944,11 @@ var script$4 = {
     }
   },
   computed: {
+    func: function func () {
+      return this.items instanceof Function
+    },
     identifier: function identifier () {
       return ("by:" + (this.sorting.by) + "|order:" + (this.sorting.order) + "|filter:" + (this.options.filter) + "|page:" + (this.page) + "|per_page:" + (this.perPage))
-    },
-    asynchronous: function asynchronous () {
-      return this.items instanceof Function
     },
     columns: function columns () {
       return this.vnodes.map(function (vnode) {
@@ -807,6 +1015,13 @@ var script$4 = {
     to: function to () {
       var x = this.page * this.perPage;
       return this.total < x ? this.total : x
+    },
+    transformed: function transformed () {
+      if (this.func) {
+        return []
+      }
+
+      return this.transform(this.items)
     }
   },
   watch: {
@@ -846,56 +1061,65 @@ var script$4 = {
     this.loadItems();
   },
   methods: {
-    loaded: function loaded (data) {
+    transform: function transform (data) {
       var this$1 = this;
 
-      var items = JSON.parse(JSON.stringify(data.items));
-      this.actualItems = items.map(function (item) {
+      return data.map(function (item) {
         this$1.columns.filter(function (column) { return typeof column.render === 'function'; }).forEach(function (column) {
           var parts = column.field.split('.');
           var originalField = parts.reduce(function (a, b, index) {
             if (index === parts.length - 1) {
               return (a + ".$_" + b)
             }
-
             return (a + "." + b)
           });
+
           if (parts.length === 1) {
             originalField = "$_" + originalField;
+          }
+
+          if (item.hasOwnProperty(originalField)) {
+            return
           }
 
           dotSet(item, originalField, dotGet(item, column.field));
           dotSet(item, column.field, column.render(dotGet(item, column.field), item));
         });
-
         return item
-      });
-      this.total = data.total;
-
-      this.$emit('loaded', {
-        items: this.actualItems,
-        total: data.total
-      });
+      })
     },
     loadSlots: function loadSlots () {
       // $slots is not reactive
       this.vnodes = !this.$slots.default ? [] : this.$slots.default.filter(function (vnode) { return vnode.componentOptions; });
     },
     loadItems: function loadItems () {
-      this.load(this.items, this.filtering, this.sorting, this.paging);
+      var this$1 = this;
+
+      if (this.func) {
+        Promise.resolve(this.items(this.filtering, this.sorting, this.paging)).then(function (data) {
+          this$1.actualItems = this$1.transform(data.items);
+          this$1.total = data.total;
+        });
+
+        return this.ping()
+      }
+
+      if (!this.items) {
+        this.actualItems = [];
+        this.total = 0;
+        return this.ping()
+      }
+
+      var data = load(this.transformed, this.filtering, this.sorting, this.paging);
+      this.actualItems = data.items;
+      this.total = data.total;
+      return this.ping()
     },
-    load: function load$1 (items, filtering, sorting, paging) {
-      if (this.asynchronous) {
-        Promise.resolve(items(filtering, sorting, paging)).then(this.loaded);
-        return
-      }
-
-      if (!items) {
-        this.loaded({ items: [], total: 0 });
-        return
-      }
-
-      this.loaded(load(JSON.parse(JSON.stringify(items)), filtering, sorting, paging));
+    ping: function ping () {
+      this.$emit('loaded', {
+        items: this.actualItems,
+        total: this.total
+      });
     }
   }
 };
@@ -903,8 +1127,103 @@ var script$4 = {
 /* script */
 var __vue_script__$4 = script$4;
 /* template */
-var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"datatable"},[_c('div',{staticClass:"datatable__wrapper"},[_c('div',{staticClass:"datatable__heading"},[_c('data-table-filter',{staticClass:"datatable__unit",attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}),_vm._v(" "),_c('div',{staticClass:"datatable__unit datatable__text"},[(_vm.total)?_c('span',[_vm._v("\n          Showing "),_c('span',{domProps:{"textContent":_vm._s(_vm.from === _vm.to && _vm.to === _vm.total ? 'the last entry' : _vm.from + ' to ' + _vm.to)}}),_vm._v(" of "+_vm._s(_vm.total)+" records\n        ")]):_c('span',[_vm._v("No records")])])],1),_vm._v(" "),_c('div',{staticClass:"datatable__screen"},[_c('table',{staticClass:"datatable__content",attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems}})],1)]),_vm._v(" "),_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total},on:{"update:page":function($event){_vm.page=$event;}}})],1)])};
+var __vue_render__$4 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", { staticClass: "datatable" }, [
+    _c(
+      "div",
+      { staticClass: "datatable__wrapper" },
+      [
+        _c(
+          "div",
+          { staticClass: "datatable__heading" },
+          [
+            _c("data-table-filter", {
+              staticClass: "datatable__unit",
+              attrs: { filter: _vm.options.filter },
+              on: {
+                "update:filter": function($event) {
+                  return _vm.$set(_vm.options, "filter", $event)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "datatable__unit datatable__text" }, [
+              _vm.total
+                ? _c("span", [
+                    _vm._v("\n          Showing "),
+                    _c("span", {
+                      domProps: {
+                        textContent: _vm._s(
+                          _vm.from === _vm.to && _vm.to === _vm.total
+                            ? "the last entry"
+                            : _vm.from + " to " + _vm.to
+                        )
+                      }
+                    }),
+                    _vm._v(" of " + _vm._s(_vm.total) + " records\n        ")
+                  ])
+                : _c("span", [_vm._v("No records")])
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "datatable__screen" }, [
+          _c(
+            "table",
+            {
+              staticClass: "datatable__content",
+              attrs: { cellspacing: "0", cellpadding: "0" }
+            },
+            [
+              _c("data-table-head", {
+                attrs: {
+                  columns: _vm.columns,
+                  "sort-by": _vm.options.sortBy,
+                  "sort-desc": _vm.options.sortDesc
+                },
+                on: {
+                  "update:sortBy": function($event) {
+                    return _vm.$set(_vm.options, "sortBy", $event)
+                  },
+                  "update:sort-by": function($event) {
+                    return _vm.$set(_vm.options, "sortBy", $event)
+                  },
+                  "update:sortDesc": function($event) {
+                    return _vm.$set(_vm.options, "sortDesc", $event)
+                  },
+                  "update:sort-desc": function($event) {
+                    return _vm.$set(_vm.options, "sortDesc", $event)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("data-table-body", {
+                attrs: { columns: _vm.columns, items: _vm.actualItems }
+              })
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("data-table-pagination", {
+          attrs: { "per-page": _vm.perPage, page: _vm.page, total: _vm.total },
+          on: {
+            "update:page": function($event) {
+              _vm.page = $event;
+            }
+          }
+        })
+      ],
+      1
+    )
+  ])
+};
 var __vue_staticRenderFns__$4 = [];
+__vue_render__$4._withStripped = true;
 
   /* style */
   var __vue_inject_styles__$4 = undefined;

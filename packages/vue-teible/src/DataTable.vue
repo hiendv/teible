@@ -66,11 +66,11 @@ export default {
     }
   },
   computed: {
+    func () {
+      return this.items instanceof Function
+    },
     identifier () {
       return `by:${this.sorting.by}|order:${this.sorting.order}|filter:${this.options.filter}|page:${this.page}|per_page:${this.perPage}`
-    },
-    asynchronous () {
-      return this.items instanceof Function
     },
     columns () {
       return this.vnodes.map(vnode => {
@@ -124,6 +124,13 @@ export default {
     to () {
       let x = this.page * this.perPage
       return this.total < x ? this.total : x
+    },
+    transformed () {
+      if (this.func) {
+        return []
+      }
+
+      return this.transform(this.items)
     }
   },
   watch: {
@@ -163,33 +170,29 @@ export default {
     this.loadItems()
   },
   methods: {
-    loaded (data) {
-      let items = JSON.parse(JSON.stringify(data.items))
-      this.actualItems = items.map(item => {
+    transform (data) {
+      return data.map(item => {
         this.columns.filter(column => typeof column.render === 'function').forEach(column => {
           let parts = column.field.split('.')
           let originalField = parts.reduce((a, b, index) => {
             if (index === parts.length - 1) {
               return `${a}.$_${b}`
             }
-
             return `${a}.${b}`
           })
+
           if (parts.length === 1) {
             originalField = `$_${originalField}`
+          }
+
+          if (item.hasOwnProperty(originalField)) {
+            return
           }
 
           dotSet(item, originalField, dotGet(item, column.field))
           dotSet(item, column.field, column.render(dotGet(item, column.field), item))
         })
-
         return item
-      })
-      this.total = data.total
-
-      this.$emit('loaded', {
-        items: this.actualItems,
-        total: data.total
       })
     },
     loadSlots () {
@@ -197,20 +200,31 @@ export default {
       this.vnodes = !this.$slots.default ? [] : this.$slots.default.filter(vnode => vnode.componentOptions)
     },
     loadItems () {
-      this.load(this.items, this.filtering, this.sorting, this.paging)
+      if (this.func) {
+        Promise.resolve(this.items(this.filtering, this.sorting, this.paging)).then(data => {
+          this.actualItems = this.transform(data.items)
+          this.total = data.total
+        })
+
+        return this.ping()
+      }
+
+      if (!this.items) {
+        this.actualItems = []
+        this.total = 0
+        return this.ping()
+      }
+
+      const data = load(this.transformed, this.filtering, this.sorting, this.paging)
+      this.actualItems = data.items
+      this.total = data.total
+      return this.ping()
     },
-    load (items, filtering, sorting, paging) {
-      if (this.asynchronous) {
-        Promise.resolve(items(filtering, sorting, paging)).then(this.loaded)
-        return
-      }
-
-      if (!items) {
-        this.loaded({ items: [], total: 0 })
-        return
-      }
-
-      this.loaded(load(JSON.parse(JSON.stringify(items)), filtering, sorting, paging))
+    ping () {
+      this.$emit('loaded', {
+        items: this.actualItems,
+        total: this.total
+      })
     }
   }
 }
