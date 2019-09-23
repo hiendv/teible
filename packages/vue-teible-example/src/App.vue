@@ -25,7 +25,7 @@
           </p>
         </demo>
         <div class="demo demo__gut" />
-        <demo :items="itemsArr" class="demo">
+        <demo :items.sync="itemsArr" class="demo">
           <h2 class="demo__title">
             Array as items
           </h2>
@@ -138,12 +138,15 @@ export default {
   },
   methods: {
     seed () {
+      const arr = []
       for (let i = 0; i < this.total; i++) {
-        this.itemsArr.push({
+        arr.push({
           id: i,
           name: haikunator.haikunate()
         })
       }
+
+      this.itemsArr = arr
     },
     itemsFunc (filtering, sorting, paging) {
       // filtering fields will be ignored because typicode does not support them: https://github.com/typicode/json-server/pull/558

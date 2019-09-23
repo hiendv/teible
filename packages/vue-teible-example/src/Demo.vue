@@ -169,9 +169,9 @@ export default {
         return
       }
 
-      this.items = this.items.filter(item => {
+      this.$emit('update:items', this.items.filter(item => {
         return item.id !== x.id
-      })
+      }))
     },
     loaded (data) {
       this.loadedItems = data.items
