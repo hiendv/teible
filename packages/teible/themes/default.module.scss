@@ -1,0 +1,232 @@
+@import "~@hiendv/bem-sass";
+
+$color: #495057;
+$color--disabled: #777;
+$color__plink: #337ab7;
+
+$border-color: #dee2e6;
+$border-color--focus: #999;
+
+$bg-color: #fff;
+$bg-color--disabled: #f0f0f0;
+$bg-color--odd: #e9ecef;
+$bg-color__column--active: #f0f0f0;
+$bg-color__plink--focus: #eee;
+$bg-color__plink--active: $color__plink;
+
+
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.datatable {
+  color: $color;
+  font: 1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @include e('wrapper') {
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+  }
+
+  @include e('heading') {
+    display: block;
+    margin-bottom: .5em;
+    width: 100%;
+  }
+
+  @include e('unit') {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-bottom: .5em;
+  }
+
+  @media (min-width: 1024px) {
+    @include e('heading') {
+      display: flex;
+      align-items: center;
+    }
+
+    @include e('text') {
+      padding-left: 1em;
+    }
+  }
+
+  @include e('content') {
+    width: 100%;
+    border: solid 1px $border-color;
+    table-layout: fixed;
+  }
+
+  // body
+  @include e('row') {
+    background-color: $bg-color;
+    @include m('odd') {
+      background-color: $bg-color--odd;
+    }
+  }
+
+  @include e('cell') {
+    position: relative;
+    padding: .3em .5em;
+    border-right: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    vertical-align: middle;
+    text-align: left;
+    word-break: break-word;
+
+    @include m('last-column') {
+      border-right: 0;
+    }
+
+    @include m('last-row') {
+      border-bottom: 0;
+    }
+  }
+
+  // filter
+  @include e('filter') {
+    position: relative;
+  }
+
+  @include e('input') {
+    width: 100%;
+    padding: .3rem 1.5rem .3rem .75rem;
+    font-size: 1em;
+    line-height: 1.5;
+    border: 1px solid $border-color;
+    border-radius: .25rem;
+
+    &:focus {
+      outline: 0;
+      border-color: $border-color--focus;
+      box-shadow: 0 0 0 0.2rem rgba(100,100,100,.25);
+    }
+  }
+
+  @include e('clear') {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    height: 100%;
+    border: 1px solid transparent;
+    cursor: pointer;
+    vertical-align: middle;
+    &:hover {
+      font-weight: bold;
+    }
+
+    &:active {
+      font-weight: bold;
+      text-shadow: 0px 0px 2px rgba(150, 150, 150, 1);
+    }
+  }
+
+  @include e('x') {
+    padding: .25em .75em;
+    color: inherit!important;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  // head
+  @include e('column') {
+    position: relative;
+    padding: .5em;
+    padding-right: 1.75em;
+    min-width: 1em;
+    vertical-align: middle;
+    text-align: left;
+    line-height: 1;
+    white-space: nowrap;
+    border-right: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.1);
+    background-color: $bg-color;
+    font-weight: bold;
+
+    @include m('last') {
+      border-right: 0;
+    }
+
+    @include m('active') {
+      background-color: $bg-color__column--active;
+    }
+
+    @include m('sortable') {
+      cursor: pointer;
+    }
+
+    @include m('custom') {
+      padding-right: .5em;
+    }
+  }
+
+  @include e('column-icon') {
+    position: absolute;
+    top: 8px;
+    right: .5em;
+  }
+
+  @include e('column-text') {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 2px;
+  }
+
+  // pagination
+  @include e('pagination') {
+    display: block;
+  }
+
+  @include e('plist') {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-top: .5em;
+    border-radius: 4px;
+  }
+
+  @include e('pitem') {
+    display: inline;
+  }
+
+  @include e('plink') {
+    position: relative;
+    float: left;
+    padding: .3em .6em;
+    margin-left: -1px;
+    color: $color__plink;
+    text-decoration: none;
+    background-color: $bg-color;
+    border: 1px solid $border-color;
+
+    @include m('active') {
+      z-index: 3;
+      color: #fff!important;
+      cursor: default;
+      background-color: $bg-color__plink--active!important;
+      border-color: $bg-color__plink--active!important;
+    }
+
+    @include m('disabled') {
+      color: $color--disabled!important;
+      cursor: not-allowed;
+      background-color: $bg-color--disabled!important;
+    }
+
+    &:focus,
+    &:hover {
+      z-index: 2;
+      background-color: $bg-color__plink--focus;
+    }
+  }
+}

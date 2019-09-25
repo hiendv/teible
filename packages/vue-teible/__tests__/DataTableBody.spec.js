@@ -1,4 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
+import idObj from 'identity-obj-proxy'
 import DataTableBody from '../src/DataTableBody.vue'
 
 describe('DataTableBody', () => {
@@ -19,7 +20,10 @@ describe('DataTableBody', () => {
           field: 'two',
           label: 'Two'
         }]
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
 
     expect(wrapper.html()).toMatchSnapshot()

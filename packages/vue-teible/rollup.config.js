@@ -1,34 +1,20 @@
 import path from 'path'
-import importer from 'node-sass-tilde-importer'
-
 import resolve from 'rollup-plugin-node-resolve'
 import cjs from 'rollup-plugin-commonjs'
-import css from 'rollup-plugin-css-only'
 import vue from 'rollup-plugin-vue'
 import buble from 'rollup-plugin-buble'
+import postcss from 'rollup-plugin-postcss'
 import { uglify } from 'rollup-plugin-uglify'
 
 const reslv = p => {
   return path.resolve(__dirname, p)
 }
 
-const style = {
-  trim: false,
-  preprocessOptions: {
-    scss: {
-      importer,
-      includePaths: [ reslv('../../node_modules'), reslv('src') ],
-      data: `@import "variables.scss";`
-    }
-  }
-}
-
 const plugins = [
   resolve(),
   cjs(),
   vue({
-    css: false,
-    style
+    css: false
   }),
   buble()
 ]
@@ -45,10 +31,9 @@ export default [
       exports: 'named'
     }],
     plugins: [
-      css({ output: reslv('dist/vueteible.css') }),
       ...plugins
     ],
-    external: id => id.match(/^octicons-vue/) || id.match(/^octicons-modular/)
+    external: ['octicons-vue', 'octicons-modular', 'teible']
   },
   {
     input: reslv('src/main.js'),
@@ -59,11 +44,14 @@ export default [
       exports: 'named'
     },
     plugins: [
-      css({ output: false }),
+      postcss({
+        extract: reslv('dist/vueteible.css')
+      }),
       ...plugins,
       uglify({
         compress: { unused: true, dead_code: true }
       })
-    ]
+    ],
+    external: ['octicons-vue', 'octicons-modular']
   }
 ]

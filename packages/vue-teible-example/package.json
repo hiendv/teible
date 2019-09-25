@@ -10,7 +10,7 @@
     "vue-teible": "^0.9.21"
   },
   "eslintIgnore": [
-    "../vue-teible/**/*"
+    "../**"
   ],
   "postcss": {
     "plugins": {

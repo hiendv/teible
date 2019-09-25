@@ -1,4 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
+import idObj from 'identity-obj-proxy'
 import DataTableFilter from '../src/DataTableFilter.vue'
 
 describe('DataTableFilter', () => {
@@ -6,7 +7,10 @@ describe('DataTableFilter', () => {
     let wrapper = shallowMount(DataTableFilter, {
       propsData: {
         filter: 'default'
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
     expect(wrapper.html()).toMatchSnapshot()
 

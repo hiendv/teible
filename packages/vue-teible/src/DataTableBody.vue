@@ -1,29 +1,26 @@
 <template>
   <tbody>
     <tr
-      v-for="(d, index) in items" :key="index" :class="[
-        'datatable__row',
-        {
-          'datatable__row--odd': index % 2 === 1,
-          'datatable__row--last': index === items.length - 1
-        }
-      ]"
+      v-for="(d, index) in items" :key="index" :class="{
+        [theme.datatable__row]: true,
+        [theme['datatable__row--odd']]: index % 2 === 1,
+        [theme['datatable__row--last']]: index === items.length - 1
+      }"
     >
       <data-table-cell
         v-for="(column, columnIndex) in columns" :key="columnIndex" v-bind="column.attrs"
-        :item="d" :column="column" :class="[
-          'datatable__cell',
-          {
-            'datatable__cell--last-column': columnIndex === columns.length - 1,
-            'datatable__cell--last-row': index === items.length - 1
-          }
-        ]"
+        :item="d" :column="column" :class="{
+          [theme.datatable__cell]: true,
+          [theme['datatable__cell--last-column']]: columnIndex === columns.length - 1,
+          [theme['datatable__cell--last-row']]: index === items.length - 1
+        }"
       />
     </tr>
   </tbody>
 </template>
 <script>
 import DataTableCell from './DataTableCell'
+
 export default {
   name: 'DataTableBody',
   components: { DataTableCell },
@@ -36,35 +33,12 @@ export default {
       type: Array,
       required: true
     }
+  },
+  inject: ['$theme'],
+  computed: {
+    theme () {
+      return this.$theme()
+    }
   }
 }
 </script>
-<style lang="scss">
-@import '~@hiendv/bem-sass';
-.datatable {
-  @include e('row') {
-    background-color: $bg-color;
-    @include m('odd') {
-      background-color: $bg-color--odd;
-    }
-  }
-
-  @include e('cell') {
-    position: relative;
-    padding: .3em .5em;
-    border-right: 1px solid $border-color;
-    border-bottom: 1px solid $border-color;
-    vertical-align: middle;
-    text-align: left;
-    word-break: break-word;
-
-    @include m('last-column') {
-      border-right: 0;
-    }
-
-    @include m('last-row') {
-      border-bottom: 0;
-    }
-  }
-}
-</style>

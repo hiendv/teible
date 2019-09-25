@@ -1,4 +1,4 @@
-import { dotGet } from './helpers'
+import { dotGet } from 'teible'
 
 export default {
   functional: true,

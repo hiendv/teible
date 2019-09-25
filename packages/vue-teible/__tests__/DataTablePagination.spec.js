@@ -1,4 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
+import idObj from 'identity-obj-proxy'
 import DataTablePagination from '../src/DataTablePagination.vue'
 
 describe('DataTablePagination', () => {
@@ -10,7 +11,10 @@ describe('DataTablePagination', () => {
         total: 10,
         page: 2,
         perPage: 3
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -21,7 +25,10 @@ describe('DataTablePagination', () => {
         total: 10,
         page: 1,
         perPage: 0
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -32,7 +39,10 @@ describe('DataTablePagination', () => {
         total: 10,
         page: 4,
         perPage: 3
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
     expect(wrapper.html()).toMatchSnapshot()
 
@@ -48,7 +58,10 @@ describe('DataTablePagination', () => {
         total: 10,
         perPage: 3,
         page: 2
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
 
     wrapper.find('.datatable__pprev').trigger('click')
@@ -82,7 +95,10 @@ describe('DataTablePagination', () => {
         total: 10,
         page: 1,
         perPage: 1
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
     expect(wrapper.html()).toMatchSnapshot() // < [1] 2 3 ... 9 10 >
 

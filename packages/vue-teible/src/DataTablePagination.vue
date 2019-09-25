@@ -1,23 +1,32 @@
 <template>
-  <nav class="datatable__pagination">
-    <ul class="datatable__plist">
-      <li class="datatable__pitem">
+  <nav :class="theme.datatable__pagination">
+    <ul :class="theme.datatable__plist">
+      <li :class="theme.datatable__pitem">
         <a
-          :class="[
-            'datatable__plink datatable__pprev',
-            {
-              'datatable__plink--disabled': reachedFirst
-            }
-          ]" href="#" aria-label="Previous"
+          :class="{
+            [theme.datatable__plink]: true,
+            [theme.datatable__pprev]: true,
+            [theme['datatable__plink--disabled']]: reachedFirst
+          }" href="#" aria-label="Previous"
           @click.prevent="load(page-1)"
         >
           <span aria-hidden="true">&laquo;</span>
         </a>
-      </li><li v-for="(p, index) in pages" :key="index" class="datatable__pitem">
-        <a :class="['datatable__plink', { 'datatable__plink--active': isActive(p), 'datatable__plink--disabled': p.disabled }]" href="#" @click.prevent="load(p.value, p.disabled)">{{ p.value }}</a>
-      </li><li class="datatable__pitem">
+      </li><li v-for="(p, index) in pages" :key="index" :class="theme.datatable__pitem">
         <a
-          :class="['datatable__plink datatable__pnext', { 'datatable__plink--disabled': reachedLast }]" href="#" aria-label="Next"
+          :class="{
+            [theme.datatable__plink]: true,
+            [theme['datatable__plink--active']]: isActive(p),
+            [theme['datatable__plink--disabled']]: p.disabled
+          }" href="#" @click.prevent="load(p.value, p.disabled)"
+        >{{ p.value }}</a>
+      </li><li :class="theme.datatable__pitem">
+        <a
+          :class="{
+            [theme.datatable__plink]: true,
+            [theme.datatable__pnext]: true,
+            [theme['datatable__plink--disabled']]: reachedLast
+          }" href="#" aria-label="Next"
           @click.prevent="load(page+1)"
         >
           <span aria-hidden="true">&raquo;</span>
@@ -27,7 +36,8 @@
   </nav>
 </template>
 <script>
-import { paginate } from './helpers'
+import { paginate } from 'teible'
+
 export default {
   name: 'DataTablePagination',
   props: {
@@ -56,6 +66,9 @@ export default {
     },
     reachedLast () {
       return this.page >= this.totalPages
+    },
+    theme () {
+      return this.$theme()
     }
   },
   methods: {
@@ -77,57 +90,7 @@ export default {
 
       this.$emit('update:page', page)
     }
-  }
+  },
+  inject: ['$theme']
 }
 </script>
-<style lang="scss">
-@import '~@hiendv/bem-sass';
-.datatable {
-  @include e('pagination') {
-    display: block;
-  }
-
-  @include e('plist') {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    margin-top: .5em;
-    border-radius: 4px;
-  }
-
-  @include e('pitem') {
-    display: inline;
-  }
-
-  @include e('plink') {
-    position: relative;
-    float: left;
-    padding: .3em .6em;
-    margin-left: -1px;
-    color: $color__plink;
-    text-decoration: none;
-    background-color: $bg-color;
-    border: 1px solid $border-color;
-
-    @include m('active') {
-      z-index: 3;
-      color: #fff!important;
-      cursor: default;
-      background-color: $bg-color__plink--active!important;
-      border-color: $bg-color__plink--active!important;
-    }
-
-    @include m('disabled') {
-      color: $color--disabled!important;
-      cursor: not-allowed;
-      background-color: $bg-color--disabled!important;
-    }
-
-    &:focus,
-    &:hover {
-      z-index: 2;
-      background-color: $bg-color__plink--focus;
-    }
-  }
-}
-</style>

@@ -2,131 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var Octicon = _interopDefault(require('octicons-vue/lib/Octicon'));
-var triangleDown = _interopDefault(require('octicons-modular/lib/icons/triangle-down'));
-var triangleUp = _interopDefault(require('octicons-modular/lib/icons/triangle-up'));
-var threeBars = _interopDefault(require('octicons-modular/lib/icons/three-bars'));
-
-var chunk = function (arr, size) {
-  if (!size) {
-    size = arr.length;
-  }
-
-  var result = [];
-  for (var i = 0, len = arr.length; i < len; i += size) { result.push(arr.slice(i, i + size)); }
-  return result
-};
-
-var orderBy = function (arr, field, order) {
-  if (!arr || !arr.length) {
-    return []
-  }
-
-  var GREATER = order === 'desc' ? -1 : 1;
-  var SMALLER = -GREATER;
-
-  return arr.sort(function (a, b) {
-    var first = dotGet(a, field);
-    var second = dotGet(b, field);
-
-    if (!first && !second) {
-      return 0
-    }
-
-    if (!first && first !== 0) {
-      return SMALLER
-    }
-
-    if (!second && second !== 0) {
-      return GREATER
-    }
-
-    if (typeof first === 'number' && typeof second === 'number') {
-      if (first === second) {
-        return 0
-      }
-
-      if (first > second) {
-        return GREATER
-      }
-
-      return SMALLER
-    }
-
-    if (typeof first === 'string' && typeof second === 'string') {
-      var cmp = first.localeCompare(second);
-      if (cmp === 0) {
-        return 0
-      }
-
-      if (cmp > 0) {
-        return GREATER
-      }
-
-      return SMALLER
-    }
-
-    // other or mixed types are blindly compare with `>` & `<`
-    // therefore, it's not reliable
-    if (first > second) {
-      return GREATER
-    }
-
-    if (first < second) {
-      return SMALLER
-    }
-
-    return 0
-  })
-};
-
-var filter = function (items, filtering) {
-  return items.filter(function (item) {
-    for (var i = 0; i < filtering.fields.length; i++) {
-      var field = filtering.fields[i];
-      var value = dotGet(item, field);
-
-      if (!value) {
-        continue
-      }
-
-      if (("" + value).toLowerCase().indexOf(filtering.query) === -1) {
-        continue
-      }
-
-      return true
-    }
-
-    return false
-  })
-};
-
-var load = function (data, filtering, sorting, paging) {
-  var filtered = (!filtering || !filtering.query) ? data : filter(data, filtering);
-  if (!filtered || !filtered.length) {
-    return {
-      items: [],
-      total: 0
-    }
-  }
-
-  var ordered = orderBy(filtered, sorting.by, sorting.order);
-  var chunked = chunk(ordered, paging.perPage);
-  var items = chunked[paging.page - 1];
-  if (!items) {
-    return {
-      items: [],
-      total: filtered.length
-    }
-  }
-
-  return {
-    items: items,
-    total: filtered.length
-  }
-};
+var teible = require('teible');
 
 var defaultProps = function (options, data) {
   var props = {};
@@ -147,85 +23,268 @@ var defaultProps = function (options, data) {
   return props
 };
 
-var dotGet = function (obj, path) {
-  return path.split('.').reduce(function (o, i) { return o[i]; }, obj)
-};
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
 
-var dotSet = function (obj, path, val) {
-  var parts = path.split('.');
-  return parts.reduce(function (o, i, idx) {
-    if (idx === parts.length - 1) {
-      o[i] = val;
-      return o[i]
+var clone_1 = createCommonjsModule(function (module) {
+var clone = (function() {
+
+function _instanceof(obj, type) {
+  return type != null && obj instanceof type;
+}
+
+var nativeMap;
+try {
+  nativeMap = Map;
+} catch(_) {
+  // maybe a reference error because no `Map`. Give it a dummy value that no
+  // value will ever be an instanceof.
+  nativeMap = function() {};
+}
+
+var nativeSet;
+try {
+  nativeSet = Set;
+} catch(_) {
+  nativeSet = function() {};
+}
+
+var nativePromise;
+try {
+  nativePromise = Promise;
+} catch(_) {
+  nativePromise = function() {};
+}
+
+/**
+ * Clones (copies) an Object using deep copying.
+ *
+ * This function supports circular references by default, but if you are certain
+ * there are no circular references in your object, you can save some CPU time
+ * by calling clone(obj, false).
+ *
+ * Caution: if `circular` is false and `parent` contains circular references,
+ * your program may enter an infinite loop and crash.
+ *
+ * @param `parent` - the object to be cloned
+ * @param `circular` - set to true if the object to be cloned may contain
+ *    circular references. (optional - true by default)
+ * @param `depth` - set to a number if the object is only to be cloned to
+ *    a particular depth. (optional - defaults to Infinity)
+ * @param `prototype` - sets the prototype to be used when cloning an object.
+ *    (optional - defaults to parent prototype).
+ * @param `includeNonEnumerable` - set to true if the non-enumerable properties
+ *    should be cloned as well. Non-enumerable properties on the prototype
+ *    chain will be ignored. (optional - false by default)
+*/
+function clone(parent, circular, depth, prototype, includeNonEnumerable) {
+  if (typeof circular === 'object') {
+    depth = circular.depth;
+    prototype = circular.prototype;
+    includeNonEnumerable = circular.includeNonEnumerable;
+    circular = circular.circular;
+  }
+  // maintain two arrays for circular references, where corresponding parents
+  // and children have the same index
+  var allParents = [];
+  var allChildren = [];
+
+  var useBuffer = typeof Buffer != 'undefined';
+
+  if (typeof circular == 'undefined')
+    { circular = true; }
+
+  if (typeof depth == 'undefined')
+    { depth = Infinity; }
+
+  // recurse this function so we don't reset allParents and allChildren
+  function _clone(parent, depth) {
+    // cloning null always returns null
+    if (parent === null)
+      { return null; }
+
+    if (depth === 0)
+      { return parent; }
+
+    var child;
+    var proto;
+    if (typeof parent != 'object') {
+      return parent;
     }
 
-    if (!o.hasOwnProperty(i)) {
-      o[i] = {};
+    if (_instanceof(parent, nativeMap)) {
+      child = new nativeMap();
+    } else if (_instanceof(parent, nativeSet)) {
+      child = new nativeSet();
+    } else if (_instanceof(parent, nativePromise)) {
+      child = new nativePromise(function (resolve, reject) {
+        parent.then(function(value) {
+          resolve(_clone(value, depth - 1));
+        }, function(err) {
+          reject(_clone(err, depth - 1));
+        });
+      });
+    } else if (clone.__isArray(parent)) {
+      child = [];
+    } else if (clone.__isRegExp(parent)) {
+      child = new RegExp(parent.source, __getRegExpFlags(parent));
+      if (parent.lastIndex) { child.lastIndex = parent.lastIndex; }
+    } else if (clone.__isDate(parent)) {
+      child = new Date(parent.getTime());
+    } else if (useBuffer && Buffer.isBuffer(parent)) {
+      if (Buffer.allocUnsafe) {
+        // Node.js >= 4.5.0
+        child = Buffer.allocUnsafe(parent.length);
+      } else {
+        // Older Node.js versions
+        child = new Buffer(parent.length);
+      }
+      parent.copy(child);
+      return child;
+    } else if (_instanceof(parent, Error)) {
+      child = Object.create(parent);
+    } else {
+      if (typeof prototype == 'undefined') {
+        proto = Object.getPrototypeOf(parent);
+        child = Object.create(proto);
+      }
+      else {
+        child = Object.create(prototype);
+        proto = prototype;
+      }
     }
 
-    return o[i]
-  }, obj)
-};
+    if (circular) {
+      var index = allParents.indexOf(parent);
 
-var uniqArr = function (arr) {
-  return arr.filter(function (item, pos) {
-    return arr.indexOf(item) === pos
-  })
-};
+      if (index != -1) {
+        return allChildren[index];
+      }
+      allParents.push(parent);
+      allChildren.push(child);
+    }
 
-var range = function (n) {
-  var a = [];
-  for (var i = 0; i < n; i++) {
-    a[i] = i + 1;
+    if (_instanceof(parent, nativeMap)) {
+      parent.forEach(function(value, key) {
+        var keyChild = _clone(key, depth - 1);
+        var valueChild = _clone(value, depth - 1);
+        child.set(keyChild, valueChild);
+      });
+    }
+    if (_instanceof(parent, nativeSet)) {
+      parent.forEach(function(value) {
+        var entryChild = _clone(value, depth - 1);
+        child.add(entryChild);
+      });
+    }
+
+    for (var i in parent) {
+      var attrs;
+      if (proto) {
+        attrs = Object.getOwnPropertyDescriptor(proto, i);
+      }
+
+      if (attrs && attrs.set == null) {
+        continue;
+      }
+      child[i] = _clone(parent[i], depth - 1);
+    }
+
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(parent);
+      for (var i = 0; i < symbols.length; i++) {
+        // Don't need to worry about cloning a symbol because it is a primitive,
+        // like a number or string.
+        var symbol = symbols[i];
+        var descriptor = Object.getOwnPropertyDescriptor(parent, symbol);
+        if (descriptor && !descriptor.enumerable && !includeNonEnumerable) {
+          continue;
+        }
+        child[symbol] = _clone(parent[symbol], depth - 1);
+        if (!descriptor.enumerable) {
+          Object.defineProperty(child, symbol, {
+            enumerable: false
+          });
+        }
+      }
+    }
+
+    if (includeNonEnumerable) {
+      var allPropertyNames = Object.getOwnPropertyNames(parent);
+      for (var i = 0; i < allPropertyNames.length; i++) {
+        var propertyName = allPropertyNames[i];
+        var descriptor = Object.getOwnPropertyDescriptor(parent, propertyName);
+        if (descriptor && descriptor.enumerable) {
+          continue;
+        }
+        child[propertyName] = _clone(parent[propertyName], depth - 1);
+        Object.defineProperty(child, propertyName, {
+          enumerable: false
+        });
+      }
+    }
+
+    return child;
   }
 
-  return a
+  return _clone(parent, depth);
+}
+
+/**
+ * Simple flat clone using prototype, accepts only objects, usefull for property
+ * override on FLAT configuration object (no nested props).
+ *
+ * USE WITH CAUTION! This may not behave as you wish if you do not know how this
+ * works.
+ */
+clone.clonePrototype = function clonePrototype(parent) {
+  if (parent === null)
+    { return null; }
+
+  var c = function () {};
+  c.prototype = parent;
+  return new c();
 };
 
-var paginate = function (currentPage, total) {
-  var showing = 3;
-  var eachSide = 2;
-  if (total <= showing + eachSide) {
-    return paginationValueOrThreeDots(range(total))
-  }
+// private utility functions
 
-  var pages = [];
+function __objToStr(o) {
+  return Object.prototype.toString.call(o);
+}
+clone.__objToStr = __objToStr;
 
-  for (var i = 0; i < eachSide; i++) {
-    pages.push(i + 1);
-    pages.push(total - i);
-  }
+function __isDate(o) {
+  return typeof o === 'object' && __objToStr(o) === '[object Date]';
+}
+clone.__isDate = __isDate;
 
-  for (var i$1 = 0; i$1 < Math.ceil(showing / 2); i$1++) {
-    if (currentPage - i$1 > 1) {
-      pages.push(currentPage - i$1);
-    }
+function __isArray(o) {
+  return typeof o === 'object' && __objToStr(o) === '[object Array]';
+}
+clone.__isArray = __isArray;
 
-    if (currentPage + i$1 < total) {
-      pages.push(currentPage + i$1);
-    }
-  }
+function __isRegExp(o) {
+  return typeof o === 'object' && __objToStr(o) === '[object RegExp]';
+}
+clone.__isRegExp = __isRegExp;
 
-  return paginationValueOrThreeDots(uniqArr(pages).sort(function (a, b) { return a - b; }))
-};
+function __getRegExpFlags(re) {
+  var flags = '';
+  if (re.global) { flags += 'g'; }
+  if (re.ignoreCase) { flags += 'i'; }
+  if (re.multiline) { flags += 'm'; }
+  return flags;
+}
+clone.__getRegExpFlags = __getRegExpFlags;
 
-var paginationValueOrThreeDots = function (pages) {
-  var dots = '...';
-  for (var i = 0; i < pages.length - 1; i++) {
-    if (pages[i + 1] - pages[i] > 1) {
-      pages.splice(i + 1, 0, dots);
-    }
-  }
+return clone;
+})();
 
-  pages = pages.map(function (page) {
-    return {
-      value: page,
-      disabled: page === dots
-    }
-  });
-
-  return pages
-};
+if ( module.exports) {
+  module.exports = clone;
+}
+});
 
 var DataTableCell = {
   functional: true,
@@ -244,7 +303,7 @@ var DataTableCell = {
     var data = ref.data;
 
     if (props.column.field) {
-      var value = dotGet(props.item, props.column.field);
+      var value = teible.dotGet(props.item, props.column.field);
       if (typeof value !== 'string') {
         value = JSON.stringify(value);
       }
@@ -265,6 +324,7 @@ var DataTableCell = {
 };
 
 //
+
 var script = {
   name: 'DataTableBody',
   components: { DataTableCell: DataTableCell },
@@ -276,6 +336,12 @@ var script = {
     columns: {
       type: Array,
       required: true
+    }
+  },
+  inject: ['$theme'],
+  computed: {
+    theme: function theme () {
+      return this.$theme()
     }
   }
 };
@@ -367,20 +433,13 @@ var normalizeComponent_1 = normalizeComponent;
 
 /* script */
 var __vue_script__ = script;
+
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('tbody',_vm._l((_vm.items),function(d,index){return _c('tr',{key:index,class:[
-      'datatable__row',
-      {
-        'datatable__row--odd': index % 2 === 1,
-        'datatable__row--last': index === _vm.items.length - 1
-      }
-    ]},_vm._l((_vm.columns),function(column,columnIndex){return _c('data-table-cell',_vm._b({key:columnIndex,class:[
-        'datatable__cell',
-        {
-          'datatable__cell--last-column': columnIndex === _vm.columns.length - 1,
-          'datatable__cell--last-row': index === _vm.items.length - 1
-        }
-      ],attrs:{"item":d,"column":column}},'data-table-cell',column.attrs,false))}),1)}),0)};
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('tbody',_vm._l((_vm.items),function(d,index){
+var _obj;
+return _c('tr',{key:index,class:( _obj = {}, _obj[_vm.theme.datatable__row] = true, _obj[_vm.theme['datatable__row--odd']] = index % 2 === 1, _obj[_vm.theme['datatable__row--last']] = index === _vm.items.length - 1, _obj )},_vm._l((_vm.columns),function(column,columnIndex){
+    var _obj;
+return _c('data-table-cell',_vm._b({key:columnIndex,class:( _obj = {}, _obj[_vm.theme.datatable__cell] = true, _obj[_vm.theme['datatable__cell--last-column']] = columnIndex === _vm.columns.length - 1, _obj[_vm.theme['datatable__cell--last-row']] = index === _vm.items.length - 1, _obj ),attrs:{"item":d,"column":column}},'data-table-cell',column.attrs,false))}),1)}),0)};
 var __vue_staticRenderFns__ = [];
 
   /* style */
@@ -408,6 +467,145 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
+var Octicon = {
+  functional: true,
+  props: {
+    icon: {
+      type: Object,
+      required: true,
+      validator: function validator (value) {
+        return value.attrs instanceof Function && value.path instanceof Function
+      }
+    },
+    scale: {
+      type: Number,
+      default: 1
+    },
+    className: {
+      type: String,
+      default: null
+    },
+    label: {
+      type: String,
+      default: null
+    }
+  },
+  render: function render (createElement, ref) {
+    var props = ref.props;
+
+    var icon = props.icon;
+    var scale = props.scale;
+    var className = props.className;
+    var label = props.label;
+    var options = { scale: scale, class: className, label: label };
+
+    return createElement('svg', { attrs: icon.attrs(options) }, [ createElement('path', { attrs: icon.path() }) ])
+  }
+};
+
+var Octicon_1 = Octicon;
+
+var assign = function (t) {
+  var arguments$1 = arguments;
+
+  var sources = [], len = arguments.length - 1;
+  while ( len-- > 0 ) { sources[ len ] = arguments$1[ len + 1 ]; }
+
+  for (var s, i = 0, n = sources.length; i < n; i++) {
+    s = sources[i];
+    Object.keys(s).forEach(function (p) {
+      if (p === '__proto__') {
+        return
+      }
+
+      t[p] = s[p];
+    });
+  }
+
+  return t
+};
+
+function octicon (name, width, height, path, keywords) {
+  var attributes = function (opts) {
+    var options = assign({
+      scale: 1,
+      label: null,
+      class: null
+    }, opts || {});
+
+    return elementAttributes({
+      version: '1.1',
+      width: width,
+      height: height,
+      viewBox: ("0 0 " + width + " " + height)
+    }, options)
+  };
+
+  var elementAttributes = function (attrs, options) {
+    if (options.label) {
+      attrs['aria-label'] = options.label;
+    } else {
+      attrs['aria-hidden'] = true;
+    }
+
+    if (options.class) {
+      attrs.class = "octicon octicon-" + name + " " + (options.class);
+    } else {
+      attrs.class = "octicon octicon-" + name;
+    }
+
+    var actualScale = options.scale === 0 ? 0 : parseFloat(options.scale) || 1;
+    var actualWidth = actualScale * parseInt(attrs.width);
+    var actualHeight = actualScale * parseInt(attrs.height);
+
+    attrs.width = Number(actualWidth.toFixed(2));
+    attrs.height = Number(actualHeight.toFixed(2));
+
+    return attrs
+  };
+
+  var elementAttributesString = function (attrs) {
+    return Object.keys(attrs).map(function (name) {
+      return (name + "=\"" + (attrs[name]) + "\"")
+    }).join(' ').trim()
+  };
+
+  return {
+    name: name,
+    path: function path$1 () {
+      return path
+    },
+    keywords: function keywords$1 () {
+      return keywords
+    },
+    attrs: function attrs (options) {
+      return attributes(options)
+    },
+    html: function html (options) {
+      var attrs = elementAttributesString(this.attrs(options));
+      var pathAttrs = elementAttributesString(this.path());
+      return ("<svg " + attrs + "><path " + pathAttrs + "/></svg>")
+    }
+  }
+}
+
+var octicon_1 = octicon;
+
+// This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
+var triangleDown = octicon_1('triangle-down', 12, 16, {"fill-rule":"evenodd","d":"M0 5l6 6 6-6H0z"}, ["arrow","point","direction"]);
+
+var triangleDown_1 = triangleDown;
+
+// This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
+var triangleUp = octicon_1('triangle-up', 12, 16, {"fill-rule":"evenodd","d":"M12 11L6 5l-6 6h12z"}, ["arrow","point","direction"]);
+
+var triangleUp_1 = triangleUp;
+
+// This is an auto-generated ES2015 icon from the modularize script. Please do not modify this file.
+var threeBars = octicon_1('three-bars', 12, 16, {"fill-rule":"evenodd","d":"M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"}, ["hamburger","menu","dropdown"]);
+
+var threeBars_1 = threeBars;
+
 var capitalize = function (str) {
   if (!str) {
     return
@@ -418,10 +616,10 @@ var capitalize = function (str) {
 
 var icon = function (column, active, sortDesc) {
   if (active) {
-    return sortDesc ? triangleDown : triangleUp
+    return sortDesc ? triangleDown_1 : triangleUp_1
   }
 
-  return threeBars
+  return threeBars_1
 };
 
 var DataTableHeadContent = {
@@ -438,11 +636,16 @@ var DataTableHeadContent = {
     sortDesc: {
       type: Boolean,
       required: true
+    },
+    theme: {
+      type: Object,
+      required: true
     }
   },
   render: function render (h, ref) {
     var props = ref.props;
 
+    var theme = props.theme; // vuejs/vue#5837
     if (props.column.scopedSlots && props.column.scopedSlots.header) {
       return h('span', {
         on: {
@@ -455,14 +658,14 @@ var DataTableHeadContent = {
 
     var children = [ h('span', {
       attrs: {
-        class: 'datatable__column-text'
+        class: theme['datatable__column-text']
       }
     }, capitalize(props.column.label || props.column.field)) ];
     if (props.column.sortable) {
-      children.push(h(Octicon, {
+      children.push(h(Octicon_1, {
         props: {
           icon: icon(props.column, props.active, props.sortDesc),
-          className: 'datatable__column-icon'
+          className: theme['datatable__column-icon']
         }
       }));
     }
@@ -489,6 +692,11 @@ var script$1 = {
       default: false
     }
   },
+  computed: {
+    theme: function theme () {
+      return this.$theme()
+    }
+  },
   methods: {
     isActive: function isActive (column) {
       return !!(column.sortable) && this.isSortedBy(column.field)
@@ -512,18 +720,22 @@ var script$1 = {
 
       this.$emit('update:sortBy', field);
     }
+  },
+  inject: ['$theme'],
+  provide: function provide () {
+    return {
+      $theme: this.$theme
+    }
   }
 };
 
 /* script */
 var __vue_script__$1 = script$1;
+
 /* template */
-var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',{staticClass:"datatable__head"},[(_vm.columns.length)?_c('tr',_vm._l((_vm.columns),function(column,index){return _c('th',_vm._b({key:column.field + column.label,class:['datatable__column', {
-        'datatable__column--custom': column.scopedSlots && column.scopedSlots.header,
-        'datatable__column--sortable': column.sortable,
-        'datatable__column--active': _vm.isActive(column),
-        'datatable__column--last': index === _vm.columns.length - 1
-      }, column.staticClass, column.dynamicClass],attrs:{"scope":"col"},on:{"click":function($event){$event.preventDefault();return _vm.updateSort(column.field, column.sortable)}}},'th',column.attrs,false),[_c('data-table-head-content',{attrs:{"column":column,"active":_vm.isActive(column),"sort-desc":_vm.sortDesc}})],1)}),0):_vm._e()])};
+var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',{class:_vm.theme.datatable__head},[(_vm.columns.length)?_c('tr',_vm._l((_vm.columns),function(column,index){
+var _obj;
+return _c('th',_vm._b({key:column.field + column.label,class:( _obj = {}, _obj[_vm.theme.datatable__column] = true, _obj[_vm.theme['datatable__column--custom']] = column.scopedSlots && column.scopedSlots.header, _obj[_vm.theme['datatable__column--sortable']] = column.sortable, _obj[_vm.theme['datatable__column--active']] = _vm.isActive(column), _obj[_vm.theme['datatable__column--last']] = index === _vm.columns.length - 1, _obj[column.staticClass] = column.staticClass, _obj[column.dynamicClass] = column.dynamicClass, _obj ),attrs:{"scope":"col"},on:{"click":function($event){$event.preventDefault();return _vm.updateSort(column.field, column.sortable)}}},'th',column.attrs,false),[_c('data-table-head-content',{attrs:{"column":column,"active":_vm.isActive(column),"sort-desc":_vm.sortDesc,"theme":_vm.theme}})],1)}),0):_vm._e()])};
 var __vue_staticRenderFns__$1 = [];
 
   /* style */
@@ -552,6 +764,7 @@ var __vue_staticRenderFns__$1 = [];
   );
 
 //
+
 var script$2 = {
   name: 'DataTablePagination',
   props: {
@@ -570,7 +783,7 @@ var script$2 = {
   },
   computed: {
     pages: function pages () {
-      return paginate(this.page, this.totalPages)
+      return teible.paginate(this.page, this.totalPages)
     },
     totalPages: function totalPages () {
       return Math.ceil(this.total / (this.perPage || 1))
@@ -580,6 +793,9 @@ var script$2 = {
     },
     reachedLast: function reachedLast () {
       return this.page >= this.totalPages
+    },
+    theme: function theme () {
+      return this.$theme()
     }
   },
   methods: {
@@ -601,18 +817,19 @@ var script$2 = {
 
       this.$emit('update:page', page);
     }
-  }
+  },
+  inject: ['$theme']
 };
 
 /* script */
 var __vue_script__$2 = script$2;
+
 /* template */
-var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{staticClass:"datatable__pagination"},[_c('ul',{staticClass:"datatable__plist"},[_c('li',{staticClass:"datatable__pitem"},[_c('a',{class:[
-          'datatable__plink datatable__pprev',
-          {
-            'datatable__plink--disabled': _vm.reachedFirst
-          }
-        ],attrs:{"href":"#","aria-label":"Previous"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page-1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")])])]),_vm._l((_vm.pages),function(p,index){return _c('li',{key:index,staticClass:"datatable__pitem"},[_c('a',{class:['datatable__plink', { 'datatable__plink--active': _vm.isActive(p), 'datatable__plink--disabled': p.disabled }],attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.load(p.value, p.disabled)}}},[_vm._v(_vm._s(p.value))])])}),_c('li',{staticClass:"datatable__pitem"},[_c('a',{class:['datatable__plink datatable__pnext', { 'datatable__plink--disabled': _vm.reachedLast }],attrs:{"href":"#","aria-label":"Next"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page+1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")])])])],2)])};
+var __vue_render__$2 = function () {
+var _obj, _obj$1;
+var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{class:_vm.theme.datatable__pagination},[_c('ul',{class:_vm.theme.datatable__plist},[_c('li',{class:_vm.theme.datatable__pitem},[_c('a',{class:( _obj = {}, _obj[_vm.theme.datatable__plink] = true, _obj[_vm.theme.datatable__pprev] = true, _obj[_vm.theme['datatable__plink--disabled']] = _vm.reachedFirst, _obj ),attrs:{"href":"#","aria-label":"Previous"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page-1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")])])]),_vm._l((_vm.pages),function(p,index){
+        var _obj;
+return _c('li',{key:index,class:_vm.theme.datatable__pitem},[_c('a',{class:( _obj = {}, _obj[_vm.theme.datatable__plink] = true, _obj[_vm.theme['datatable__plink--active']] = _vm.isActive(p), _obj[_vm.theme['datatable__plink--disabled']] = p.disabled, _obj ),attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.load(p.value, p.disabled)}}},[_vm._v(_vm._s(p.value))])])}),_c('li',{class:_vm.theme.datatable__pitem},[_c('a',{class:( _obj$1 = {}, _obj$1[_vm.theme.datatable__plink] = true, _obj$1[_vm.theme.datatable__pnext] = true, _obj$1[_vm.theme['datatable__plink--disabled']] = _vm.reachedLast, _obj$1 ),attrs:{"href":"#","aria-label":"Next"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page+1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")])])])],2)])};
 var __vue_staticRenderFns__$2 = [];
 
   /* style */
@@ -660,6 +877,11 @@ var script$3 = {
       required: true
     }
   },
+  computed: {
+    theme: function theme () {
+      return this.$theme()
+    }
+  },
   methods: {
     update: function update (filter) {
       this.$emit('update:filter', filter);
@@ -667,13 +889,15 @@ var script$3 = {
     clear: function clear () {
       this.$emit('update:filter', '');
     }
-  }
+  },
+  inject: ['$theme']
 };
 
 /* script */
 var __vue_script__$3 = script$3;
+
 /* template */
-var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"datatable__filter"},[_c('input',{staticClass:"datatable__input",attrs:{"type":"text","placeholder":"Filter table data"},domProps:{"value":_vm.filter},on:{"input":function($event){return _vm.update($event.target.value)}}}),_vm._v(" "),(_vm.filter)?_c('div',{staticClass:"datatable__clear",on:{"click":function($event){$event.stopPropagation();return _vm.clear($event)}}},[_c('a',{staticClass:"datatable__x",attrs:{"href":"#"},on:{"click":function($event){$event.stopPropagation();$event.preventDefault();return _vm.clear($event)}}},[_vm._v("×")])]):_vm._e()])};
+var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme.datatable__filter},[_c('input',{class:_vm.theme.datatable__input,attrs:{"type":"text","placeholder":"Filter table data"},domProps:{"value":_vm.filter},on:{"input":function($event){return _vm.update($event.target.value)}}}),_vm._v(" "),(_vm.filter)?_c('div',{class:_vm.theme.datatable__clear,on:{"click":function($event){$event.stopPropagation();return _vm.clear($event)}}},[_c('a',{class:_vm.theme.datatable__x,attrs:{"href":"#"},on:{"click":function($event){$event.stopPropagation();$event.preventDefault();return _vm.clear($event)}}},[_vm._v("×")])]):_vm._e()])};
 var __vue_staticRenderFns__$3 = [];
 
   /* style */
@@ -726,6 +950,19 @@ var script$4 = {
     filter: {
       type: String,
       default: ''
+    },
+    theme: {
+      type: Object,
+      default: function default$1 () {
+        return teible.themeDefault
+      }
+    }
+  },
+  provide: function provide () {
+    var this$1 = this;
+
+    return {
+      $theme: function () { return this$1.theme; } // because provide & inject bindings are not reactive
     }
   },
   data: function data () {
@@ -819,17 +1056,11 @@ var script$4 = {
         return []
       }
 
-      return this.transform(this.items)
+      return this.transform(clone_1(this.items, false))
     }
   },
   watch: {
-    items: function items (val, oldVal) {
-      if (val === oldVal) {
-        return
-      }
-
-      this.loadItems();
-    },
+    items: 'loadItems',
     identifier: 'loadItems',
     sortBy: {
       immediate: true,
@@ -865,33 +1096,8 @@ var script$4 = {
     this.loadItems();
   },
   methods: {
-    transform: function transform (data) {
-      var this$1 = this;
-
-      return data.map(function ($item) {
-        var item = Object.assign({}, $item);
-        this$1.columns.filter(function (column) { return typeof column.render === 'function'; }).forEach(function (column) {
-          var parts = column.field.split('.');
-          var originalField = parts.reduce(function (a, b, index) {
-            if (index === parts.length - 1) {
-              return (a + ".$_" + b)
-            }
-            return (a + "." + b)
-          });
-
-          if (parts.length === 1) {
-            originalField = "$_" + originalField;
-          }
-
-          if (item.hasOwnProperty(originalField)) {
-            return
-          }
-
-          dotSet(item, originalField, dotGet(item, column.field));
-          dotSet(item, column.field, column.render(dotGet(item, column.field), item));
-        });
-        return item
-      })
+    transform: function transform$1 (data) {
+      return teible.transform(data, this.columns)
     },
     loadSlots: function loadSlots () {
       // $slots is not reactive
@@ -915,7 +1121,7 @@ var script$4 = {
         return this.ping()
       }
 
-      var data = load(this.transformed, this.filtering, this.sorting, this.paging);
+      var data = teible.load(this.transformed, this.filtering, this.sorting, this.paging);
       this.actualItems = data.items;
       this.total = data.total;
       return this.ping()
@@ -931,8 +1137,9 @@ var script$4 = {
 
 /* script */
 var __vue_script__$4 = script$4;
+
 /* template */
-var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"datatable"},[_c('div',{staticClass:"datatable__wrapper"},[_c('div',{staticClass:"datatable__heading"},[_c('data-table-filter',{staticClass:"datatable__unit",attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}),_vm._v(" "),_c('div',{staticClass:"datatable__unit datatable__text"},[(_vm.total)?_c('span',[_vm._v("\n          Showing "),_c('span',{domProps:{"textContent":_vm._s(_vm.from === _vm.to && _vm.to === _vm.total ? 'the last entry' : _vm.from + ' to ' + _vm.to)}}),_vm._v(" of "+_vm._s(_vm.total)+" records\n        ")]):_c('span',[_vm._v("No records")])])],1),_vm._v(" "),_c('div',{staticClass:"datatable__screen"},[_c('table',{staticClass:"datatable__content",attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems}})],1)]),_vm._v(" "),_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total},on:{"update:page":function($event){_vm.page=$event;}}})],1)])};
+var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme.datatable},[_c('div',{class:_vm.theme.datatable__wrapper},[_c('div',{class:_vm.theme.datatable__heading},[_c('data-table-filter',{class:_vm.theme.datatable__unit,attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}),_vm._v(" "),_c('div',{class:[_vm.theme.datatable__unit, _vm.theme.datatable__text]},[(_vm.total)?_c('span',[_vm._v("\n          Showing "),_c('span',{domProps:{"textContent":_vm._s(_vm.from === _vm.to && _vm.to === _vm.total ? 'the last entry' : _vm.from + ' to ' + _vm.to)}}),_vm._v(" of "+_vm._s(_vm.total)+" records\n        ")]):_c('span',[_vm._v("No records")])])],1),_vm._v(" "),_c('div',{class:_vm.theme.datatable__screen},[_c('table',{class:_vm.theme.datatable__content,attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems}})],1)]),_vm._v(" "),_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total},on:{"update:page":function($event){_vm.page=$event;}}})],1)])};
 var __vue_staticRenderFns__$4 = [];
 
   /* style */
@@ -985,6 +1192,14 @@ var DataColumn = {
   }
 };
 
+Object.keys(teible).forEach(function (k) {
+  if (k !== 'default') Object.defineProperty(exports, k, {
+    enumerable: true,
+    get: function () {
+      return teible[k];
+    }
+  });
+});
 exports.DataColumn = DataColumn;
 exports.DataTable = DataTable;
 exports.default = DataTable;

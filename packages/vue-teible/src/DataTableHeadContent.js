@@ -33,9 +33,14 @@ export default {
     sortDesc: {
       type: Boolean,
       required: true
+    },
+    theme: {
+      type: Object,
+      required: true
     }
   },
   render (h, { props }) {
+    const theme = props.theme // vuejs/vue#5837
     if (props.column.scopedSlots && props.column.scopedSlots.header) {
       return h('span', {
         on: {
@@ -48,14 +53,14 @@ export default {
 
     let children = [ h('span', {
       attrs: {
-        class: 'datatable__column-text'
+        class: theme['datatable__column-text']
       }
     }, capitalize(props.column.label || props.column.field)) ]
     if (props.column.sortable) {
       children.push(h(Octicon, {
         props: {
           icon: icon(props.column, props.active, props.sortDesc),
-          className: 'datatable__column-icon'
+          className: theme['datatable__column-icon']
         }
       }))
     }

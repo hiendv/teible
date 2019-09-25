@@ -1,20 +1,17 @@
-import Vue from 'vue'
-import { mount } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import { DataTable, DataColumn } from '../src/main.js'
 
-const fakeMount = (component, options, children) => {
-  if (!children) {
-    return mount(component, options)
-  }
+let localVue = null
 
-  let App = Vue.extend({
-    render (h) {
-      return h(component, options, children(h))
-    }
-  })
+beforeAll(() => {
+  localVue = createLocalVue()
+  localVue.component('DataTable', DataTable)
+  localVue.component('DataColumn', DataColumn)
+})
 
-  return mount(App).find(component)
-}
+afterAll(() => {
+  localVue = null
+})
 
 describe('DataTable', () => {
   const generateItems = () => [{
@@ -28,32 +25,57 @@ describe('DataTable', () => {
     key: 'value a (id-3)'
   }]
 
-  const defaultColumns = h => {
-    return [ h(DataColumn, { props: { field: 'id', label: 'ID', render: id => `id-${id}` } }), h(DataColumn, { props: { field: 'key', label: 'Value' } }) ]
-  }
-
   it('works with sync data', () => {
-    let wrapper = fakeMount(DataTable, {
-      props: { items: generateItems(), perPage: 2 }
-    }, defaultColumns)
+    const items = generateItems()
+    const wrapper = mount(DataTable, {
+      propsData: { items, perPage: 2 },
+      mocks: {
+        idx (id) {
+          return `id-${id}`
+        }
+      },
+      slots: {
+        default: `
+          <data-column field="id" label="ID" :render="idx"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
 
     expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.setProps({ items: [] })
     expect(wrapper.html()).toMatchSnapshot()
   })
 
   it('works with sync data using function', () => {
-    let items = generateItems()
-    let wrapper = fakeMount(DataTable, {
-      props: {
+    const items = generateItems()
+    const wrapper = mount(DataTable, {
+      propsData: {
         items () {
           return {
             items,
             total: items.length
           }
         }
-      }
-    }, defaultColumns)
+      },
+      mocks: {
+        idx (id) {
+          return `id-${id}`
+        }
+      },
+      slots: {
+        default: `
+          <data-column field="id" label="ID" :render="idx"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
 
+    expect(wrapper.vm.transformed).toEqual([])
     expect(wrapper.isVueInstance()).toBeTruthy()
     return wrapper.vm.$nextTick()
       .then(() => {
@@ -62,9 +84,9 @@ describe('DataTable', () => {
   })
 
   it('works with async data', () => {
-    let items = generateItems()
-    let wrapper = fakeMount(DataTable, {
-      props: {
+    const items = generateItems()
+    const wrapper = mount(DataTable, {
+      propsData: {
         items () {
           return new Promise(resolve => {
             resolve({
@@ -73,8 +95,20 @@ describe('DataTable', () => {
             })
           })
         }
-      }
-    }, defaultColumns)
+      },
+      mocks: {
+        idx (id) {
+          return `id-${id}`
+        }
+      },
+      slots: {
+        default: `
+          <data-column field="id" label="ID" :render="idx"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
 
     expect(wrapper.isVueInstance()).toBeTruthy()
     return wrapper.vm.$nextTick()
@@ -84,8 +118,8 @@ describe('DataTable', () => {
   })
 
   it('works with no columns', () => {
-    let wrapper = fakeMount(DataTable, {
-      props: { items: generateItems() }
+    const wrapper = mount(DataTable, {
+      propsData: { items: generateItems() }
     })
 
     expect(wrapper.isVueInstance()).toBeTruthy()
@@ -93,21 +127,45 @@ describe('DataTable', () => {
   })
 
   it('works with empty data', () => {
-    let wrapper = fakeMount(DataTable, {
-      props: { items: [] }
-    }, defaultColumns)
+    const wrapper = mount(DataTable, {
+      propsData: { items: [] },
+      mocks: {
+        idx (id) {
+          return `id-${id}`
+        }
+      },
+      slots: {
+        default: `
+          <data-column field="id" label="ID" :render="idx"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
 
     expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.html()).toMatchSnapshot()
   })
 
   it('emits loaded', () => {
-    let items = generateItems()
-    let wrapper = fakeMount(DataTable, {
-      props: { items: generateItems(), perPage: 1 }
-    }, defaultColumns)
+    const items = generateItems()
+    const wrapper = mount(DataTable, {
+      propsData: { items: generateItems(), perPage: 1 },
+      mocks: {
+        idx (id) {
+          return `id-${id}`
+        }
+      },
+      slots: {
+        default: `
+          <data-column field="id" label="ID" :render="idx"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
 
-    let theItem = items[0]
+    const theItem = items[0]
     theItem.$_id = theItem.id
     theItem.id = `id-${theItem.id}`
 
@@ -118,27 +176,48 @@ describe('DataTable', () => {
   })
 
   it('emits update:sortBy', () => {
-    let wrapper = fakeMount(DataTable, {
-      props: { items: generateItems() }
-    }, defaultColumns)
+    const wrapper = mount(DataTable, {
+      props: { items: generateItems() },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
 
     wrapper.find('th').trigger('click')
     expect(wrapper.emitted()['update:sortBy']).toEqual([['id']])
   })
 
   it('emits update:sortDesc', () => {
-    let wrapper = fakeMount(DataTable, {
-      props: { items: generateItems(), sortBy: 'id', sortDesc: true }
-    }, defaultColumns)
+    const wrapper = mount(DataTable, {
+      propsData: { items: generateItems(), sortBy: 'id', sortDesc: true },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
 
     wrapper.find('th').trigger('click')
     expect(wrapper.emitted()['update:sortDesc']).toEqual([[false]])
   })
 
   it('emits update:filter', () => {
-    let wrapper = fakeMount(DataTable, {
-      props: { items: generateItems(), filter: 'z' }
-    }, defaultColumns)
+    const wrapper = mount(DataTable, {
+      propsData: { items: generateItems(), filter: 'z' },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
 
     const input = wrapper.find('.datatable__input')
     input.element.value = 'a'
@@ -148,40 +227,33 @@ describe('DataTable', () => {
   })
 
   it('keeps original items', () => {
-    let wrapper = fakeMount(DataTable, {
-      props: {
-        items: [{
-          foo: {
-            bar: {
-              baz: 'yo'
-            }
-          },
-          qux: 'LOWERCASE ME'
-        }]
-      }
-    }, h => {
-      return [
-        h(DataColumn, {
-          props: {
-            field: 'foo.bar.baz',
-            label: 'dot-chaining field',
-            sortable: false,
-            render: value => {
-              return value.toUpperCase()
-            }
-          }
-        }),
-        h(DataColumn, {
-          props: {
-            field: 'qux',
-            label: 'plain field',
-            sortable: false,
-            render: value => {
-              return value.toLowerCase()
-            }
-          }
-        })
-      ]
+    const items = [{
+      foo: {
+        bar: {
+          baz: 'yo'
+        }
+      },
+      qux: 'LOWERCASE ME'
+    }]
+    const wrapper = mount(DataTable, {
+      propsData: {
+        items
+      },
+      mocks: {
+        u (value) {
+          return value.toUpperCase()
+        },
+        l (value) {
+          return value.toLowerCase()
+        }
+      },
+      slots: {
+        default: `
+          <data-column field="foo.bar.baz" label="dot-chaining field" :sortable="false" :render="u"/>
+          <data-column field="qux" label="plain field" :sortable="false" :render="l"/>
+        `
+      },
+      localVue
     })
 
     expect(wrapper.isVueInstance()).toBeTruthy()

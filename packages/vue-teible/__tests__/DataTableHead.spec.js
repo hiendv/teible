@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils'
+import idObj from 'identity-obj-proxy'
 import DataTableHead from '../src/DataTableHead.vue'
 
 describe('DataTableHead', () => {
@@ -8,7 +9,10 @@ describe('DataTableHead', () => {
         sortBy: 'name',
         sortDesc: false,
         columns: [{ field: 'id', label: 'ID', sortable: true }, { field: 'name', sortable: true }, { field: '' }]
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -23,7 +27,10 @@ describe('DataTableHead', () => {
             return 'Yo'
           }
         } }]
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
     expect(wrapper.html()).toMatchSnapshot()
     wrapper.findAll('th').at(2).find('span').trigger('click')
@@ -36,7 +43,10 @@ describe('DataTableHead', () => {
         sortBy: 'id',
         sortDesc: false,
         columns: [{ field: 'id', label: 'ID', sortable: true }, { field: 'name', label: 'Name', sortable: true }]
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
     expect(wrapper.html()).toMatchSnapshot()
 
@@ -55,7 +65,10 @@ describe('DataTableHead', () => {
         sortBy: 'name',
         sortDesc: false,
         columns: [{ field: 'id', label: 'ID', sortable: true }, { field: 'name', label: 'Name', sortable: true }]
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
     expect(wrapper.html()).toMatchSnapshot()
 
@@ -72,7 +85,10 @@ describe('DataTableHead', () => {
     let wrapper = mount(DataTableHead, {
       propsData: {
         columns: [{ field: 'id' }, { field: 'name' }]
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
 
     wrapper.vm.updateSort('')
@@ -85,7 +101,10 @@ describe('DataTableHead', () => {
         sortBy: 'name',
         sortDesc: false,
         columns: [{ field: 'id', label: 'ID', sortable: true }, { field: 'name', label: 'Name', sortable: false }]
-      }
+      },
+      provide: () => ({
+        $theme: () => idObj
+      })
     })
     expect(wrapper.html()).toMatchSnapshot()
 

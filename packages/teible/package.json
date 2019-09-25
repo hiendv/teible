@@ -1,0 +1,20 @@
+{
+  "name": "teible",
+  "version": "0.9.21",
+  "module": "dist/es.js",
+  "main": "dist/es.js",
+  "author": "Hien Dao <hien.dv.neo@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@hiendv/bem-sass": "^0.1.0"
+  },
+  "files": [
+    "dist",
+    "themes",
+    "README.md"
+  ],
+  "repository": "https://github.com/hiendv/teible/tree/master/packages/teible"
+}

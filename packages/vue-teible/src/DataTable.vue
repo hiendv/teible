@@ -1,17 +1,17 @@
 <template>
-  <div class="datatable">
-    <div class="datatable__wrapper">
-      <div class="datatable__heading">
-        <data-table-filter :filter.sync="options.filter" class="datatable__unit" />
-        <div class="datatable__unit datatable__text">
+  <div :class="theme.datatable">
+    <div :class="theme.datatable__wrapper">
+      <div :class="theme.datatable__heading">
+        <data-table-filter :filter.sync="options.filter" :class="theme.datatable__unit" />
+        <div :class="[theme.datatable__unit, theme.datatable__text]">
           <span v-if="total">
             Showing <span v-text="from === to && to === total ? 'the last entry' : from + ' to ' + to" /> of {{ total }} records
           </span>
           <span v-else>No records</span>
         </div>
       </div>
-      <div class="datatable__screen">
-        <table class="datatable__content" cellspacing="0" cellpadding="0">
+      <div :class="theme.datatable__screen">
+        <table :class="theme.datatable__content" cellspacing="0" cellpadding="0">
           <data-table-head :columns="columns" :sort-by.sync="options.sortBy" :sort-desc.sync="options.sortDesc" />
           <data-table-body :columns="columns" :items="actualItems" />
         </table>
@@ -21,7 +21,9 @@
   </div>
 </template>
 <script>
-import { load, defaultProps, dotGet, dotSet } from './helpers'
+import { defaultProps } from './helpers'
+import { load, transform, themeDefault } from 'teible'
+import clone from 'clone'
 import DataTableBody from './DataTableBody.vue'
 import DataTableHead from './DataTableHead.vue'
 import DataTablePagination from './DataTablePagination.vue'
@@ -50,6 +52,17 @@ export default {
     filter: {
       type: String,
       default: ''
+    },
+    theme: {
+      type: Object,
+      default () {
+        return themeDefault
+      }
+    }
+  },
+  provide () {
+    return {
+      $theme: () => this.theme // because provide & inject bindings are not reactive
     }
   },
   data () {
@@ -130,17 +143,11 @@ export default {
         return []
       }
 
-      return this.transform(this.items)
+      return this.transform(clone(this.items, false))
     }
   },
   watch: {
-    items (val, oldVal) {
-      if (val === oldVal) {
-        return
-      }
-
-      this.loadItems()
-    },
+    items: 'loadItems',
     identifier: 'loadItems',
     sortBy: {
       immediate: true,
@@ -177,30 +184,7 @@ export default {
   },
   methods: {
     transform (data) {
-      return data.map($item => {
-        let item = Object.assign({}, $item)
-        this.columns.filter(column => typeof column.render === 'function').forEach(column => {
-          let parts = column.field.split('.')
-          let originalField = parts.reduce((a, b, index) => {
-            if (index === parts.length - 1) {
-              return `${a}.$_${b}`
-            }
-            return `${a}.${b}`
-          })
-
-          if (parts.length === 1) {
-            originalField = `$_${originalField}`
-          }
-
-          if (item.hasOwnProperty(originalField)) {
-            return
-          }
-
-          dotSet(item, originalField, dotGet(item, column.field))
-          dotSet(item, column.field, column.render(dotGet(item, column.field), item))
-        })
-        return item
-      })
+      return transform(data, this.columns)
     },
     loadSlots () {
       // $slots is not reactive
@@ -236,57 +220,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-@import "~@hiendv/bem-sass";
-*, *::after, *::before {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.datatable {
-  color: $color;
-  font: 1em/1.5 -apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @include e('screen') {
-    display: block;
-    width: 100%;
-  }
-
-  @include e('wrapper') {
-    position: relative;
-    display: block;
-    text-align: left;
-    width: 100%;
-  }
-
-  @include e('heading') {
-    margin-bottom: .5em;
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-  }
-
-  @include e('unit') {
-    margin-bottom: .5em;
-  }
-
-  @media (min-width: 768px) {
-    @include e('unit') {
-      width: 50%;
-      display: table-cell;
-    }
-
-    @include e('text') {
-      padding-left: 1em;
-    }
-  }
-
-  @include e('content') {
-    width: 100%;
-    border: solid 1px $border-color;
-    table-layout: fixed;
-  }
-}
-</style>

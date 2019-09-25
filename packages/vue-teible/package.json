@@ -4,6 +4,7 @@
   "version": "0.9.21",
   "author": "Hien Dao <hien.dv.neo@gmail.com>",
   "dependencies": {
+    "teible": "0.9.21",
     "octicons-vue": "^0.18.9"
   },
   "files": [
