@@ -8,8 +8,8 @@ fi
 # abort on errors
 set -e
 
-# build:example
-npm run build:example
+# build:vue
+npm run build:vue
 
 cd packages/vue-teible-example/dist
 
