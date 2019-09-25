@@ -1,19 +1,28 @@
 ##  (2019-09-25)
 
-* chore: add CHANGELOG ([da87540](https://github.com/hiendv/teible/commit/da87540))
+* chore: 0.9.21 changelog [ci skip] ([9101d60](https://github.com/hiendv/teible/commit/9101d60))
+* chore: add CHANGELOG ([733ed93](https://github.com/hiendv/teible/commit/733ed93))
+* chore: add commitizen ([0cdcfd0](https://github.com/hiendv/teible/commit/0cdcfd0))
 * chore: refactor the structure ([9ca0d7c](https://github.com/hiendv/teible/commit/9ca0d7c))
-* chore: update contributing docs ([80de713](https://github.com/hiendv/teible/commit/80de713))
+* chore: update contributing docs ([94d201a](https://github.com/hiendv/teible/commit/94d201a))
 * chore: update deps ([941e483](https://github.com/hiendv/teible/commit/941e483))
 * chore: update deps ([0d4944b](https://github.com/hiendv/teible/commit/0d4944b))
 * chore: update deps & clean up ([769ee6c](https://github.com/hiendv/teible/commit/769ee6c))
-* chore(teible): remove the iife output ([6863805](https://github.com/hiendv/teible/commit/6863805))
-* chore(vue-teible-example): correct publicPath ([6eb1439](https://github.com/hiendv/teible/commit/6eb1439))
-* docs(teible): add README ([04f6441](https://github.com/hiendv/teible/commit/04f6441))
-* refactor: keep the props pure ([81fd122](https://github.com/hiendv/teible/commit/81fd122))
-* refactor: move common utils & styles to teible package ([00bfe72](https://github.com/hiendv/teible/commit/00bfe72))
-* refactor: transform before querying & rework the mutation ([1ec59e2](https://github.com/hiendv/teible/commit/1ec59e2))
-* refactor: update examples ([c762854](https://github.com/hiendv/teible/commit/c762854))
+* chore(teible): remove the iife output ([d12e0b5](https://github.com/hiendv/teible/commit/d12e0b5))
+* chore(vue-teible-example): correct publicPath ([a3c7301](https://github.com/hiendv/teible/commit/a3c7301))
+* Revert "chore: 0.9.21 changelog [ci skip]" ([95c943f](https://github.com/hiendv/teible/commit/95c943f))
+* docs(teible): add README ([f37bdf0](https://github.com/hiendv/teible/commit/f37bdf0))
+* refactor: keep the props pure ([4cf5fbb](https://github.com/hiendv/teible/commit/4cf5fbb))
+* refactor: move common utils & styles to teible package ([3ecb78f](https://github.com/hiendv/teible/commit/3ecb78f))
+* refactor: transform before querying & rework the mutation ([fee7cc8](https://github.com/hiendv/teible/commit/fee7cc8))
+* refactor: update examples ([a0ee678](https://github.com/hiendv/teible/commit/a0ee678))
 
+
+### BREAKING CHANGE
+
+* stylesheet import is now for iife only. Immutability is now using clone instead of JSON (un)serialization
+* The Array items are now mutated because of performance. You can query with the transformed data now
+* The items prop is now immutable
 
 
 ## <small>0.9.21 (2019-07-03)</small>
