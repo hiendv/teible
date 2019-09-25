@@ -1,6 +1,6 @@
 ##  (2019-09-25)
 
-* docs(teible): add README ([04f6441](https://github.com/hiendv/teible/commit/04f6441))
+* chore: add CHANGELOG ([da87540](https://github.com/hiendv/teible/commit/da87540))
 * chore: refactor the structure ([9ca0d7c](https://github.com/hiendv/teible/commit/9ca0d7c))
 * chore: update contributing docs ([80de713](https://github.com/hiendv/teible/commit/80de713))
 * chore: update deps ([941e483](https://github.com/hiendv/teible/commit/941e483))
@@ -8,6 +8,7 @@
 * chore: update deps & clean up ([769ee6c](https://github.com/hiendv/teible/commit/769ee6c))
 * chore(teible): remove the iife output ([6863805](https://github.com/hiendv/teible/commit/6863805))
 * chore(vue-teible-example): correct publicPath ([6eb1439](https://github.com/hiendv/teible/commit/6eb1439))
+* docs(teible): add README ([04f6441](https://github.com/hiendv/teible/commit/04f6441))
 * refactor: keep the props pure ([81fd122](https://github.com/hiendv/teible/commit/81fd122))
 * refactor: move common utils & styles to teible package ([00bfe72](https://github.com/hiendv/teible/commit/00bfe72))
 * refactor: transform before querying & rework the mutation ([1ec59e2](https://github.com/hiendv/teible/commit/1ec59e2))

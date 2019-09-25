@@ -21,6 +21,7 @@
     "babel-jest": "^24.9.0",
     "clone": "^2.1.2",
     "core-js": "^2.6.9",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.4.0",
     "eslint-plugin-vue": "^5.2.3",
     "flatted": "^2.0.1",
@@ -83,5 +84,10 @@
     "test": "jest --no-cache",
     "test-ci": "$npm_execpath run build && $npm_execpath run test -- --coverage --ci --maxWorkers=4",
     "release": "$npm_execpath run build && $npm_execpath run test && lerna publish"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
