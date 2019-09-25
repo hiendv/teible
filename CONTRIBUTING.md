@@ -32,10 +32,10 @@ npm run setup
 
 ### Step 4: Write some code & build
 When you are happy with your changes, run `npm run build`.
-If you don't want to repeat the process of linting & building from time to time, run `npm start` which should concurrently start **watching** and **serving**.
+If you don't want to repeat the process of linting & building from time to time, run `npm run watch` & `npm run serve:vue` which should start **watching** and **serving**.
 
 ### Step 5: Tests
-It's easy, `npm test`. Want coverage reports also? `npm run coverage`.
+It's easy, `npm test`. Want coverage reports also? `npm run test --coverage`.
 
 ### Step 6: Commit
 It is a recommended best practice to keep your changes as logically grouped as possible within individual commits. There is no limit to the number of commits any single PR may have, and many contributors find it easier to review changes that are split across multiple commits.
