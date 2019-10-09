@@ -4,11 +4,11 @@ exports[`DataTable keeps original items 1`] = `
 <div class="datatable">
   <div class="datatable__wrapper">
     <div class="datatable__heading">
-      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter table data" class="datatable__input">
+      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter records" class="datatable__input">
         <!---->
       </div>
       <div class="datatable__unit datatable__text"><span>
-          Showing <span>the last entry</span> of 1 records
+          Showing <span>the last record</span> of 1 records
         </span></div>
     </div>
     <div class="datatable__screen">
@@ -42,11 +42,11 @@ exports[`DataTable works with async data 1`] = `
 <div class="datatable">
   <div class="datatable__wrapper">
     <div class="datatable__heading">
-      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter table data" class="datatable__input">
+      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter records" class="datatable__input">
         <!---->
       </div>
       <div class="datatable__unit datatable__text"><span>
-          Showing <span>1 to 3</span> of 3 records
+          Showing <span>1 – 3</span> of 3 records
         </span></div>
     </div>
     <div class="datatable__screen">
@@ -92,7 +92,7 @@ exports[`DataTable works with empty data 1`] = `
 <div class="datatable">
   <div class="datatable__wrapper">
     <div class="datatable__heading">
-      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter table data" class="datatable__input">
+      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter records" class="datatable__input">
         <!---->
       </div>
       <div class="datatable__unit datatable__text"><span>No records</span></div>
@@ -126,11 +126,11 @@ exports[`DataTable works with no columns 1`] = `
 <div class="datatable">
   <div class="datatable__wrapper">
     <div class="datatable__heading">
-      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter table data" class="datatable__input">
+      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter records" class="datatable__input">
         <!---->
       </div>
       <div class="datatable__unit datatable__text"><span>
-          Showing <span>1 to 3</span> of 3 records
+          Showing <span>1 – 3</span> of 3 records
         </span></div>
     </div>
     <div class="datatable__screen">
@@ -160,11 +160,11 @@ exports[`DataTable works with sync data 1`] = `
 <div class="datatable">
   <div class="datatable__wrapper">
     <div class="datatable__heading">
-      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter table data" class="datatable__input">
+      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter records" class="datatable__input">
         <!---->
       </div>
       <div class="datatable__unit datatable__text"><span>
-          Showing <span>1 to 2</span> of 3 records
+          Showing <span>1 – 2</span> of 3 records
         </span></div>
     </div>
     <div class="datatable__screen">
@@ -207,7 +207,7 @@ exports[`DataTable works with sync data 2`] = `
 <div class="datatable">
   <div class="datatable__wrapper">
     <div class="datatable__heading">
-      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter table data" class="datatable__input">
+      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter records" class="datatable__input">
         <!---->
       </div>
       <div class="datatable__unit datatable__text"><span>No records</span></div>
@@ -241,11 +241,11 @@ exports[`DataTable works with sync data using function 1`] = `
 <div class="datatable">
   <div class="datatable__wrapper">
     <div class="datatable__heading">
-      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter table data" class="datatable__input">
+      <div class="datatable__filter datatable__unit"><input type="text" placeholder="Filter records" class="datatable__input">
         <!---->
       </div>
       <div class="datatable__unit datatable__text"><span>
-          Showing <span>1 to 3</span> of 3 records
+          Showing <span>1 – 3</span> of 3 records
         </span></div>
     </div>
     <div class="datatable__screen">
@@ -281,6 +281,40 @@ exports[`DataTable works with sync data using function 1`] = `
         <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
         <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
         <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext datatable__plink--disabled"><span aria-hidden="true">»</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`DataTable works with vue-i18n 1`] = `
+<div class="datatable">
+  <div class="datatable__wrapper">
+    <div class="datatable__heading">
+      <div class="datatable__filter datatable__unit"><input type="text" placeholder="teible.filter" class="datatable__input">
+        <!---->
+      </div>
+      <div class="datatable__unit datatable__text"><span>
+          teible.showing <span>1 – 2</span> teible.total-3
+        </span></div>
+    </div>
+    <div class="datatable__screen">
+      <table cellspacing="0" cellpadding="0" class="datatable__content">
+        <thead class="datatable__head">
+          <!---->
+        </thead>
+        <tbody>
+          <tr class="datatable__row"></tr>
+          <tr class="datatable__row datatable__row--odd datatable__row--last"></tr>
+        </tbody>
+      </table>
+    </div>
+    <nav class="datatable__pagination">
+      <ul class="datatable__plist">
+        <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
+        <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
+        <li class="datatable__pitem"><a href="#" class="datatable__plink">2</a></li>
+        <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a></li>
       </ul>
     </nav>
   </div>

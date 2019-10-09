@@ -138,6 +138,37 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
 }
 ```
 
+### Localization
+Teible could be integrated perfectly with `vue-i18n`. It comes with English by default but you can localize it easily.
+```js
+const messages = {
+  en: {
+    teible: {
+      showing: 'Showing',
+      total: 'of {count} records',
+      last: 'the last record',
+      empty: 'No records',
+      filter: 'Filter records'
+    }
+  },
+  vi: {
+    teible: {
+      showing: 'Hiển thị',
+      total: 'trên tổng số {count} bản ghi',
+      last: 'bản ghi cuối cùng',
+      empty: 'Không có dữ liệu',
+      filter: 'Lọc các bản ghi'
+    }
+  }
+}
+
+const i18n = new VueI18n({
+  locale: 'vi',
+  messages
+})
+
+```
+
 ## Development & Testing
 Please check the [Contributing Guidelines](https://github.com/hiendv/teible/blob/master/CONTRIBUTING.md).
 

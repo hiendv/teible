@@ -2,7 +2,7 @@
   <div :class="theme.datatable__filter">
     <input
       :value="filter" type="text" :class="theme.datatable__input"
-      placeholder="Filter table data" @input="update($event.target.value)"
+      :placeholder="t('teible.filter')" @input="update($event.target.value)"
     >
     <div v-if="filter" :class="theme.datatable__clear" @click.stop="clear">
       <a :class="theme.datatable__x" href="#" @click.stop.prevent="clear">×</a>
@@ -10,8 +10,20 @@
   </div>
 </template>
 <script>
+import { i18nMixin } from './helpers'
 export default {
   name: 'DataTableFilter',
+  i18n: {
+    fallbackLocale: 'en',
+    messages: {
+      en: {
+        teible: {
+          filter: 'Filter records'
+        }
+      }
+    }
+  },
+  mixins: [i18nMixin],
   props: {
     filter: {
       type: String,

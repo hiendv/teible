@@ -5,9 +5,9 @@
         <data-table-filter :filter.sync="options.filter" :class="theme.datatable__unit" />
         <div :class="[theme.datatable__unit, theme.datatable__text]">
           <span v-if="total">
-            Showing <span v-text="from === to && to === total ? 'the last entry' : from + ' to ' + to" /> of {{ total }} records
+            {{ t('teible.showing') }} <span v-text="from === to && to === total ? t('teible.last') : from + ' – ' + to" /> {{ t('teible.total', total) }}
           </span>
-          <span v-else>No records</span>
+          <span v-else>{{ t('teible.empty') }}</span>
         </div>
       </div>
       <div :class="theme.datatable__screen">
@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import { defaultProps } from './helpers'
+import { defaultProps, i18nMixin } from './helpers'
 import { load, transform, themeDefault } from 'teible'
 import clone from 'clone'
 import DataTableBody from './DataTableBody.vue'
@@ -31,7 +31,21 @@ import DataTableFilter from './DataTableFilter.vue'
 
 export default {
   name: 'DataTable',
+  i18n: {
+    fallbackLocale: 'en',
+    messages: {
+      en: {
+        teible: {
+          showing: 'Showing',
+          total: 'of {count} records',
+          last: 'the last record',
+          empty: 'No records'
+        }
+      }
+    }
+  },
   components: { DataTableBody, DataTableHead, DataTablePagination, DataTableFilter },
+  mixins: [i18nMixin],
   props: {
     items: {
       type: [Array, Function],
