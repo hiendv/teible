@@ -147,6 +147,32 @@ describe('DataTable', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
+  it('works with vue-i18n', () => {
+    // Mocking vue-i18n because of https://github.com/kazupon/vue-i18n/issues/501
+    const items = generateItems()
+    const wrapper = mount(DataTable, {
+      propsData: { items, perPage: 2 },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      mocks: {
+        $tc (key, count) {
+          if (count) {
+            return `${key}-${count}`
+          }
+
+          return key
+        }
+      }
+    })
+
+    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
   it('emits loaded', () => {
     const items = generateItems()
     const wrapper = mount(DataTable, {

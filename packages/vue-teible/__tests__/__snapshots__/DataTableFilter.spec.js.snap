@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DataTableFilter renders correctly 1`] = `
-<div class="datatable__filter"><input type="text" placeholder="Filter table data" class="datatable__input">
+<div class="datatable__filter"><input type="text" placeholder="Filter records" class="datatable__input">
   <div class="datatable__clear"><a href="#" class="datatable__x">×</a></div>
 </div>
 `;

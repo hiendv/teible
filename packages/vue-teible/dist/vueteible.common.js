@@ -23,6 +23,38 @@ var defaultProps = function (options, data) {
   return props
 };
 
+var i18nMixin = {
+  computed: {
+    t: function t () {
+      var this$1 = this;
+
+      if (this.$tc) {
+        return this.$tc
+      }
+
+      return function (key, count) {
+        var i18n = this$1.$options.i18n;
+        if (!i18n || !i18n.messages) {
+          return key
+        }
+
+        var messages = i18n.messages[i18n.fallbackLocale];
+        var message = teible.dotGet(messages, key);
+
+        if (!message) {
+          return key
+        }
+
+        if (count) {
+          return message.replace('{count}', count)
+        }
+
+        return message
+      }
+    }
+  }
+};
+
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
@@ -858,19 +890,19 @@ var __vue_staticRenderFns__$2 = [];
   );
 
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 var script$3 = {
   name: 'DataTableFilter',
+  i18n: {
+    fallbackLocale: 'en',
+    messages: {
+      en: {
+        teible: {
+          filter: 'Filter records'
+        }
+      }
+    }
+  },
+  mixins: [i18nMixin],
   props: {
     filter: {
       type: String,
@@ -897,7 +929,7 @@ var script$3 = {
 var __vue_script__$3 = script$3;
 
 /* template */
-var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme.datatable__filter},[_c('input',{class:_vm.theme.datatable__input,attrs:{"type":"text","placeholder":"Filter table data"},domProps:{"value":_vm.filter},on:{"input":function($event){return _vm.update($event.target.value)}}}),_vm._v(" "),(_vm.filter)?_c('div',{class:_vm.theme.datatable__clear,on:{"click":function($event){$event.stopPropagation();return _vm.clear($event)}}},[_c('a',{class:_vm.theme.datatable__x,attrs:{"href":"#"},on:{"click":function($event){$event.stopPropagation();$event.preventDefault();return _vm.clear($event)}}},[_vm._v("×")])]):_vm._e()])};
+var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme.datatable__filter},[_c('input',{class:_vm.theme.datatable__input,attrs:{"type":"text","placeholder":_vm.t('teible.filter')},domProps:{"value":_vm.filter},on:{"input":function($event){return _vm.update($event.target.value)}}}),_vm._v(" "),(_vm.filter)?_c('div',{class:_vm.theme.datatable__clear,on:{"click":function($event){$event.stopPropagation();return _vm.clear($event)}}},[_c('a',{class:_vm.theme.datatable__x,attrs:{"href":"#"},on:{"click":function($event){$event.stopPropagation();$event.preventDefault();return _vm.clear($event)}}},[_vm._v("×")])]):_vm._e()])};
 var __vue_staticRenderFns__$3 = [];
 
   /* style */
@@ -929,7 +961,21 @@ var __vue_staticRenderFns__$3 = [];
 
 var script$4 = {
   name: 'DataTable',
+  i18n: {
+    fallbackLocale: 'en',
+    messages: {
+      en: {
+        teible: {
+          showing: 'Showing',
+          total: 'of {count} records',
+          last: 'the last record',
+          empty: 'No records'
+        }
+      }
+    }
+  },
   components: { DataTableBody: DataTableBody, DataTableHead: DataTableHead, DataTablePagination: DataTablePagination, DataTableFilter: DataTableFilter },
+  mixins: [i18nMixin],
   props: {
     items: {
       type: [Array, Function],
@@ -1139,7 +1185,7 @@ var script$4 = {
 var __vue_script__$4 = script$4;
 
 /* template */
-var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme.datatable},[_c('div',{class:_vm.theme.datatable__wrapper},[_c('div',{class:_vm.theme.datatable__heading},[_c('data-table-filter',{class:_vm.theme.datatable__unit,attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}),_vm._v(" "),_c('div',{class:[_vm.theme.datatable__unit, _vm.theme.datatable__text]},[(_vm.total)?_c('span',[_vm._v("\n          Showing "),_c('span',{domProps:{"textContent":_vm._s(_vm.from === _vm.to && _vm.to === _vm.total ? 'the last entry' : _vm.from + ' to ' + _vm.to)}}),_vm._v(" of "+_vm._s(_vm.total)+" records\n        ")]):_c('span',[_vm._v("No records")])])],1),_vm._v(" "),_c('div',{class:_vm.theme.datatable__screen},[_c('table',{class:_vm.theme.datatable__content,attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems}})],1)]),_vm._v(" "),_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total},on:{"update:page":function($event){_vm.page=$event;}}})],1)])};
+var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme.datatable},[_c('div',{class:_vm.theme.datatable__wrapper},[_c('div',{class:_vm.theme.datatable__heading},[_c('data-table-filter',{class:_vm.theme.datatable__unit,attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}),_vm._v(" "),_c('div',{class:[_vm.theme.datatable__unit, _vm.theme.datatable__text]},[(_vm.total)?_c('span',[_vm._v("\n          "+_vm._s(_vm.t('teible.showing'))+" "),_c('span',{domProps:{"textContent":_vm._s(_vm.from === _vm.to && _vm.to === _vm.total ? _vm.t('teible.last') : _vm.from + ' – ' + _vm.to)}}),_vm._v(" "+_vm._s(_vm.t('teible.total', _vm.total))+"\n        ")]):_c('span',[_vm._v(_vm._s(_vm.t('teible.empty')))])])],1),_vm._v(" "),_c('div',{class:_vm.theme.datatable__screen},[_c('table',{class:_vm.theme.datatable__content,attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems}})],1)]),_vm._v(" "),_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total},on:{"update:page":function($event){_vm.page=$event;}}})],1)])};
 var __vue_staticRenderFns__$4 = [];
 
   /* style */
