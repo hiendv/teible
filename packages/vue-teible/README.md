@@ -37,7 +37,6 @@ npm install --save vue-teible
 ```vue
 <script>
 import Vue from 'vue'
-import 'vue-teible/dist/vueteible.css'
 import { DataTable, DataColumn } from 'vue-teible'
 
 new Vue({
