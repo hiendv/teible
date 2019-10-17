@@ -557,6 +557,10 @@ var assign = function (t) {
   return t
 };
 
+var camelize = function (str) {
+  return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, function (_, c) { return c.toUpperCase(); })
+};
+
 function octicon (name, width, height, path, keywords) {
   var attributes = function (opts) {
     var options = assign({
@@ -604,8 +608,21 @@ function octicon (name, width, height, path, keywords) {
 
   return {
     name: name,
-    path: function path$1 () {
-      return path
+    path: function path$1 (camel) {
+      if ( camel === void 0 ) { camel = false; }
+
+      var frozen = assign({}, path);
+
+      if (!camel) {
+        return frozen
+      }
+
+      var normalizedPath = {};
+      Object.keys(frozen).forEach(function (key) {
+        normalizedPath[camelize(key)] = frozen[key];
+      });
+
+      return normalizedPath
     },
     keywords: function keywords$1 () {
       return keywords
