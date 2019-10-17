@@ -33,7 +33,9 @@ export default [
     plugins: [
       ...plugins
     ],
-    external: ['octicons-vue', 'octicons-modular', 'teible']
+    external: id => {
+      return ['octicons-vue', 'teible'].includes(id.split('/')[0])
+    }
   },
   {
     input: reslv('src/main.js'),
@@ -51,7 +53,6 @@ export default [
       uglify({
         compress: { unused: true, dead_code: true }
       })
-    ],
-    external: ['octicons-vue', 'octicons-modular']
+    ]
   }
 ]
