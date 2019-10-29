@@ -83,6 +83,7 @@
     "prebuild": "$npm_execpath run clean",
     "prewatch": "$npm_execpath run clean",
     "prebuild:vue": "$npm_execpath run lint",
+    "pretest": "$npm_execpath run lint",
     "test": "jest --no-cache",
     "test-ci": "$npm_execpath run build && $npm_execpath run test -- --coverage --ci --maxWorkers=4",
     "release": "$npm_execpath run build && $npm_execpath run test && lerna publish"
