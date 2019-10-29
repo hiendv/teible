@@ -334,14 +334,13 @@ var DataTableCell = {
 
     if (props.column.field) {
       var value = dotGet(props.item, props.column.field);
-      if (typeof value !== 'string') {
-        value = JSON.stringify(value);
-      }
-
       if (props.column.scopedSlots && typeof props.column.scopedSlots.default === 'function') {
         return h('td', data, props.column.scopedSlots.default({ value: value, item: props.item, column: props.column }))
       }
 
+      if (typeof value !== 'string') {
+        value = JSON.stringify(value);
+      }
       return h('td', data, value)
     }
 
