@@ -252,6 +252,21 @@ describe('DataTable', () => {
     expect(wrapper.emitted()['update:filter']).toEqual([['a']])
   })
 
+  it('allows disableFiltering', () => {
+    const wrapper = mount(DataTable, {
+      propsData: { items: generateItems(), filter: 'z', disableFiltering: true },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
+
+    expect(wrapper.find('.datatable__input').exists()).toBeFalsy()
+  })
+
   it('keeps original items', () => {
     const items = [{
       foo: {

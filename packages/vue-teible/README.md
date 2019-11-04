@@ -101,6 +101,10 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
   filter: {
     type: String,
     default: ''
+  },
+  disableFiltering: {
+    type: Boolean,
+    default: false
   }
 }
 ```

@@ -2,7 +2,7 @@
   <div :class="theme.datatable">
     <div :class="theme.datatable__wrapper">
       <div :class="theme.datatable__heading">
-        <data-table-filter :filter.sync="options.filter" :class="theme.datatable__unit" />
+        <data-table-filter v-if="!disableFiltering" :filter.sync="options.filter" :class="theme.datatable__unit" />
         <div :class="[theme.datatable__unit, theme.datatable__text]">
           <span v-if="total">
             {{ t('teible.showing') }} <span v-text="from === to && to === total ? t('teible.last') : from + ' – ' + to" /> {{ t('teible.total', total) }}
@@ -72,6 +72,12 @@ export default {
       default () {
         return themeDefault
       }
+    },
+    disableFiltering: {
+      type: Boolean,
+      default () {
+        return false
+      }
     }
   },
   provide () {
@@ -97,6 +103,10 @@ export default {
       return this.items instanceof Function
     },
     identifier () {
+      if (this.disableFiltering) {
+        return `by:${this.sorting.by}|order:${this.sorting.order}|page:${this.page}|per_page:${this.perPage}`
+      }
+
       return `by:${this.sorting.by}|order:${this.sorting.order}|filter:${this.options.filter}|page:${this.page}|per_page:${this.perPage}`
     },
     columns () {
@@ -128,6 +138,13 @@ export default {
         .filter(field => field)
     },
     filtering () {
+      if (this.disableFiltering) {
+        // Data should not be filtered without query
+        return {
+          query: ''
+        }
+      }
+
       return {
         query: this.options.filter.toLowerCase(),
         fields: this.filterable

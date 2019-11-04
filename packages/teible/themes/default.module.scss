@@ -53,8 +53,8 @@ $bg-color__plink--active: $color__plink;
       align-items: center;
     }
 
-    @include e('text') {
-      padding-left: 1em;
+    @include e('filter') {
+      padding-right: 1em;
     }
   }
 
