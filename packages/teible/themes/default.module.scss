@@ -54,7 +54,7 @@ $bg-color__plink--active: $color__plink;
     }
 
     @include e('filter') {
-      padding-right: 1em;
+      margin-right: 1em;
     }
   }
 
