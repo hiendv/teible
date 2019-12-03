@@ -298,7 +298,7 @@ describe('DataTable', () => {
 
   it('allows paginationSide', () => {
     const wrapper = mount(DataTable, {
-      propsData: { items: generateItems(), paginationSide: 1, perPage: 1 },
+      propsData: { items: generateItems(100), paginationSide: 5, perPage: 1 },
       slots: {
         default: `
           <data-column field="id" label="ID"/>
