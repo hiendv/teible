@@ -14,16 +14,18 @@ afterAll(() => {
 })
 
 describe('DataTable', () => {
-  const generateItems = () => [{
-    id: 1,
-    key: 'value z (id-1)'
-  }, {
-    id: 2,
-    key: 'value m (id-2)'
-  }, {
-    id: 3,
-    key: 'value a (id-3)'
-  }]
+  const generateItems = (n = 3) => {
+    let output = []
+
+    for (let i = 1; i <= n; i++) {
+      output = output.concat({
+        id: i,
+        key: `value ${String.fromCharCode(123 - i)} (id-${i})`
+      })
+    }
+
+    return output
+  }
 
   it('works with sync data', () => {
     const items = generateItems()
