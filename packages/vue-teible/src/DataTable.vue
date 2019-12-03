@@ -3,7 +3,7 @@
     <div :class="theme.datatable__wrapper">
       <data-table-filter v-if="!disableFiltering" :filter.sync="options.filter" />
       <data-table-pagination
-        v-if="extraPagination" :per-page="perPage" :page.sync="page"
+        v-if="paginationTop" :per-page="perPage" :page.sync="page"
         :total="total"
       />
       <div :class="theme.datatable__screen">
@@ -12,7 +12,10 @@
           <data-table-body :columns="columns" :items="actualItems" />
         </table>
       </div>
-      <data-table-pagination :per-page="perPage" :page.sync="page" :total="total" />
+      <data-table-pagination
+        v-if="paginationBottom" :per-page="perPage" :page.sync="page"
+        :total="total"
+      />
     </div>
   </div>
 </template>
@@ -60,9 +63,11 @@ export default {
       type: Boolean,
       default: false
     },
-    extraPagination: {
-      type: Boolean,
-      default: false
+    pagination: {
+      type: Array,
+      default () {
+        return ['bottom']
+      }
     }
   },
   provide () {
@@ -84,6 +89,12 @@ export default {
     }
   },
   computed: {
+    paginationTop () {
+      return this.pagination.indexOf('top') > -1
+    },
+    paginationBottom () {
+      return this.pagination.indexOf('bottom') > -1
+    },
     func () {
       return this.items instanceof Function
     },

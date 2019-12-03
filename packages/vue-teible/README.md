@@ -106,9 +106,11 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
     type: Boolean,
     default: false
   },
-  extraPagination: {
-    type: Boolean,
-    default: false
+  pagination: { // Positions of pagination (top, bottom)
+    type: Array,
+    default () {
+      return ['top']
+    }
   }
 }
 ```

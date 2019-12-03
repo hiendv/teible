@@ -279,9 +279,9 @@ describe('DataTable', () => {
     expect(wrapper.find('.datatable__input').exists()).toBeFalsy()
   })
 
-  it('allows extraPagination', () => {
+  it('allows pagination', () => {
     const wrapper = mount(DataTable, {
-      propsData: { items: generateItems(), extraPagination: true },
+      propsData: { items: generateItems(), pagination: ['top', 'bottom'] },
       slots: {
         default: `
           <data-column field="id" label="ID"/>
