@@ -674,7 +674,7 @@ var script$2 = {
   },
   computed: {
     pages: function pages () {
-      return paginate(this.page, this.totalPages, 3, 1)
+      return paginate(this.page, this.totalPages, 3, 2)
     },
     totalPages: function totalPages () {
       return Math.ceil(this.total / (this.perPage || 1))

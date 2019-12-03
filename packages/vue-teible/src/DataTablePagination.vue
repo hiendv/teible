@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     pages () {
-      return paginate(this.page, this.totalPages, 3, 1)
+      return paginate(this.page, this.totalPages, 3, 2)
     },
     totalPages () {
       return Math.ceil(this.total / (this.perPage || 1))
