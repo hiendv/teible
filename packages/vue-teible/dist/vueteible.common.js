@@ -677,7 +677,7 @@ var script$2 = {
   },
   computed: {
     pages: function pages () {
-      return teible.paginate(this.page, this.totalPages)
+      return teible.paginate(this.page, this.totalPages, 3, 1)
     },
     totalPages: function totalPages () {
       return Math.ceil(this.total / (this.perPage || 1))
@@ -719,11 +719,9 @@ var script$2 = {
 var __vue_script__$2 = script$2;
 
 /* template */
-var __vue_render__$2 = function () {
-var _obj, _obj$1;
-var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{class:_vm.theme.datatable__pagination},[_c('ul',{class:_vm.theme.datatable__plist},[_c('li',{class:_vm.theme.datatable__pitem},[_c('a',{class:( _obj = {}, _obj[_vm.theme.datatable__plink] = true, _obj[_vm.theme['datatable__plink--disabled']] = _vm.reachedFirst, _obj ),attrs:{"href":"#","aria-label":"Previous"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page-1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")])])]),_vm._l((_vm.pages),function(p,index){
-        var _obj;
-return _c('li',{key:index,class:_vm.theme.datatable__pitem},[_c('a',{class:( _obj = {}, _obj[_vm.theme.datatable__plink] = true, _obj[_vm.theme['datatable__plink--active']] = _vm.isActive(p), _obj[_vm.theme['datatable__plink--disabled']] = p.disabled, _obj ),attrs:{"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.load(p.value, p.disabled)}}},[_vm._v(_vm._s(p.value))])])}),_c('li',{class:_vm.theme.datatable__pitem},[_c('a',{class:( _obj$1 = {}, _obj$1[_vm.theme.datatable__plink] = true, _obj$1[_vm.theme['datatable__plink--disabled']] = _vm.reachedLast, _obj$1 ),attrs:{"href":"#","aria-label":"Next"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page+1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")])])])],2)])};
+var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{class:_vm.theme.datatable__pagination},[_c('a',{class:[_vm.theme.datatable__plink, _vm.theme.datatable__pprevious],attrs:{"disabled":_vm.reachedFirst,"href":"#","aria-label":"Previous"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page-1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")])]),_vm._v(" "),_c('a',{class:[_vm.theme.datatable__plink, _vm.theme.datatable__pnext],attrs:{"disabled":_vm.reachedLast,"href":"#","aria-label":"Next"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page+1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")])]),_vm._v(" "),_c('ul',{class:_vm.theme.datatable__plist},_vm._l((_vm.pages),function(p,index){
+var _obj;
+return _c('li',{key:index,class:_vm.theme.datatable__pitem},[_c('a',{class:( _obj = {}, _obj[_vm.theme.datatable__plink] = true, _obj[_vm.theme['datatable__plink--active']] = _vm.isActive(p), _obj ),attrs:{"disabled":p.disabled,"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.load(p.value, p.disabled)}}},[_vm._v(_vm._s(p.value))])])}),0)])};
 var __vue_staticRenderFns__$2 = [];
 
   /* style */

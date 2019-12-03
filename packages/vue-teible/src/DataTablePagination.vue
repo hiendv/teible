@@ -1,34 +1,27 @@
 <template>
   <nav :class="theme.datatable__pagination">
+    <a
+      :disabled="reachedFirst" :class="[theme.datatable__plink, theme.datatable__pprevious]" href="#"
+      aria-label="Previous" @click.prevent="load(page-1)"
+    >
+      <span aria-hidden="true">&laquo;</span>
+    </a>
+    <a
+      :disabled="reachedLast" :class="[theme.datatable__plink, theme.datatable__pnext]" href="#"
+      aria-label="Next" @click.prevent="load(page+1)"
+    >
+      <span aria-hidden="true">&raquo;</span>
+    </a>
+
     <ul :class="theme.datatable__plist">
-      <li :class="theme.datatable__pitem">
+      <li v-for="(p, index) in pages" :key="index" :class="theme.datatable__pitem">
         <a
-          :class="{
-            [theme.datatable__plink]: true,
-            [theme['datatable__plink--disabled']]: reachedFirst
-          }" href="#" aria-label="Previous"
-          @click.prevent="load(page-1)"
-        >
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li><li v-for="(p, index) in pages" :key="index" :class="theme.datatable__pitem">
-        <a
-          :class="{
+          :disabled="p.disabled" :class="{
             [theme.datatable__plink]: true,
             [theme['datatable__plink--active']]: isActive(p),
-            [theme['datatable__plink--disabled']]: p.disabled
-          }" href="#" @click.prevent="load(p.value, p.disabled)"
+          }" href="#"
+          @click.prevent="load(p.value, p.disabled)"
         >{{ p.value }}</a>
-      </li><li :class="theme.datatable__pitem">
-        <a
-          :class="{
-            [theme.datatable__plink]: true,
-            [theme['datatable__plink--disabled']]: reachedLast
-          }" href="#" aria-label="Next"
-          @click.prevent="load(page+1)"
-        >
-          <span aria-hidden="true">&raquo;</span>
-        </a>
       </li>
     </ul>
   </nav>
@@ -54,7 +47,7 @@ export default {
   },
   computed: {
     pages () {
-      return paginate(this.page, this.totalPages)
+      return paginate(this.page, this.totalPages, 3, 1)
     },
     totalPages () {
       return Math.ceil(this.total / (this.perPage || 1))
