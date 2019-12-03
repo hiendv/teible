@@ -191,49 +191,73 @@ $bg-color__plink--active: $color__plink;
   }
 
   // pagination
-  @include e('pagination') {
-    display: block;
+  .datatable__pagination,
+  .datatable__plist {
+    list-style: none;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
   }
 
-  @include e('plist') {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    border-radius: 4px;
+  .datatable__pprevious,
+  .datatable__pnext,
+  .datatable__plink {
+    justify-content: center;
+    text-align: center;
+    margin: .05rem;
+    padding-left: .5em;
+    padding-right: .5em;
   }
 
-  @include e('pitem') {
-    display: inline;
-  }
-
-  @include e('plink') {
-    position: relative;
-    float: left;
-    padding: .3em .6em;
-    margin-left: -1px;
+  .datatable__pprevious,
+  .datatable__pnext,
+  .datatable__plink {
+    border-color: $border-color;
     color: $color__plink;
+    min-width: 2.5em;
     text-decoration: none;
-    background-color: $bg-color;
-    border: 1px solid $border-color;
-
-    @include m('active') {
-      z-index: 3;
-      color: #fff!important;
-      cursor: default;
-      background-color: $bg-color__plink--active!important;
-      border-color: $bg-color__plink--active!important;
+    &:hover {
+      background-color: $bg-color__plink--focus;
     }
 
-    @include m('disabled') {
+    &[disabled] {
       color: $color--disabled!important;
       cursor: not-allowed;
       background-color: $bg-color--disabled!important;
     }
+  }
 
-    &:focus,
-    &:hover {
-      z-index: 2;
-      background-color: $bg-color__plink--focus;
+  .datatable__plist {
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: flex-start;
+    order: 1;
+  }
+
+  .datatable__pprevious,
+  .datatable__pnext {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    white-space: nowrap;
+  }
+
+  .datatable__plink {
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: none;
+    display: inline-flex;
+    font-size: 1rem;
+    line-height: 2;
+    position: relative;
+    vertical-align: top;
+
+    @include m("active") {
+      color: #fff!important;
+      cursor: default;
+      background-color: $bg-color__plink--active!important;
+      border-color: $bg-color__plink--active!important;
     }
   }
 }

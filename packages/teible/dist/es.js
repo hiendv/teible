@@ -154,9 +154,7 @@ const range = n => {
   return a
 };
 
-const paginate = (currentPage, total) => {
-  let showing = 3;
-  let eachSide = 2;
+const paginate = (currentPage, total, showing = 3, eachSide = 2) => {
   if (total <= showing + eachSide) {
     return paginationValueOrThreeDots(range(total))
   }
