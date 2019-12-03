@@ -35,7 +35,6 @@ $bg-color__plink--active: $color__plink;
 
   @include e('heading') {
     display: block;
-    margin-bottom: .5em;
     width: 100%;
   }
 
@@ -44,6 +43,10 @@ $bg-color__plink--active: $color__plink;
     flex-basis: 0;
     flex-grow: 1;
     flex-shrink: 1;
+    margin-bottom: .5em;
+  }
+
+  @include e('screen') {
     margin-bottom: .5em;
   }
 
@@ -191,7 +194,6 @@ $bg-color__plink--active: $color__plink;
     display: inline-block;
     margin: 0;
     padding: 0;
-    margin-top: .5em;
     border-radius: 4px;
   }
 
