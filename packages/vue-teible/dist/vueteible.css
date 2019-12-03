@@ -30,9 +30,13 @@
   margin-bottom: 0.5em;
 }
 @media (min-width: 1024px) {
+  .default-module_datatable__unit__yHcTA {
+    margin-bottom: 0;
+  }
   .default-module_datatable__heading__1UCma {
     display: flex;
     align-items: center;
+    margin-bottom: 0.5em;
   }
   .default-module_datatable__filter__1yP2S {
     margin-right: 1em;

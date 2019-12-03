@@ -51,9 +51,14 @@ $bg-color__plink--active: $color__plink;
   }
 
   @media (min-width: 1024px) {
+    @include e('unit') {
+      margin-bottom: 0;
+    }
+
     @include e('heading') {
       display: flex;
       align-items: center;
+      margin-bottom: 0.5em;
     }
 
     @include e('filter') {
