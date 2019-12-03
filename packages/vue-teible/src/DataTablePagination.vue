@@ -1,5 +1,10 @@
 <template>
   <nav :class="theme.datatable__pagination">
+    <span v-if="total" :class="theme.datatable__ptext">
+      {{ t('teible.showing') }} <span v-text="from === to && to === total ? t('teible.last') : from + ' – ' + to" /> {{ t('teible.total', total) }}
+    </span>
+    <span v-else :class="theme.datatable__ptext">{{ t('teible.empty') }}</span>
+
     <a
       :disabled="reachedFirst" :class="[theme.datatable__plink, theme.datatable__pprevious]" href="#"
       aria-label="Previous" @click.prevent="load(page-1)"
@@ -28,9 +33,11 @@
 </template>
 <script>
 import { paginate } from 'teible'
+import { i18nMixin } from './helpers'
 
 export default {
   name: 'DataTablePagination',
+  mixins: [i18nMixin],
   props: {
     total: {
       type: Number,
@@ -60,6 +67,13 @@ export default {
     },
     theme () {
       return this.$theme()
+    },
+    from () {
+      return (this.page - 1) * this.perPage + 1
+    },
+    to () {
+      const x = this.page * this.perPage
+      return this.total < x ? this.total : x
     }
   },
   methods: {

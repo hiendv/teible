@@ -15,31 +15,8 @@
   text-align: left;
   width: 100%;
 }
-.default-module_datatable__heading__1UCma {
-  display: block;
-  margin-left: -0.5em;
-  margin-right: -0.5em;
-}
-.default-module_datatable__unit__yHcTA {
-  display: block;
-  flex-basis: 0;
-  flex-grow: 1;
-  flex-shrink: 1;
-  margin-bottom: 0.5em;
-  padding: 0 0.5em;
-}
 .default-module_datatable__screen__1RlrS {
   margin-bottom: 0.5em;
-}
-@media (min-width: 1024px) {
-  .default-module_datatable__unit__yHcTA {
-    margin-bottom: 0;
-  }
-  .default-module_datatable__heading__1UCma {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5em;
-  }
 }
 .default-module_datatable__content__BCR46 {
   width: 100%;
@@ -69,6 +46,7 @@
 }
 .default-module_datatable__filter__1yP2S {
   position: relative;
+  margin-bottom: 0.5em;
 }
 .default-module_datatable__input__10fsI {
   width: 100%;
@@ -157,7 +135,8 @@
 }
 .default-module_datatable__38PhC .default-module_datatable__pprevious__2Hmcf,
 .default-module_datatable__38PhC .default-module_datatable__pnext__3xWw8,
-.default-module_datatable__38PhC .default-module_datatable__plink__17HvS {
+.default-module_datatable__38PhC .default-module_datatable__plink__17HvS,
+.default-module_datatable__38PhC .default-module_datatable__ptext__2qYC_ {
   justify-content: center;
   text-align: center;
   margin: 0.15rem;
@@ -193,7 +172,8 @@
   order: 1;
 }
 .default-module_datatable__38PhC .default-module_datatable__pprevious__2Hmcf,
-.default-module_datatable__38PhC .default-module_datatable__pnext__3xWw8 {
+.default-module_datatable__38PhC .default-module_datatable__pnext__3xWw8,
+.default-module_datatable__38PhC .default-module_datatable__ptext__2qYC_ {
   padding-left: 0.5em;
   padding-right: 0.5em;
   white-space: nowrap;

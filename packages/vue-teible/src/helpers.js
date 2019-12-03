@@ -19,6 +19,19 @@ export const defaultProps = (options, data) => {
 }
 
 export const i18nMixin = {
+  i18n: {
+    fallbackLocale: 'en',
+    messages: {
+      en: {
+        teible: {
+          showing: 'Showing',
+          total: 'of {count} records',
+          last: 'the last record',
+          empty: 'No records'
+        }
+      }
+    }
+  },
   computed: {
     t () {
       if (this.$tc) {

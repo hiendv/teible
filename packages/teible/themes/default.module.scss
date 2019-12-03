@@ -33,35 +33,8 @@ $bg-color__plink--active: $color__plink;
     width: 100%;
   }
 
-  @include e('heading') {
-    display: block;
-    margin-left: -0.5em;
-    margin-right: -0.5em;
-  }
-
-  @include e('unit') {
-    display: block;
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
-    margin-bottom: .5em;
-    padding: 0 .5em;
-  }
-
   @include e('screen') {
     margin-bottom: .5em;
-  }
-
-  @media (min-width: 1024px) {
-    @include e('unit') {
-      margin-bottom: 0;
-    }
-
-    @include e('heading') {
-      display: flex;
-      align-items: center;
-      margin-bottom: 0.5em;
-    }
   }
 
   @include e('content') {
@@ -99,6 +72,7 @@ $bg-color__plink--active: $color__plink;
   // filter
   @include e('filter') {
     position: relative;
+    margin-bottom: 0.5em;
   }
 
   @include e('input') {
@@ -204,7 +178,8 @@ $bg-color__plink--active: $color__plink;
 
   .datatable__pprevious,
   .datatable__pnext,
-  .datatable__plink {
+  .datatable__plink,
+  .datatable__ptext {
     justify-content: center;
     text-align: center;
     margin: .15rem;
@@ -240,7 +215,8 @@ $bg-color__plink--active: $color__plink;
   }
 
   .datatable__pprevious,
-  .datatable__pnext {
+  .datatable__pnext,
+  .datatable__ptext {
     padding-left: 0.5em;
     padding-right: 0.5em;
     white-space: nowrap;

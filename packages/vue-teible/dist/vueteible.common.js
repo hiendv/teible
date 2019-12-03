@@ -25,6 +25,19 @@ var defaultProps = function (options, data) {
 };
 
 var i18nMixin = {
+  i18n: {
+    fallbackLocale: 'en',
+    messages: {
+      en: {
+        teible: {
+          showing: 'Showing',
+          total: 'of {count} records',
+          last: 'the last record',
+          empty: 'No records'
+        }
+      }
+    }
+  },
   computed: {
     t: function t () {
       var this$1 = this;
@@ -661,6 +674,7 @@ var __vue_staticRenderFns__$1 = [];
 
 var script$2 = {
   name: 'DataTablePagination',
+  mixins: [i18nMixin],
   props: {
     total: {
       type: Number,
@@ -690,6 +704,13 @@ var script$2 = {
     },
     theme: function theme () {
       return this.$theme()
+    },
+    from: function from () {
+      return (this.page - 1) * this.perPage + 1
+    },
+    to: function to () {
+      var x = this.page * this.perPage;
+      return this.total < x ? this.total : x
     }
   },
   methods: {
@@ -719,7 +740,7 @@ var script$2 = {
 var __vue_script__$2 = script$2;
 
 /* template */
-var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{class:_vm.theme.datatable__pagination},[_c('a',{class:[_vm.theme.datatable__plink, _vm.theme.datatable__pprevious],attrs:{"disabled":_vm.reachedFirst,"href":"#","aria-label":"Previous"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page-1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")])]),_vm._v(" "),_c('a',{class:[_vm.theme.datatable__plink, _vm.theme.datatable__pnext],attrs:{"disabled":_vm.reachedLast,"href":"#","aria-label":"Next"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page+1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")])]),_vm._v(" "),_c('ul',{class:_vm.theme.datatable__plist},_vm._l((_vm.pages),function(p,index){
+var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{class:_vm.theme.datatable__pagination},[(_vm.total)?_c('span',{class:_vm.theme.datatable__ptext},[_vm._v("\n    "+_vm._s(_vm.t('teible.showing'))+" "),_c('span',{domProps:{"textContent":_vm._s(_vm.from === _vm.to && _vm.to === _vm.total ? _vm.t('teible.last') : _vm.from + ' – ' + _vm.to)}}),_vm._v(" "+_vm._s(_vm.t('teible.total', _vm.total))+"\n  ")]):_c('span',{class:_vm.theme.datatable__ptext},[_vm._v(_vm._s(_vm.t('teible.empty')))]),_vm._v(" "),_c('a',{class:[_vm.theme.datatable__plink, _vm.theme.datatable__pprevious],attrs:{"disabled":_vm.reachedFirst,"href":"#","aria-label":"Previous"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page-1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")])]),_vm._v(" "),_c('a',{class:[_vm.theme.datatable__plink, _vm.theme.datatable__pnext],attrs:{"disabled":_vm.reachedLast,"href":"#","aria-label":"Next"},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page+1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")])]),_vm._v(" "),_c('ul',{class:_vm.theme.datatable__plist},_vm._l((_vm.pages),function(p,index){
 var _obj;
 return _c('li',{key:index,class:_vm.theme.datatable__pitem},[_c('a',{class:( _obj = {}, _obj[_vm.theme.datatable__plink] = true, _obj[_vm.theme['datatable__plink--active']] = _vm.isActive(p), _obj ),attrs:{"disabled":p.disabled,"href":"#"},on:{"click":function($event){$event.preventDefault();return _vm.load(p.value, p.disabled)}}},[_vm._v(_vm._s(p.value))])])}),0)])};
 var __vue_staticRenderFns__$2 = [];
@@ -829,19 +850,6 @@ var __vue_staticRenderFns__$3 = [];
 
 var script$4 = {
   name: 'DataTable',
-  i18n: {
-    fallbackLocale: 'en',
-    messages: {
-      en: {
-        teible: {
-          showing: 'Showing',
-          total: 'of {count} records',
-          last: 'the last record',
-          empty: 'No records'
-        }
-      }
-    }
-  },
   components: { DataTableBody: __vue_component__, DataTableHead: __vue_component__$1, DataTablePagination: __vue_component__$2, DataTableFilter: __vue_component__$3 },
   mixins: [i18nMixin],
   props: {
@@ -977,13 +985,6 @@ var script$4 = {
         order: !this.options.sortDesc ? 'asc' : 'desc'
       }
     },
-    from: function from () {
-      return (this.page - 1) * this.perPage + 1
-    },
-    to: function to () {
-      var x = this.page * this.perPage;
-      return this.total < x ? this.total : x
-    },
     transformed: function transformed () {
       if (this.func) {
         return []
@@ -1072,7 +1073,7 @@ var script$4 = {
 var __vue_script__$4 = script$4;
 
 /* template */
-var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme.datatable},[_c('div',{class:_vm.theme.datatable__wrapper},[_c('div',{class:_vm.theme.datatable__heading},[(!_vm.disableFiltering)?_c('data-table-filter',{class:_vm.theme.datatable__unit,attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}):_vm._e(),_vm._v(" "),_c('div',{class:[_vm.theme.datatable__unit, _vm.theme.datatable__text]},[(_vm.total)?_c('span',[_vm._v("\n          "+_vm._s(_vm.t('teible.showing'))+" "),_c('span',{domProps:{"textContent":_vm._s(_vm.from === _vm.to && _vm.to === _vm.total ? _vm.t('teible.last') : _vm.from + ' – ' + _vm.to)}}),_vm._v(" "+_vm._s(_vm.t('teible.total', _vm.total))+"\n        ")]):_c('span',[_vm._v(_vm._s(_vm.t('teible.empty')))])])],1),_vm._v(" "),(_vm.extraPagination)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total},on:{"update:page":function($event){_vm.page=$event;}}}):_vm._e(),_vm._v(" "),_c('div',{class:_vm.theme.datatable__screen},[_c('table',{class:_vm.theme.datatable__content,attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems}})],1)]),_vm._v(" "),_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total},on:{"update:page":function($event){_vm.page=$event;}}})],1)])};
+var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme.datatable},[_c('div',{class:_vm.theme.datatable__wrapper},[(!_vm.disableFiltering)?_c('data-table-filter',{attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}):_vm._e(),_vm._v(" "),(_vm.extraPagination)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total},on:{"update:page":function($event){_vm.page=$event;}}}):_vm._e(),_vm._v(" "),_c('div',{class:_vm.theme.datatable__screen},[_c('table',{class:_vm.theme.datatable__content,attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems}})],1)]),_vm._v(" "),_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total},on:{"update:page":function($event){_vm.page=$event;}}})],1)])};
 var __vue_staticRenderFns__$4 = [];
 
   /* style */
