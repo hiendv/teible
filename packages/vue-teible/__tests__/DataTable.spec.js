@@ -279,6 +279,21 @@ describe('DataTable', () => {
     expect(wrapper.find('.datatable__input').exists()).toBeFalsy()
   })
 
+  it('allows extraPagination', () => {
+    const wrapper = mount(DataTable, {
+      propsData: { items: generateItems(), extraPagination: true },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
   it('keeps original items', () => {
     const items = [{
       foo: {

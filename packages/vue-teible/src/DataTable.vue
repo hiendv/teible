@@ -10,6 +10,10 @@
           <span v-else>{{ t('teible.empty') }}</span>
         </div>
       </div>
+      <data-table-pagination
+        v-if="extraPagination" :per-page="perPage" :page.sync="page"
+        :total="total"
+      />
       <div :class="theme.datatable__screen">
         <table :class="theme.datatable__content" cellspacing="0" cellpadding="0">
           <data-table-head :columns="columns" :sort-by.sync="options.sortBy" :sort-desc.sync="options.sortDesc" />
@@ -75,9 +79,11 @@ export default {
     },
     disableFiltering: {
       type: Boolean,
-      default () {
-        return false
-      }
+      default: false
+    },
+    extraPagination: {
+      type: Boolean,
+      default: false
     }
   },
   provide () {

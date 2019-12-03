@@ -191,6 +191,10 @@ $bg-color__plink--active: $color__plink;
   }
 
   // pagination
+  .datatable__pagination {
+    margin-bottom: .5em;
+  }
+
   .datatable__pagination,
   .datatable__plist {
     list-style: none;

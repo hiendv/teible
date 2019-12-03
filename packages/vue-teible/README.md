@@ -105,6 +105,10 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
   disableFiltering: {
     type: Boolean,
     default: false
+  },
+  extraPagination: {
+    type: Boolean,
+    default: false
   }
 }
 ```
