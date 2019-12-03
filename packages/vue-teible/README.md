@@ -106,11 +106,15 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
     type: Boolean,
     default: false
   },
-  pagination: { // Positions of pagination (top, bottom)
+  pagination: { // Positions of paginations (top, bottom)
     type: Array,
     default () {
       return ['top']
     }
+  },
+  paginationSide: { // The number of pages for each side of paginations
+    type: Number,
+    default: 2
   }
 }
 ```

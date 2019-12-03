@@ -10,6 +10,7 @@ describe('DataTablePagination', () => {
       propsData: {
         total: 10,
         page: 2,
+        eachSide: 2,
         perPage: 3
       },
       provide: () => ({
@@ -24,6 +25,7 @@ describe('DataTablePagination', () => {
       propsData: {
         total: 10,
         page: 1,
+        eachSide: 2,
         perPage: 0
       },
       provide: () => ({
@@ -38,6 +40,7 @@ describe('DataTablePagination', () => {
       propsData: {
         total: 10,
         page: 4,
+        eachSide: 2,
         perPage: 3
       },
       provide: () => ({
@@ -60,6 +63,7 @@ describe('DataTablePagination', () => {
     const wrapper = shallowMount(DataTablePagination, {
       propsData: {
         total: 10,
+        eachSide: 2,
         perPage: 3,
         page: 2
       },
@@ -100,6 +104,7 @@ describe('DataTablePagination', () => {
       propsData: {
         total: 10,
         page: 1,
+        eachSide: 2,
         perPage: 1
       },
       provide: () => ({

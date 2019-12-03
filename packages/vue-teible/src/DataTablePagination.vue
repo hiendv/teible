@@ -50,11 +50,15 @@ export default {
     page: {
       type: Number,
       required: true
+    },
+    eachSide: {
+      type: Number,
+      required: true
     }
   },
   computed: {
     pages () {
-      return paginate(this.page, this.totalPages, 3, 2)
+      return paginate(this.page, this.totalPages, 3, this.eachSide)
     },
     totalPages () {
       return Math.ceil(this.total / (this.perPage || 1))

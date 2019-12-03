@@ -294,6 +294,21 @@ describe('DataTable', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
+  it('allows paginationSide', () => {
+    const wrapper = mount(DataTable, {
+      propsData: { items: generateItems(), paginationSide: 1, perPage: 1 },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
   it('keeps original items', () => {
     const items = [{
       foo: {

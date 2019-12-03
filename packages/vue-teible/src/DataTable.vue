@@ -4,7 +4,7 @@
       <data-table-filter v-if="!disableFiltering" :filter.sync="options.filter" />
       <data-table-pagination
         v-if="paginationTop" :per-page="perPage" :page.sync="page"
-        :total="total"
+        :total="total" :each-side="paginationSide"
       />
       <div :class="theme.datatable__screen">
         <table :class="theme.datatable__content" cellspacing="0" cellpadding="0">
@@ -14,7 +14,7 @@
       </div>
       <data-table-pagination
         v-if="paginationBottom" :per-page="perPage" :page.sync="page"
-        :total="total"
+        :total="total" :each-side="paginationSide"
       />
     </div>
   </div>
@@ -68,6 +68,10 @@ export default {
       default () {
         return ['bottom']
       }
+    },
+    paginationSide: {
+      type: Number,
+      default: 2
     }
   },
   provide () {
