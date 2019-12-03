@@ -483,7 +483,7 @@ var __vue_staticRenderFns__ = [];
   
 
   
-  var DataTableBody = normalizeComponent(
+  var __vue_component__ = normalizeComponent(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,
@@ -546,11 +546,11 @@ var DataTableHeadContent = {
       }, props.column.scopedSlots.header(props))
     }
 
-    var children = [ h('span', {
+    var children = [h('span', {
       attrs: {
         class: theme['datatable__column-text']
       }
-    }, capitalize(props.column.label || props.column.field)) ];
+    }, capitalize(props.column.label || props.column.field))];
     if (props.column.sortable) {
       children.push(h(octiconsVue.Octicon, {
         props: {
@@ -644,7 +644,7 @@ var __vue_staticRenderFns__$1 = [];
   
 
   
-  var DataTableHead = normalizeComponent(
+  var __vue_component__$1 = normalizeComponent(
     { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
     __vue_inject_styles__$1,
     __vue_script__$1,
@@ -740,7 +740,7 @@ var __vue_staticRenderFns__$2 = [];
   
 
   
-  var DataTablePagination = normalizeComponent(
+  var __vue_component__$2 = normalizeComponent(
     { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
     __vue_inject_styles__$2,
     __vue_script__$2,
@@ -812,7 +812,7 @@ var __vue_staticRenderFns__$3 = [];
   
 
   
-  var DataTableFilter = normalizeComponent(
+  var __vue_component__$3 = normalizeComponent(
     { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
     __vue_inject_styles__$3,
     __vue_script__$3,
@@ -842,7 +842,7 @@ var script$4 = {
       }
     }
   },
-  components: { DataTableBody: DataTableBody, DataTableHead: DataTableHead, DataTablePagination: DataTablePagination, DataTableFilter: DataTableFilter },
+  components: { DataTableBody: __vue_component__, DataTableHead: __vue_component__$1, DataTablePagination: __vue_component__$2, DataTableFilter: __vue_component__$3 },
   mixins: [i18nMixin],
   props: {
     items: {
@@ -1089,7 +1089,7 @@ var __vue_staticRenderFns__$4 = [];
   
 
   
-  var DataTable = normalizeComponent(
+  var __vue_component__$4 = normalizeComponent(
     { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
     __vue_inject_styles__$4,
     __vue_script__$4,
@@ -1136,5 +1136,5 @@ Object.keys(teible).forEach(function (k) {
   });
 });
 exports.DataColumn = DataColumn;
-exports.DataTable = DataTable;
-exports.default = DataTable;
+exports.DataTable = __vue_component__$4;
+exports.default = __vue_component__$4;

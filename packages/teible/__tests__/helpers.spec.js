@@ -124,7 +124,7 @@ describe('load', () => {
 
 describe('dotSet', () => {
   it('works', () => {
-    let obj = {
+    const obj = {
       foo: {
         bar: 'qux'
       }
@@ -240,14 +240,14 @@ describe('transform', () => {
 
     const after = transform(before, columns)
     expect(after).toEqual([
-      { foo: 'v: 1', bar: 11, '$_foo': '1', '$_bar': '11' },
-      { foo: 'v: 2', bar: 22, '$_foo': '2', '$_bar': '22' }
+      { foo: 'v: 1', bar: 11, $_foo: '1', $_bar: '11' },
+      { foo: 'v: 2', bar: 22, $_foo: '2', $_bar: '22' }
     ])
   })
 
   it('works with dot-notation', () => {
     const time = new Date()
-    const before = [{ foo: { qux: { time }, 'baz': '1' }, bar: '11' }, { foo: { qux: { time }, 'baz': '2' }, bar: '22' }]
+    const before = [{ foo: { qux: { time }, baz: '1' }, bar: '11' }, { foo: { qux: { time }, baz: '2' }, bar: '22' }]
     const columns = [
       {
         field: 'foo.qux.time',
@@ -259,8 +259,8 @@ describe('transform', () => {
 
     const after = transform(before, columns)
     expect(after).toEqual([
-      { foo: { 'baz': '1', 'qux': { time: JSON.stringify(time), $_time: time } }, bar: '11' },
-      { foo: { 'baz': '2', 'qux': { time: JSON.stringify(time), $_time: time } }, bar: '22' }
+      { foo: { baz: '1', qux: { time: JSON.stringify(time), $_time: time } }, bar: '11' },
+      { foo: { baz: '2', qux: { time: JSON.stringify(time), $_time: time } }, bar: '22' }
     ])
   })
 
@@ -283,8 +283,8 @@ describe('transform', () => {
 
     transform(before, columns)
     expect(before).toEqual([
-      { foo: 'v: 1', bar: 11, '$_foo': '1', '$_bar': '11' },
-      { foo: 'v: 2', bar: 22, '$_foo': '2', '$_bar': '22' }
+      { foo: 'v: 1', bar: 11, $_foo: '1', $_bar: '11' },
+      { foo: 'v: 2', bar: 22, $_foo: '2', $_bar: '22' }
     ])
   })
 
@@ -311,8 +311,8 @@ describe('transform', () => {
     after = transform(before, columns)
     after = transform(before, columns)
     expect(after).toEqual([
-      { foo: 'v: 1', bar: 11, '$_foo': '1', '$_bar': '11' },
-      { foo: 'v: 2', bar: 22, '$_foo': '2', '$_bar': '22' }
+      { foo: 'v: 1', bar: 11, $_foo: '1', $_bar: '11' },
+      { foo: 'v: 2', bar: 22, $_foo: '2', $_bar: '22' }
     ])
     expect(count).toBe(before.length)
   })

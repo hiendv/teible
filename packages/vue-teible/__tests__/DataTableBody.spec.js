@@ -3,15 +3,15 @@ import idObj from 'identity-obj-proxy'
 import DataTableBody from '../src/DataTableBody.vue'
 
 describe('DataTableBody', () => {
-  it(`renders correctly`, () => {
-    let wrapper = shallowMount(DataTableBody, {
+  it('renders correctly', () => {
+    const wrapper = shallowMount(DataTableBody, {
       propsData: {
         items: [{
-          'one': 'foo',
-          'two': 'bar'
+          one: 'foo',
+          two: 'bar'
         }, {
-          'one': 'baz',
-          'two': 'qux'
+          one: 'baz',
+          two: 'qux'
         }],
         columns: [{
           field: 'one',

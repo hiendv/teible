@@ -5,8 +5,8 @@ import DataTablePagination from '../src/DataTablePagination.vue'
 describe('DataTablePagination', () => {
   // wrapper.setProps lines are to mock two-way binding
 
-  it(`renders correctly`, () => {
-    let wrapper = shallowMount(DataTablePagination, {
+  it('renders correctly', () => {
+    const wrapper = shallowMount(DataTablePagination, {
       propsData: {
         total: 10,
         page: 2,
@@ -19,8 +19,8 @@ describe('DataTablePagination', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it(`renders correctly with invalid perPage`, () => {
-    let wrapper = shallowMount(DataTablePagination, {
+  it('renders correctly with invalid perPage', () => {
+    const wrapper = shallowMount(DataTablePagination, {
       propsData: {
         total: 10,
         page: 1,
@@ -33,8 +33,8 @@ describe('DataTablePagination', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it(`renders correctly when total change`, () => {
-    let wrapper = shallowMount(DataTablePagination, {
+  it('renders correctly when total change', () => {
+    const wrapper = shallowMount(DataTablePagination, {
       propsData: {
         total: 10,
         page: 4,
@@ -49,11 +49,15 @@ describe('DataTablePagination', () => {
     wrapper.setProps({
       total: 9
     })
-    expect(wrapper.html()).toMatchSnapshot()
+
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        expect(wrapper.html()).toMatchSnapshot()
+      })
   })
 
-  it(`emits update:page events`, () => {
-    let wrapper = shallowMount(DataTablePagination, {
+  it('emits update:page events', () => {
+    const wrapper = shallowMount(DataTablePagination, {
       propsData: {
         total: 10,
         perPage: 3,
@@ -67,7 +71,7 @@ describe('DataTablePagination', () => {
     wrapper.find('.datatable__pprevious').trigger('click')
     expect(wrapper.emitted()).toEqual({ 'update:page': [[1]] })
     wrapper.setProps({
-      'page': 1
+      page: 1
     })
 
     // < > [1] 2 3 4
@@ -81,7 +85,7 @@ describe('DataTablePagination', () => {
     wrapper.findAll('.datatable__plink').at(5).trigger('click')
     expect(wrapper.emitted()).toEqual({ 'update:page': [[1], [4]] })
     wrapper.setProps({
-      'page': 4
+      page: 4
     })
 
     /*
@@ -91,8 +95,8 @@ describe('DataTablePagination', () => {
     expect(wrapper.emitted()).toEqual({ 'update:page': [[1], [4]] })
   })
 
-  it(`does not emit update:page event when clicking on the three-dots button`, () => {
-    let wrapper = shallowMount(DataTablePagination, {
+  it('does not emit update:page event when clicking on the three-dots button', () => {
+    const wrapper = shallowMount(DataTablePagination, {
       propsData: {
         total: 10,
         page: 1,
@@ -107,17 +111,21 @@ describe('DataTablePagination', () => {
     wrapper.findAll('.datatable__plink').at(3).trigger('click')
     expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < > 1 [2] 3 ... 9 10
     wrapper.setProps({
-      'page': 2
+      page: 2
     })
 
-    // Clicking on the [...]
-    wrapper.findAll('.datatable__plink').at(5).trigger('click')
-    expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < > 1 [2] 3 ... 9 10
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        // Clicking on the [...]
+        wrapper.findAll('.datatable__plink').at(5).trigger('click')
 
-    wrapper.findAll('.datatable__plink').at(7).trigger('click')
-    expect(wrapper.emitted()).toEqual({ 'update:page': [[2], [10]] }) // < > 1 2 3 ... 9 [10]
-    wrapper.setProps({
-      'page': 10
-    })
+        expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < > 1 [2] 3 ... 9 10
+
+        wrapper.findAll('.datatable__plink').at(7).trigger('click')
+        expect(wrapper.emitted()).toEqual({ 'update:page': [[2], [10]] }) // < > 1 2 3 ... 9 [10]
+        wrapper.setProps({
+          page: 10
+        })
+      })
   })
 })

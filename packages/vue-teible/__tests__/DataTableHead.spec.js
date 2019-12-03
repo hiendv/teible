@@ -3,8 +3,8 @@ import idObj from 'identity-obj-proxy'
 import DataTableHead from '../src/DataTableHead.vue'
 
 describe('DataTableHead', () => {
-  it(`renders correctly`, () => {
-    let wrapper = mount(DataTableHead, {
+  it('renders correctly', () => {
+    const wrapper = mount(DataTableHead, {
       propsData: {
         sortBy: 'name',
         sortDesc: false,
@@ -17,16 +17,18 @@ describe('DataTableHead', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it(`renders slots correctly`, () => {
-    let wrapper = mount(DataTableHead, {
+  it('renders slots correctly', () => {
+    const wrapper = mount(DataTableHead, {
       propsData: {
         sortBy: 'name',
         sortDesc: false,
-        columns: [{ field: 'id', label: 'ID', sortable: true }, { field: 'name', label: 'Name', sortable: true }, { scopedSlots: {
-          header (props) {
-            return 'Yo'
+        columns: [{ field: 'id', label: 'ID', sortable: true }, { field: 'name', label: 'Name', sortable: true }, {
+          scopedSlots: {
+            header (props) {
+              return 'Yo'
+            }
           }
-        } }]
+        }]
       },
       provide: () => ({
         $theme: () => idObj
@@ -37,8 +39,8 @@ describe('DataTableHead', () => {
     expect(wrapper.emitted()).toEqual({})
   })
 
-  it(`emits update:sortDesc when clicking the active column`, () => {
-    let wrapper = mount(DataTableHead, {
+  it('emits update:sortDesc when clicking the active column', () => {
+    const wrapper = mount(DataTableHead, {
       propsData: {
         sortBy: 'id',
         sortDesc: false,
@@ -54,13 +56,17 @@ describe('DataTableHead', () => {
     expect(wrapper.emitted()).toEqual({ 'update:sortDesc': [[true]] })
 
     wrapper.setProps({ // fake two-way binding
-      'sortDesc': true
+      sortDesc: true
     })
-    expect(wrapper.html()).toMatchSnapshot()
+
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        expect(wrapper.html()).toMatchSnapshot()
+      })
   })
 
-  it(`emits update:sortField when clicking other columns`, () => {
-    let wrapper = mount(DataTableHead, {
+  it('emits update:sortField when clicking other columns', () => {
+    const wrapper = mount(DataTableHead, {
       propsData: {
         sortBy: 'name',
         sortDesc: false,
@@ -76,13 +82,16 @@ describe('DataTableHead', () => {
     expect(wrapper.emitted()).toEqual({ 'update:sortBy': [['id']] })
 
     wrapper.setProps({ // fake two-way binding
-      'sortBy': 'id'
+      sortBy: 'id'
     })
-    expect(wrapper.html()).toMatchSnapshot()
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        expect(wrapper.html()).toMatchSnapshot()
+      })
   })
 
-  it(`emits nothing without field`, () => {
-    let wrapper = mount(DataTableHead, {
+  it('emits nothing without field', () => {
+    const wrapper = mount(DataTableHead, {
       propsData: {
         columns: [{ field: 'id' }, { field: 'name' }]
       },
@@ -95,8 +104,8 @@ describe('DataTableHead', () => {
     expect(wrapper.emitted()['update:sortBy']).toBeFalsy()
   })
 
-  it(`emits nothing when clicking on not-sortable columns`, () => {
-    let wrapper = mount(DataTableHead, {
+  it('emits nothing when clicking on not-sortable columns', () => {
+    const wrapper = mount(DataTableHead, {
       propsData: {
         sortBy: 'name',
         sortDesc: false,

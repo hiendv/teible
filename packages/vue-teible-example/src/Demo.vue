@@ -150,7 +150,7 @@ export default {
         return false
       }
 
-      for (let needle of needles) {
+      for (const needle of needles) {
         if (haystack.indexOf(needle) === -1) {
           return false
         }

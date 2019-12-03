@@ -3,8 +3,8 @@ import idObj from 'identity-obj-proxy'
 import DataTableFilter from '../src/DataTableFilter.vue'
 
 describe('DataTableFilter', () => {
-  it(`renders correctly`, () => {
-    let wrapper = shallowMount(DataTableFilter, {
+  it('renders correctly', () => {
+    const wrapper = shallowMount(DataTableFilter, {
       propsData: {
         filter: 'default'
       },

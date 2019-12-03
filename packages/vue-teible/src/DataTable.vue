@@ -111,8 +111,8 @@ export default {
     },
     columns () {
       return this.vnodes.map(vnode => {
-        let { componentOptions: { Ctor: { options: { props } }, propsData, children }, data: { scopedSlots, attrs, class: dynamicClass, staticClass } } = vnode
-        let { field, label, sortable, filterable, render } = defaultProps(props, propsData)
+        const { componentOptions: { Ctor: { options: { props } }, propsData, children }, data: { scopedSlots, attrs, class: dynamicClass, staticClass } } = vnode
+        const { field, label, sortable, filterable, render } = defaultProps(props, propsData)
         return {
           field,
           label,
@@ -166,7 +166,7 @@ export default {
       return (this.page - 1) * this.perPage + 1
     },
     to () {
-      let x = this.page * this.perPage
+      const x = this.page * this.perPage
       return this.total < x ? this.total : x
     },
     transformed () {

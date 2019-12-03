@@ -122,7 +122,7 @@ import Haikunator from 'haikunator'
 import axios from 'axios'
 import Demo from './Demo.vue'
 
-let haikunator = new Haikunator()
+const haikunator = new Haikunator()
 
 export default {
   components: { Demo },
@@ -150,10 +150,10 @@ export default {
     itemsFunc (filtering, sorting, paging) {
       // filtering fields will be ignored because typicode does not support them: https://github.com/typicode/json-server/pull/558
       // this, sometimes, makes the result seem weird
-      let url = `https://jsonplaceholder.typicode.com/users?q=${filtering.query}&_sort=${sorting.by}&_order=${sorting.order}&_page=${paging.page}&_limit=${paging.perPage}`
+      const url = `https://jsonplaceholder.typicode.com/users?q=${filtering.query}&_sort=${sorting.by}&_order=${sorting.order}&_page=${paging.page}&_limit=${paging.perPage}`
 
       return axios.get(url).then(response => {
-        let total = parseInt(response.headers['x-total-count']) || 0
+        const total = parseInt(response.headers['x-total-count']) || 0
         return {
           total,
           items: response.data

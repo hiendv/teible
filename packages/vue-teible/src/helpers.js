@@ -1,7 +1,7 @@
 import { dotGet } from 'teible'
 export const defaultProps = (options, data) => {
-  let props = {}
-  for (let key in options) {
+  const props = {}
+  for (const key in options) {
     if (data[key] !== undefined) {
       props[key] = data[key]
       continue

@@ -47,7 +47,10 @@ describe('DataTable', () => {
     expect(wrapper.html()).toMatchSnapshot()
 
     wrapper.setProps({ items: [] })
-    expect(wrapper.html()).toMatchSnapshot()
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        expect(wrapper.html()).toMatchSnapshot()
+      })
   })
 
   it('works with sync data using function', () => {
@@ -195,7 +198,7 @@ describe('DataTable', () => {
     theItem.$_id = theItem.id
     theItem.id = `id-${theItem.id}`
 
-    expect(wrapper.emitted()['loaded']).toEqual([[{
+    expect(wrapper.emitted().loaded).toEqual([[{
       items: [theItem],
       total: items.length
     }]])
@@ -214,7 +217,10 @@ describe('DataTable', () => {
     })
 
     wrapper.find('th').trigger('click')
-    expect(wrapper.emitted()['update:sortBy']).toEqual([['id']])
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        expect(wrapper.emitted()['update:sortBy']).toEqual([['id']])
+      })
   })
 
   it('emits update:sortDesc', () => {
@@ -230,7 +236,10 @@ describe('DataTable', () => {
     })
 
     wrapper.find('th').trigger('click')
-    expect(wrapper.emitted()['update:sortDesc']).toEqual([[false]])
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        expect(wrapper.emitted()['update:sortDesc']).toEqual([[false]])
+      })
   })
 
   it('emits update:filter', () => {
@@ -249,7 +258,10 @@ describe('DataTable', () => {
     input.element.value = 'a'
     input.trigger('input')
 
-    expect(wrapper.emitted()['update:filter']).toEqual([['a']])
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        expect(wrapper.emitted()['update:filter']).toEqual([['a']])
+      })
   })
 
   it('allows disableFiltering', () => {

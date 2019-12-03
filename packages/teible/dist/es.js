@@ -5,7 +5,7 @@ const chunk = (arr, size) => {
     size = arr.length;
   }
 
-  let result = [];
+  const result = [];
   for (let i = 0, len = arr.length; i < len; i += size) { result.push(arr.slice(i, i + size)); }
   return result
 };
@@ -19,8 +19,8 @@ const orderBy = (arr, field, order) => {
   const SMALLER = -GREATER;
 
   return arr.sort((a, b) => {
-    let first = dotGet(a, field);
-    let second = dotGet(b, field);
+    const first = dotGet(a, field);
+    const second = dotGet(b, field);
 
     if (!first && !second) {
       return 0
@@ -47,7 +47,7 @@ const orderBy = (arr, field, order) => {
     }
 
     if (typeof first === 'string' && typeof second === 'string') {
-      let cmp = first.localeCompare(second);
+      const cmp = first.localeCompare(second);
       if (cmp === 0) {
         return 0
       }
@@ -76,8 +76,8 @@ const orderBy = (arr, field, order) => {
 const filter = (items, filtering) => {
   return items.filter(item => {
     for (let i = 0; i < filtering.fields.length; i++) {
-      let field = filtering.fields[i];
-      let value = dotGet(item, field);
+      const field = filtering.fields[i];
+      const value = dotGet(item, field);
 
       if (!value) {
         continue
@@ -95,7 +95,7 @@ const filter = (items, filtering) => {
 };
 
 const load = (data, filtering, sorting, paging) => {
-  let filtered = (!filtering || !filtering.query) ? data : filter(data, filtering);
+  const filtered = (!filtering || !filtering.query) ? data : filter(data, filtering);
   if (!filtered || !filtered.length) {
     return {
       items: [],
@@ -103,9 +103,9 @@ const load = (data, filtering, sorting, paging) => {
     }
   }
 
-  let ordered = orderBy(filtered, sorting.by, sorting.order);
-  let chunked = chunk(ordered, paging.perPage);
-  let items = chunked[paging.page - 1];
+  const ordered = orderBy(filtered, sorting.by, sorting.order);
+  const chunked = chunk(ordered, paging.perPage);
+  const items = chunked[paging.page - 1];
   if (!items) {
     return {
       items: [],
@@ -124,14 +124,14 @@ const dotGet = (obj, path) => {
 };
 
 const dotSet = (obj, path, val) => {
-  let parts = path.split('.');
+  const parts = path.split('.');
   return parts.reduce((o, i, idx) => {
     if (idx === parts.length - 1) {
       o[i] = val;
       return o[i]
     }
 
-    if (!o.hasOwnProperty(i)) {
+    if (!Object.prototype.hasOwnProperty.call(o, i)) {
       o[i] = {};
     }
 
@@ -146,7 +146,7 @@ const uniqArr = arr => {
 };
 
 const range = n => {
-  let a = [];
+  const a = [];
   for (var i = 0; i < n; i++) {
     a[i] = i + 1;
   }
@@ -159,7 +159,7 @@ const paginate = (currentPage, total, showing = 3, eachSide = 2) => {
     return paginationValueOrThreeDots(range(total))
   }
 
-  let pages = [];
+  const pages = [];
 
   for (let i = 0; i < eachSide; i++) {
     pages.push(i + 1);
@@ -214,7 +214,7 @@ function transform (data = [], columns = []) {
         originalField = `$_${field}`;
       }
 
-      if (item.hasOwnProperty(originalField)) {
+      if (Object.prototype.hasOwnProperty.call(item, originalField)) {
         return
       }
 
