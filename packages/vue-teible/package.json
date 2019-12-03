@@ -1,11 +1,11 @@
 {
   "name": "vue-teible",
   "description": "Table component for Vue.js",
-  "version": "0.10.5",
+  "version": "0.11.0",
   "author": "Hien Dao <hien.dv.neo@gmail.com>",
   "dependencies": {
     "octicons-vue": "^0.18.10",
-    "teible": "^0.10.5"
+    "teible": "^0.11.0"
   },
   "files": [
     "dist",
