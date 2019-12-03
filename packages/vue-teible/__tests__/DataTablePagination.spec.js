@@ -117,8 +117,7 @@ describe('DataTablePagination', () => {
     return wrapper.vm.$nextTick()
       .then(() => {
         // Clicking on the [...]
-        wrapper.findAll('.datatable__plink').at(5).trigger('click')
-
+        wrapper.findAll('.datatable__plink').at(5).trigger('click') // this won't actually do because of vuejs/vue-test-utils/issues/1321
         expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < > 1 [2] 3 ... 9 10
 
         wrapper.findAll('.datatable__plink').at(7).trigger('click')
