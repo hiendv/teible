@@ -73,27 +73,27 @@ exports[`DataTable allows paginationSide 1`] = `
         </thead>
         <tbody>
           <tr class="datatable__row">
-            <td class="datatable__cell datatable__cell--last-row">51</td>
-            <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value H (id-51)</td>
+            <td class="datatable__cell">14</td>
+            <td class="datatable__cell datatable__cell--last-column">value m (id-14)</td>
+          </tr>
+          <tr class="datatable__row datatable__row--odd">
+            <td class="datatable__cell datatable__cell--last-row">1</td>
+            <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value z (id-1)</td>
           </tr>
         </tbody>
       </table>
     </div>
     <nav class="datatable__pagination"><span class="datatable__ptext">
-    Showing <span>1 – 1</span> of 100 records
+    Showing <span>1 – 2</span> of 26 records
       </span> <a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
       <ul class="datatable__plist">
         <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
         <li class="datatable__pitem"><a href="#" class="datatable__plink">2</a></li>
         <li class="datatable__pitem"><a href="#" class="datatable__plink">3</a></li>
-        <li class="datatable__pitem"><a href="#" class="datatable__plink">4</a></li>
-        <li class="datatable__pitem"><a href="#" class="datatable__plink">5</a></li>
         <li class="datatable__pitem"><a disabled="disabled" href="#" class="datatable__plink">...</a></li>
-        <li class="datatable__pitem"><a href="#" class="datatable__plink">96</a></li>
-        <li class="datatable__pitem"><a href="#" class="datatable__plink">97</a></li>
-        <li class="datatable__pitem"><a href="#" class="datatable__plink">98</a></li>
-        <li class="datatable__pitem"><a href="#" class="datatable__plink">99</a></li>
-        <li class="datatable__pitem"><a href="#" class="datatable__plink">100</a></li>
+        <li class="datatable__pitem"><a href="#" class="datatable__plink">11</a></li>
+        <li class="datatable__pitem"><a href="#" class="datatable__plink">12</a></li>
+        <li class="datatable__pitem"><a href="#" class="datatable__plink">13</a></li>
       </ul>
     </nav>
   </div>

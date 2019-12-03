@@ -15,6 +15,10 @@ afterAll(() => {
 
 describe('DataTable', () => {
   const generateItems = (n = 3) => {
+    if (n > 26) {
+      n = 26
+    }
+
     let output = []
 
     for (let i = 1; i <= n; i++) {
@@ -298,7 +302,7 @@ describe('DataTable', () => {
 
   it('allows paginationSide', () => {
     const wrapper = mount(DataTable, {
-      propsData: { items: generateItems(100), paginationSide: 5, perPage: 1 },
+      propsData: { items: generateItems(26), paginationSide: 3, perPage: 2 },
       slots: {
         default: `
           <data-column field="id" label="ID"/>
