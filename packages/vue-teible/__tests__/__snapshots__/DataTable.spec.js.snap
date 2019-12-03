@@ -20,18 +20,16 @@ exports[`DataTable keeps original items 1`] = `
           </tr>
         </thead>
         <tbody>
-          <tr class="datatable__row datatable__row--last">
+          <tr class="datatable__row">
             <td class="datatable__cell datatable__cell--last-row">YO</td>
             <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">lowercase me</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <nav class="datatable__pagination">
+    <nav class="datatable__pagination"><a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
       <ul class="datatable__plist">
-        <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
         <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
-        <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext datatable__plink--disabled"><span aria-hidden="true">»</span></a></li>
       </ul>
     </nav>
   </div>
@@ -70,18 +68,16 @@ exports[`DataTable works with async data 1`] = `
             <td class="datatable__cell">id-2</td>
             <td class="datatable__cell datatable__cell--last-column">value m (id-2)</td>
           </tr>
-          <tr class="datatable__row datatable__row--last">
+          <tr class="datatable__row">
             <td class="datatable__cell datatable__cell--last-row">id-3</td>
             <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value a (id-3)</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <nav class="datatable__pagination">
+    <nav class="datatable__pagination"><a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
       <ul class="datatable__plist">
-        <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
         <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
-        <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext datatable__plink--disabled"><span aria-hidden="true">»</span></a></li>
       </ul>
     </nav>
   </div>
@@ -112,11 +108,8 @@ exports[`DataTable works with empty data 1`] = `
         <tbody></tbody>
       </table>
     </div>
-    <nav class="datatable__pagination">
-      <ul class="datatable__plist">
-        <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
-        <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext datatable__plink--disabled"><span aria-hidden="true">»</span></a></li>
-      </ul>
+    <nav class="datatable__pagination"><a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
+      <ul class="datatable__plist"></ul>
     </nav>
   </div>
 </div>
@@ -141,15 +134,13 @@ exports[`DataTable works with no columns 1`] = `
         <tbody>
           <tr class="datatable__row"></tr>
           <tr class="datatable__row datatable__row--odd"></tr>
-          <tr class="datatable__row datatable__row--last"></tr>
+          <tr class="datatable__row"></tr>
         </tbody>
       </table>
     </div>
-    <nav class="datatable__pagination">
+    <nav class="datatable__pagination"><a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
       <ul class="datatable__plist">
-        <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
         <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
-        <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext datatable__plink--disabled"><span aria-hidden="true">»</span></a></li>
       </ul>
     </nav>
   </div>
@@ -184,19 +175,17 @@ exports[`DataTable works with sync data 1`] = `
             <td class="datatable__cell">id-1</td>
             <td class="datatable__cell datatable__cell--last-column">value z (id-1)</td>
           </tr>
-          <tr class="datatable__row datatable__row--odd datatable__row--last">
+          <tr class="datatable__row datatable__row--odd">
             <td class="datatable__cell datatable__cell--last-row">id-2</td>
             <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value m (id-2)</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <nav class="datatable__pagination">
+    <nav class="datatable__pagination"><a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
       <ul class="datatable__plist">
-        <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
         <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
         <li class="datatable__pitem"><a href="#" class="datatable__plink">2</a></li>
-        <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a></li>
       </ul>
     </nav>
   </div>
@@ -227,11 +216,8 @@ exports[`DataTable works with sync data 2`] = `
         <tbody></tbody>
       </table>
     </div>
-    <nav class="datatable__pagination">
-      <ul class="datatable__plist">
-        <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
-        <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext datatable__plink--disabled"><span aria-hidden="true">»</span></a></li>
-      </ul>
+    <nav class="datatable__pagination"><a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a href="#" aria-label="Next" class="datatable__plink datatable__pnext" disabled="disabled"><span aria-hidden="true">»</span></a>
+      <ul class="datatable__plist"></ul>
     </nav>
   </div>
 </div>
@@ -269,18 +255,16 @@ exports[`DataTable works with sync data using function 1`] = `
             <td class="datatable__cell">id-2</td>
             <td class="datatable__cell datatable__cell--last-column">value m (id-2)</td>
           </tr>
-          <tr class="datatable__row datatable__row--last">
+          <tr class="datatable__row">
             <td class="datatable__cell datatable__cell--last-row">id-3</td>
             <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value a (id-3)</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <nav class="datatable__pagination">
+    <nav class="datatable__pagination"><a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
       <ul class="datatable__plist">
-        <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
         <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
-        <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext datatable__plink--disabled"><span aria-hidden="true">»</span></a></li>
       </ul>
     </nav>
   </div>
@@ -305,16 +289,14 @@ exports[`DataTable works with vue-i18n 1`] = `
         </thead>
         <tbody>
           <tr class="datatable__row"></tr>
-          <tr class="datatable__row datatable__row--odd datatable__row--last"></tr>
+          <tr class="datatable__row datatable__row--odd"></tr>
         </tbody>
       </table>
     </div>
-    <nav class="datatable__pagination">
+    <nav class="datatable__pagination"><a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
       <ul class="datatable__plist">
-        <li class="datatable__pitem"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprev datatable__plink--disabled"><span aria-hidden="true">«</span></a></li>
         <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
         <li class="datatable__pitem"><a href="#" class="datatable__plink">2</a></li>
-        <li class="datatable__pitem"><a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a></li>
       </ul>
     </nav>
   </div>

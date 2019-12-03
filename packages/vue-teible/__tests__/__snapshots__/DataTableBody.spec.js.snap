@@ -6,7 +6,7 @@ exports[`DataTableBody renders correctly 1`] = `
     <data-table-cell-stub item="[object Object]" column="[object Object]" class="[object Object]"></data-table-cell-stub>
     <data-table-cell-stub item="[object Object]" column="[object Object]" class="[object Object]"></data-table-cell-stub>
   </tr>
-  <tr class="datatable__row datatable__row--odd datatable__row--last">
+  <tr class="datatable__row datatable__row--odd">
     <data-table-cell-stub item="[object Object]" column="[object Object]" class="[object Object]"></data-table-cell-stub>
     <data-table-cell-stub item="[object Object]" column="[object Object]" class="[object Object]"></data-table-cell-stub>
   </tr>

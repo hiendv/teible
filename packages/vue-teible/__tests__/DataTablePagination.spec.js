@@ -64,19 +64,21 @@ describe('DataTablePagination', () => {
       })
     })
 
-    wrapper.find('.datatable__pprev').trigger('click')
+    wrapper.find('.datatable__pprevious').trigger('click')
     expect(wrapper.emitted()).toEqual({ 'update:page': [[1]] })
     wrapper.setProps({
       'page': 1
     })
 
+    // < > [1] 2 3 4
+
     /*
       Nothing emitted since we reached the first page
     */
-    wrapper.find('.datatable__pprev').trigger('click')
+    wrapper.find('.datatable__pprevious').trigger('click')
     expect(wrapper.emitted()).toEqual({ 'update:page': [[1]] })
 
-    wrapper.findAll('.datatable__plink').at(4).trigger('click')
+    wrapper.findAll('.datatable__plink').at(5).trigger('click')
     expect(wrapper.emitted()).toEqual({ 'update:page': [[1], [4]] })
     wrapper.setProps({
       'page': 4
@@ -100,20 +102,20 @@ describe('DataTablePagination', () => {
         $theme: () => idObj
       })
     })
-    expect(wrapper.html()).toMatchSnapshot() // < [1] 2 3 ... 9 10 >
+    expect(wrapper.html()).toMatchSnapshot() // < > [1] 2 3 ... 9 10
 
-    wrapper.findAll('.datatable__plink').at(2).trigger('click')
-    expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < 1 [2] 3 ... 9 10 >
+    wrapper.findAll('.datatable__plink').at(3).trigger('click')
+    expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < > 1 [2] 3 ... 9 10
     wrapper.setProps({
       'page': 2
     })
 
     // Clicking on the [...]
-    wrapper.findAll('.datatable__plink').at(4).trigger('click')
-    expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < 1 [2] 3 ... 9 10 >
+    wrapper.findAll('.datatable__plink').at(5).trigger('click')
+    expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < > 1 [2] 3 ... 9 10
 
-    wrapper.findAll('.datatable__plink').at(6).trigger('click')
-    expect(wrapper.emitted()).toEqual({ 'update:page': [[2], [10]] }) // < 1 2 3 ... 9 [10] >
+    wrapper.findAll('.datatable__plink').at(7).trigger('click')
+    expect(wrapper.emitted()).toEqual({ 'update:page': [[2], [10]] }) // < > 1 2 3 ... 9 [10]
     wrapper.setProps({
       'page': 10
     })
