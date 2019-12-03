@@ -73,12 +73,12 @@ exports[`DataTable allows paginationSide 1`] = `
         </thead>
         <tbody>
           <tr class="datatable__row">
-            <td class="datatable__cell">14</td>
-            <td class="datatable__cell datatable__cell--last-column">value m (id-14)</td>
+            <td class="datatable__cell">1</td>
+            <td class="datatable__cell datatable__cell--last-column">value z (id-1)</td>
           </tr>
           <tr class="datatable__row datatable__row--odd">
-            <td class="datatable__cell datatable__cell--last-row">1</td>
-            <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value z (id-1)</td>
+            <td class="datatable__cell datatable__cell--last-row">2</td>
+            <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value y (id-2)</td>
           </tr>
         </tbody>
       </table>
