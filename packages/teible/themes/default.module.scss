@@ -35,7 +35,8 @@ $bg-color__plink--active: $color__plink;
 
   @include e('heading') {
     display: block;
-    width: 100%;
+    margin-left: -0.5em;
+    margin-right: -0.5em;
   }
 
   @include e('unit') {
@@ -44,6 +45,7 @@ $bg-color__plink--active: $color__plink;
     flex-grow: 1;
     flex-shrink: 1;
     margin-bottom: .5em;
+    padding: 0 .5em;
   }
 
   @include e('screen') {
@@ -59,10 +61,6 @@ $bg-color__plink--active: $color__plink;
       display: flex;
       align-items: center;
       margin-bottom: 0.5em;
-    }
-
-    @include e('filter') {
-      margin-right: 1em;
     }
   }
 
