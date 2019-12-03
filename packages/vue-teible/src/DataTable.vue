@@ -1,7 +1,7 @@
 <template>
   <div :class="theme.datatable">
     <div :class="theme.datatable__wrapper">
-      <data-table-filter :filter.sync="options.filter" v-if="!disableFiltering"/>
+      <data-table-filter v-if="!disableFiltering" :filter.sync="options.filter" />
       <data-table-pagination
         v-if="extraPagination" :per-page="perPage" :page.sync="page"
         :total="total"

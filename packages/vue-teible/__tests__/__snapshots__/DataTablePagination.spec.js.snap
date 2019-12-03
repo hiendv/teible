@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DataTablePagination does not emit update:page event when clicking on the three-dots button 1`] = `
-<nav class="datatable__pagination"><a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
+<nav class="datatable__pagination"><span class="datatable__ptext">
+    Showing <span>1 – 1</span> of 10 records
+  </span> <a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
   <ul class="datatable__plist">
     <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
     <li class="datatable__pitem"><a href="#" class="datatable__plink">2</a></li>
@@ -13,7 +15,9 @@ exports[`DataTablePagination does not emit update:page event when clicking on th
 `;
 
 exports[`DataTablePagination renders correctly 1`] = `
-<nav class="datatable__pagination"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
+<nav class="datatable__pagination"><span class="datatable__ptext">
+    Showing <span>4 – 6</span> of 10 records
+  </span> <a href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
   <ul class="datatable__plist">
     <li class="datatable__pitem"><a href="#" class="datatable__plink">1</a></li>
     <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">2</a></li>
@@ -24,7 +28,9 @@ exports[`DataTablePagination renders correctly 1`] = `
 `;
 
 exports[`DataTablePagination renders correctly when total change 1`] = `
-<nav class="datatable__pagination"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
+<nav class="datatable__pagination"><span class="datatable__ptext">
+    Showing <span>the last record</span> of 10 records
+  </span> <a href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
   <ul class="datatable__plist">
     <li class="datatable__pitem"><a href="#" class="datatable__plink">1</a></li>
     <li class="datatable__pitem"><a href="#" class="datatable__plink">2</a></li>
@@ -35,7 +41,9 @@ exports[`DataTablePagination renders correctly when total change 1`] = `
 `;
 
 exports[`DataTablePagination renders correctly when total change 2`] = `
-<nav class="datatable__pagination"><a href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
+<nav class="datatable__pagination"><span class="datatable__ptext">
+    Showing <span>10 – 9</span> of 9 records
+  </span> <a href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
   <ul class="datatable__plist">
     <li class="datatable__pitem"><a href="#" class="datatable__plink">1</a></li>
     <li class="datatable__pitem"><a href="#" class="datatable__plink">2</a></li>
@@ -45,7 +53,9 @@ exports[`DataTablePagination renders correctly when total change 2`] = `
 `;
 
 exports[`DataTablePagination renders correctly with invalid perPage 1`] = `
-<nav class="datatable__pagination"><a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
+<nav class="datatable__pagination"><span class="datatable__ptext">
+    Showing <span>1 – 0</span> of 10 records
+  </span> <a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
   <ul class="datatable__plist">
     <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
     <li class="datatable__pitem"><a href="#" class="datatable__plink">2</a></li>
