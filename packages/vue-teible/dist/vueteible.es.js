@@ -459,7 +459,7 @@ var __vue_script__ = script;
 /* template */
 var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('tbody',_vm._l((_vm.items),function(d,index){
 var _obj;
-return _c('tr',{key:index,class:( _obj = {}, _obj[_vm.theme.datatable__row] = true, _obj[_vm.theme['datatable__row--odd']] = index % 2 === 1, _obj[_vm.theme['datatable__row--last']] = index === _vm.items.length - 1, _obj )},_vm._l((_vm.columns),function(column,columnIndex){
+return _c('tr',{key:index,class:( _obj = {}, _obj[_vm.theme.datatable__row] = true, _obj[_vm.theme['datatable__row--odd']] = index % 2 === 1, _obj )},_vm._l((_vm.columns),function(column,columnIndex){
     var _obj;
 return _c('data-table-cell',_vm._b({key:columnIndex,class:( _obj = {}, _obj[_vm.theme.datatable__cell] = true, _obj[_vm.theme['datatable__cell--last-column']] = columnIndex === _vm.columns.length - 1, _obj[_vm.theme['datatable__cell--last-row']] = index === _vm.items.length - 1, _obj ),attrs:{"item":d,"column":column}},'data-table-cell',column.attrs,false))}),1)}),0)};
 var __vue_staticRenderFns__ = [];

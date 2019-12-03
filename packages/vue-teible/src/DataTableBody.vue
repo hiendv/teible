@@ -3,8 +3,7 @@
     <tr
       v-for="(d, index) in items" :key="index" :class="{
         [theme.datatable__row]: true,
-        [theme['datatable__row--odd']]: index % 2 === 1,
-        [theme['datatable__row--last']]: index === items.length - 1
+        [theme['datatable__row--odd']]: index % 2 === 1
       }"
     >
       <data-table-cell
