@@ -15,6 +15,10 @@ export const orderBy = (arr, field, order) => {
     return []
   }
 
+  if (!field) {
+    return arr
+  }
+
   const GREATER = order === 'desc' ? -1 : 1
   const SMALLER = -GREATER
 
