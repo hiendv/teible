@@ -5,7 +5,6 @@
         <a
           :class="{
             [theme.datatable__plink]: true,
-            [theme.datatable__pprev]: true,
             [theme['datatable__plink--disabled']]: reachedFirst
           }" href="#" aria-label="Previous"
           @click.prevent="load(page-1)"
@@ -24,7 +23,6 @@
         <a
           :class="{
             [theme.datatable__plink]: true,
-            [theme.datatable__pnext]: true,
             [theme['datatable__plink--disabled']]: reachedLast
           }" href="#" aria-label="Next"
           @click.prevent="load(page+1)"
