@@ -1,5 +1,83 @@
-##  (2019-10-08)
+##  (2019-12-04)
 
+
+
+
+## 0.11.0 (2019-12-03)
+
+* v0.11.0 ([8b92259](https://github.com/hiendv/teible/commit/8b92259))
+* test: update snapshots for 9f5ebab ([3c91b87](https://github.com/hiendv/teible/commit/3c91b87))
+* test(vue-teible): remove obsoleted snapshots for pagination ([5e0f303](https://github.com/hiendv/teible/commit/5e0f303))
+* test(vue-teible): update generateItems ([013bca9](https://github.com/hiendv/teible/commit/013bca9))
+* test(vue-teible): update generateItems ([c2edc0b](https://github.com/hiendv/teible/commit/c2edc0b))
+* test(vue-teible): update paginationSide ([78505f5](https://github.com/hiendv/teible/commit/78505f5))
+* test(vue-teible): update test snapshots ([27bc818](https://github.com/hiendv/teible/commit/27bc818))
+* test(vue-teible): update tests for 9039159 ([56550a1](https://github.com/hiendv/teible/commit/56550a1))
+* fix: clean up pagination ([dfc2160](https://github.com/hiendv/teible/commit/dfc2160))
+* fix: remove styling for row--last ([50726cd](https://github.com/hiendv/teible/commit/50726cd))
+* fix(teible): add a defensive check for sort field ([9f5ebab](https://github.com/hiendv/teible/commit/9f5ebab))
+* fix(vue-teible): revert to the old default eachSide pagination ([2aa26f3](https://github.com/hiendv/teible/commit/2aa26f3))
+* feat: update styling layout ([606d9e0](https://github.com/hiendv/teible/commit/606d9e0))
+* feat(teible): move showing and eachSide to the arguments ([1ac4539](https://github.com/hiendv/teible/commit/1ac4539))
+* feat(vue-teible): add extraPagination prop ([037917f](https://github.com/hiendv/teible/commit/037917f))
+* feat(vue-teible): add paginationSide ([f71a714](https://github.com/hiendv/teible/commit/f71a714))
+* refactor: deprecate extraPagination in favor of pagination ([e6d4e63](https://github.com/hiendv/teible/commit/e6d4e63))
+* refactor: move table info into the pagination ([9039159](https://github.com/hiendv/teible/commit/9039159))
+* style: update default styling ([1ebeea3](https://github.com/hiendv/teible/commit/1ebeea3))
+* style: update default styling ([717ffd2](https://github.com/hiendv/teible/commit/717ffd2))
+* style(vue-teible): update pagination styling ([272569d](https://github.com/hiendv/teible/commit/272569d))
+* chore: build ([2c809c1](https://github.com/hiendv/teible/commit/2c809c1))
+* chore: update deps & tests ([8241eeb](https://github.com/hiendv/teible/commit/8241eeb))
+* chore: update tests docs ([6119c7f](https://github.com/hiendv/teible/commit/6119c7f))
+* chore(vue-teible): remove unused sass files ([0c892e7](https://github.com/hiendv/teible/commit/0c892e7))
+
+
+### BREAKING CHANGE
+
+* datatable__heading & datatable__unit is now removed
+* row--last styling is now removed
+* the styling layout changed
+
+
+## <small>0.10.5 (2019-11-12)</small>
+
+* v0.10.5 ([560930e](https://github.com/hiendv/teible/commit/560930e))
+* fix: correct filter x position ([39c96e0](https://github.com/hiendv/teible/commit/39c96e0))
+* chore: update deps ([c4d7163](https://github.com/hiendv/teible/commit/c4d7163))
+
+
+
+## <small>0.10.4 (2019-11-04)</small>
+
+* v0.10.4 ([a7d221c](https://github.com/hiendv/teible/commit/a7d221c))
+* chore: update deps ([6d5f5aa](https://github.com/hiendv/teible/commit/6d5f5aa))
+* feat(vue-teible): add disableFiltering ([7069afd](https://github.com/hiendv/teible/commit/7069afd))
+
+
+
+## <small>0.10.3 (2019-10-29)</small>
+
+* v0.10.3 ([c833fc8](https://github.com/hiendv/teible/commit/c833fc8))
+* chore: add pretest script for linting ([cca225d](https://github.com/hiendv/teible/commit/cca225d))
+* chore: update deps ([0211111](https://github.com/hiendv/teible/commit/0211111))
+* fix(vue-teible): remove unnecessary stringification for slot-scope value ([2283d32](https://github.com/hiendv/teible/commit/2283d32))
+
+
+
+## <small>0.10.2 (2019-10-17)</small>
+
+* v0.10.2 ([dd37d1d](https://github.com/hiendv/teible/commit/dd37d1d))
+* docs(vue-teible): correct outdated example ([679f749](https://github.com/hiendv/teible/commit/679f749))
+* fix(vue-teible): exclude octicons in non-iife builds ([5dd11ec](https://github.com/hiendv/teible/commit/5dd11ec))
+* chore: update deps ([2377d12](https://github.com/hiendv/teible/commit/2377d12))
+
+
+
+## <small>0.10.1 (2019-10-09)</small>
+
+* v0.10.1 ([14fba5d](https://github.com/hiendv/teible/commit/14fba5d))
+* feat(vue-teible): add support for vue-i18n ([139cc4a](https://github.com/hiendv/teible/commit/139cc4a))
+* chore: update CHANGELOG ([eb29e17](https://github.com/hiendv/teible/commit/eb29e17))
 * chore: update gh-pages deployment script ([7346ca4](https://github.com/hiendv/teible/commit/7346ca4))
 
 
