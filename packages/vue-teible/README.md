@@ -115,6 +115,10 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
   paginationSide: { // The number of pages for each side of paginations
     type: Number,
     default: 2
+  },
+  rowClick: { // Callback for row click events
+    type: Function,
+    default: (event, item, index) => {}
   }
 }
 ```

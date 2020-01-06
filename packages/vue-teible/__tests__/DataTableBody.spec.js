@@ -19,7 +19,8 @@ describe('DataTableBody', () => {
         }, {
           field: 'two',
           label: 'Two'
-        }]
+        }],
+        click: () => {}
       },
       provide: () => ({
         $theme: () => idObj

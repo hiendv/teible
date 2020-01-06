@@ -348,4 +348,33 @@ describe('DataTable', () => {
     expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.html()).toMatchSnapshot()
   })
+
+  it('emits update:filter', () => {
+    const mockCallback = jest.fn((event, item, index) => {
+      return { item, index }
+    })
+    const items = generateItems()
+    const wrapper = mount(DataTable, {
+      propsData: { items, rowClick: mockCallback },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
+
+    const input = wrapper.find('tbody tr')
+    input.trigger('click')
+
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        expect(mockCallback.mock.calls.length).toBe(1)
+        expect(mockCallback.mock.results[0].value).toMatchObject({
+          item: items[0],
+          index: 0
+        })
+      })
+  })
 })

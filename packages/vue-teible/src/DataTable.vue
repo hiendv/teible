@@ -9,7 +9,7 @@
       <div :class="theme.datatable__screen">
         <table :class="theme.datatable__content" cellspacing="0" cellpadding="0">
           <data-table-head :columns="columns" :sort-by.sync="options.sortBy" :sort-desc.sync="options.sortDesc" />
-          <data-table-body :columns="columns" :items="actualItems" />
+          <data-table-body :columns="columns" :items="actualItems" :click="rowClick" />
         </table>
       </div>
       <data-table-pagination
@@ -72,6 +72,10 @@ export default {
     paginationSide: {
       type: Number,
       default: 2
+    },
+    rowClick: {
+      type: Function,
+      default: (event, item, index) => {}
     }
   },
   provide () {
