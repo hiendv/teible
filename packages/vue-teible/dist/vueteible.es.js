@@ -1079,6 +1079,10 @@ var script$4 = {
       return this.ping()
     },
     reloadItems: function reloadItems () {
+      if (this.page === 1) {
+        return this.loadItems()
+      }
+
       this.page = 1; // it will trigger loadItems internally
     },
     ping: function ping () {

@@ -391,6 +391,8 @@ describe('DataTable', () => {
       localVue
     })
 
+    wrapper.vm.reloadItems()
+
     const link = wrapper.find('.datatable__pnext')
     link.trigger('click')
 
@@ -403,6 +405,7 @@ describe('DataTable', () => {
       .then(() => {
         expect(wrapper.vm.page).toEqual(1)
         expect(wrapper.emitted().loaded).toEqual([
+          [{ items: [items[0]], total: items.length }],
           [{ items: [items[0]], total: items.length }],
           [{ items: [items[1]], total: items.length }],
           [{ items: [items[0]], total: items.length }]
