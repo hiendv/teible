@@ -377,4 +377,36 @@ describe('DataTable', () => {
         })
       })
   })
+
+  it('reloads', () => {
+    const items = generateItems()
+    const wrapper = mount(DataTable, {
+      propsData: { items, perPage: 1 },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
+
+    const link = wrapper.find('.datatable__pnext')
+    link.trigger('click')
+
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        expect(wrapper.vm.page).toEqual(2)
+        wrapper.vm.reloadItems()
+        return wrapper.vm.$nextTick()
+      })
+      .then(() => {
+        expect(wrapper.vm.page).toEqual(1)
+        expect(wrapper.emitted().loaded).toEqual([
+          [{ items: [items[0]], total: items.length }],
+          [{ items: [items[1]], total: items.length }],
+          [{ items: [items[0]], total: items.length }]
+        ])
+      })
+  })
 })

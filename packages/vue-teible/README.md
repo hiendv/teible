@@ -125,6 +125,7 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
 #### Methods
 + loadSlots (): reload columns manually
 + loadItems (): reload data manually
++ reloadItems (): set current page to 1 and `loadItems`
 
 #### Events
 + loaded (items): fired when items are loaded

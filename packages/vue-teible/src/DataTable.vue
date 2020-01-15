@@ -239,6 +239,9 @@ export default {
       this.total = data.total
       return this.ping()
     },
+    reloadItems () {
+      this.page = 1 // it will trigger loadItems internally
+    },
     ping () {
       this.$emit('loaded', {
         items: this.actualItems,

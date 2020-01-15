@@ -1084,6 +1084,9 @@ var script$4 = {
       this.total = data.total;
       return this.ping()
     },
+    reloadItems: function reloadItems () {
+      this.page = 1; // it will trigger loadItems internally
+    },
     ping: function ping () {
       this.$emit('loaded', {
         items: this.actualItems,
