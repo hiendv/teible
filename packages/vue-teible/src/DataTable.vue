@@ -7,6 +7,9 @@
         :total="total" :each-side="paginationSide"
       />
       <div :class="theme.datatable__screen">
+        <loading v-if="!disableLoader" :active="loading">
+          <slot name="loader" />
+        </loading>
         <table :class="theme.datatable__content" cellspacing="0" cellpadding="0">
           <data-table-head :columns="columns" :sort-by.sync="options.sortBy" :sort-desc.sync="options.sortDesc" />
           <data-table-body :columns="columns" :items="actualItems" :click="rowClick" />
@@ -27,10 +30,11 @@ import DataTableBody from './DataTableBody.vue'
 import DataTableHead from './DataTableHead.vue'
 import DataTablePagination from './DataTablePagination.vue'
 import DataTableFilter from './DataTableFilter.vue'
+import Loading from './Loading.vue'
 
 export default {
   name: 'DataTable',
-  components: { DataTableBody, DataTableHead, DataTablePagination, DataTableFilter },
+  components: { DataTableBody, DataTableHead, DataTablePagination, DataTableFilter, Loading },
   mixins: [i18nMixin],
   props: {
     items: {
@@ -60,6 +64,10 @@ export default {
       }
     },
     disableFiltering: {
+      type: Boolean,
+      default: false
+    },
+    disableLoader: {
       type: Boolean,
       default: false
     },
@@ -93,7 +101,8 @@ export default {
         sortBy: this.sortBy,
         sortDesc: this.sortDesc,
         filter: this.filter
-      }
+      },
+      loading: false
     }
   },
   computed: {
@@ -220,9 +229,12 @@ export default {
     },
     loadItems () {
       if (this.func) {
+        this.loading = true
         Promise.resolve(this.items(this.filtering, this.sorting, this.paging)).then(data => {
           this.actualItems = this.transform(data.items)
           this.total = data.total
+        }).finally(() => {
+          this.loading = false
         })
 
         return this.ping()

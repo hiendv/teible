@@ -412,4 +412,37 @@ describe('DataTable', () => {
         ])
       })
   })
+
+  it('allows disableLoader', () => {
+    const wrapper = mount(DataTable, {
+      propsData: { items: generateItems(), disableLoader: true },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      localVue
+    })
+
+    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('allows custom loader', () => {
+    const wrapper = mount(DataTable, {
+      propsData: { items: generateItems() },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `,
+        loader: '<p>loading...</p>'
+      },
+      localVue
+    })
+
+    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 })

@@ -16,6 +16,7 @@
   width: 100%;
 }
 .default-module_datatable__screen__1RlrS {
+  position: relative;
   margin-bottom: 0.5em;
 }
 .default-module_datatable__content__BCR46 {
@@ -122,64 +123,71 @@
   vertical-align: middle;
   margin-top: 2px;
 }
-.default-module_datatable__38PhC .default-module_datatable__pagination__1jIZ7 {
+
+.default-module_datatable__pagination__1jIZ7 {
   margin-bottom: 0.5em;
 }
-.default-module_datatable__38PhC .default-module_datatable__pagination__1jIZ7,
-.default-module_datatable__38PhC .default-module_datatable__plist__2Iksb {
+
+.default-module_datatable__pagination__1jIZ7,
+.default-module_datatable__plist__2Iksb {
   list-style: none;
   align-items: center;
   display: flex;
   justify-content: center;
   text-align: center;
 }
-.default-module_datatable__38PhC .default-module_datatable__pprevious__2Hmcf,
-.default-module_datatable__38PhC .default-module_datatable__pnext__3xWw8,
-.default-module_datatable__38PhC .default-module_datatable__plink__17HvS,
-.default-module_datatable__38PhC .default-module_datatable__ptext__2qYC_ {
+
+.default-module_datatable__pprevious__2Hmcf,
+.default-module_datatable__pnext__3xWw8,
+.default-module_datatable__plink__17HvS,
+.default-module_datatable__ptext__2qYC_ {
   justify-content: center;
   text-align: center;
   margin: 0.15rem;
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
-.default-module_datatable__38PhC .default-module_datatable__pprevious__2Hmcf,
-.default-module_datatable__38PhC .default-module_datatable__pnext__3xWw8,
-.default-module_datatable__38PhC .default-module_datatable__plink__17HvS {
+
+.default-module_datatable__pprevious__2Hmcf,
+.default-module_datatable__pnext__3xWw8,
+.default-module_datatable__plink__17HvS {
   border-color: #dee2e6;
   color: #337ab7;
   min-width: 2.35em;
   text-decoration: none;
 }
-.default-module_datatable__38PhC .default-module_datatable__pprevious__2Hmcf:hover,
-.default-module_datatable__38PhC .default-module_datatable__pnext__3xWw8:hover,
-.default-module_datatable__38PhC .default-module_datatable__plink__17HvS:hover {
+.default-module_datatable__pprevious__2Hmcf:hover,
+.default-module_datatable__pnext__3xWw8:hover,
+.default-module_datatable__plink__17HvS:hover {
   background-color: #eee;
 }
-.default-module_datatable__38PhC .default-module_datatable__pprevious__2Hmcf[disabled],
-.default-module_datatable__38PhC .default-module_datatable__pnext__3xWw8[disabled],
-.default-module_datatable__38PhC .default-module_datatable__plink__17HvS[disabled] {
+.default-module_datatable__pprevious__2Hmcf[disabled],
+.default-module_datatable__pnext__3xWw8[disabled],
+.default-module_datatable__plink__17HvS[disabled] {
   color: #777 !important;
   cursor: not-allowed;
   background-color: #f0f0f0 !important;
   border-color: #f0f0f0 !important;
 }
-.default-module_datatable__38PhC .default-module_datatable__plist__2Iksb {
+
+.default-module_datatable__plist__2Iksb {
   flex-wrap: wrap;
   flex-grow: 1;
   flex-shrink: 1;
   justify-content: flex-start;
   order: 1;
 }
-.default-module_datatable__38PhC .default-module_datatable__pprevious__2Hmcf,
-.default-module_datatable__38PhC .default-module_datatable__pnext__3xWw8,
-.default-module_datatable__38PhC .default-module_datatable__ptext__2qYC_ {
+
+.default-module_datatable__pprevious__2Hmcf,
+.default-module_datatable__pnext__3xWw8,
+.default-module_datatable__ptext__2qYC_ {
   padding-left: 0.5em;
   padding-right: 0.5em;
   white-space: nowrap;
   order: 2;
 }
-.default-module_datatable__38PhC .default-module_datatable__plink__17HvS {
+
+.default-module_datatable__plink__17HvS {
   align-items: center;
   border-radius: 3px;
   box-shadow: none;
@@ -190,9 +198,28 @@
   vertical-align: top;
   border: 1px solid #dee2e6;
 }
-.default-module_datatable__38PhC .default-module_datatable__plink--active__3GqKR {
+.default-module_datatable__plink--active__3GqKR {
   color: #fff !important;
   cursor: default;
   background-color: #337ab7 !important;
   border-color: #337ab7 !important;
+}
+
+.default-module_datatable__loading__1xtPm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  opacity: 0.9;
+  z-index: 9999;
+  transition: opacity 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.default-module_datatable__loading__1xtPm svg {
+  fill: #495057;
 }

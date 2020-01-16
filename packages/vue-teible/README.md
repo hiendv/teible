@@ -106,6 +106,10 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
     type: Boolean,
     default: false
   },
+  disableLoader: {
+    type: Boolean,
+    default: false
+  },
   pagination: { // Positions of paginations (top, bottom)
     type: Array,
     default () {
@@ -154,6 +158,20 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
     type: Function
   }
 }
+```
+
+### Loader
+You can custom the loader with slot `loader`
+```vue
+<template>
+  <data-table :items="items">
+    <div slot="loader">
+      Loading...
+    </div>
+    <data-column field="id" label="ID"/>
+    <data-column field="name" label="Name" width="50%"/>
+  </data-table>
+</template>
 ```
 
 ### Localization

@@ -14,7 +14,7 @@ const plugins = [
   resolve(),
   cjs(),
   vue({
-    css: false
+    css: true
   }),
   buble()
 ]

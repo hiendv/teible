@@ -852,10 +852,205 @@ var __vue_staticRenderFns__$3 = [];
   );
 
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var script$4 = {
+  props: {
+    active: {
+      type: Boolean,
+      default: true
+    }
+  },
+  inject: ['$theme'],
+  computed: {
+    theme: function theme () {
+      return this.$theme()
+    }
+  }
+};
+
+var isOldIE = typeof navigator !== 'undefined' &&
+    /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+function createInjector(context) {
+    return function (id, style) { return addStyle(id, style); };
+}
+var HEAD;
+var styles = {};
+function addStyle(id, css) {
+    var group = isOldIE ? css.media || 'default' : id;
+    var style = styles[group] || (styles[group] = { ids: new Set(), styles: [] });
+    if (!style.ids.has(id)) {
+        style.ids.add(id);
+        var code = css.source;
+        if (css.map) {
+            // https://developer.chrome.com/devtools/docs/javascript-debugging
+            // this makes source maps inside style tags work properly in Chrome
+            code += '\n/*# sourceURL=' + css.map.sources[0] + ' */';
+            // http://stackoverflow.com/a/26603875
+            code +=
+                '\n/*# sourceMappingURL=data:application/json;base64,' +
+                    btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) +
+                    ' */';
+        }
+        if (!style.element) {
+            style.element = document.createElement('style');
+            style.element.type = 'text/css';
+            if (css.media)
+                { style.element.setAttribute('media', css.media); }
+            if (HEAD === undefined) {
+                HEAD = document.head || document.getElementsByTagName('head')[0];
+            }
+            HEAD.appendChild(style.element);
+        }
+        if ('styleSheet' in style.element) {
+            style.styles.push(code);
+            style.element.styleSheet.cssText = style.styles
+                .filter(Boolean)
+                .join('\n');
+        }
+        else {
+            var index = style.ids.size - 1;
+            var textNode = document.createTextNode(code);
+            var nodes = style.element.childNodes;
+            if (nodes[index])
+                { style.element.removeChild(nodes[index]); }
+            if (nodes.length)
+                { style.element.insertBefore(textNode, nodes[index]); }
+            else
+                { style.element.appendChild(textNode); }
+        }
+    }
+}
+
+/* script */
+var __vue_script__$4 = script$4;
+
+/* template */
+var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"datatable"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.active),expression:"active"}],class:_vm.theme.datatable__loading},[_vm._t("default",[_c('svg',{attrs:{"viewBox":"0 0 105 105","xmlns":"http://www.w3.org/2000/svg","fill":"#fff","width":"40px"}},[_c('circle',{attrs:{"cx":"12.5","cy":"12.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"0s","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"12.5","cy":"52.5","r":"12.5","fill-opacity":".5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"100ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"52.5","cy":"12.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"300ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"52.5","cy":"52.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"600ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"92.5","cy":"12.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"800ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"92.5","cy":"52.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"400ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"12.5","cy":"92.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"700ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"52.5","cy":"92.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"500ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"92.5","cy":"92.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"200ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})])])])],2)])};
+var __vue_staticRenderFns__$4 = [];
+
+  /* style */
+  var __vue_inject_styles__$4 = function (inject) {
+    if (!inject) { return }
+    inject("data-v-bff9b032_0", { source: ".datatable-enter-active,.datatable-leave-active{transition:opacity .5s}.datatable-enter,.datatable-leave-to{opacity:0}", map: undefined, media: undefined });
+
+  };
+  /* scoped */
+  var __vue_scope_id__$4 = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$4 = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$4 = false;
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__$4 = normalizeComponent(
+    { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
+    __vue_inject_styles__$4,
+    __vue_script__$4,
+    __vue_scope_id__$4,
+    __vue_is_functional_template__$4,
+    __vue_module_identifier__$4,
+    false,
+    createInjector,
+    undefined,
+    undefined
+  );
+
+//
+
+var script$5 = {
   name: 'DataTable',
-  components: { DataTableBody: __vue_component__, DataTableHead: __vue_component__$1, DataTablePagination: __vue_component__$2, DataTableFilter: __vue_component__$3 },
+  components: { DataTableBody: __vue_component__, DataTableHead: __vue_component__$1, DataTablePagination: __vue_component__$2, DataTableFilter: __vue_component__$3, Loading: __vue_component__$4 },
   mixins: [i18nMixin],
   props: {
     items: {
@@ -885,6 +1080,10 @@ var script$4 = {
       }
     },
     disableFiltering: {
+      type: Boolean,
+      default: false
+    },
+    disableLoader: {
       type: Boolean,
       default: false
     },
@@ -920,7 +1119,8 @@ var script$4 = {
         sortBy: this.sortBy,
         sortDesc: this.sortDesc,
         filter: this.filter
-      }
+      },
+      loading: false
     }
   },
   computed: {
@@ -1062,9 +1262,12 @@ var script$4 = {
       var this$1 = this;
 
       if (this.func) {
+        this.loading = true;
         Promise.resolve(this.items(this.filtering, this.sorting, this.paging)).then(function (data) {
           this$1.actualItems = this$1.transform(data.items);
           this$1.total = data.total;
+        }).finally(function () {
+          this$1.loading = false;
         });
 
         return this.ping()
@@ -1098,20 +1301,20 @@ var script$4 = {
 };
 
 /* script */
-var __vue_script__$4 = script$4;
+var __vue_script__$5 = script$5;
 
 /* template */
-var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme.datatable},[_c('div',{class:_vm.theme.datatable__wrapper},[(!_vm.disableFiltering)?_c('data-table-filter',{attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}):_vm._e(),_vm._v(" "),(_vm.paginationTop)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total,"each-side":_vm.paginationSide},on:{"update:page":function($event){_vm.page=$event;}}}):_vm._e(),_vm._v(" "),_c('div',{class:_vm.theme.datatable__screen},[_c('table',{class:_vm.theme.datatable__content,attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems,"click":_vm.rowClick}})],1)]),_vm._v(" "),(_vm.paginationBottom)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total,"each-side":_vm.paginationSide},on:{"update:page":function($event){_vm.page=$event;}}}):_vm._e()],1)])};
-var __vue_staticRenderFns__$4 = [];
+var __vue_render__$5 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme.datatable},[_c('div',{class:_vm.theme.datatable__wrapper},[(!_vm.disableFiltering)?_c('data-table-filter',{attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}):_vm._e(),_vm._v(" "),(_vm.paginationTop)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total,"each-side":_vm.paginationSide},on:{"update:page":function($event){_vm.page=$event;}}}):_vm._e(),_vm._v(" "),_c('div',{class:_vm.theme.datatable__screen},[(!_vm.disableLoader)?_c('loading',{attrs:{"active":_vm.loading}},[_vm._t("loader")],2):_vm._e(),_vm._v(" "),_c('table',{class:_vm.theme.datatable__content,attrs:{"cellspacing":"0","cellpadding":"0"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems,"click":_vm.rowClick}})],1)],1),_vm._v(" "),(_vm.paginationBottom)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.page,"total":_vm.total,"each-side":_vm.paginationSide},on:{"update:page":function($event){_vm.page=$event;}}}):_vm._e()],1)])};
+var __vue_staticRenderFns__$5 = [];
 
   /* style */
-  var __vue_inject_styles__$4 = undefined;
+  var __vue_inject_styles__$5 = undefined;
   /* scoped */
-  var __vue_scope_id__$4 = undefined;
+  var __vue_scope_id__$5 = undefined;
   /* module identifier */
-  var __vue_module_identifier__$4 = undefined;
+  var __vue_module_identifier__$5 = undefined;
   /* functional template */
-  var __vue_is_functional_template__$4 = false;
+  var __vue_is_functional_template__$5 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -1120,13 +1323,13 @@ var __vue_staticRenderFns__$4 = [];
   
 
   
-  var __vue_component__$4 = normalizeComponent(
-    { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
-    __vue_inject_styles__$4,
-    __vue_script__$4,
-    __vue_scope_id__$4,
-    __vue_is_functional_template__$4,
-    __vue_module_identifier__$4,
+  var __vue_component__$5 = normalizeComponent(
+    { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
+    __vue_inject_styles__$5,
+    __vue_script__$5,
+    __vue_scope_id__$5,
+    __vue_is_functional_template__$5,
+    __vue_module_identifier__$5,
     false,
     undefined,
     undefined,
@@ -1167,5 +1370,5 @@ Object.keys(teible).forEach(function (k) {
   });
 });
 exports.DataColumn = DataColumn;
-exports.DataTable = __vue_component__$4;
-exports.default = __vue_component__$4;
+exports.DataTable = __vue_component__$5;
+exports.default = __vue_component__$5;
