@@ -31,6 +31,12 @@ describe('DataTable', () => {
     return output
   }
 
+  const transitionStub = () => ({
+    render: function (h) {
+      return this.$options._renderChildren
+    }
+  })
+
   it('works with sync data', () => {
     const items = generateItems()
     const wrapper = mount(DataTable, {
@@ -413,6 +419,42 @@ describe('DataTable', () => {
       })
   })
 
+  it('shows loader', () => {
+    const wrapper = mount(DataTable, {
+      propsData: {
+        items () {
+          return Promise.resolve({
+            items: [{ id: 'id', key: 'key' }],
+            total: 1
+          })
+        }
+      },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `
+      },
+      stubs: {
+        transition: transitionStub()
+      },
+      localVue
+    })
+
+    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.find('.datatable__loading').isVisible()).toBeTruthy()
+    expect(wrapper.html()).toMatchSnapshot()
+
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        return wrapper.vm.$nextTick()
+      })
+      .then(() => {
+        expect(wrapper.find('.datatable__loading').isVisible()).toBeFalsy()
+        expect(wrapper.html()).toMatchSnapshot()
+      })
+  })
+
   it('allows disableLoader', () => {
     const wrapper = mount(DataTable, {
       propsData: { items: generateItems(), disableLoader: true },
@@ -426,12 +468,20 @@ describe('DataTable', () => {
     })
 
     expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.find('.datatable__loading').exists()).toBeFalsy()
     expect(wrapper.html()).toMatchSnapshot()
   })
 
   it('allows custom loader', () => {
     const wrapper = mount(DataTable, {
-      propsData: { items: generateItems() },
+      propsData: {
+        items () {
+          return Promise.resolve({
+            items: [{ id: 'id', key: 'key' }],
+            total: 1
+          })
+        }
+      },
       slots: {
         default: `
           <data-column field="id" label="ID"/>
@@ -439,10 +489,57 @@ describe('DataTable', () => {
         `,
         loader: '<p>loading...</p>'
       },
+      stubs: {
+        transition: transitionStub()
+      },
       localVue
     })
 
     expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.find('.datatable__loading').isVisible()).toBeTruthy()
     expect(wrapper.html()).toMatchSnapshot()
+
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        return wrapper.vm.$nextTick()
+      })
+      .then(() => {
+        expect(wrapper.find('.datatable__loading').isVisible()).toBeFalsy()
+        expect(wrapper.html()).toMatchSnapshot()
+      })
+  })
+
+  it('handles loading exception', () => {
+    const wrapper = mount(DataTable, {
+      propsData: {
+        items () {
+          return Promise.reject(new Error('yo'))
+        }
+      },
+      slots: {
+        default: `
+          <data-column field="id" label="ID"/>
+          <data-column field="key" label="Value"/>
+        `,
+        loader: '<p>loading...</p>'
+      },
+      stubs: {
+        transition: transitionStub()
+      },
+      localVue
+    })
+
+    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper.find('.datatable__loading').isVisible()).toBeTruthy()
+    expect(wrapper.html()).toMatchSnapshot()
+
+    return wrapper.vm.$nextTick()
+      .then(() => {
+        return wrapper.vm.$nextTick()
+      })
+      .then(() => {
+        expect(wrapper.find('.datatable__loading').isVisible()).toBeFalsy()
+        expect(wrapper.html()).toMatchSnapshot()
+      })
   })
 })
