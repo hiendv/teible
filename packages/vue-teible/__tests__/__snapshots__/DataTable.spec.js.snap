@@ -8,7 +8,39 @@ exports[`DataTable allows custom loader 1`] = `
     </div>
     <!---->
     <div class="datatable__screen">
-      <div class="datatable__loading" style="display: none;">
+      <div class="datatable__loading" name="datatable">
+        <p>loading...</p>
+      </div>
+      <table cellspacing="0" cellpadding="0" class="datatable__content">
+        <thead class="datatable__head">
+          <tr>
+            <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg></th>
+            <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <nav class="datatable__pagination"><span class="datatable__ptext">No records</span> <a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
+      <ul class="datatable__plist"></ul>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`DataTable allows custom loader 2`] = `
+<div class="datatable">
+  <div class="datatable__wrapper">
+    <div class="datatable__filter"><input type="text" placeholder="Filter records" class="datatable__input">
+      <!---->
+    </div>
+    <!---->
+    <div class="datatable__screen">
+      <div class="datatable__loading" name="datatable" style="display: none;">
         <p>loading...</p>
       </div>
       <table cellspacing="0" cellpadding="0" class="datatable__content">
@@ -24,22 +56,14 @@ exports[`DataTable allows custom loader 1`] = `
         </thead>
         <tbody>
           <tr class="datatable__row">
-            <td class="datatable__cell">1</td>
-            <td class="datatable__cell datatable__cell--last-column">value z (id-1)</td>
-          </tr>
-          <tr class="datatable__row datatable__row--odd">
-            <td class="datatable__cell">2</td>
-            <td class="datatable__cell datatable__cell--last-column">value y (id-2)</td>
-          </tr>
-          <tr class="datatable__row">
-            <td class="datatable__cell datatable__cell--last-row">3</td>
-            <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">value x (id-3)</td>
+            <td class="datatable__cell datatable__cell--last-row">id</td>
+            <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">key</td>
           </tr>
         </tbody>
       </table>
     </div>
     <nav class="datatable__pagination"><span class="datatable__ptext">
-    Showing <span>1 – 3</span> of 3 records
+    Showing <span>the last record</span> of 1 records
       </span> <a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
       <ul class="datatable__plist">
         <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
@@ -254,6 +278,70 @@ exports[`DataTable allows paginationSide 1`] = `
 </div>
 `;
 
+exports[`DataTable handles loading exception 1`] = `
+<div class="datatable">
+  <div class="datatable__wrapper">
+    <div class="datatable__filter"><input type="text" placeholder="Filter records" class="datatable__input">
+      <!---->
+    </div>
+    <!---->
+    <div class="datatable__screen">
+      <div class="datatable__loading" name="datatable">
+        <p>loading...</p>
+      </div>
+      <table cellspacing="0" cellpadding="0" class="datatable__content">
+        <thead class="datatable__head">
+          <tr>
+            <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg></th>
+            <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <nav class="datatable__pagination"><span class="datatable__ptext">No records</span> <a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
+      <ul class="datatable__plist"></ul>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`DataTable handles loading exception 2`] = `
+<div class="datatable">
+  <div class="datatable__wrapper">
+    <div class="datatable__filter"><input type="text" placeholder="Filter records" class="datatable__input">
+      <!---->
+    </div>
+    <!---->
+    <div class="datatable__screen">
+      <div class="datatable__loading" name="datatable" style="display: none;">
+        <p>loading...</p>
+      </div>
+      <table cellspacing="0" cellpadding="0" class="datatable__content">
+        <thead class="datatable__head">
+          <tr>
+            <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg></th>
+            <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <nav class="datatable__pagination"><span class="datatable__ptext">No records</span> <a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
+      <ul class="datatable__plist"></ul>
+    </nav>
+  </div>
+</div>
+`;
+
 exports[`DataTable keeps original items 1`] = `
 <div class="datatable">
   <div class="datatable__wrapper">
@@ -302,6 +390,131 @@ exports[`DataTable keeps original items 1`] = `
           <tr class="datatable__row">
             <td class="datatable__cell datatable__cell--last-row">YO</td>
             <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">lowercase me</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <nav class="datatable__pagination"><span class="datatable__ptext">
+    Showing <span>the last record</span> of 1 records
+      </span> <a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
+      <ul class="datatable__plist">
+        <li class="datatable__pitem"><a href="#" class="datatable__plink datatable__plink--active">1</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`DataTable shows loader 1`] = `
+<div class="datatable">
+  <div class="datatable__wrapper">
+    <div class="datatable__filter"><input type="text" placeholder="Filter records" class="datatable__input">
+      <!---->
+    </div>
+    <!---->
+    <div class="datatable__screen">
+      <div class="datatable__loading" name="datatable"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+          <circle cx="12.5" cy="12.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="52.5" cy="12.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="52.5" cy="52.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="92.5" cy="12.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="92.5" cy="52.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="12.5" cy="92.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="52.5" cy="92.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="92.5" cy="92.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+        </svg></div>
+      <table cellspacing="0" cellpadding="0" class="datatable__content">
+        <thead class="datatable__head">
+          <tr>
+            <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg></th>
+            <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <nav class="datatable__pagination"><span class="datatable__ptext">No records</span> <a disabled="disabled" href="#" aria-label="Previous" class="datatable__plink datatable__pprevious"><span aria-hidden="true">«</span></a> <a disabled="disabled" href="#" aria-label="Next" class="datatable__plink datatable__pnext"><span aria-hidden="true">»</span></a>
+      <ul class="datatable__plist"></ul>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`DataTable shows loader 2`] = `
+<div class="datatable">
+  <div class="datatable__wrapper">
+    <div class="datatable__filter"><input type="text" placeholder="Filter records" class="datatable__input">
+      <!---->
+    </div>
+    <!---->
+    <div class="datatable__screen">
+      <div class="datatable__loading" name="datatable" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+          <circle cx="12.5" cy="12.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="52.5" cy="12.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="52.5" cy="52.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="92.5" cy="12.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="92.5" cy="52.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="12.5" cy="92.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="52.5" cy="92.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+          <circle cx="92.5" cy="92.5" r="12.5">
+            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+          </circle>
+        </svg></div>
+      <table cellspacing="0" cellpadding="0" class="datatable__content">
+        <thead class="datatable__head">
+          <tr>
+            <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg></th>
+            <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Value</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+                <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
+              </svg></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="datatable__row">
+            <td class="datatable__cell datatable__cell--last-row">id</td>
+            <td class="datatable__cell datatable__cell--last-column datatable__cell--last-row">key</td>
           </tr>
         </tbody>
       </table>

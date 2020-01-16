@@ -230,12 +230,19 @@ export default {
     loadItems () {
       if (this.func) {
         this.loading = true
-        Promise.resolve(this.items(this.filtering, this.sorting, this.paging)).then(data => {
-          this.actualItems = this.transform(data.items)
-          this.total = data.total
-        }).finally(() => {
-          this.loading = false
-        })
+        Promise.resolve(this.items(this.filtering, this.sorting, this.paging))
+          .then(data => {
+            this.actualItems = this.transform(data.items)
+            this.total = data.total
+          })
+          .then(() => {
+            console.log('then')
+            this.loading = false
+          })
+          .catch(() => {
+            console.log('catch')
+            this.loading = false
+          })
 
         return this.ping()
       }
