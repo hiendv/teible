@@ -233,7 +233,11 @@ export default {
         Promise.resolve(this.items(this.filtering, this.sorting, this.paging)).then(data => {
           this.actualItems = this.transform(data.items)
           this.total = data.total
-        }).finally(() => {
+        })
+        .then(() => {
+          this.loading = false
+        })
+        .catch(() => {
           this.loading = false
         })
 
