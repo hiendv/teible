@@ -3,7 +3,7 @@
   "version": "0.11.5",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.1",
+    "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "haikunator": "^2.1.2",
     "vue": "^2.6.11",

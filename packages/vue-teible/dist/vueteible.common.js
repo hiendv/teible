@@ -1263,12 +1263,17 @@ var script$5 = {
 
       if (this.func) {
         this.loading = true;
-        Promise.resolve(this.items(this.filtering, this.sorting, this.paging)).then(function (data) {
-          this$1.actualItems = this$1.transform(data.items);
-          this$1.total = data.total;
-        }).finally(function () {
-          this$1.loading = false;
-        });
+        Promise.resolve(this.items(this.filtering, this.sorting, this.paging))
+          .then(function (data) {
+            this$1.actualItems = this$1.transform(data.items);
+            this$1.total = data.total;
+          })
+          .then(function () {
+            this$1.loading = false;
+          })
+          .catch(function () {
+            this$1.loading = false;
+          });
 
         return this.ping()
       }

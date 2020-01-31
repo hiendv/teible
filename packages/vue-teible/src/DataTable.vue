@@ -236,11 +236,9 @@ export default {
             this.total = data.total
           })
           .then(() => {
-            console.log('then')
             this.loading = false
           })
           .catch(() => {
-            console.log('catch')
             this.loading = false
           })
 
