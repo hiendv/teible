@@ -4,7 +4,7 @@
   "version": "0.11.6",
   "author": "Hien Dao <hien.dv.neo@gmail.com>",
   "dependencies": {
-    "octicons-vue": "^1.0.1",
+    "octicons-vue": "^1.0.2",
     "teible": "^0.11.5"
   },
   "files": [
@@ -23,7 +23,7 @@
   "module": "dist/vueteible.es.js",
   "peerDependencies": {
     "vue": "^2.6.11",
-    "vue-i18n": "^8.15.3"
+    "vue-i18n": "^8.15.6"
   },
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible"
 }
