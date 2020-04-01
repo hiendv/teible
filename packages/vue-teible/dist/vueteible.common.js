@@ -1285,9 +1285,10 @@ var script$5 = {
           })
           .catch(function () {
             this$1.loading = false;
-          });
+          })
+          .finally(this.ping);
 
-        return this.ping()
+        return
       }
 
       if (!this.items) {

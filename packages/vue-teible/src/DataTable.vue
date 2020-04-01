@@ -249,8 +249,9 @@ export default {
           .catch(() => {
             this.loading = false
           })
+          .finally(this.ping)
 
-        return this.ping()
+        return
       }
 
       if (!this.items) {
