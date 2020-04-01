@@ -1,5 +1,5 @@
 <template>
-  <div :class="theme.datatable">
+  <div :class="[theme.datatable, staticClass]">
     <div :class="theme.datatable__wrapper">
       <data-table-filter v-if="!disableFiltering" :filter.sync="options.filter" />
       <data-table-pagination
@@ -102,7 +102,8 @@ export default {
         sortDesc: this.sortDesc,
         filter: this.filter
       },
-      loading: false
+      loading: false,
+      staticClass: ''
     }
   },
   computed: {
@@ -216,6 +217,7 @@ export default {
     }
   },
   created () {
+    this.loadClass()
     this.loadSlots()
     this.loadItems()
   },
@@ -226,6 +228,9 @@ export default {
     loadSlots () {
       // $slots is not reactive
       this.vnodes = !this.$slots.default ? [] : this.$slots.default.filter(vnode => vnode.componentOptions)
+    },
+    loadClass () {
+      this.staticClass = this.$vnode.data.staticClass
     },
     loadItems () {
       if (this.func) {
