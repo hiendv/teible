@@ -5,7 +5,7 @@
         [theme.datatable__row]: true,
         [theme['datatable__row--odd']]: index % 2 === 1
       }"
-      @click="click($event, d, index)"
+      data-elm="row" :data-odd="index % 2 === 1" @click="click($event, d, index)"
     >
       <data-table-cell
         v-for="(column, columnIndex) in columns" :key="columnIndex" v-bind="column.attrs"
@@ -14,6 +14,7 @@
           [theme['datatable__cell--last-column']]: columnIndex === columns.length - 1,
           [theme['datatable__cell--last-row']]: index === items.length - 1
         }"
+        data-elm="cell" :data-last-column="columnIndex === columns.length - 1" :data-last-row="index === items.length - 1"
       />
     </tr>
   </tbody>

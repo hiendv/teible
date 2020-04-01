@@ -1,30 +1,37 @@
 <template>
-  <nav :class="theme.datatable__pagination">
-    <span v-if="total" :class="theme.datatable__ptext">
+  <nav :class="theme.datatable__pagination" data-elm="pagination">
+    <span v-if="total" :class="theme.datatable__ptext" data-elm="ptext">
       {{ t('teible.showing') }} <span v-text="from === to && to === total ? t('teible.last') : from + ' – ' + to" /> {{ t('teible.total', total) }}
     </span>
-    <span v-else :class="theme.datatable__ptext">{{ t('teible.empty') }}</span>
+    <span v-else :class="theme.datatable__ptext" data-elm="ptext">{{ t('teible.empty') }}</span>
 
     <a
       :disabled="reachedFirst" :class="[theme.datatable__plink, theme.datatable__pprevious]" href="#"
-      aria-label="Previous" @click.prevent="load(page-1)"
+      aria-label="Previous" data-elm="plink"
+      data-previous @click.prevent="load(page-1)"
     >
       <span aria-hidden="true">&laquo;</span>
     </a>
     <a
       :disabled="reachedLast" :class="[theme.datatable__plink, theme.datatable__pnext]" href="#"
-      aria-label="Next" @click.prevent="load(page+1)"
+      aria-label="Next" data-elm="plink"
+      data-pnext @click.prevent="load(page+1)"
     >
       <span aria-hidden="true">&raquo;</span>
     </a>
 
-    <ul :class="theme.datatable__plist">
-      <li v-for="(p, index) in pages" :key="index" :class="theme.datatable__pitem">
+    <ul :class="theme.datatable__plist" data-elm="plist">
+      <li
+        v-for="(p, index) in pages" :key="index" :class="theme.datatable__pitem"
+        data-elm="pitem"
+      >
         <a
           :disabled="p.disabled" :class="{
             [theme.datatable__plink]: true,
             [theme['datatable__plink--active']]: isActive(p),
           }" href="#"
+          data-elm="plink"
+          :data-active="isActive(p)"
           @click.prevent="load(p.value, p.disabled)"
         >{{ p.value }}</a>
       </li>

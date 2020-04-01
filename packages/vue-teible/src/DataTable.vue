@@ -1,16 +1,19 @@
 <template>
   <div :class="[theme.datatable, staticClass]">
-    <div :class="theme.datatable__wrapper">
+    <div :class="theme.datatable__wrapper" data-elm="wrapper">
       <data-table-filter v-if="!disableFiltering" :filter.sync="options.filter" />
       <data-table-pagination
         v-if="paginationTop" :per-page="perPage" :page.sync="page"
         :total="total" :each-side="paginationSide"
       />
-      <div :class="theme.datatable__screen">
+      <div :class="theme.datatable__screen" data-elm="screen">
         <loading v-if="!disableLoader" :active="loading">
           <slot name="loader" />
         </loading>
-        <table :class="theme.datatable__content" cellspacing="0" cellpadding="0">
+        <table
+          :class="theme.datatable__content" cellspacing="0" cellpadding="0"
+          data-elm="content"
+        >
           <data-table-head :columns="columns" :sort-by.sync="options.sortBy" :sort-desc.sync="options.sortDesc" />
           <data-table-body :columns="columns" :items="actualItems" :click="rowClick" />
         </table>

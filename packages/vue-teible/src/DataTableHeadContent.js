@@ -50,6 +50,7 @@ export default {
 
     const children = [h('span', {
       attrs: {
+        'data-elm': 'column-text',
         class: theme['datatable__column-text']
       }
     }, capitalize(props.column.label || props.column.field))]

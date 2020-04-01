@@ -1,6 +1,6 @@
 <template>
   <transition name="datatable">
-    <div v-show="active" :class="theme.datatable__loading">
+    <div v-show="active" :class="theme.datatable__loading" data-elm="loading">
       <slot>
         <svg
           viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff"

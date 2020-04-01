@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DataTableHead emits nothing when clicking on not-sortable columns 1`] = `
-<thead class="datatable__head">
+<thead data-elm="head" class="datatable__head">
   <tr>
-    <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" class="datatable__column datatable__column--sortable"><span data-elm="column-text" class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
         <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
       </svg></th>
-    <th scope="col" class="datatable__column datatable__column--last"><span class="datatable__column-text">Name</span></th>
+    <th scope="col" data-elm="column" data-last="true" class="datatable__column datatable__column--last"><span data-elm="column-text" class="datatable__column-text">Name</span></th>
   </tr>
 </thead>
 `;
 
 exports[`DataTableHead emits update:sortDesc when clicking the active column 1`] = `
-<thead class="datatable__head">
+<thead data-elm="head" class="datatable__head">
   <tr>
-    <th scope="col" class="datatable__column datatable__column--sortable datatable__column--active"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-up datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" data-active="true" class="datatable__column datatable__column--sortable datatable__column--active"><span data-elm="column-text" class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-up datatable__column-icon">
         <path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"></path>
       </svg></th>
-    <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" data-last="true" class="datatable__column datatable__column--sortable datatable__column--last"><span data-elm="column-text" class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
         <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
       </svg></th>
   </tr>
@@ -25,12 +25,12 @@ exports[`DataTableHead emits update:sortDesc when clicking the active column 1`]
 `;
 
 exports[`DataTableHead emits update:sortDesc when clicking the active column 2`] = `
-<thead class="datatable__head">
+<thead data-elm="head" class="datatable__head">
   <tr>
-    <th scope="col" class="datatable__column datatable__column--sortable datatable__column--active"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-down datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" data-active="true" class="datatable__column datatable__column--sortable datatable__column--active"><span data-elm="column-text" class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-down datatable__column-icon">
         <path fill-rule="evenodd" d="M0 5l6 6 6-6H0z"></path>
       </svg></th>
-    <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" data-last="true" class="datatable__column datatable__column--sortable datatable__column--last"><span data-elm="column-text" class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
         <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
       </svg></th>
   </tr>
@@ -38,12 +38,12 @@ exports[`DataTableHead emits update:sortDesc when clicking the active column 2`]
 `;
 
 exports[`DataTableHead emits update:sortField when clicking other columns 1`] = `
-<thead class="datatable__head">
+<thead data-elm="head" class="datatable__head">
   <tr>
-    <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" class="datatable__column datatable__column--sortable"><span data-elm="column-text" class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
         <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
       </svg></th>
-    <th scope="col" class="datatable__column datatable__column--sortable datatable__column--active datatable__column--last"><span class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-up datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" data-active="true" data-last="true" class="datatable__column datatable__column--sortable datatable__column--active datatable__column--last"><span data-elm="column-text" class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-up datatable__column-icon">
         <path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"></path>
       </svg></th>
   </tr>
@@ -51,12 +51,12 @@ exports[`DataTableHead emits update:sortField when clicking other columns 1`] = 
 `;
 
 exports[`DataTableHead emits update:sortField when clicking other columns 2`] = `
-<thead class="datatable__head">
+<thead data-elm="head" class="datatable__head">
   <tr>
-    <th scope="col" class="datatable__column datatable__column--sortable datatable__column--active"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-up datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" class="datatable__column datatable__column--sortable datatable__column--active" data-active="true"><span data-elm="column-text" class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-up datatable__column-icon">
         <path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"></path>
       </svg></th>
-    <th scope="col" class="datatable__column datatable__column--sortable datatable__column--last"><span class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" data-last="true" class="datatable__column datatable__column--sortable datatable__column--last"><span data-elm="column-text" class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
         <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
       </svg></th>
   </tr>
@@ -64,29 +64,31 @@ exports[`DataTableHead emits update:sortField when clicking other columns 2`] = 
 `;
 
 exports[`DataTableHead renders correctly 1`] = `
-<thead class="datatable__head">
+<thead data-elm="head" class="datatable__head">
   <tr>
-    <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" class="datatable__column datatable__column--sortable"><span data-elm="column-text" class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
         <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
       </svg></th>
-    <th scope="col" class="datatable__column datatable__column--sortable datatable__column--active"><span class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-up datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" data-active="true" class="datatable__column datatable__column--sortable datatable__column--active"><span data-elm="column-text" class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-up datatable__column-icon">
         <path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"></path>
       </svg></th>
-    <th scope="col" class="datatable__column datatable__column--last"><span class="datatable__column-text"></span></th>
+    <th scope="col" data-elm="column" data-last="true" class="datatable__column datatable__column--last"><span data-elm="column-text" class="datatable__column-text"></span></th>
   </tr>
 </thead>
 `;
 
 exports[`DataTableHead renders slots correctly 1`] = `
-<thead class="datatable__head">
+<thead data-elm="head" class="datatable__head">
   <tr>
-    <th scope="col" class="datatable__column datatable__column--sortable"><span class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" class="datatable__column datatable__column--sortable"><span data-elm="column-text" class="datatable__column-text">ID</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-three-bars datatable__column-icon">
         <path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path>
       </svg></th>
-    <th scope="col" class="datatable__column datatable__column--sortable datatable__column--active"><span class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-up datatable__column-icon">
+    <th scope="col" data-elm="column" data-sortable="true" data-active="true" class="datatable__column datatable__column--sortable datatable__column--active"><span data-elm="column-text" class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-up datatable__column-icon">
         <path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"></path>
       </svg></th>
-    <th scope="col" class="datatable__column datatable__column--custom datatable__column--last"><span>Yo</span></th>
+    <th scope="col" data-elm="column" data-custom="function header(props) {
+              return 'Yo';
+            }" data-last="true" class="datatable__column datatable__column--custom datatable__column--last"><span>Yo</span></th>
   </tr>
 </thead>
 `;

@@ -1,5 +1,5 @@
 <template>
-  <thead :class="theme.datatable__head">
+  <thead :class="theme.datatable__head" data-elm="head">
     <tr v-if="columns.length">
       <th
         v-for="(column, index) in columns" :key="column.field + column.label" :class="{
@@ -11,7 +11,12 @@
           [column.staticClass]: column.staticClass,
           [column.dynamicClass]: column.dynamicClass
         }"
-        v-bind="column.attrs" scope="col" @click.prevent="updateSort(column.field, column.sortable)"
+        v-bind="column.attrs" scope="col" data-elm="column"
+        :data-custom="column.scopedSlots && column.scopedSlots.header"
+        :data-sortable="column.sortable"
+        :data-active="isActive(column)"
+        :data-last="index === columns.length - 1"
+        @click.prevent="updateSort(column.field, column.sortable)"
       >
         <data-table-head-content
           :column="column" :active="isActive(column)" :sort-desc="sortDesc"
