@@ -43,11 +43,15 @@ var i18nMixin = {
       // We have to patch the original $tc because the fallback strategy does not work as expected
       // https://github.com/kazupon/vue-i18n/issues/729
 
-      if (!this.$root || !this.$root.$tc) {
+      if (!this.$root) {
         return this.localize(key, count)
       }
 
-      if (!this.$root.$te(key)) {
+      if (!this.$root.$tc) {
+        return this.localize(key, count)
+      }
+
+      if (!this.$root.$te || !this.$root.$te(key)) {
         return this.localize(key, count)
       }
 
@@ -64,7 +68,7 @@ var i18nMixin = {
           return key
         }
 
-        var messages = i18n.messages['en'];
+        var messages = i18n.messages.en;
         var message = teible.dotGet(messages, key);
 
         if (!message) {

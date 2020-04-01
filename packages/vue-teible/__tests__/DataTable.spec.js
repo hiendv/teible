@@ -174,6 +174,9 @@ describe('DataTable', () => {
         `
       },
       mocks: {
+        $te (key) {
+          return true
+        },
         $tc (key, count) {
           if (count) {
             return `${key}-${count}`
