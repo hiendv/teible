@@ -20,31 +20,43 @@ export const defaultProps = (options, data) => {
 
 export const i18nMixin = {
   i18n: {
-    fallbackLocale: 'en',
     messages: {
       en: {
         teible: {
           showing: 'Showing',
           total: 'of {count} records',
           last: 'the last record',
-          empty: 'No records'
+          empty: 'No records',
+          filter: 'Filter records'
         }
       }
     }
   },
-  computed: {
-    t () {
-      if (this.$tc) {
-        return this.$tc
+  methods: {
+    t (key, count) {
+      // We have to patch the original $tc because the fallback strategy does not work as expected
+      // https://github.com/kazupon/vue-i18n/issues/729
+
+      if (!this.$root || !this.$root.$tc) {
+        return this.localize(key, count)
       }
 
+      if (!this.$root.$te(key)) {
+        return this.localize(key, count)
+      }
+
+      return this.$root.$tc(key, count)
+    }
+  },
+  computed: {
+    localize () {
       return (key, count) => {
         const i18n = this.$options.i18n
         if (!i18n || !i18n.messages) {
           return key
         }
 
-        const messages = i18n.messages[i18n.fallbackLocale]
+        const messages = i18n.messages['en']
         const message = dotGet(messages, key)
 
         if (!message) {

@@ -13,16 +13,6 @@
 import { i18nMixin } from './helpers'
 export default {
   name: 'DataTableFilter',
-  i18n: {
-    fallbackLocale: 'en',
-    messages: {
-      en: {
-        teible: {
-          filter: 'Filter records'
-        }
-      }
-    }
-  },
   mixins: [i18nMixin],
   props: {
     filter: {

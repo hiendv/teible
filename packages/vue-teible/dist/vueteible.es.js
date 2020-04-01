@@ -23,25 +23,37 @@ var defaultProps = function (options, data) {
 
 var i18nMixin = {
   i18n: {
-    fallbackLocale: 'en',
     messages: {
       en: {
         teible: {
           showing: 'Showing',
           total: 'of {count} records',
           last: 'the last record',
-          empty: 'No records'
+          empty: 'No records',
+          filter: 'Filter records'
         }
       }
     }
   },
-  computed: {
-    t: function t () {
-      var this$1 = this;
+  methods: {
+    t: function t (key, count) {
+      // We have to patch the original $tc because the fallback strategy does not work as expected
+      // https://github.com/kazupon/vue-i18n/issues/729
 
-      if (this.$tc) {
-        return this.$tc
+      if (!this.$root || !this.$root.$tc) {
+        return this.localize(key, count)
       }
+
+      if (!this.$root.$te(key)) {
+        return this.localize(key, count)
+      }
+
+      return this.$root.$tc(key, count)
+    }
+  },
+  computed: {
+    localize: function localize () {
+      var this$1 = this;
 
       return function (key, count) {
         var i18n = this$1.$options.i18n;
@@ -49,7 +61,7 @@ var i18nMixin = {
           return key
         }
 
-        var messages = i18n.messages[i18n.fallbackLocale];
+        var messages = i18n.messages['en'];
         var message = dotGet(messages, key);
 
         if (!message) {
@@ -779,16 +791,6 @@ var __vue_staticRenderFns__$2 = [];
 //
 var script$3 = {
   name: 'DataTableFilter',
-  i18n: {
-    fallbackLocale: 'en',
-    messages: {
-      en: {
-        teible: {
-          filter: 'Filter records'
-        }
-      }
-    }
-  },
   mixins: [i18nMixin],
   props: {
     filter: {
