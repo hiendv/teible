@@ -3,6 +3,9 @@
     <slot />
     <div class="demo__info">
       <p class="demo__line">
+        Page: <span class="demo__value"><input v-model="p" type="number"></span>
+      </p>
+      <p class="demo__line">
         Items per page: <span class="demo__value"><input
           v-model="perPage" class="demo__control" type="range"
           min="1" max="10" step="1"
@@ -24,7 +27,8 @@
     <hr>
     <data-table
       :items="items" :per-page="perPageNumber" :sort-desc.sync="sortDesc"
-      :sort-by.sync="sortBy" :filter.sync="filter" @loaded="loaded"
+      :sort-by.sync="sortBy" :filter.sync="filter" :page.sync="page"
+      @loaded="loaded"
     >
       <data-column field="id" label="ID" width="15%" />
       <data-column
@@ -105,6 +109,7 @@ export default {
     return {
       sortBy: '',
       sortDesc: false,
+      p: 1,
       perPage: 4,
       filter: '',
       checked: [],
@@ -112,6 +117,14 @@ export default {
     }
   },
   computed: {
+    page: {
+      get () {
+        return parseInt(this.p)
+      },
+      set (val) {
+        this.p = val
+      }
+    },
     loadedNames () {
       return this.loadedItems.map(item => item.name)
     },
