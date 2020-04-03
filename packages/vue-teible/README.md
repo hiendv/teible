@@ -86,19 +86,23 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
     type: [Array, Function],
     required: true
   },
+  page: { // Two-way binding with .sync
+    type: Number,
+    default: 1
+  },
   perPage: {
     type: Number,
     default: 10
   },
-  sortBy: {
+  sortBy: { // Two-way binding with .sync
     type: String,
     default: ''
   },
-  sortDesc: {
+  sortDesc: { // Two-way binding with .sync
     type: Boolean,
     default: false
   },
-  filter: {
+  filter: { // Two-way binding with .sync
     type: String,
     default: ''
   },

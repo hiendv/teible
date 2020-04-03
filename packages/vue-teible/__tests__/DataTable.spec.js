@@ -407,12 +407,12 @@ describe('DataTable', () => {
 
     return wrapper.vm.$nextTick()
       .then(() => {
-        expect(wrapper.vm.page).toEqual(2)
+        expect(wrapper.vm.p).toEqual(2)
         wrapper.vm.reloadItems()
         return wrapper.vm.$nextTick()
       })
       .then(() => {
-        expect(wrapper.vm.page).toEqual(1)
+        expect(wrapper.vm.p).toEqual(1)
         expect(wrapper.emitted().loaded).toEqual([
           [{ items: [items[0]], total: items.length }],
           [{ items: [items[0]], total: items.length }],

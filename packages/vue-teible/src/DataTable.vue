@@ -3,7 +3,7 @@
     <div :class="theme.datatable__wrapper" data-elm="wrapper">
       <data-table-filter v-if="!disableFiltering" :filter.sync="options.filter" />
       <data-table-pagination
-        v-if="paginationTop" :per-page="perPage" :page.sync="page"
+        v-if="paginationTop" :per-page="perPage" :page.sync="p"
         :total="total" :each-side="paginationSide"
       />
       <div :class="theme.datatable__screen" data-elm="screen">
@@ -19,7 +19,7 @@
         </table>
       </div>
       <data-table-pagination
-        v-if="paginationBottom" :per-page="perPage" :page.sync="page"
+        v-if="paginationBottom" :per-page="perPage" :page.sync="p"
         :total="total" :each-side="paginationSide"
       />
     </div>
@@ -43,6 +43,10 @@ export default {
     items: {
       type: [Array, Function],
       required: true
+    },
+    page: {
+      type: Number,
+      default: 1
     },
     perPage: {
       type: Number,
@@ -99,7 +103,7 @@ export default {
       actualItems: [],
       vnodes: [],
       total: 0,
-      page: 1,
+      p: this.page,
       options: {
         sortBy: this.sortBy,
         sortDesc: this.sortDesc,
@@ -121,10 +125,10 @@ export default {
     },
     identifier () {
       if (this.disableFiltering) {
-        return `by:${this.sorting.by}|order:${this.sorting.order}|page:${this.page}|per_page:${this.perPage}`
+        return `by:${this.sorting.by}|order:${this.sorting.order}|page:${this.p}|per_page:${this.perPage}`
       }
 
-      return `by:${this.sorting.by}|order:${this.sorting.order}|filter:${this.options.filter}|page:${this.page}|per_page:${this.perPage}`
+      return `by:${this.sorting.by}|order:${this.sorting.order}|filter:${this.options.filter}|page:${this.p}|per_page:${this.perPage}`
     },
     columns () {
       return this.vnodes.map(vnode => {
@@ -169,7 +173,7 @@ export default {
     },
     paging () {
       return {
-        page: this.page,
+        page: this.p,
         perPage: this.perPage
       }
     },
@@ -206,7 +210,7 @@ export default {
       immediate: true,
       handler (val) {
         this.$set(this.options, 'filter', val)
-        this.page = 1
+        this.p = 1
       }
     },
     'options.sortBy' (val) {
@@ -217,6 +221,19 @@ export default {
     },
     'options.filter' (val) {
       this.$emit('update:filter', val)
+    },
+    p (val) {
+      this.$emit('update:page', val)
+    },
+    page: {
+      immediate: true,
+      handler  (val) {
+        if (val === this.p) {
+          return
+        }
+
+        this.p = val
+      }
     }
   },
   created () {
@@ -266,11 +283,11 @@ export default {
       return this.ping()
     },
     reloadItems () {
-      if (this.page === 1) {
+      if (this.p === 1) {
         return this.loadItems()
       }
 
-      this.page = 1 // it will trigger loadItems internally
+      this.p = 1 // it will trigger loadItems internally
     },
     ping () {
       this.$emit('loaded', {
