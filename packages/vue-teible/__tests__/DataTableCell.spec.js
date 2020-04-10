@@ -12,7 +12,8 @@ describe('DataTableCell', () => {
           },
           column: {
             field: 'one'
-          }
+          },
+          index: 0
         }
       }
     })
@@ -32,7 +33,8 @@ describe('DataTableCell', () => {
           },
           column: {
             field: 'one'
-          }
+          },
+          index: 0
         }
       }
     })
@@ -54,7 +56,8 @@ describe('DataTableCell', () => {
                 return JSON.stringify(props.item)
               }
             }
-          }
+          },
+          index: 0
         }
       }
     })
@@ -77,7 +80,8 @@ describe('DataTableCell', () => {
                 return value
               }
             }
-          }
+          },
+          index: 0
         }
       }
     })
@@ -95,7 +99,31 @@ describe('DataTableCell', () => {
           },
           column: {
             children: ['yo']
-          }
+          },
+          index: 0
+        }
+      }
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('renders scopedSlots with index correctly', () => {
+    const wrapper = mount(DataTableCell, {
+      context: {
+        props: {
+          item: {
+            one: 'foo',
+            two: 'bar'
+          },
+          column: {
+            scopedSlots: {
+              default ({ index }) {
+                return index
+              }
+            }
+          },
+          index: 1337
         }
       }
     })

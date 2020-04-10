@@ -53,7 +53,9 @@
           <input v-model="checkedAll" type="checkbox">
         </template>
         <template slot-scope="props">
-          <input v-model="checked" :value="props.item.name" type="checkbox">
+          <label>
+            <input v-model="checked" :value="props.item.name" type="checkbox"> index #{{ props.index }}
+          </label>
         </template>
       </data-column>
     </data-table>

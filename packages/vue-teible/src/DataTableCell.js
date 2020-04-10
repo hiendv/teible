@@ -10,6 +10,10 @@ export default {
     column: {
       type: Object,
       required: true
+    },
+    index: {
+      type: Number,
+      required: true
     }
   },
   render (h, { props, data }) {

@@ -355,6 +355,10 @@ var DataTableCell = {
     column: {
       type: Object,
       required: true
+    },
+    index: {
+      type: Number,
+      required: true
     }
   },
   render: function render (h, ref) {
@@ -372,6 +376,7 @@ var DataTableCell = {
       }
       return h('td', data, value)
     }
+
 
     if (props.column.scopedSlots && typeof props.column.scopedSlots.default === 'function') {
       return h('td', data, props.column.scopedSlots.default(props))
@@ -491,7 +496,7 @@ var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=
 var _obj;
 return _c('tr',{key:index,class:( _obj = {}, _obj[_vm.theme.datatable__row] = true, _obj[_vm.theme['datatable__row--odd']] = index % 2 === 1, _obj ),attrs:{"data-elm":"row","data-odd":index % 2 === 1},on:{"click":function($event){return _vm.click($event, d, index)}}},_vm._l((_vm.columns),function(column,columnIndex){
     var _obj;
-return _c('data-table-cell',_vm._b({key:columnIndex,class:( _obj = {}, _obj[_vm.theme.datatable__cell] = true, _obj[_vm.theme['datatable__cell--last-column']] = columnIndex === _vm.columns.length - 1, _obj[_vm.theme['datatable__cell--last-row']] = index === _vm.items.length - 1, _obj ),attrs:{"item":d,"column":column,"data-elm":"cell","data-last-column":columnIndex === _vm.columns.length - 1,"data-last-row":index === _vm.items.length - 1}},'data-table-cell',column.attrs,false))}),1)}),0)};
+return _c('data-table-cell',_vm._b({key:columnIndex,class:( _obj = {}, _obj[_vm.theme.datatable__cell] = true, _obj[_vm.theme['datatable__cell--last-column']] = columnIndex === _vm.columns.length - 1, _obj[_vm.theme['datatable__cell--last-row']] = index === _vm.items.length - 1, _obj ),attrs:{"item":d,"column":column,"index":index,"data-elm":"cell","data-last-column":columnIndex === _vm.columns.length - 1,"data-last-row":index === _vm.items.length - 1}},'data-table-cell',column.attrs,false))}),1)}),0)};
 var __vue_staticRenderFns__ = [];
 
   /* style */

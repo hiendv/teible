@@ -9,7 +9,8 @@
     >
       <data-table-cell
         v-for="(column, columnIndex) in columns" :key="columnIndex" v-bind="column.attrs"
-        :item="d" :column="column" :class="{
+        :item="d" :column="column" :index="index"
+        :class="{
           [theme.datatable__cell]: true,
           [theme['datatable__cell--last-column']]: columnIndex === columns.length - 1,
           [theme['datatable__cell--last-row']]: index === items.length - 1
