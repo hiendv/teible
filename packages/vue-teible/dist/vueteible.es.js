@@ -377,7 +377,6 @@ var DataTableCell = {
       return h('td', data, value)
     }
 
-
     if (props.column.scopedSlots && typeof props.column.scopedSlots.default === 'function') {
       return h('td', data, props.column.scopedSlots.default(props))
     }
