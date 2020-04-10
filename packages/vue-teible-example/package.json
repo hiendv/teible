@@ -1,13 +1,13 @@
 {
   "name": "vue-teible-example",
-  "version": "0.11.10",
+  "version": "0.11.11",
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "haikunator": "^2.1.2",
     "vue": "^2.6.11",
-    "vue-teible": "^0.11.10"
+    "vue-teible": "^0.11.11"
   },
   "eslintIgnore": [
     "../**"
