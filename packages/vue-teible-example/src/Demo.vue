@@ -28,7 +28,7 @@
     <data-table
       :items="items" :per-page="perPageNumber" :sort-desc.sync="sortDesc"
       :sort-by.sync="sortBy" :filter.sync="filter" :page.sync="page"
-      @loaded="loaded"
+      :theme="theme" @loaded="loaded"
     >
       <data-column field="id" label="ID" width="15%" />
       <data-column
@@ -73,7 +73,6 @@
 .demo__info {
   position: relative;
   word-wrap: break-word;
-  background-color: #fff;
   background-clip: border-box;
 }
 
@@ -81,7 +80,6 @@
   margin: 0;
   margin-top: -1px;
   padding: .7rem;
-  background-color: #fff;
   border: 1px solid rgba(0,0,0,.125);
   font-weight: 300;
   @include clearfix;
@@ -98,6 +96,7 @@
 </style>
 <script>
 import { DataTable, DataColumn } from 'vue-teible'
+import { themeDefault, themeDark } from 'teible'
 export default {
   name: 'Demo',
   components: { DataTable, DataColumn },
@@ -105,6 +104,10 @@ export default {
     items: {
       type: [Array, Function],
       required: true
+    },
+    dark: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -119,6 +122,13 @@ export default {
     }
   },
   computed: {
+    theme () {
+      if (this.dark) {
+        return themeDark
+      }
+
+      return themeDefault
+    },
     page: {
       get () {
         return parseInt(this.p)

@@ -24,8 +24,7 @@
             Searching fields will be ignored because <a href="https://jsonplaceholder.typicode.com/" title="typicode">typicode</a> does not support them.
           </p>
         </demo>
-        <div class="demo demo__gut" />
-        <demo :items.sync="itemsArr" class="demo">
+        <demo :items.sync="itemsArr" class="demo dark" dark>
           <h2 class="demo__title">
             Array as items
           </h2>
@@ -97,8 +96,14 @@ main {
 }
 
 .demo {
+  padding: 1em;
   @media (min-width: 768px) {
     display: table-cell;
+  }
+
+  &.dark {
+    background-color: #2a2d36;
+    color: #c3c3c6;
   }
 }
 
