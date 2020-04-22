@@ -31,7 +31,7 @@
 
   // body
   @include e('row') {
-    background-color: $bg-color;
+    background-color: $bg-color--even;
     @include m('odd') {
       background-color: $bg-color--odd;
     }
@@ -237,7 +237,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background: #fff;
+  background: $bg-color;
   opacity: .9;
   z-index: 9999;
   transition: opacity .3s;

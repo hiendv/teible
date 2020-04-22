@@ -4,13 +4,14 @@ $color: darken(#fff, 5%);
 $color--disabled: #777;
 $color__plink: #337ab7;
 
-$bg-color: #2a2d36;
+$bg-color: #1f2128;
 
 $border-color: lighten($bg-color, 15%);
 $border-color--focus: lighten($bg-color, 20%);
 
 $bg-color--disabled: darken($bg-color, 5%);
-$bg-color--odd: lighten($bg-color, 5%);
+$bg-color--odd: lighten($bg-color, 10%);
+$bg-color--even: lighten($bg-color, 5%);
 $bg-color__column--active: darken($bg-color, 5%);
 $bg-color__plink--focus: darken($bg-color, 5%);
 $bg-color__plink--active: $color__plink;
