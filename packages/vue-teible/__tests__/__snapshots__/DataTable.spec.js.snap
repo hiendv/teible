@@ -134,35 +134,37 @@ exports[`DataTable allows pagination 1`] = `
       </ul>
     </nav>
     <div data-elm="screen" class="datatable__screen">
-      <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
-          <circle cx="12.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
-            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-        </svg></div>
+      <transition-stub name="datatable">
+        <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+            <circle cx="12.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+              <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+          </svg></div>
+      </transition-stub>
       <table cellspacing="0" cellpadding="0" data-elm="content" class="datatable__content">
         <thead data-elm="head" class="datatable__head">
           <tr>
@@ -209,35 +211,37 @@ exports[`DataTable allows paginationSide 1`] = `
     </div>
     <!---->
     <div data-elm="screen" class="datatable__screen">
-      <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
-          <circle cx="12.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
-            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-        </svg></div>
+      <transition-stub name="datatable">
+        <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+            <circle cx="12.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+              <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+          </svg></div>
+      </transition-stub>
       <table cellspacing="0" cellpadding="0" data-elm="content" class="datatable__content">
         <thead data-elm="head" class="datatable__head">
           <tr>
@@ -350,35 +354,37 @@ exports[`DataTable keeps original items 1`] = `
     </div>
     <!---->
     <div data-elm="screen" class="datatable__screen">
-      <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
-          <circle cx="12.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
-            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-        </svg></div>
+      <transition-stub name="datatable">
+        <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+            <circle cx="12.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+              <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+          </svg></div>
+      </transition-stub>
       <table cellspacing="0" cellpadding="0" data-elm="content" class="datatable__content">
         <thead data-elm="head" class="datatable__head">
           <tr>
@@ -538,35 +544,37 @@ exports[`DataTable works with async data 1`] = `
     </div>
     <!---->
     <div data-elm="screen" class="datatable__screen">
-      <div data-elm="loading" class="datatable__loading"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
-          <circle cx="12.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
-            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-        </svg></div>
+      <transition-stub name="datatable">
+        <div data-elm="loading" class="datatable__loading"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+            <circle cx="12.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+              <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+          </svg></div>
+      </transition-stub>
       <table cellspacing="0" cellpadding="0" data-elm="content" class="datatable__content">
         <thead data-elm="head" class="datatable__head">
           <tr>
@@ -613,35 +621,37 @@ exports[`DataTable works with empty data 1`] = `
     </div>
     <!---->
     <div data-elm="screen" class="datatable__screen">
-      <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
-          <circle cx="12.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
-            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-        </svg></div>
+      <transition-stub name="datatable">
+        <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+            <circle cx="12.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+              <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+          </svg></div>
+      </transition-stub>
       <table cellspacing="0" cellpadding="0" data-elm="content" class="datatable__content">
         <thead data-elm="head" class="datatable__head">
           <tr>
@@ -671,35 +681,37 @@ exports[`DataTable works with no columns 1`] = `
     </div>
     <!---->
     <div data-elm="screen" class="datatable__screen">
-      <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
-          <circle cx="12.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
-            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-        </svg></div>
+      <transition-stub name="datatable">
+        <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+            <circle cx="12.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+              <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+          </svg></div>
+      </transition-stub>
       <table cellspacing="0" cellpadding="0" data-elm="content" class="datatable__content">
         <thead data-elm="head" class="datatable__head">
           <!---->
@@ -730,35 +742,37 @@ exports[`DataTable works with sync data 1`] = `
     </div>
     <!---->
     <div data-elm="screen" class="datatable__screen">
-      <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
-          <circle cx="12.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
-            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-        </svg></div>
+      <transition-stub name="datatable">
+        <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+            <circle cx="12.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+              <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+          </svg></div>
+      </transition-stub>
       <table cellspacing="0" cellpadding="0" data-elm="content" class="datatable__content">
         <thead data-elm="head" class="datatable__head">
           <tr>
@@ -802,35 +816,37 @@ exports[`DataTable works with sync data 2`] = `
     </div>
     <!---->
     <div data-elm="screen" class="datatable__screen">
-      <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
-          <circle cx="12.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
-            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-        </svg></div>
+      <transition-stub name="datatable">
+        <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+            <circle cx="12.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+              <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+          </svg></div>
+      </transition-stub>
       <table cellspacing="0" cellpadding="0" data-elm="content" class="datatable__content">
         <thead data-elm="head" class="datatable__head">
           <tr>
@@ -860,35 +876,37 @@ exports[`DataTable works with sync data using function 1`] = `
     </div>
     <!---->
     <div data-elm="screen" class="datatable__screen">
-      <div data-elm="loading" class="datatable__loading"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
-          <circle cx="12.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
-            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-        </svg></div>
+      <transition-stub name="datatable">
+        <div data-elm="loading" class="datatable__loading"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+            <circle cx="12.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+              <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+          </svg></div>
+      </transition-stub>
       <table cellspacing="0" cellpadding="0" data-elm="content" class="datatable__content">
         <thead data-elm="head" class="datatable__head">
           <tr>
@@ -935,35 +953,37 @@ exports[`DataTable works with vue-i18n 1`] = `
     </div>
     <!---->
     <div data-elm="screen" class="datatable__screen">
-      <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
-          <circle cx="12.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
-            <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="12.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="52.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="12.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="52.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-          <circle cx="92.5" cy="92.5" r="12.5">
-            <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
-          </circle>
-        </svg></div>
+      <transition-stub name="datatable">
+        <div data-elm="loading" class="datatable__loading" style="display: none;"><svg viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="40px">
+            <circle cx="12.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+              <animate attributeName="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="12.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="52.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="12.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="52.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+            <circle cx="92.5" cy="92.5" r="12.5">
+              <animate attributeName="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcMode="linear" repeatCount="indefinite"></animate>
+            </circle>
+          </svg></div>
+      </transition-stub>
       <table cellspacing="0" cellpadding="0" data-elm="content" class="datatable__content">
         <thead data-elm="head" class="datatable__head">
           <!---->

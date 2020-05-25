@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import { mount, createLocalVue } from '@vue/test-utils'
 import { DataTable, DataColumn } from '../src/main.js'
 
@@ -55,7 +56,6 @@ describe('DataTable', () => {
       localVue
     })
 
-    expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.html()).toMatchSnapshot()
 
     wrapper.setProps({ items: [] })
@@ -91,7 +91,6 @@ describe('DataTable', () => {
     })
 
     expect(wrapper.vm.transformed).toEqual([])
-    expect(wrapper.isVueInstance()).toBeTruthy()
     return wrapper.vm.$nextTick()
       .then(() => {
         expect(wrapper.html()).toMatchSnapshot()
@@ -125,7 +124,6 @@ describe('DataTable', () => {
       localVue
     })
 
-    expect(wrapper.isVueInstance()).toBeTruthy()
     return wrapper.vm.$nextTick()
       .then(() => {
         expect(wrapper.html()).toMatchSnapshot()
@@ -137,7 +135,6 @@ describe('DataTable', () => {
       propsData: { items: generateItems() }
     })
 
-    expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.html()).toMatchSnapshot()
   })
 
@@ -158,7 +155,6 @@ describe('DataTable', () => {
       localVue
     })
 
-    expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.html()).toMatchSnapshot()
   })
 
@@ -187,7 +183,6 @@ describe('DataTable', () => {
       }
     })
 
-    expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.html()).toMatchSnapshot()
   })
 
@@ -354,7 +349,6 @@ describe('DataTable', () => {
       localVue
     })
 
-    expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.html()).toMatchSnapshot()
   })
 
@@ -444,8 +438,7 @@ describe('DataTable', () => {
       localVue
     })
 
-    expect(wrapper.isVueInstance()).toBeTruthy()
-    expect(wrapper.find('.datatable__loading').isVisible()).toBeTruthy()
+    expect(wrapper.find('.datatable__loading').element).toBeVisible()
     expect(wrapper.html()).toMatchSnapshot()
 
     return wrapper.vm.$nextTick()
@@ -453,7 +446,7 @@ describe('DataTable', () => {
         return wrapper.vm.$nextTick()
       })
       .then(() => {
-        expect(wrapper.find('.datatable__loading').isVisible()).toBeFalsy()
+        expect(wrapper.find('.datatable__loading').element).not.toBeVisible()
         expect(wrapper.html()).toMatchSnapshot()
       })
   })
@@ -470,7 +463,6 @@ describe('DataTable', () => {
       localVue
     })
 
-    expect(wrapper.isVueInstance()).toBeTruthy()
     expect(wrapper.find('.datatable__loading').exists()).toBeFalsy()
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -498,8 +490,7 @@ describe('DataTable', () => {
       localVue
     })
 
-    expect(wrapper.isVueInstance()).toBeTruthy()
-    expect(wrapper.find('.datatable__loading').isVisible()).toBeTruthy()
+    expect(wrapper.find('.datatable__loading').element).toBeVisible()
     expect(wrapper.html()).toMatchSnapshot()
 
     return wrapper.vm.$nextTick()
@@ -507,7 +498,7 @@ describe('DataTable', () => {
         return wrapper.vm.$nextTick()
       })
       .then(() => {
-        expect(wrapper.find('.datatable__loading').isVisible()).toBeFalsy()
+        expect(wrapper.find('.datatable__loading').element).not.toBeVisible()
         expect(wrapper.html()).toMatchSnapshot()
       })
   })
@@ -532,8 +523,7 @@ describe('DataTable', () => {
       localVue
     })
 
-    expect(wrapper.isVueInstance()).toBeTruthy()
-    expect(wrapper.find('.datatable__loading').isVisible()).toBeTruthy()
+    expect(wrapper.find('.datatable__loading').element).toBeVisible()
     expect(wrapper.html()).toMatchSnapshot()
 
     return wrapper.vm.$nextTick()
@@ -541,7 +531,7 @@ describe('DataTable', () => {
         return wrapper.vm.$nextTick()
       })
       .then(() => {
-        expect(wrapper.find('.datatable__loading').isVisible()).toBeFalsy()
+        expect(wrapper.find('.datatable__loading').element).not.toBeVisible()
         expect(wrapper.html()).toMatchSnapshot()
       })
   })
