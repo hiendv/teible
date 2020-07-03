@@ -1,6 +1,6 @@
 {
   "name": "vue-teible-example",
-  "version": "0.11.15",
+  "version": "0.11.16",
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
@@ -8,7 +8,7 @@
     "haikunator": "^2.1.2",
     "teible": "^0.11.13",
     "vue": "^2.6.11",
-    "vue-teible": "^0.11.15"
+    "vue-teible": "^0.11.16"
   },
   "eslintIgnore": [
     "../**"
