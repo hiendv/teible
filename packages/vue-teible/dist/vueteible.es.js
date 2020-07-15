@@ -402,6 +402,10 @@ var script = {
     click: {
       type: Function,
       required: true
+    },
+    hover: {
+      type: Function,
+      required: true
     }
   },
   inject: ['$theme'],
@@ -493,7 +497,7 @@ var __vue_script__ = script;
 /* template */
 var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('tbody',_vm._l((_vm.items),function(d,index){
 var _obj;
-return _c('tr',{key:index,class:( _obj = {}, _obj[_vm.theme.datatable__row] = true, _obj[_vm.theme['datatable__row--odd']] = index % 2 === 1, _obj ),attrs:{"data-elm":"row","data-odd":index % 2 === 1},on:{"click":function($event){return _vm.click($event, d, index)}}},_vm._l((_vm.columns),function(column,columnIndex){
+return _c('tr',{key:index,class:( _obj = {}, _obj[_vm.theme.datatable__row] = true, _obj[_vm.theme['datatable__row--odd']] = index % 2 === 1, _obj ),attrs:{"data-elm":"row","data-odd":index % 2 === 1},on:{"click":function($event){return _vm.click($event, d, index)},"hover":function($event){return _vm.hover($event, d, index)}}},_vm._l((_vm.columns),function(column,columnIndex){
     var _obj;
 return _c('data-table-cell',_vm._b({key:columnIndex,class:( _obj = {}, _obj[_vm.theme.datatable__cell] = true, _obj[_vm.theme['datatable__cell--last-column']] = columnIndex === _vm.columns.length - 1, _obj[_vm.theme['datatable__cell--last-row']] = index === _vm.items.length - 1, _obj ),attrs:{"item":d,"column":column,"index":index,"data-elm":"cell","data-last-column":columnIndex === _vm.columns.length - 1,"data-last-row":index === _vm.items.length - 1}},'data-table-cell',column.attrs,false))}),1)}),0)};
 var __vue_staticRenderFns__ = [];
@@ -1112,6 +1116,10 @@ var script$5 = {
     rowClick: {
       type: Function,
       default: function (event, item, index) {}
+    },
+    rowHover: {
+      type: Function,
+      default: function (event, item, index) {}
     }
   },
   provide: function provide () {
@@ -1340,7 +1348,7 @@ var script$5 = {
 var __vue_script__$5 = script$5;
 
 /* template */
-var __vue_render__$5 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.theme.datatable, _vm.staticClass]},[_c('div',{class:_vm.theme.datatable__wrapper,attrs:{"data-elm":"wrapper"}},[(!_vm.disableFiltering)?_c('data-table-filter',{attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}):_vm._e(),_vm._v(" "),(_vm.paginationTop)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.p,"total":_vm.total,"each-side":_vm.paginationSide},on:{"update:page":function($event){_vm.p=$event;}}}):_vm._e(),_vm._v(" "),_c('div',{class:_vm.theme.datatable__screen,attrs:{"data-elm":"screen"}},[(!_vm.disableLoader)?_c('loading',{attrs:{"active":_vm.loading}},[_vm._t("loader")],2):_vm._e(),_vm._v(" "),_c('table',{class:_vm.theme.datatable__content,attrs:{"cellspacing":"0","cellpadding":"0","data-elm":"content"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems,"click":_vm.rowClick}})],1)],1),_vm._v(" "),(_vm.paginationBottom)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.p,"total":_vm.total,"each-side":_vm.paginationSide},on:{"update:page":function($event){_vm.p=$event;}}}):_vm._e()],1)])};
+var __vue_render__$5 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.theme.datatable, _vm.staticClass]},[_c('div',{class:_vm.theme.datatable__wrapper,attrs:{"data-elm":"wrapper"}},[(!_vm.disableFiltering)?_c('data-table-filter',{attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}):_vm._e(),_vm._v(" "),(_vm.paginationTop)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.p,"total":_vm.total,"each-side":_vm.paginationSide},on:{"update:page":function($event){_vm.p=$event;}}}):_vm._e(),_vm._v(" "),_c('div',{class:_vm.theme.datatable__screen,attrs:{"data-elm":"screen"}},[(!_vm.disableLoader)?_c('loading',{attrs:{"active":_vm.loading}},[_vm._t("loader")],2):_vm._e(),_vm._v(" "),_c('table',{class:_vm.theme.datatable__content,attrs:{"cellspacing":"0","cellpadding":"0","data-elm":"content"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems,"click":_vm.rowClick,"hover":_vm.rowHover}})],1)],1),_vm._v(" "),(_vm.paginationBottom)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.p,"total":_vm.total,"each-side":_vm.paginationSide},on:{"update:page":function($event){_vm.p=$event;}}}):_vm._e()],1)])};
 var __vue_staticRenderFns__$5 = [];
 
   /* style */
