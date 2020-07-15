@@ -6,6 +6,7 @@
         [theme['datatable__row--odd']]: index % 2 === 1
       }"
       data-elm="row" :data-odd="index % 2 === 1" @click="click($event, d, index)"
+      @hover="hover($event, d, index)"
     >
       <data-table-cell
         v-for="(column, columnIndex) in columns" :key="columnIndex" v-bind="column.attrs"
@@ -36,6 +37,10 @@ export default {
       required: true
     },
     click: {
+      type: Function,
+      required: true
+    },
+    hover: {
       type: Function,
       required: true
     }

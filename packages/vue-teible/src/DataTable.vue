@@ -15,7 +15,10 @@
           data-elm="content"
         >
           <data-table-head :columns="columns" :sort-by.sync="options.sortBy" :sort-desc.sync="options.sortDesc" />
-          <data-table-body :columns="columns" :items="actualItems" :click="rowClick" />
+          <data-table-body
+            :columns="columns" :items="actualItems" :click="rowClick"
+            :hover="rowHover"
+          />
         </table>
       </div>
       <data-table-pagination
@@ -89,6 +92,10 @@ export default {
       default: 2
     },
     rowClick: {
+      type: Function,
+      default: (event, item, index) => {}
+    },
+    rowHover: {
       type: Function,
       default: (event, item, index) => {}
     }
