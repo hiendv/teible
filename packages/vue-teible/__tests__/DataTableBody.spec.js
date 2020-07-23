@@ -96,14 +96,21 @@ describe('DataTableBody', () => {
       })
     })
 
-    wrapper.find('tr').trigger('hover')
+    wrapper.find('tr').trigger('mouseenter')
+    wrapper.find('tr').trigger('mouseleave')
     return wrapper.vm.$nextTick()
       .then(() => {
-        expect(hover.mock.calls.length).toBe(1)
+        expect(hover.mock.calls.length).toBe(2)
+
         expect(hover.mock.calls[0][0]).toBeInstanceOf(Event)
-        expect(hover.mock.calls[0][0].type).toBe('hover')
+        expect(hover.mock.calls[0][0].type).toBe('mouseenter')
         expect(hover.mock.calls[0][1]).toStrictEqual({ one: 'foo', two: 'bar' })
         expect(hover.mock.calls[0][2]).toStrictEqual(0)
+
+        expect(hover.mock.calls[1][0]).toBeInstanceOf(Event)
+        expect(hover.mock.calls[1][0].type).toBe('mouseleave')
+        expect(hover.mock.calls[1][1]).toStrictEqual({ one: 'foo', two: 'bar' })
+        expect(hover.mock.calls[1][2]).toStrictEqual(0)
       })
   })
 })

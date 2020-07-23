@@ -495,12 +495,74 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
 var __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('tbody',_vm._l((_vm.items),function(d,index){
-var _obj;
-return _c('tr',{key:index,class:( _obj = {}, _obj[_vm.theme.datatable__row] = true, _obj[_vm.theme['datatable__row--odd']] = index % 2 === 1, _obj ),attrs:{"data-elm":"row","data-odd":index % 2 === 1},on:{"click":function($event){return _vm.click($event, d, index)},"hover":function($event){return _vm.hover($event, d, index)}}},_vm._l((_vm.columns),function(column,columnIndex){
-    var _obj;
-return _c('data-table-cell',_vm._b({key:columnIndex,class:( _obj = {}, _obj[_vm.theme.datatable__cell] = true, _obj[_vm.theme['datatable__cell--last-column']] = columnIndex === _vm.columns.length - 1, _obj[_vm.theme['datatable__cell--last-row']] = index === _vm.items.length - 1, _obj ),attrs:{"item":d,"column":column,"index":index,"data-elm":"cell","data-last-column":columnIndex === _vm.columns.length - 1,"data-last-row":index === _vm.items.length - 1}},'data-table-cell',column.attrs,false))}),1)}),0)};
+var __vue_render__ = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "tbody",
+    _vm._l(_vm.items, function(d, index) {
+      var _obj;
+      return _c(
+        "tr",
+        {
+          key: index,
+          class:
+            ((_obj = {}),
+            (_obj[_vm.theme.datatable__row] = true),
+            (_obj[_vm.theme["datatable__row--odd"]] = index % 2 === 1),
+            _obj),
+          attrs: { "data-elm": "row", "data-odd": index % 2 === 1 },
+          on: {
+            click: function($event) {
+              return _vm.click($event, d, index)
+            },
+            mouseenter: function($event) {
+              return _vm.hover($event, d, index)
+            },
+            mouseleave: function($event) {
+              return _vm.hover($event, d, index, true)
+            }
+          }
+        },
+        _vm._l(_vm.columns, function(column, columnIndex) {
+          var _obj;
+          return _c(
+            "data-table-cell",
+            _vm._b(
+              {
+                key: columnIndex,
+                class:
+                  ((_obj = {}),
+                  (_obj[_vm.theme.datatable__cell] = true),
+                  (_obj[_vm.theme["datatable__cell--last-column"]] =
+                    columnIndex === _vm.columns.length - 1),
+                  (_obj[_vm.theme["datatable__cell--last-row"]] =
+                    index === _vm.items.length - 1),
+                  _obj),
+                attrs: {
+                  item: d,
+                  column: column,
+                  index: index,
+                  "data-elm": "cell",
+                  "data-last-column": columnIndex === _vm.columns.length - 1,
+                  "data-last-row": index === _vm.items.length - 1
+                }
+              },
+              "data-table-cell",
+              column.attrs,
+              false
+            )
+          )
+        }),
+        1
+      )
+    }),
+    0
+  )
+};
 var __vue_staticRenderFns__ = [];
+__vue_render__._withStripped = true;
 
   /* style */
   var __vue_inject_styles__ = undefined;
@@ -659,10 +721,80 @@ var script$1 = {
 var __vue_script__$1 = script$1;
 
 /* template */
-var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',{class:_vm.theme.datatable__head,attrs:{"data-elm":"head"}},[(_vm.columns.length)?_c('tr',_vm._l((_vm.columns),function(column,index){
-var _obj;
-return _c('th',_vm._b({key:column.field + column.label,class:( _obj = {}, _obj[_vm.theme.datatable__column] = true, _obj[_vm.theme['datatable__column--custom']] = column.scopedSlots && column.scopedSlots.header, _obj[_vm.theme['datatable__column--sortable']] = column.sortable, _obj[_vm.theme['datatable__column--active']] = _vm.isActive(column), _obj[_vm.theme['datatable__column--last']] = index === _vm.columns.length - 1, _obj[column.staticClass] = column.staticClass, _obj[column.dynamicClass] = column.dynamicClass, _obj ),attrs:{"scope":"col","data-elm":"column","data-custom":column.scopedSlots && column.scopedSlots.header,"data-sortable":column.sortable,"data-active":_vm.isActive(column),"data-last":index === _vm.columns.length - 1},on:{"click":function($event){$event.preventDefault();return _vm.updateSort(column.field, column.sortable)}}},'th',column.attrs,false),[_c('data-table-head-content',{attrs:{"column":column,"active":_vm.isActive(column),"sort-desc":_vm.sortDesc,"theme":_vm.theme}})],1)}),0):_vm._e()])};
+var __vue_render__$1 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "thead",
+    { class: _vm.theme.datatable__head, attrs: { "data-elm": "head" } },
+    [
+      _vm.columns.length
+        ? _c(
+            "tr",
+            _vm._l(_vm.columns, function(column, index) {
+              var _obj;
+              return _c(
+                "th",
+                _vm._b(
+                  {
+                    key: column.field + column.label,
+                    class:
+                      ((_obj = {}),
+                      (_obj[_vm.theme.datatable__column] = true),
+                      (_obj[_vm.theme["datatable__column--custom"]] =
+                        column.scopedSlots && column.scopedSlots.header),
+                      (_obj[_vm.theme["datatable__column--sortable"]] =
+                        column.sortable),
+                      (_obj[
+                        _vm.theme["datatable__column--active"]
+                      ] = _vm.isActive(column)),
+                      (_obj[_vm.theme["datatable__column--last"]] =
+                        index === _vm.columns.length - 1),
+                      (_obj[column.staticClass] = column.staticClass),
+                      (_obj[column.dynamicClass] = column.dynamicClass),
+                      _obj),
+                    attrs: {
+                      scope: "col",
+                      "data-elm": "column",
+                      "data-custom":
+                        column.scopedSlots && column.scopedSlots.header,
+                      "data-sortable": column.sortable,
+                      "data-active": _vm.isActive(column),
+                      "data-last": index === _vm.columns.length - 1
+                    },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault();
+                        return _vm.updateSort(column.field, column.sortable)
+                      }
+                    }
+                  },
+                  "th",
+                  column.attrs,
+                  false
+                ),
+                [
+                  _c("data-table-head-content", {
+                    attrs: {
+                      column: column,
+                      active: _vm.isActive(column),
+                      "sort-desc": _vm.sortDesc,
+                      theme: _vm.theme
+                    }
+                  })
+                ],
+                1
+              )
+            }),
+            0
+          )
+        : _vm._e()
+    ]
+  )
+};
 var __vue_staticRenderFns__$1 = [];
+__vue_render__$1._withStripped = true;
 
   /* style */
   var __vue_inject_styles__$1 = undefined;
@@ -767,10 +899,137 @@ var script$2 = {
 var __vue_script__$2 = script$2;
 
 /* template */
-var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('nav',{class:_vm.theme.datatable__pagination,attrs:{"data-elm":"pagination"}},[(_vm.total)?_c('span',{class:_vm.theme.datatable__ptext,attrs:{"data-elm":"ptext"}},[_vm._v("\n    "+_vm._s(_vm.t('teible.showing'))+" "),_c('span',{domProps:{"textContent":_vm._s(_vm.from === _vm.to && _vm.to === _vm.total ? _vm.t('teible.last') : _vm.from + ' – ' + _vm.to)}}),_vm._v(" "+_vm._s(_vm.t('teible.total', _vm.total))+"\n  ")]):_c('span',{class:_vm.theme.datatable__ptext,attrs:{"data-elm":"ptext"}},[_vm._v(_vm._s(_vm.t('teible.empty')))]),_vm._v(" "),_c('a',{class:[_vm.theme.datatable__plink, _vm.theme.datatable__pprevious],attrs:{"disabled":_vm.reachedFirst,"href":"#","aria-label":"Previous","data-elm":"plink","data-previous":""},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page-1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")])]),_vm._v(" "),_c('a',{class:[_vm.theme.datatable__plink, _vm.theme.datatable__pnext],attrs:{"disabled":_vm.reachedLast,"href":"#","aria-label":"Next","data-elm":"plink","data-pnext":""},on:{"click":function($event){$event.preventDefault();return _vm.load(_vm.page+1)}}},[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")])]),_vm._v(" "),_c('ul',{class:_vm.theme.datatable__plist,attrs:{"data-elm":"plist"}},_vm._l((_vm.pages),function(p,index){
-var _obj;
-return _c('li',{key:index,class:_vm.theme.datatable__pitem,attrs:{"data-elm":"pitem"}},[_c('a',{class:( _obj = {}, _obj[_vm.theme.datatable__plink] = true, _obj[_vm.theme['datatable__plink--active']] = _vm.isActive(p), _obj ),attrs:{"disabled":p.disabled,"href":"#","data-elm":"plink","data-active":_vm.isActive(p)},on:{"click":function($event){$event.preventDefault();return _vm.load(p.value, p.disabled)}}},[_vm._v(_vm._s(p.value))])])}),0)])};
+var __vue_render__$2 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "nav",
+    {
+      class: _vm.theme.datatable__pagination,
+      attrs: { "data-elm": "pagination" }
+    },
+    [
+      _vm.total
+        ? _c(
+            "span",
+            {
+              class: _vm.theme.datatable__ptext,
+              attrs: { "data-elm": "ptext" }
+            },
+            [
+              _vm._v("\n    " + _vm._s(_vm.t("teible.showing")) + " "),
+              _c("span", {
+                domProps: {
+                  textContent: _vm._s(
+                    _vm.from === _vm.to && _vm.to === _vm.total
+                      ? _vm.t("teible.last")
+                      : _vm.from + " – " + _vm.to
+                  )
+                }
+              }),
+              _vm._v(" " + _vm._s(_vm.t("teible.total", _vm.total)) + "\n  ")
+            ]
+          )
+        : _c(
+            "span",
+            {
+              class: _vm.theme.datatable__ptext,
+              attrs: { "data-elm": "ptext" }
+            },
+            [_vm._v(_vm._s(_vm.t("teible.empty")))]
+          ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          class: [_vm.theme.datatable__plink, _vm.theme.datatable__pprevious],
+          attrs: {
+            disabled: _vm.reachedFirst,
+            href: "#",
+            "aria-label": "Previous",
+            "data-elm": "plink",
+            "data-previous": ""
+          },
+          on: {
+            click: function($event) {
+              $event.preventDefault();
+              return _vm.load(_vm.page - 1)
+            }
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("«")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          class: [_vm.theme.datatable__plink, _vm.theme.datatable__pnext],
+          attrs: {
+            disabled: _vm.reachedLast,
+            href: "#",
+            "aria-label": "Next",
+            "data-elm": "plink",
+            "data-pnext": ""
+          },
+          on: {
+            click: function($event) {
+              $event.preventDefault();
+              return _vm.load(_vm.page + 1)
+            }
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("»")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { class: _vm.theme.datatable__plist, attrs: { "data-elm": "plist" } },
+        _vm._l(_vm.pages, function(p, index) {
+          var _obj;
+          return _c(
+            "li",
+            {
+              key: index,
+              class: _vm.theme.datatable__pitem,
+              attrs: { "data-elm": "pitem" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  class:
+                    ((_obj = {}),
+                    (_obj[_vm.theme.datatable__plink] = true),
+                    (_obj[_vm.theme["datatable__plink--active"]] = _vm.isActive(
+                      p
+                    )),
+                    _obj),
+                  attrs: {
+                    disabled: p.disabled,
+                    href: "#",
+                    "data-elm": "plink",
+                    "data-active": _vm.isActive(p)
+                  },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault();
+                      return _vm.load(p.value, p.disabled)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(p.value))]
+              )
+            ]
+          )
+        }),
+        0
+      )
+    ]
+  )
+};
 var __vue_staticRenderFns__$2 = [];
+__vue_render__$2._withStripped = true;
 
   /* style */
   var __vue_inject_styles__$2 = undefined;
@@ -831,8 +1090,66 @@ var script$3 = {
 var __vue_script__$3 = script$3;
 
 /* template */
-var __vue_render__$3 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme.datatable__filter,attrs:{"data-elm":"filter"}},[_c('input',{class:_vm.theme.datatable__input,attrs:{"type":"text","placeholder":_vm.t('teible.filter'),"data-elm":"input"},domProps:{"value":_vm.filter},on:{"input":function($event){return _vm.update($event.target.value)}}}),_vm._v(" "),(_vm.filter)?_c('div',{class:_vm.theme.datatable__clear,attrs:{"data-elm":"clear"},on:{"click":function($event){$event.stopPropagation();return _vm.clear($event)}}},[_c('a',{class:_vm.theme.datatable__x,attrs:{"href":"#","data-elm":"x"},on:{"click":function($event){$event.stopPropagation();$event.preventDefault();return _vm.clear($event)}}},[_vm._v("×")])]):_vm._e()])};
+var __vue_render__$3 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "div",
+    { class: _vm.theme.datatable__filter, attrs: { "data-elm": "filter" } },
+    [
+      _c("input", {
+        class: _vm.theme.datatable__input,
+        attrs: {
+          type: "text",
+          placeholder: _vm.t("teible.filter"),
+          "data-elm": "input"
+        },
+        domProps: { value: _vm.filter },
+        on: {
+          input: function($event) {
+            return _vm.update($event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _vm.filter
+        ? _c(
+            "div",
+            {
+              class: _vm.theme.datatable__clear,
+              attrs: { "data-elm": "clear" },
+              on: {
+                click: function($event) {
+                  $event.stopPropagation();
+                  return _vm.clear($event)
+                }
+              }
+            },
+            [
+              _c(
+                "a",
+                {
+                  class: _vm.theme.datatable__x,
+                  attrs: { href: "#", "data-elm": "x" },
+                  on: {
+                    click: function($event) {
+                      $event.stopPropagation();
+                      $event.preventDefault();
+                      return _vm.clear($event)
+                    }
+                  }
+                },
+                [_vm._v("×")]
+              )
+            ]
+          )
+        : _vm._e()
+    ]
+  )
+};
 var __vue_staticRenderFns__$3 = [];
+__vue_render__$3._withStripped = true;
 
   /* style */
   var __vue_inject_styles__$3 = undefined;
@@ -1024,13 +1341,180 @@ function addStyle(id, css) {
 var __vue_script__$4 = script$4;
 
 /* template */
-var __vue_render__$4 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"datatable"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.active),expression:"active"}],class:_vm.theme.datatable__loading,attrs:{"data-elm":"loading"}},[_vm._t("default",[_c('svg',{attrs:{"viewBox":"0 0 105 105","xmlns":"http://www.w3.org/2000/svg","fill":"#fff","width":"40px"}},[_c('circle',{attrs:{"cx":"12.5","cy":"12.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"0s","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"12.5","cy":"52.5","r":"12.5","fill-opacity":".5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"100ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"52.5","cy":"12.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"300ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"52.5","cy":"52.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"600ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"92.5","cy":"12.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"800ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"92.5","cy":"52.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"400ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"12.5","cy":"92.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"700ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"52.5","cy":"92.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"500ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})]),_vm._v(" "),_c('circle',{attrs:{"cx":"92.5","cy":"92.5","r":"12.5"}},[_c('animate',{attrs:{"attributeName":"fill-opacity","begin":"200ms","dur":"1s","values":"1;.2;1","calcMode":"linear","repeatCount":"indefinite"}})])])])],2)])};
+var __vue_render__$4 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("transition", { attrs: { name: "datatable" } }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.active,
+            expression: "active"
+          }
+        ],
+        class: _vm.theme.datatable__loading,
+        attrs: { "data-elm": "loading" }
+      },
+      [
+        _vm._t("default", [
+          _c(
+            "svg",
+            {
+              attrs: {
+                viewBox: "0 0 105 105",
+                xmlns: "http://www.w3.org/2000/svg",
+                fill: "#fff",
+                width: "40px"
+              }
+            },
+            [
+              _c("circle", { attrs: { cx: "12.5", cy: "12.5", r: "12.5" } }, [
+                _c("animate", {
+                  attrs: {
+                    attributeName: "fill-opacity",
+                    begin: "0s",
+                    dur: "1s",
+                    values: "1;.2;1",
+                    calcMode: "linear",
+                    repeatCount: "indefinite"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "circle",
+                {
+                  attrs: {
+                    cx: "12.5",
+                    cy: "52.5",
+                    r: "12.5",
+                    "fill-opacity": ".5"
+                  }
+                },
+                [
+                  _c("animate", {
+                    attrs: {
+                      attributeName: "fill-opacity",
+                      begin: "100ms",
+                      dur: "1s",
+                      values: "1;.2;1",
+                      calcMode: "linear",
+                      repeatCount: "indefinite"
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c("circle", { attrs: { cx: "52.5", cy: "12.5", r: "12.5" } }, [
+                _c("animate", {
+                  attrs: {
+                    attributeName: "fill-opacity",
+                    begin: "300ms",
+                    dur: "1s",
+                    values: "1;.2;1",
+                    calcMode: "linear",
+                    repeatCount: "indefinite"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("circle", { attrs: { cx: "52.5", cy: "52.5", r: "12.5" } }, [
+                _c("animate", {
+                  attrs: {
+                    attributeName: "fill-opacity",
+                    begin: "600ms",
+                    dur: "1s",
+                    values: "1;.2;1",
+                    calcMode: "linear",
+                    repeatCount: "indefinite"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("circle", { attrs: { cx: "92.5", cy: "12.5", r: "12.5" } }, [
+                _c("animate", {
+                  attrs: {
+                    attributeName: "fill-opacity",
+                    begin: "800ms",
+                    dur: "1s",
+                    values: "1;.2;1",
+                    calcMode: "linear",
+                    repeatCount: "indefinite"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("circle", { attrs: { cx: "92.5", cy: "52.5", r: "12.5" } }, [
+                _c("animate", {
+                  attrs: {
+                    attributeName: "fill-opacity",
+                    begin: "400ms",
+                    dur: "1s",
+                    values: "1;.2;1",
+                    calcMode: "linear",
+                    repeatCount: "indefinite"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("circle", { attrs: { cx: "12.5", cy: "92.5", r: "12.5" } }, [
+                _c("animate", {
+                  attrs: {
+                    attributeName: "fill-opacity",
+                    begin: "700ms",
+                    dur: "1s",
+                    values: "1;.2;1",
+                    calcMode: "linear",
+                    repeatCount: "indefinite"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("circle", { attrs: { cx: "52.5", cy: "92.5", r: "12.5" } }, [
+                _c("animate", {
+                  attrs: {
+                    attributeName: "fill-opacity",
+                    begin: "500ms",
+                    dur: "1s",
+                    values: "1;.2;1",
+                    calcMode: "linear",
+                    repeatCount: "indefinite"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("circle", { attrs: { cx: "92.5", cy: "92.5", r: "12.5" } }, [
+                _c("animate", {
+                  attrs: {
+                    attributeName: "fill-opacity",
+                    begin: "200ms",
+                    dur: "1s",
+                    values: "1;.2;1",
+                    calcMode: "linear",
+                    repeatCount: "indefinite"
+                  }
+                })
+              ])
+            ]
+          )
+        ])
+      ],
+      2
+    )
+  ])
+};
 var __vue_staticRenderFns__$4 = [];
+__vue_render__$4._withStripped = true;
 
   /* style */
   var __vue_inject_styles__$4 = function (inject) {
     if (!inject) { return }
-    inject("data-v-64d22407_0", { source: ".datatable-enter-active,.datatable-leave-active{transition:opacity .5s}.datatable-enter,.datatable-leave-to{opacity:0}", map: undefined, media: undefined });
+    inject("data-v-34de7038_0", { source: ".datatable-enter-active, .datatable-leave-active {\n  transition: opacity 0.5s;\n}\n.datatable-enter, .datatable-leave-to {\n  opacity: 0;\n}\n\n/*# sourceMappingURL=Loading.vue.map */", map: {"version":3,"sources":["/data/hiendv/teible/packages/vue-teible/src/Loading.vue","Loading.vue"],"names":[],"mappings":"AAyGA;EACA,wBAAA;ACxGA;AD0GA;EACA,UAAA;ACvGA;;AAEA,sCAAsC","file":"Loading.vue","sourcesContent":["<template>\n  <transition name=\"datatable\">\n    <div v-show=\"active\" :class=\"theme.datatable__loading\" data-elm=\"loading\">\n      <slot>\n        <svg\n          viewBox=\"0 0 105 105\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"#fff\"\n          width=\"40px\"\n        >\n          <circle cx=\"12.5\" cy=\"12.5\" r=\"12.5\">\n            <animate\n              attributeName=\"fill-opacity\"\n              begin=\"0s\" dur=\"1s\"\n              values=\"1;.2;1\" calcMode=\"linear\"\n              repeatCount=\"indefinite\"\n            />\n          </circle>\n          <circle\n            cx=\"12.5\" cy=\"52.5\" r=\"12.5\"\n            fill-opacity=\".5\"\n          >\n            <animate\n              attributeName=\"fill-opacity\"\n              begin=\"100ms\" dur=\"1s\"\n              values=\"1;.2;1\" calcMode=\"linear\"\n              repeatCount=\"indefinite\"\n            />\n          </circle>\n          <circle cx=\"52.5\" cy=\"12.5\" r=\"12.5\">\n            <animate\n              attributeName=\"fill-opacity\"\n              begin=\"300ms\" dur=\"1s\"\n              values=\"1;.2;1\" calcMode=\"linear\"\n              repeatCount=\"indefinite\"\n            />\n          </circle>\n          <circle cx=\"52.5\" cy=\"52.5\" r=\"12.5\">\n            <animate\n              attributeName=\"fill-opacity\"\n              begin=\"600ms\" dur=\"1s\"\n              values=\"1;.2;1\" calcMode=\"linear\"\n              repeatCount=\"indefinite\"\n            />\n          </circle>\n          <circle cx=\"92.5\" cy=\"12.5\" r=\"12.5\">\n            <animate\n              attributeName=\"fill-opacity\"\n              begin=\"800ms\" dur=\"1s\"\n              values=\"1;.2;1\" calcMode=\"linear\"\n              repeatCount=\"indefinite\"\n            />\n          </circle>\n          <circle cx=\"92.5\" cy=\"52.5\" r=\"12.5\">\n            <animate\n              attributeName=\"fill-opacity\"\n              begin=\"400ms\" dur=\"1s\"\n              values=\"1;.2;1\" calcMode=\"linear\"\n              repeatCount=\"indefinite\"\n            />\n          </circle>\n          <circle cx=\"12.5\" cy=\"92.5\" r=\"12.5\">\n            <animate\n              attributeName=\"fill-opacity\"\n              begin=\"700ms\" dur=\"1s\"\n              values=\"1;.2;1\" calcMode=\"linear\"\n              repeatCount=\"indefinite\"\n            />\n          </circle>\n          <circle cx=\"52.5\" cy=\"92.5\" r=\"12.5\">\n            <animate\n              attributeName=\"fill-opacity\"\n              begin=\"500ms\" dur=\"1s\"\n              values=\"1;.2;1\" calcMode=\"linear\"\n              repeatCount=\"indefinite\"\n            />\n          </circle>\n          <circle cx=\"92.5\" cy=\"92.5\" r=\"12.5\">\n            <animate\n              attributeName=\"fill-opacity\"\n              begin=\"200ms\" dur=\"1s\"\n              values=\"1;.2;1\" calcMode=\"linear\"\n              repeatCount=\"indefinite\"\n            />\n          </circle>\n        </svg>\n      </slot>\n    </div>\n  </transition>\n</template>\n<script>\nexport default {\n  props: {\n    active: {\n      type: Boolean,\n      default: true\n    }\n  },\n  inject: ['$theme'],\n  computed: {\n    theme () {\n      return this.$theme()\n    }\n  }\n}\n</script>\n<style lang=\"scss\">\n.datatable-enter-active, .datatable-leave-active {\n  transition: opacity .5s;\n}\n.datatable-enter, .datatable-leave-to {\n  opacity: 0;\n}\n</style>\n",".datatable-enter-active, .datatable-leave-active {\n  transition: opacity 0.5s;\n}\n\n.datatable-enter, .datatable-leave-to {\n  opacity: 0;\n}\n\n/*# sourceMappingURL=Loading.vue.map */"]}, media: undefined });
 
   };
   /* scoped */
@@ -1348,8 +1832,128 @@ var script$5 = {
 var __vue_script__$5 = script$5;
 
 /* template */
-var __vue_render__$5 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.theme.datatable, _vm.staticClass]},[_c('div',{class:_vm.theme.datatable__wrapper,attrs:{"data-elm":"wrapper"}},[(!_vm.disableFiltering)?_c('data-table-filter',{attrs:{"filter":_vm.options.filter},on:{"update:filter":function($event){return _vm.$set(_vm.options, "filter", $event)}}}):_vm._e(),_vm._v(" "),(_vm.paginationTop)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.p,"total":_vm.total,"each-side":_vm.paginationSide},on:{"update:page":function($event){_vm.p=$event;}}}):_vm._e(),_vm._v(" "),_c('div',{class:_vm.theme.datatable__screen,attrs:{"data-elm":"screen"}},[(!_vm.disableLoader)?_c('loading',{attrs:{"active":_vm.loading}},[_vm._t("loader")],2):_vm._e(),_vm._v(" "),_c('table',{class:_vm.theme.datatable__content,attrs:{"cellspacing":"0","cellpadding":"0","data-elm":"content"}},[_c('data-table-head',{attrs:{"columns":_vm.columns,"sort-by":_vm.options.sortBy,"sort-desc":_vm.options.sortDesc},on:{"update:sortBy":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sort-by":function($event){return _vm.$set(_vm.options, "sortBy", $event)},"update:sortDesc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)},"update:sort-desc":function($event){return _vm.$set(_vm.options, "sortDesc", $event)}}}),_vm._v(" "),_c('data-table-body',{attrs:{"columns":_vm.columns,"items":_vm.actualItems,"click":_vm.rowClick,"hover":_vm.rowHover}})],1)],1),_vm._v(" "),(_vm.paginationBottom)?_c('data-table-pagination',{attrs:{"per-page":_vm.perPage,"page":_vm.p,"total":_vm.total,"each-side":_vm.paginationSide},on:{"update:page":function($event){_vm.p=$event;}}}):_vm._e()],1)])};
+var __vue_render__$5 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", { class: [_vm.theme.datatable, _vm.staticClass] }, [
+    _c(
+      "div",
+      { class: _vm.theme.datatable__wrapper, attrs: { "data-elm": "wrapper" } },
+      [
+        !_vm.disableFiltering
+          ? _c("data-table-filter", {
+              attrs: { filter: _vm.options.filter },
+              on: {
+                "update:filter": function($event) {
+                  return _vm.$set(_vm.options, "filter", $event)
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.paginationTop
+          ? _c("data-table-pagination", {
+              attrs: {
+                "per-page": _vm.perPage,
+                page: _vm.p,
+                total: _vm.total,
+                "each-side": _vm.paginationSide
+              },
+              on: {
+                "update:page": function($event) {
+                  _vm.p = $event;
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            class: _vm.theme.datatable__screen,
+            attrs: { "data-elm": "screen" }
+          },
+          [
+            !_vm.disableLoader
+              ? _c(
+                  "loading",
+                  { attrs: { active: _vm.loading } },
+                  [_vm._t("loader")],
+                  2
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "table",
+              {
+                class: _vm.theme.datatable__content,
+                attrs: {
+                  cellspacing: "0",
+                  cellpadding: "0",
+                  "data-elm": "content"
+                }
+              },
+              [
+                _c("data-table-head", {
+                  attrs: {
+                    columns: _vm.columns,
+                    "sort-by": _vm.options.sortBy,
+                    "sort-desc": _vm.options.sortDesc
+                  },
+                  on: {
+                    "update:sortBy": function($event) {
+                      return _vm.$set(_vm.options, "sortBy", $event)
+                    },
+                    "update:sort-by": function($event) {
+                      return _vm.$set(_vm.options, "sortBy", $event)
+                    },
+                    "update:sortDesc": function($event) {
+                      return _vm.$set(_vm.options, "sortDesc", $event)
+                    },
+                    "update:sort-desc": function($event) {
+                      return _vm.$set(_vm.options, "sortDesc", $event)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("data-table-body", {
+                  attrs: {
+                    columns: _vm.columns,
+                    items: _vm.actualItems,
+                    click: _vm.rowClick,
+                    hover: _vm.rowHover
+                  }
+                })
+              ],
+              1
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _vm.paginationBottom
+          ? _c("data-table-pagination", {
+              attrs: {
+                "per-page": _vm.perPage,
+                page: _vm.p,
+                total: _vm.total,
+                "each-side": _vm.paginationSide
+              },
+              on: {
+                "update:page": function($event) {
+                  _vm.p = $event;
+                }
+              }
+            })
+          : _vm._e()
+      ],
+      1
+    )
+  ])
+};
 var __vue_staticRenderFns__$5 = [];
+__vue_render__$5._withStripped = true;
 
   /* style */
   var __vue_inject_styles__$5 = undefined;

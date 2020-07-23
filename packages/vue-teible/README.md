@@ -131,6 +131,10 @@ If you're looking for a more complicated use-case, see **[vue-teible-example](/p
   rowClick: { // Callback for row click events
     type: Function,
     default: (event, item, index) => {}
+  },
+  rowHover: { // Callback for row hover events
+    type: Function,
+    default: (event, item, index) => {} // event.type could be "mouseenter" or "mouseleave"
   }
 }
 ```

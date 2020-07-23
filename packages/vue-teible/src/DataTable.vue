@@ -16,8 +16,8 @@
         >
           <data-table-head :columns="columns" :sort-by.sync="options.sortBy" :sort-desc.sync="options.sortDesc" />
           <data-table-body
-            :columns="columns" :items="actualItems" :click="rowClick"
-            :hover="rowHover"
+            :columns="columns" :items="actualItems"
+            :click="rowClick" :hover="rowHover"
           />
         </table>
       </div>
