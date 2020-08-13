@@ -23,7 +23,7 @@
   "module": "dist/vueteible.es.js",
   "peerDependencies": {
     "vue": "^2.6.11",
-    "vue-i18n": "^8.18.2"
+    "vue-i18n": "^8.20.0"
   },
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible"
 }
