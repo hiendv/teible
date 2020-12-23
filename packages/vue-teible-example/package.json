@@ -3,7 +3,7 @@
   "version": "0.11.18",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "haikunator": "^2.1.2",
     "teible": "^0.11.13",
