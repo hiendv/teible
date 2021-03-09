@@ -32,6 +32,12 @@ import DataTableHeadContent from './DataTableHeadContent'
 export default {
   name: 'DataTableHead',
   components: { DataTableHeadContent },
+  inject: ['$theme'],
+  provide () {
+    return {
+      $theme: this.$theme
+    }
+  },
   props: {
     columns: {
       type: Array,
@@ -73,12 +79,6 @@ export default {
       }
 
       this.$emit('update:sortBy', field)
-    }
-  },
-  inject: ['$theme'],
-  provide () {
-    return {
-      $theme: this.$theme
     }
   }
 }

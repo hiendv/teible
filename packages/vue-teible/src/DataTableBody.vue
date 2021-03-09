@@ -27,6 +27,7 @@ import DataTableCell from './DataTableCell'
 export default {
   name: 'DataTableBody',
   components: { DataTableCell },
+  inject: ['$theme'],
   props: {
     items: {
       type: Array,
@@ -45,7 +46,6 @@ export default {
       required: true
     }
   },
-  inject: ['$theme'],
   computed: {
     theme () {
       return this.$theme()

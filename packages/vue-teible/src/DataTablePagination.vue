@@ -45,6 +45,7 @@ import { i18nMixin } from './helpers'
 export default {
   name: 'DataTablePagination',
   mixins: [i18nMixin],
+  inject: ['$theme'],
   props: {
     total: {
       type: Number,
@@ -106,7 +107,6 @@ export default {
 
       this.$emit('update:page', page)
     }
-  },
-  inject: ['$theme']
+  }
 }
 </script>

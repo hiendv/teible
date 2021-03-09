@@ -1,10 +1,10 @@
 import path from 'path'
-import resolve from 'rollup-plugin-node-resolve'
-import cjs from 'rollup-plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
+import cjs from '@rollup/plugin-commonjs'
 import vue from 'rollup-plugin-vue'
-import buble from 'rollup-plugin-buble'
+import buble from '@rollup/plugin-buble'
 import postcss from 'rollup-plugin-postcss'
-import { uglify } from 'rollup-plugin-uglify'
+import { terser } from 'rollup-plugin-terser'
 
 const reslv = p => {
   return path.resolve(__dirname, p)
@@ -50,9 +50,7 @@ export default [
         extract: reslv('dist/vueteible.css')
       }),
       ...plugins,
-      uglify({
-        compress: { unused: true, dead_code: true }
-      })
+      terser()
     ]
   }
 ]

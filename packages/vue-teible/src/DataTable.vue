@@ -42,6 +42,11 @@ export default {
   name: 'DataTable',
   components: { DataTableBody, DataTableHead, DataTablePagination, DataTableFilter, Loading },
   mixins: [i18nMixin],
+  provide () {
+    return {
+      $theme: () => this.theme // because provide & inject bindings are not reactive
+    }
+  },
   props: {
     items: {
       type: [Array, Function],
@@ -98,11 +103,6 @@ export default {
     rowHover: {
       type: Function,
       default: (event, item, index) => {}
-    }
-  },
-  provide () {
-    return {
-      $theme: () => this.theme // because provide & inject bindings are not reactive
     }
   },
   data () {

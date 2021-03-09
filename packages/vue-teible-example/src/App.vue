@@ -36,6 +36,52 @@
     </main>
   </div>
 </template>
+<script>
+import Haikunator from 'haikunator'
+import axios from 'axios'
+import Demo from './Demo.vue'
+
+const haikunator = new Haikunator()
+
+export default {
+  components: { Demo },
+  data () {
+    return {
+      itemsArr: [],
+      total: 100
+    }
+  },
+  mounted () {
+    this.seed()
+  },
+  methods: {
+    seed () {
+      const arr = []
+      for (let i = 0; i < this.total; i++) {
+        arr.push({
+          id: i,
+          name: haikunator.haikunate()
+        })
+      }
+
+      this.itemsArr = arr
+    },
+    itemsFunc (filtering, sorting, paging) {
+      // filtering fields will be ignored because typicode does not support them: https://github.com/typicode/json-server/pull/558
+      // this, sometimes, makes the result seem weird
+      const url = `https://jsonplaceholder.typicode.com/users?q=${filtering.query}&_sort=${sorting.by}&_order=${sorting.order}&_page=${paging.page}&_limit=${paging.perPage}`
+
+      return axios.get(url).then(response => {
+        const total = parseInt(response.headers['x-total-count']) || 0
+        return {
+          total,
+          items: response.data
+        }
+      })
+    }
+  }
+}
+</script>
 <style lang="scss">
 html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
   margin: 0;
@@ -122,49 +168,3 @@ main {
   width: 6%;
 }
 </style>
-<script>
-import Haikunator from 'haikunator'
-import axios from 'axios'
-import Demo from './Demo.vue'
-
-const haikunator = new Haikunator()
-
-export default {
-  components: { Demo },
-  data () {
-    return {
-      itemsArr: [],
-      total: 100
-    }
-  },
-  mounted () {
-    this.seed()
-  },
-  methods: {
-    seed () {
-      const arr = []
-      for (let i = 0; i < this.total; i++) {
-        arr.push({
-          id: i,
-          name: haikunator.haikunate()
-        })
-      }
-
-      this.itemsArr = arr
-    },
-    itemsFunc (filtering, sorting, paging) {
-      // filtering fields will be ignored because typicode does not support them: https://github.com/typicode/json-server/pull/558
-      // this, sometimes, makes the result seem weird
-      const url = `https://jsonplaceholder.typicode.com/users?q=${filtering.query}&_sort=${sorting.by}&_order=${sorting.order}&_page=${paging.page}&_limit=${paging.perPage}`
-
-      return axios.get(url).then(response => {
-        const total = parseInt(response.headers['x-total-count']) || 0
-        return {
-          total,
-          items: response.data
-        }
-      })
-    }
-  }
-}
-</script>

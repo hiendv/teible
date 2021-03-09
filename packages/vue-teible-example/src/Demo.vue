@@ -61,39 +61,6 @@
     </data-table>
   </div>
 </template>
-<style lang="scss">
-@mixin clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
-.demo__info {
-  position: relative;
-  word-wrap: break-word;
-  background-clip: border-box;
-}
-
-.demo__line {
-  margin: 0;
-  margin-top: -1px;
-  padding: .7rem;
-  border: 1px solid rgba(0,0,0,.125);
-  font-weight: 300;
-  @include clearfix;
-}
-
-.demo__control {
-  max-height: 2em;
-}
-
-.demo__value {
-  float: right;
-  font-weight: bold;
-}
-</style>
 <script>
 import { DataTable, DataColumn } from 'vue-teible'
 import { themeDefault, themeDark } from 'teible'
@@ -204,3 +171,36 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.demo__info {
+  position: relative;
+  word-wrap: break-word;
+  background-clip: border-box;
+}
+
+.demo__line {
+  margin: 0;
+  margin-top: -1px;
+  padding: .7rem;
+  border: 1px solid rgba(0,0,0,.125);
+  font-weight: 300;
+  @include clearfix;
+}
+
+.demo__control {
+  max-height: 2em;
+}
+
+.demo__value {
+  float: right;
+  font-weight: bold;
+}
+</style>

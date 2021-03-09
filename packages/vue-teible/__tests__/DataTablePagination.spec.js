@@ -35,7 +35,7 @@ describe('DataTablePagination', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it('renders correctly when total change', () => {
+  it('renders correctly when total change', async () => {
     const wrapper = shallowMount(DataTablePagination, {
       propsData: {
         total: 10,
@@ -49,17 +49,14 @@ describe('DataTablePagination', () => {
     })
     expect(wrapper.html()).toMatchSnapshot()
 
-    wrapper.setProps({
+    await wrapper.setProps({
       total: 9
     })
 
-    return wrapper.vm.$nextTick()
-      .then(() => {
-        expect(wrapper.html()).toMatchSnapshot()
-      })
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it('emits update:page events', () => {
+  it('emits update:page events', async () => {
     const wrapper = shallowMount(DataTablePagination, {
       propsData: {
         total: 10,
@@ -72,9 +69,9 @@ describe('DataTablePagination', () => {
       })
     })
 
-    wrapper.find('.datatable__pprevious').trigger('click')
+    await wrapper.find('.datatable__pprevious').trigger('click')
     expect(wrapper.emitted()).toEqual({ 'update:page': [[1]] })
-    wrapper.setProps({
+    await wrapper.setProps({
       page: 1
     })
 
@@ -83,23 +80,23 @@ describe('DataTablePagination', () => {
     /*
       Nothing emitted since we reached the first page
     */
-    wrapper.find('.datatable__pprevious').trigger('click')
+    await wrapper.find('.datatable__pprevious').trigger('click')
     expect(wrapper.emitted()).toEqual({ 'update:page': [[1]] })
 
-    wrapper.findAll('.datatable__plink').at(5).trigger('click')
+    await wrapper.findAll('.datatable__plink').at(5).trigger('click')
     expect(wrapper.emitted()).toEqual({ 'update:page': [[1], [4]] })
-    wrapper.setProps({
+    await wrapper.setProps({
       page: 4
     })
 
     /*
       Nothing emitted since we reached the last page
     */
-    wrapper.find('.datatable__pnext').trigger('click')
+    await wrapper.find('.datatable__pnext').trigger('click')
     expect(wrapper.emitted()).toEqual({ 'update:page': [[1], [4]] })
   })
 
-  it('does not emit update:page event when clicking on the three-dots button', () => {
+  it('does not emit update:page event when clicking on the three-dots button', async () => {
     const wrapper = shallowMount(DataTablePagination, {
       propsData: {
         total: 10,
@@ -113,23 +110,20 @@ describe('DataTablePagination', () => {
     })
     expect(wrapper.html()).toMatchSnapshot() // < > [1] 2 3 ... 9 10
 
-    wrapper.findAll('.datatable__plink').at(3).trigger('click')
+    await wrapper.findAll('.datatable__plink').at(3).trigger('click')
     expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < > 1 [2] 3 ... 9 10
-    wrapper.setProps({
+    await wrapper.setProps({
       page: 2
     })
 
-    return wrapper.vm.$nextTick()
-      .then(() => {
-        // Clicking on the [...]
-        wrapper.findAll('.datatable__plink').at(5).trigger('click') // this won't actually do because of vuejs/vue-test-utils/issues/1321
-        expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < > 1 [2] 3 ... 9 10
+    // Clicking on the [...]
+    await wrapper.findAll('.datatable__plink').at(5).trigger('click') // this won't actually do because of vuejs/vue-test-utils/issues/1321
+    expect(wrapper.emitted()).toEqual({ 'update:page': [[2]] }) // < > 1 [2] 3 ... 9 10
 
-        wrapper.findAll('.datatable__plink').at(7).trigger('click')
-        expect(wrapper.emitted()).toEqual({ 'update:page': [[2], [10]] }) // < > 1 2 3 ... 9 [10]
-        wrapper.setProps({
-          page: 10
-        })
-      })
+    await wrapper.findAll('.datatable__plink').at(7).trigger('click')
+    expect(wrapper.emitted()).toEqual({ 'update:page': [[2], [10]] }) // < > 1 2 3 ... 9 [10]
+    await wrapper.setProps({
+      page: 10
+    })
   })
 })

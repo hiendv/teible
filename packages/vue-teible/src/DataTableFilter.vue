@@ -20,6 +20,7 @@ import { i18nMixin } from './helpers'
 export default {
   name: 'DataTableFilter',
   mixins: [i18nMixin],
+  inject: ['$theme'],
   props: {
     filter: {
       type: String,
@@ -38,7 +39,6 @@ export default {
     clear () {
       this.$emit('update:filter', '')
     }
-  },
-  inject: ['$theme']
+  }
 }
 </script>

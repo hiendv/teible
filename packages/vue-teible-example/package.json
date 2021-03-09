@@ -3,11 +3,11 @@
   "version": "0.11.18",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
-    "core-js": "^3.6.5",
+    "axios": "^0.21.1",
+    "core-js": "^3.9.1",
     "haikunator": "^2.1.2",
     "teible": "^0.11.13",
-    "vue": "^2.6.11",
+    "vue": "^2.6.12",
     "vue-teible": "^0.11.18"
   },
   "eslintIgnore": [

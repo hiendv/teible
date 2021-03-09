@@ -88,13 +88,13 @@
 </template>
 <script>
 export default {
+  inject: ['$theme'],
   props: {
     active: {
       type: Boolean,
       default: true
     }
   },
-  inject: ['$theme'],
   computed: {
     theme () {
       return this.$theme()

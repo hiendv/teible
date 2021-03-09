@@ -3,12 +3,12 @@
 exports[`DataTableBody renders correctly 1`] = `
 <tbody>
   <tr data-elm="row" class="datatable__row">
-    <data-table-cell-stub item="[object Object]" column="[object Object]" index="0" data-elm="cell" class=" datatable__cell"></data-table-cell-stub>
-    <data-table-cell-stub item="[object Object]" column="[object Object]" index="0" data-elm="cell" data-last-column="true" class=" datatable__cell datatable__cell--last-column"></data-table-cell-stub>
+    <data-table-cell-stub item="[object Object]" column="[object Object]" index="0" data-elm="cell" class="datatable__cell"></data-table-cell-stub>
+    <data-table-cell-stub item="[object Object]" column="[object Object]" index="0" data-elm="cell" data-last-column="true" class="datatable__cell datatable__cell--last-column"></data-table-cell-stub>
   </tr>
   <tr data-elm="row" data-odd="true" class="datatable__row datatable__row--odd">
-    <data-table-cell-stub item="[object Object]" column="[object Object]" index="1" data-elm="cell" data-last-row="true" class=" datatable__cell datatable__cell--last-row"></data-table-cell-stub>
-    <data-table-cell-stub item="[object Object]" column="[object Object]" index="1" data-elm="cell" data-last-column="true" data-last-row="true" class=" datatable__cell datatable__cell--last-column datatable__cell--last-row"></data-table-cell-stub>
+    <data-table-cell-stub item="[object Object]" column="[object Object]" index="1" data-elm="cell" data-last-row="true" class="datatable__cell datatable__cell--last-row"></data-table-cell-stub>
+    <data-table-cell-stub item="[object Object]" column="[object Object]" index="1" data-elm="cell" data-last-column="true" data-last-row="true" class="datatable__cell datatable__cell--last-column datatable__cell--last-row"></data-table-cell-stub>
   </tr>
 </tbody>
 `;

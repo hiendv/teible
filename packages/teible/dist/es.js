@@ -152,7 +152,7 @@ const uniqArr = arr => {
 
 const range = n => {
   const a = [];
-  for (var i = 0; i < n; i++) {
+  for (let i = 0; i < n; i++) {
     a[i] = i + 1;
   }
 

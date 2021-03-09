@@ -86,7 +86,7 @@ exports[`DataTableHead renders slots correctly 1`] = `
     <th scope="col" data-elm="column" data-sortable="true" data-active="true" class="datatable__column datatable__column--sortable datatable__column--active"><span data-elm="column-text" class="datatable__column-text">Name</span><svg version="1.1" width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" class="octicon octicon-triangle-up datatable__column-icon">
         <path fill-rule="evenodd" d="M12 11L6 5l-6 6h12z"></path>
       </svg></th>
-    <th scope="col" data-elm="column" data-custom="function header(props) {
+    <th scope="col" data-elm="column" data-custom="header(props) {
               return 'Yo';
             }" data-last="true" class="datatable__column datatable__column--custom datatable__column--last"><span>Yo</span></th>
   </tr>
