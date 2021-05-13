@@ -85,12 +85,9 @@ var i18nMixin = {
   }
 };
 
-function createCommonjsModule(fn) {
-  var module = { exports: {} };
-	return fn(module, module.exports), module.exports;
-}
+var clone$1 = {exports: {}};
 
-var clone_1 = createCommonjsModule(function (module) {
+(function (module) {
 var clone = (function() {
 
 function _instanceof(obj, type) {
@@ -347,7 +344,9 @@ return clone;
 if (module.exports) {
   module.exports = clone;
 }
-});
+}(clone$1));
+
+var clone = clone$1.exports;
 
 var DataTableCell = {
   functional: true,
@@ -1236,7 +1235,7 @@ var script = {
         return []
       }
 
-      return this.transform(clone_1(this.items, false))
+      return this.transform(clone(this.items, false))
     }
   },
   watch: {
