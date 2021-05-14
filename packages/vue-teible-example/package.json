@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
-    "core-js": "^3.12.1",
+    "core-js": "^3.9.1",
     "haikunator": "^2.1.2",
     "teible": "^0.11.19",
     "vue": "^2.6.12",
