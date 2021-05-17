@@ -40,11 +40,6 @@
     "vue": "^2.6.12",
     "vue-jest": "^3.0.7"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "jest": {
     "collectCoverageFrom": [
       "packages/**/src/**/*.{js,vue}",
@@ -81,7 +76,8 @@
     "prebuild:vue": "$npm_execpath run lint",
     "test": "jest --no-cache",
     "pretest": "$npm_execpath run lint",
-    "test-ci": "$npm_execpath run build && $npm_execpath run test -- --coverage --ci --maxWorkers=4"
+    "test-ci": "$npm_execpath run build && $npm_execpath run test -- --coverage --ci --maxWorkers=4",
+    "prepare": "husky install"
   },
   "config": {
     "commitizen": {
