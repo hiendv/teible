@@ -125,7 +125,7 @@ export const load = (data, filtering, sorting, paging) => {
 }
 
 export const dotGet = (obj, path) => {
-  return path.split('.').reduce((o, i) => o[i], obj)
+  return path.split('.').reduce((o, i) => o[i] !== undefined ? o[i] : '', obj)
 }
 
 export const dotSet = (obj, path, val) => {
