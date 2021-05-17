@@ -4,9 +4,9 @@ node_js:
   - lts/erbium
   - node
 install:
-  - npm install -g npm codecov
-  - npm ci
-  - npm run setup -- --ci
+  - yarn install -g codecov
+  - yarn
+  - yarn setup --ci
 script:
-  - npm run test-ci
+  - yarn test-ci
   - codecov

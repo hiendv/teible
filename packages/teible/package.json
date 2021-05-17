@@ -1,8 +1,8 @@
 {
   "name": "teible",
   "version": "0.11.19",
-  "module": "dist/es.js",
-  "main": "dist/es.js",
+  "main": "dist/teible.es.js",
+  "module": "dist/teible.es.js",
   "author": "Hien Dao <hien.dv.neo@gmail.com>",
   "license": "MIT",
   "publishConfig": {

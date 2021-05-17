@@ -4,7 +4,7 @@ module.exports = {
   },
   extends: [
     'plugin:vue/recommended',
-    '@vue/standard'
+    'standard'
   ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -13,8 +13,5 @@ module.exports = {
       'singleline': 3,
       'multiline': 3
     }]
-  },
-  parserOptions: {
-    parser: 'babel-eslint'
   }
 }

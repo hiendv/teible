@@ -19,8 +19,8 @@ See [https://hiendv.github.io/teible/](https://hiendv.github.io/teible/) or [the
 ### CDN
 [![](https://data.jsdelivr.com/v1/package/npm/vue-teible/badge)](https://www.jsdelivr.com/package/npm/vue-teible)
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.css" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vueteible.iife.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/style.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/vue-teible@latest/dist/vue-teible.iife.js" crossorigin="anonymous"></script>
 ```
 **Note: We recommend linking to a specific version number that you can update manually**
 ```js

@@ -1,4 +1,4 @@
-import { load, dotSet, paginate, orderBy, transform } from '../src'
+import { load, dotSet, paginate, orderBy, transform } from './..'
 
 describe('load', () => {
   const data = [{

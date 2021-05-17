@@ -438,7 +438,7 @@ describe('DataTable', () => {
       localVue
     })
 
-    expect(wrapper.find('.datatable__loading').element).toBeVisible()
+    expect(wrapper.find('.datatable__loading').isVisible()).toBe(true)
     expect(wrapper.html()).toMatchSnapshot()
 
     return wrapper.vm.$nextTick()
@@ -446,7 +446,7 @@ describe('DataTable', () => {
         return wrapper.vm.$nextTick()
       })
       .then(() => {
-        expect(wrapper.find('.datatable__loading').element).not.toBeVisible()
+        expect(wrapper.find('.datatable__loading').isVisible()).toBe(false)
         expect(wrapper.html()).toMatchSnapshot()
       })
   })
@@ -490,7 +490,7 @@ describe('DataTable', () => {
       localVue
     })
 
-    expect(wrapper.find('.datatable__loading').element).toBeVisible()
+    expect(wrapper.find('.datatable__loading').isVisible()).toBe(true)
     expect(wrapper.html()).toMatchSnapshot()
 
     return wrapper.vm.$nextTick()
@@ -498,7 +498,7 @@ describe('DataTable', () => {
         return wrapper.vm.$nextTick()
       })
       .then(() => {
-        expect(wrapper.find('.datatable__loading').element).not.toBeVisible()
+        expect(wrapper.find('.datatable__loading').isVisible()).toBe(false)
         expect(wrapper.html()).toMatchSnapshot()
       })
   })
@@ -523,7 +523,7 @@ describe('DataTable', () => {
       localVue
     })
 
-    expect(wrapper.find('.datatable__loading').element).toBeVisible()
+    expect(wrapper.find('.datatable__loading').isVisible()).toBe(true)
     expect(wrapper.html()).toMatchSnapshot()
 
     return wrapper.vm.$nextTick()
@@ -531,7 +531,7 @@ describe('DataTable', () => {
         return wrapper.vm.$nextTick()
       })
       .then(() => {
-        expect(wrapper.find('.datatable__loading').element).not.toBeVisible()
+        expect(wrapper.find('.datatable__loading').isVisible()).toBe(false)
         expect(wrapper.html()).toMatchSnapshot()
       })
   })
