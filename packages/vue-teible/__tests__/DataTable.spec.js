@@ -265,12 +265,12 @@ describe('DataTable', () => {
     })
 
     const input = wrapper.find('.datatable__input')
-    input.element.value = 'a'
+    input.element.value = 'f0obAr'
     input.trigger('input')
 
     return wrapper.vm.$nextTick()
       .then(() => {
-        expect(wrapper.emitted()['update:filter']).toEqual([['a']])
+        expect(wrapper.emitted()['update:filter']).toEqual([['f0obAr']])
       })
   })
 

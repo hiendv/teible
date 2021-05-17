@@ -174,7 +174,7 @@ export default {
       }
 
       return {
-        query: this.options.filter.toLowerCase(),
+        query: this.options.filter,
         fields: this.filterable
       }
     },
