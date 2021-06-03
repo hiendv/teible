@@ -50,6 +50,7 @@
       "js",
       "vue"
     ],
+    "testEnvironment": "jsdom",
     "transform": {
       "^.+\\.js?$": "babel-jest",
       "^.+\\.vue$": "vue-jest"
