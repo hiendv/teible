@@ -1,7 +1,7 @@
 {
   "name": "vue-teible",
   "description": "Table component for Vue.js",
-  "version": "0.12.4",
+  "version": "0.12.5",
   "author": "Hien Dao <hien.dv.neo@gmail.com>",
   "dependencies": {
     "octicons-vue": "^1.0.11",
