@@ -4,7 +4,7 @@
   "version": "0.12.4",
   "author": "Hien Dao <hien.dv.neo@gmail.com>",
   "dependencies": {
-    "octicons-vue": "^1.0.10",
+    "octicons-vue": "^1.0.11",
     "teible": "^0.12.3"
   },
   "files": [
@@ -22,11 +22,11 @@
   "main": "dist/vue-teible.cjs.js",
   "module": "dist/vue-teible.es.js",
   "peerDependencies": {
-    "vue": "^2.6.13",
-    "vue-i18n": "^8.24.4"
+    "vue": "^2.6.14",
+    "vue-i18n": "^8.24.5"
   },
   "repository": "https://github.com/hiendv/teible/tree/master/packages/vue-teible",
   "devDependencies": {
-    "vue-template-compiler": "^2.6.13"
+    "vue-template-compiler": "^2.6.14"
   }
 }
