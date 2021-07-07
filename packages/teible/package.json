@@ -1,6 +1,6 @@
 {
   "name": "teible",
-  "version": "0.12.3",
+  "version": "0.12.6",
   "main": "dist/teible.es.js",
   "module": "dist/teible.es.js",
   "author": "Hien Dao <hien.dv.neo@gmail.com>",
