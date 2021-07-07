@@ -88,7 +88,7 @@ const filter = (items, filtering) => {
         continue
       }
 
-      if (`${value}`.toLowerCase().indexOf(filtering.query) === -1) {
+      if (`${value}`.toLowerCase().indexOf(filtering.query.toLowerCase()) === -1) {
         continue
       }
 
